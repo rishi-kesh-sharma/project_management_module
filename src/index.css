@@ -1,0 +1,194 @@
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
+@import "@fontsource/poppins";
+
+* {
+  font-family: "Poppins", sans-serif;
+}
+.primary_dark {
+  color: "#1A227D";
+}
+.primary_medium {
+  color: "#4339F2";
+}
+.primary {
+  color: "#0E84ED";
+}
+.successful {
+  color: "#99D045";
+}
+.reject {
+  color: "#FA3E3E";
+}
+.pending {
+  color: "#E6A000";
+}
+.black {
+  color: "#1E1E1E";
+}
+.grey {
+  color: "#4B4B4B";
+}
+
+.white {
+  color: "#FFFFFF";
+}
+
+.h1 {
+  font-weight: 600;
+  font-size: 40px;
+  line-height: 1.875rem;
+}
+.h2 {
+  font-weight: 600;
+  font-size: 32px;
+  line-height: 1.875rem;
+}
+.h3 {
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 1.875rem;
+}
+.h4 {
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 1.875rem;
+}
+.h5 {
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 1.875rem;
+}
+.p1-r {
+  font-weight: normal;
+  font-size: 16px;
+  line-height: 150%;
+}
+.p1-b {
+  font-weight: bold;
+  font-size: 16px;
+  line-height: 150%;
+}
+.p2-r {
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 150%;
+}
+.p2-b {
+  font-weight: bold;
+  font-size: 14px;
+  line-height: 150%;
+}
+.p3-r {
+  font-weight: normal;
+  font-size: 12px;
+  line-height: 150%;
+}
+.p3-b {
+  font-weight: bold;
+  font-size: 12px;
+  line-height: 150%;
+}
+.l1-r {
+  font-weight: normal;
+  font-size: 16px;
+  line-height: 125%;
+}
+.l1-b {
+  font-weight: bold;
+  font-size: 16px;
+  line-height: 125%;
+}
+.l2-r {
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 125%;
+}
+.l2-b {
+  font-weight: bold;
+  font-size: 14px;
+  line-height: 125%;
+}
+.l3-r {
+  font-weight: normal;
+  font-size: 12px;
+  line-height: 125%;
+}
+.l3-b {
+  font-weight: bold;
+  font-size: 12px;
+  line-height: 125%;
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+.scrollbar::-webkit-scrollbar {
+  width: 4px; /* vertical scrollbar width */
+  height: 4px; /* horizontal scrollbar height */
+  scrollbar-gutter: stable both-edges;
+}
+
+.scrollbar::-webkit-scrollbar-track {
+  border-radius: 2rem;
+  background: #e2e2ea;
+}
+
+.scrollbar::-webkit-scrollbar-thumb {
+  background: #4339f2;
+  border-radius: 100vh;
+  border: 3px solid #6d64e4;
+}
+
+.scrollbar::-webkit-scrollbar-thumb:hover {
+  background: #3d34ee;
+}
+
+/*  Margins for scrollbar track */
+.scrollbar-mt-90px::-webkit-scrollbar-track {
+  margin-top: 90px;
+}
+
+.scrollbar-mt-60px::-webkit-scrollbar-track {
+  margin-top: 60px;
+}
+
+.scrollbar-mt-32px::-webkit-scrollbar-track {
+  margin-top: 32px;
+}
+
+.scrollbar-mt-150px::-webkit-scrollbar-track {
+  margin-top: 32px;
+}
+
+.scrollbar-mb-60px::-webkit-scrollbar-track {
+  margin-bottom: 60px;
+}
+
+.scrollbar-my-32px::-webkit-scrollbar-track {
+  margin-top: 32px;
+  margin-bottom: 32px;
+}
+
+.scrollbar-mt-4rem::-webkit-scrollbar-track {
+  margin-top: 4rem;
+}
+
+.scrollbar-mt-52px::-webkit-scrollbar-track {
+  margin-top: 52px;
+}
+
+@media not all and (min-width: 640px) {
+  .scrollbar-mt-60px::-webkit-scrollbar-track {
+    margin-top: 80px;
+  }
+}
+
+.scrollbar::-webkit-scrollbar-track-piece:end {
+  background: transparent;
+}
+input[type="search"]::-webkit-search-cancel-button {
+  display: none;
+}
