@@ -6,7 +6,7 @@ import {
   PlanningIcon,
   ProgressIcon,
   SettingIcon,
-  TaskIcon,
+TaskIcon,
 } from "@/components/icons";
 
 export const sidebarItems = () => [

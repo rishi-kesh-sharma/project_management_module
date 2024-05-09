@@ -7,18 +7,7 @@ import {
   LeftAngularArrowIcon,
   LogoutIcon,
 } from "@/components/icons";
-
-export interface SidebarItemProps {
-  label: string;
-  link: string;
-  icon: React.ReactElement;
-  items?: SidebarItemProps[];
-}
-export interface SidebarProps {
-  type: "small" | "large";
-  path: string;
-  items: SidebarItemProps[];
-}
+import { SidebarProps } from "@/@types";
 
 const Sidebar: React.FC<SidebarProps> = ({ type, path, items }) => {
   const navigate = useNavigate();
