@@ -9,7 +9,7 @@ const meta: Meta<typeof Sidebar> = {
 
   component: Sidebar,
   parameters: {
-    layout: "centered",
+    layout: "left",
   },
 };
 

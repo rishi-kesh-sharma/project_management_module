@@ -4,7 +4,7 @@ import {
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
-} from "@/components/ui/accordion";
+} from "@/components/ui/Accordion/accordion";
 import { buttonVariants } from "@/components/ui/Button/button";
 import config from "./../../../../config/index";
 import { LeftAngularArrowIcon } from "@/components/icons";

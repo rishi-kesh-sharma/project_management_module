@@ -1,8 +1,9 @@
-import Header from "./Header.tsx";
+import Header from "./Header/Header.tsx";
 import "../index.css";
 import { Outlet, useLocation } from "react-router-dom";
 import Sidebar from "@/components/custom/layout/Sidebar/Sidebar.tsx";
 import { sidebarItems } from "@/utils/constants/sidebar.tsx";
+import { userInfo } from "@/utils/constants/index.tsx";
 export type CommonLayoutProps = {
   type: "small" | "large";
 };
@@ -23,7 +24,7 @@ const CommonLayout = ({ type }: CommonLayoutProps) => {
           type === "large" ? "col-span-10" : "col-span-11"
         } flex flex-col `}>
         <div className="z-[100] sticky top-0 flex h-[70px] w-full justify-between  items-center px-8 border-b-2 border-primary-100 bg-[#ffffff]">
-          <Header />
+          <Header user={userInfo} />
         </div>
         <div className="justify-end items-center max-h-[calc(100vh-56px)]">
           <Outlet />

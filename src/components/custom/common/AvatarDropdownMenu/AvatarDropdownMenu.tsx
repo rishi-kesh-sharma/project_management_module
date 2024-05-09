@@ -1,22 +1,20 @@
-import { IDropdownMenuProps } from "@/@types";
-import { DownAngularArrowIcon } from "@/components/icons";
-import { Button } from "@/components/ui/Button/button";
+import { IAvatarDropdownProps, IDropdownMenuItem } from "@/@types";
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
-  //   DropdownMenuLabel,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui//Dropdown/dropdown-menu";
+import Avatar from "../Avatar/Avatar";
 
-const Dropdown: React.FC<IDropdownMenuProps> = ({
+const AvatarDropdown: React.FC<IAvatarDropdownProps> = ({
   menu,
+  imgSrc,
+  name,
   dropdownSize,
   dropdownVariant,
-  dropdownTriggerSize,
-  dropdownTriggerVariant,
-  dropdownTriggerButtonProps,
+  avatarSize,
 }) => {
   const getDropdownSizeClasses = (dropdownSize: string) => {
     let classes = "";
@@ -38,18 +36,18 @@ const Dropdown: React.FC<IDropdownMenuProps> = ({
     return classes;
   };
 
-  const getDropdownTriggerSizeClasses = (dropdownTriggerSize: string) => {
+  const getAvatarSizeClasses = (dropdownTriggerSize: string) => {
     let classes = "";
 
     switch (dropdownTriggerSize) {
       case "sm":
-        classes = "w-[4rem]";
+        classes = "w-[3rem] h-[3rem]";
         break;
       case "md":
-        classes = "w-[7rem]";
+        classes = "w-[4rem] h-[4rem]";
         break;
       case "lg":
-        classes = "w-[10rem]";
+        classes = "w-[6rem] h-[6rem]";
         break;
 
       default:
@@ -76,37 +74,21 @@ const Dropdown: React.FC<IDropdownMenuProps> = ({
     }
     return classes;
   };
-  const getDropdownTriggerVariantClasses = (dropdownTriggerVariant: string) => {
-    let classes = "";
-    switch (dropdownTriggerVariant) {
-      case "primary":
-        classes = "bg-primary text-white border-white border-b-1";
-        break;
-      case "secondary":
-        classes = "bg-gray-100";
-        break;
-
-      default:
-        classes;
-        break;
-    }
-    return classes;
-  };
 
   const mergedDropdownClasses = `${getDropdownSizeClasses(dropdownSize)} ${getDropdownVariantClasses(dropdownVariant)}`;
-  const mergedDropdownTriggerClasses = `${getDropdownTriggerSizeClasses(dropdownTriggerSize)} ${getDropdownTriggerVariantClasses(dropdownTriggerVariant)}`;
+  const mergedAvatarClasses = `${getAvatarSizeClasses(avatarSize)}`;
   return (
     <DropdownMenu>
-      <Button {...dropdownTriggerButtonProps}>
-        <DropdownMenuTrigger
-          className={`flex items-center gap-2 justify-between ${mergedDropdownTriggerClasses}`}>
-          {menu.label} {<DownAngularArrowIcon />}
-        </DropdownMenuTrigger>
-      </Button>
-      {/* <DropdownMenuLabel>{menu.label}</DropdownMenuLabel> */}
+      <DropdownMenuTrigger>
+        <Avatar
+          className={` ${mergedAvatarClasses}`}
+          imgSrc={imgSrc}
+          name={name}
+        />
+      </DropdownMenuTrigger>
       <DropdownMenuContent className={`${mergedDropdownClasses} `}>
         {dropdownVariant !== "primary" && <DropdownMenuSeparator />}
-        {menu.items.map((item) => {
+        {menu.items.map((item: IDropdownMenuItem) => {
           return (
             <DropdownMenuItem className="cursor-pointer">
               {item.label}
@@ -118,4 +100,4 @@ const Dropdown: React.FC<IDropdownMenuProps> = ({
   );
 };
 
-export default Dropdown;
+export default AvatarDropdown;

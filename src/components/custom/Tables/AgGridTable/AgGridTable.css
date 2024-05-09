@@ -1,0 +1,51 @@
+.ag-theme-quartz,
+.ag-theme-alpine {
+  /* Changes the color of the grid text */
+  /* Changes the color of the grid background */
+  /* Changes the header color of the top row */
+  /* --ag-header-background-color: rgb(228, 237, 250); */
+  /* Changes the hover color of the row*/
+
+  /* --ag-header-foreground-color: white;
+
+  --ag-header-background-color: hsla(208, 89%, 49%, 1);
+  --ag-header-text-color: white; */
+  --ag-col-border-style: solid;
+  --ag-col-border-color: black;
+  --ag-col-border-width: 1px;
+}
+
+.ag-header-cell-filtered {
+  background-color: hsla(208, 89%, 49%, 1) !important;
+  color: #fff !important;
+}
+
+.ag-header-cell-filtered span {
+  color: #fff !important;
+}
+
+/* width */
+::-webkit-scrollbar {
+  width: 7px;
+  height:7pxa
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #b8b7b7;
+  border-radius: 5px;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -o-border-radius: 5px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
