@@ -48,70 +48,70 @@ export const Basic: Story = {
   },
 };
 
-export const QuartzTheme: Story = {
-  args: {
-    // rowSelection: null,
-    // suppressRowClickSelection: false,
-    // paginationPageSize: null,
-    // pagination: null,
-    theme: "ag-theme-quartz",
-  },
-};
+// export const QuartzTheme: Story = {
+//   args: {
+//     // rowSelection: null,
+//     // suppressRowClickSelection: false,
+//     // paginationPageSize: null,
+//     // pagination: null,
+//     theme: "ag-theme-quartz",
+//   },
+// };
 
-export const AlpineTheme: Story = {
-  args: {
-    // rowSelection: null,
-    // suppressRowClickSelection: false,
-    // paginationPageSize: null,
-    // pagination: null,
-    theme: "ag-theme-alpine",
-  },
-};
-export const Primary: Story = {
-  args: {
-    // rowSelection: null,
-    // suppressRowClickSelection: false,
-    // paginationPageSize: null,
-    // pagination: null,
-    variant: "primary",
-  },
-};
+// export const AlpineTheme: Story = {
+//   args: {
+//     // rowSelection: null,
+//     // suppressRowClickSelection: false,
+//     // paginationPageSize: null,
+//     // pagination: null,
+//     theme: "ag-theme-alpine",
+//   },
+// };
+// export const Primary: Story = {
+//   args: {
+//     // rowSelection: null,
+//     // suppressRowClickSelection: false,
+//     // paginationPageSize: null,
+//     // pagination: null,
+//     variant: "primary",
+//   },
+// };
 
-export const Secondary: Story = {
-  args: {
-    // rowSelection: null,
-    // suppressRowClickSelection: false,
-    // paginationPageSize: null,
-    // pagination: null,
-    variant: "secondary",
-  },
-};
-export const Dark: Story = {
-  args: {
-    // rowSelection: null,
-    // suppressRowClickSelection: false,
-    // paginationPageSize: null,
-    // pagination: null,
-    theme: "ag-theme-quartz-dark",
-  },
-};
-export const Tall: Story = {
-  args: {
-    // rowSelection: null,
-    // suppressRowClickSelection: false,
-    // paginationPageSize: null,
-    // pagination: null,
-    // variant: "secondary",
-    height: 600,
-  },
-};
+// export const Secondary: Story = {
+//   args: {
+//     // rowSelection: null,
+//     // suppressRowClickSelection: false,
+//     // paginationPageSize: null,
+//     // pagination: null,
+//     variant: "secondary",
+//   },
+// };
+// export const Dark: Story = {
+//   args: {
+//     // rowSelection: null,
+//     // suppressRowClickSelection: false,
+//     // paginationPageSize: null,
+//     // pagination: null,
+//     theme: "ag-theme-quartz-dark",
+//   },
+// };
+// export const Tall: Story = {
+//   args: {
+//     // rowSelection: null,
+//     // suppressRowClickSelection: false,
+//     // paginationPageSize: null,
+//     // pagination: null,
+//     // variant: "secondary",
+//     height: 600,
+//   },
+// };
 
-export const Short: Story = {
-  args: {
-    // rowSelection: null,
-    // suppressRowClickSelection: false,
-    // paginationPageSize: null,
-    // pagination: null,
-    // variant: "secondary",
-  },
-};
+// export const Short: Story = {
+//   args: {
+//     // rowSelection: null,
+//     // suppressRowClickSelection: false,
+//     // paginationPageSize: null,
+//     // pagination: null,
+//     // variant: "secondary",
+//   },
+// };

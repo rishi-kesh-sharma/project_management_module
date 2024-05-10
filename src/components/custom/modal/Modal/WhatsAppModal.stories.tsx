@@ -17,16 +17,16 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Large: Story = {
-//   args: {
-//     type: "large",
-//     // items: sidebarItems(),
-//     path: "/",
-//   },
+  //   args: {
+  //     type: "large",
+  //     // items: sidebarItems(),
+  //     path: "/",
+  //   },
 };
 export const Small: Story = {
-//   args: {
-//     // type: "small",
-//     // items: sidebarItems(),
-//     path: "/",
-//   },
+  //   args: {
+  //     // type: "small",
+  //     // items: sidebarItems(),
+  //     path: "/",
+  //   },
 };

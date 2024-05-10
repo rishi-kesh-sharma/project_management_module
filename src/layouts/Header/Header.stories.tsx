@@ -14,15 +14,7 @@ const meta: Meta<typeof Header> = {
   parameters: {
     layout: "top",
   },
-  decorators: [
-    (Story) => {
-      return (
-        <div className="m-[2rem]">
-          <Story />
-        </div>
-      );
-    },
-  ],
+
 };
 
 export default meta;

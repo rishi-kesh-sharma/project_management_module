@@ -1,13 +1,13 @@
 // Sidebar.stories.tsx
 
 import { StoryObj, Meta } from "@storybook/react";
-import EmailInput from "./EmailInput";
+import NumberInput from "./NumberInput";
 
-const meta: Meta<typeof EmailInput> = {
-  title: "Form/Input/EmailInput",
+const meta: Meta<typeof NumberInput> = {
+  title: "Form/Input/NumberInput",
 
   args: {},
-  component: EmailInput,
+  component: NumberInput,
   parameters: {
     layout: "centered",
   },
@@ -18,7 +18,7 @@ type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
   args: {
-    placeholder: "Input here ...",
+    placeholder: " Number Input here ...",
   },
 };
 
