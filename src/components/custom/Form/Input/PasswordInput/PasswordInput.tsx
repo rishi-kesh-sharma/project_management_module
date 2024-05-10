@@ -5,10 +5,16 @@ import { Input, InputProps } from "@/components/ui/Input/input"
 import { Button } from "@/components/ui/Button/button"
 import { FaEye } from "react-icons/fa";
 import { FaEyeSlash } from "react-icons/fa";
-
+interface IPasswordInputProps {
+    size: "sm" | "md" | "lg" | "xl" | "default";
+    placeholder: string;
+    required: boolean;
+    label: string;
+    onChange: () => void;
+}
 
 const PasswordInput = forwardRef<HTMLInputElement, InputProps>(
-    ({ className, ...props }, ref) => {
+    ({ className, ...props }, ref): React.Fc<IPasswordInputProps> => {
         const [showPassword, setShowPassword] = useState(false)
 
         console.log(showPassword, "show password");

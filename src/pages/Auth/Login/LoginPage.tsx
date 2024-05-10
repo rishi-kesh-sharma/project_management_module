@@ -1,13 +1,16 @@
 import { PasswordInput } from '@/components/custom/Form/Input/PasswordInput/PasswordInput';
 import TextInput from '@/components/custom/Form/Input/TextInput/TextInput';
 import { Button } from '@/components/ui/Button/button';
+import LogoEnter from "../../../assets/images/LogoEnter.png";
 
 const LoginPage = () => {
   return (
     <div className="flex h-screen" >
       <div className="w-7/12 bg-gradient-to-r from-blue-400 via-blue-500 to-blue-600 p-16">
         <div className="text-white absolute top-12">
-          EnterLeaf
+          <div style={{ width: "195px", height: "86px",marginTop:"62px" }}>
+            <img src={LogoEnter} style={{ width: "100%", height: "100%" }} />
+          </div>
         </div>
         <div className="flex items-end text-white absolute bottom-12">
           @2024Enterleaf.All right reserved
