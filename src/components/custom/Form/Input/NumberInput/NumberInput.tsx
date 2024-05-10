@@ -1,13 +1,13 @@
 import { Input } from "@/components/ui/Input/input";
 
-interface IEmailInputProps {
+interface INumberInputProps {
   size: "sm" | "md" | "lg" | "xl" | "default";
   placeholder: string;
   required: boolean;
   label: string;
   onChange: () => void;
 }
-const EmailInput: React.FC<IEmailInputProps> = ({
+const NumberInput: React.FC<INumberInputProps> = ({
   placeholder,
   size,
   required = false,
@@ -30,7 +30,7 @@ const EmailInput: React.FC<IEmailInputProps> = ({
   const mergedClasses = `${getSizeClasses(size)}`;
   return (
     <Input
-      type="email"
+      type="number"
       placeholder={placeholder}
       className={mergedClasses}
       required={required}
@@ -39,4 +39,4 @@ const EmailInput: React.FC<IEmailInputProps> = ({
     />
   );
 };
-export default EmailInput;
+export default NumberInput;

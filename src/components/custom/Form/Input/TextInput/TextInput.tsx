@@ -7,7 +7,36 @@ interface ITextInputProps {
   label: string;
   onChange: () => void;
 }
-function TextInput({ placeholder }): React.Fc<ITextInputProps> {
-  return <Input type="text" placeholder={placeholder} />;
-}
+const TextInput: React.FC<ITextInputProps> = ({
+  placeholder,
+  size,
+  required = false,
+
+  onChange,
+  ...rest
+}) => {
+  const sizeToClassMapping = {
+    sm: "w-[8rem]",
+    md: "w-[15rem]",
+    lg: "w-[20rem]",
+    xl: "w-[25rem]",
+    default: "w-[10rem]",
+  };
+
+  const getSizeClasses = (size: string) => {
+    return sizeToClassMapping[size];
+  };
+
+  const mergedClasses = `${getSizeClasses(size)}`;
+  return (
+    <Input
+      type="text"
+      placeholder={placeholder}
+      className={mergedClasses}
+      required={required}
+      onChange={onChange}
+      {...rest}
+    />
+  );
+};
 export default TextInput;

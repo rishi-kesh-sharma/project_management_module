@@ -85,7 +85,7 @@ const AgGridTable: React.FC<IAgGridTableProps> = ({
         onGridReady={onGridReady}
         enableRangeSelection={true}
         // sideBar={"columns"}
-        // sideBar={true}
+        sideBar={true}
         // suppressMenuHide={true}
 
         // enableAdvancedFilter={true}
