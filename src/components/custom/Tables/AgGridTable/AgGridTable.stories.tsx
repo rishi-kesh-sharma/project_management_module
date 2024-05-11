@@ -2,14 +2,14 @@
 
 import { StoryObj, Meta } from "@storybook/react";
 import AgGridTable from "./AgGridTable";
-import { columnDefinations, tableData } from "./data";
+import { colDefs, rowData } from "./data";
 
 const meta: Meta<typeof AgGridTable> = {
   title: "Tables/AgGridTable",
 
   args: {
-    rowData: tableData,
-    columnDefs: columnDefinations,
+    rowData,
+    colDefs,
   },
 
   argTypes: {
@@ -115,3 +115,10 @@ export const Basic: Story = {
 //     // variant: "secondary",
 //   },
 // };
+
+// const [count, setCount] = useState(0);
+
+// const isRowSelectable = useCallback(
+//   (node: { data: { value: number } }) => node.data.value > count,
+//   [count]
+// );
