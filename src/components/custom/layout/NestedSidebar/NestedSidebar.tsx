@@ -7,10 +7,10 @@ import {
 } from "@/components/ui/Accordion/accordion";
 import { buttonVariants } from "@/components/ui/Button/button";
 import config from "./../../../../config/index";
-import { LeftAngularArrowIcon } from "@/components/icons";
-import { SidebarItemProps, SidebarProps } from "./../Sidebar/Sidebar";
+import { LeftAngularArrowIcon } from "@/components/icons/commonIcons";
 import { Link } from "react-router-dom";
 import React from "react";
+import { SidebarItemProps, SidebarProps } from "@/@types";
 
 const NestedSidebar: React.FC<SidebarProps> = ({ items, path, type }) => {
   //   Active Menu Css

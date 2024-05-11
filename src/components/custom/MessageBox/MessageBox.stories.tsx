@@ -2,12 +2,12 @@
 
 import { StoryObj, Meta } from "@storybook/react";
 // import { sidebarItems } from "@/utils/constants/sidebar";
-import WhatsAppModal from "./WhatsAppModal";
+import MessageBox from "./MessageBox.tsx";
 
-const meta: Meta<typeof WhatsAppModal> = {
-  title: "WhatsAppModal",
+const meta: Meta<typeof MessageBox> = {
+  title: "MessageBox",
 
-  component: WhatsAppModal,
+  component: MessageBox,
   parameters: {
     layout: "centered",
   },

@@ -3,6 +3,7 @@
 import { StoryObj, Meta } from "@storybook/react";
 import { Button } from "./button";
 import { IoMdAdd } from "react-icons/io";
+import { ReloadIcon } from "@radix-ui/react-icons";
 const handleOnClick = () => {
   alert("Clicked");
 };
@@ -76,6 +77,16 @@ export const RoundedIcon: Story = {
     children: [
       <IoMdAdd className=" bg-primary  text-white rounded-full w-[1.7rem] h-[1.5rem]" />,
       "Create",
+    ],
+  },
+};
+
+export const Loading: Story = {
+  args: {
+    variant: "default",
+    children: [
+      <ReloadIcon className="mr-2 h-4 w-4 animate-spin" />,
+      "Please wait",
     ],
   },
 };
