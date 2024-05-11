@@ -40,13 +40,13 @@ export const Default: Story = {
   args: {},
 };
 
-export const Basic: Story = {
-  args: {
-    rowSelection: "single",
-    suppressRowClickSelection: true,
-    pagination: true,
-  },
-};
+// export const Basic: Story = {
+//   args: {
+//     rowSelection: "single",
+//     suppressRowClickSelection: true,
+//     pagination: true,
+//   },
+// };
 
 // export const QuartzTheme: Story = {
 //   args: {

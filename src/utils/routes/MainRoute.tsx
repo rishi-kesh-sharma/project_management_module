@@ -5,14 +5,12 @@ import { lazy } from "react";
 import Loadable from "@/components/loader/Loadable.tsx";
 import LoginPage from "@/pages/Auth/Login/LoginPage.tsx";
 
-const HomePage =Loadable(lazy(()=>import("../../pages/Home.tsx")))
-const WhatsAppModal = Loadable(lazy(() => import("@/components/custom/modal/Modal/WhatsAppModal.tsx")));
+const HomePage = Loadable(lazy(() => import("../../pages/Home.tsx")));
 
 export function MainRoute() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/test" element={<WhatsAppModal />} />
         <Route path="/login" element={<LoginPage />} />
         <Route path="/" element={<CommonLayout type="large" />}>
           {/* Retail module routes */}
