@@ -1,4 +1,8 @@
-export const tableData = [
+import { IRowData } from "@/@types";
+import Badge from "../../Badge/Badge";
+import { IGroupCellRendererParams } from "@ag-grid-community/core";
+
+export const rowData: IRowData[] = [
   {
     make: "Tesla",
     model: "Model Y",
@@ -253,13 +257,20 @@ export const tableData = [
   },
 ];
 
-export const columnDefinations = [
+export const colDefs = [
   {
     field: "make",
     headerCheckboxSelection: true,
+    headerName: "Brand",
     enableRowGroup: true,
-    checkboxSelection: true,
+
+    // rowGroup: true,
     cellEditor: "agSelectCellEditor",
+    cellRendererParams: {
+      checkbox: true,
+    } as IGroupCellRendererParams,
+    checkboxSelection: true,
+    // hide: true,
     cellEditorParams: {
       values: [
         "Tesla",
@@ -275,10 +286,13 @@ export const columnDefinations = [
     },
   },
   { field: "model" },
-  { field: "price", filter: "agNumberColumnFilter" },
+  { field: "price", filter: "agNumberColumnFilter", aggFunc: "sum" },
   { field: "electric" },
   {
     field: "month",
+    cellRenderer: (p: { value: string }) => {
+      return <Badge label={p.value} variant={"outline"} />;
+    },
     comparator: (valueA: string, valueB: string) => {
       const months = [
         "January",

@@ -21,3 +21,26 @@ export const Default: Story = {
     placeholder: "Input here ...",
   },
 };
+
+export const ExtraLarge: Story = {
+  args: {
+    size: "xl",
+  },
+};
+export const Large: Story = {
+  args: {
+    size: "lg",
+  },
+};
+
+export const Medium: Story = {
+  args: {
+    size: "md",
+  },
+};
+
+export const Small: Story = {
+  args: {
+    size: "sm",
+  },
+};

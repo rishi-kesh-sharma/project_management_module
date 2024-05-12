@@ -1,10 +1,10 @@
-import { Button } from "@/components/ui/Button/button";
+import { Button, ButtonProps } from "@/components/ui/Button/button";
 import React from "react";
+import { Input } from "@/components/ui/Input/input";
 
 export interface ISearchInput {
   inputSize: "sm" | "md" | "lg" | "xl" | "default";
-  buttonSize: "sm" | "md" | "lg" | "default";
-  //   buttonSize: string;
+  buttonProps: ButtonProps;
   buttonVariant: "primary" | "secondary" | "ghost" | "outline";
   label: string;
   placeholder: string;
@@ -12,35 +12,26 @@ export interface ISearchInput {
 
 const SearchInput: React.FC<ISearchInput> = ({
   inputSize,
-  buttonVariant,
-  buttonSize,
+  buttonProps,
   label,
   placeholder,
 }) => {
-  const getInputSizeClasses = (size: string) => {
+  const getInputSizeClasses = (
+    size: "sm" | "md" | "lg" | "xl" | "default"
+  ): string => {
     const inputSizeToClassMapping = {
-      xl: "w-[25rem]",
-      lg: "w-[20rem]",
-      md: "w-[15rem]",
-      sm: "w-[10rem]",
+      xl: "w-[35rem] h-[3.5rem]",
+      lg: "w-[30rem] h-[3rem]",
+      md: "w-[25rem] h-[3rem]",
+      sm: "w-[14rem] h-[3.2rem]",
       xs: "w-[5rem]",
+      default: "w-[20rem]",
     };
 
     return inputSizeToClassMapping[size];
   };
   const mergedInputClasses = `${getInputSizeClasses(inputSize)} `;
 
-  //   const getButtonSizeClasses = (inputSize: string) => {
-  //     const buttonSizeToClassMapping = {
-  //       lg: "w-[10rem]",
-  //       md: "w-[7rem]",
-  //       sm: "w-[4rem]",
-  //     };
-
-  //     return buttonSizeToClassMapping[inputSize];
-  //   };
-
-  //   const mergedButtonClasses = `${getButtonSizeClasses(buttonSize)} `;
   return (
     <form className=" mx-auto">
       <label
@@ -65,16 +56,16 @@ const SearchInput: React.FC<ISearchInput> = ({
             />
           </svg>
         </div>
-        <input
-          type="search"
-          id="default-search"
-          className={`block w-full p-4 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" ${mergedInputClasses} `}
+        <Input
+          // id="default-search"
+          type="Search"
+          className={`block p-4 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" ${mergedInputClasses} `}
           placeholder={placeholder}
+          // label="Search"
           required
         />
         <Button
-          size={buttonSize}
-          variant={buttonVariant}
+          {...buttonProps}
           className=" absolute end-2.5 top-[50%] translate-y-[-50%]  "
           type="submit">
           {label}

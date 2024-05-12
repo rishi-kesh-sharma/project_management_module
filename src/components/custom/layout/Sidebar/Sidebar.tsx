@@ -6,7 +6,7 @@ import {
   DownAngularArrowIcon,
   LeftAngularArrowIcon,
   LogoutIcon,
-} from "@/components/icons";
+} from "@/components/icons/commonIcons";
 import { SidebarProps } from "@/@types";
 
 const Sidebar: React.FC<SidebarProps> = ({ type, path, items }) => {

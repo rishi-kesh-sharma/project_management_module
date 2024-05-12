@@ -1,5 +1,6 @@
 import { ButtonProps } from "@/components/ui/Button/button";
 import { AvatarProps } from "@radix-ui/react-avatar";
+import { ColDef } from "@ag-grid-community/core";
 
 export interface IDropdownMenuItem {
   id: string | number;
@@ -64,6 +65,21 @@ export interface IAvatarProps extends AvatarProps {
   name: string;
 }
 
+export interface IRowData {
+  make: string;
+  model: string;
+  price: number;
+  electric: boolean;
+  month: string;
+}
+
+export type RowModelType =
+  | "infinite"
+  | "viewport"
+  | "clientSide"
+  | "serverSide";
+
+export type IsRowSelectable = unknown;
 export interface IAgGridTableProps {
   theme:
     | "ag-theme-quartz"
@@ -71,13 +87,31 @@ export interface IAgGridTableProps {
     | "ag-theme-quartz-dark"
     | "ag-theme-quartz-alpine";
   height: number;
-  rowData: unknown;
-  columnDefs: ColDef[];
+  rowData: IRowData[];
+  colDefs: ColDef[];
   rowSelection: "multiple" | "single";
+  sidebar: string | boolean;
   suppressRowClickSelection: boolean;
   pagination: boolean;
   paginationPageSize: number;
   paginationPageSizeSelector: number[];
   variant: "primary" | "secondary";
+  rowBuffer: number;
+  rowModelType: RowModelType;
+  rowHeight: number;
+  isRowSelectable: IsRowSelectable;
+  rowMultiSelectWithClick: boolean;
+  enableAdvanceFilter: boolean;
+  suppressMenuHide: boolean;
+  rowDragMultiRow: boolean;
   onGridReady: () => void;
+  onCellClicked: () => void;
+  onCellValueChanged: () => void;
+  onFilterOpened: () => void;
+  onRowSelected: () => void;
+}
+
+export interface IBadgeProps {
+  label: string;
+  variant: "default" | "secondary" | "destructive" | "outline";
 }

@@ -2,14 +2,14 @@
 
 import { StoryObj, Meta } from "@storybook/react";
 import AgGridTable from "./AgGridTable";
-import { columnDefinations, tableData } from "./data";
+import { colDefs, rowData } from "./data";
 
 const meta: Meta<typeof AgGridTable> = {
   title: "Tables/AgGridTable",
 
   args: {
-    rowData: tableData,
-    columnDefs: columnDefinations,
+    rowData,
+    colDefs,
   },
 
   argTypes: {
@@ -40,78 +40,85 @@ export const Default: Story = {
   args: {},
 };
 
-export const Basic: Story = {
-  args: {
-    rowSelection: "single",
-    suppressRowClickSelection: true,
-    pagination: true,
-  },
-};
+// export const Basic: Story = {
+//   args: {
+//     rowSelection: "single",
+//     suppressRowClickSelection: true,
+//     pagination: true,
+//   },
+// };
 
-export const QuartzTheme: Story = {
-  args: {
-    // rowSelection: null,
-    // suppressRowClickSelection: false,
-    // paginationPageSize: null,
-    // pagination: null,
-    theme: "ag-theme-quartz",
-  },
-};
+// export const QuartzTheme: Story = {
+//   args: {
+//     // rowSelection: null,
+//     // suppressRowClickSelection: false,
+//     // paginationPageSize: null,
+//     // pagination: null,
+//     theme: "ag-theme-quartz",
+//   },
+// };
 
-export const AlpineTheme: Story = {
-  args: {
-    // rowSelection: null,
-    // suppressRowClickSelection: false,
-    // paginationPageSize: null,
-    // pagination: null,
-    theme: "ag-theme-alpine",
-  },
-};
-export const Primary: Story = {
-  args: {
-    // rowSelection: null,
-    // suppressRowClickSelection: false,
-    // paginationPageSize: null,
-    // pagination: null,
-    variant: "primary",
-  },
-};
+// export const AlpineTheme: Story = {
+//   args: {
+//     // rowSelection: null,
+//     // suppressRowClickSelection: false,
+//     // paginationPageSize: null,
+//     // pagination: null,
+//     theme: "ag-theme-alpine",
+//   },
+// };
+// export const Primary: Story = {
+//   args: {
+//     // rowSelection: null,
+//     // suppressRowClickSelection: false,
+//     // paginationPageSize: null,
+//     // pagination: null,
+//     variant: "primary",
+//   },
+// };
 
-export const Secondary: Story = {
-  args: {
-    // rowSelection: null,
-    // suppressRowClickSelection: false,
-    // paginationPageSize: null,
-    // pagination: null,
-    variant: "secondary",
-  },
-};
-export const Dark: Story = {
-  args: {
-    // rowSelection: null,
-    // suppressRowClickSelection: false,
-    // paginationPageSize: null,
-    // pagination: null,
-    theme: "ag-theme-quartz-dark",
-  },
-};
-export const Tall: Story = {
-  args: {
-    // rowSelection: null,
-    // suppressRowClickSelection: false,
-    // paginationPageSize: null,
-    // pagination: null,
-    // variant: "secondary",
-    height: 600,
-  },
-};
+// export const Secondary: Story = {
+//   args: {
+//     // rowSelection: null,
+//     // suppressRowClickSelection: false,
+//     // paginationPageSize: null,
+//     // pagination: null,
+//     variant: "secondary",
+//   },
+// };
+// export const Dark: Story = {
+//   args: {
+//     // rowSelection: null,
+//     // suppressRowClickSelection: false,
+//     // paginationPageSize: null,
+//     // pagination: null,
+//     theme: "ag-theme-quartz-dark",
+//   },
+// };
+// export const Tall: Story = {
+//   args: {
+//     // rowSelection: null,
+//     // suppressRowClickSelection: false,
+//     // paginationPageSize: null,
+//     // pagination: null,
+//     // variant: "secondary",
+//     height: 600,
+//   },
+// };
 
-export const Short: Story = {
-  args: {
-    // rowSelection: null,
-    // suppressRowClickSelection: false,
-    // paginationPageSize: null,
-    // pagination: null,
-    // variant: "secondary",
-  },
-};
+// export const Short: Story = {
+//   args: {
+//     // rowSelection: null,
+//     // suppressRowClickSelection: false,
+//     // paginationPageSize: null,
+//     // pagination: null,
+//     // variant: "secondary",
+//   },
+// };
+
+// const [count, setCount] = useState(0);
+
+// const isRowSelectable = useCallback(
+//   (node: { data: { value: number } }) => node.data.value > count,
+//   [count]
+// );
