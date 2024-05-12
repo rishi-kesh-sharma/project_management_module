@@ -1,7 +1,6 @@
 import { PasswordInput } from "@/components/custom/Form/Input/PasswordInput/PasswordInput";
 import TextInput from "@/components/custom/Form/Input/TextInput/TextInput";
 import { Button } from "@/components/ui/Button/button";
-import { FaEnvelope } from "react-icons/fa";
 
 const RegisterPage = () => {
   return (
