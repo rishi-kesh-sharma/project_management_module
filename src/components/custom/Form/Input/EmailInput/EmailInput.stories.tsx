@@ -6,7 +6,9 @@ import EmailInput from "./EmailInput";
 const meta: Meta<typeof EmailInput> = {
   title: "Form/Input/EmailInput",
 
-  args: {},
+  args: {
+    placeholder: "Input here ...",
+  },
   component: EmailInput,
   parameters: {
     layout: "centered",

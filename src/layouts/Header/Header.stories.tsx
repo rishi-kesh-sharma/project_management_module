@@ -14,7 +14,6 @@ const meta: Meta<typeof Header> = {
   parameters: {
     layout: "top",
   },
-
 };
 
 export default meta;

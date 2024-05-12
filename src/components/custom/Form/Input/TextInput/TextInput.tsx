@@ -5,15 +5,18 @@ interface ITextInputProps {
   placeholder: string;
   required: boolean;
   label: string;
-  onChange: () => void;
+  name: string;
+  id: string;
+  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }
 const TextInput: React.FC<ITextInputProps> = ({
   placeholder,
   size,
   required = false,
-
+  name,
+  id,
   onChange,
-  ...rest
+  ...props
 }) => {
   const sizeToClassMapping = {
     sm: "w-[8rem]",
@@ -35,7 +38,9 @@ const TextInput: React.FC<ITextInputProps> = ({
       className={mergedClasses}
       required={required}
       onChange={onChange}
-      {...rest}
+      name={name}
+      id={id}
+      {...props}
     />
   );
 };
