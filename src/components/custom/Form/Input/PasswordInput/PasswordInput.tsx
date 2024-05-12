@@ -10,7 +10,7 @@ type IPasswordInputProps = {
   required: boolean;
   id: string;
   name: string;
-  onChange: () => void;
+  onChange: (e: any) => void;
   className?: string;
   showPassword: boolean;
   setShowPassword: (prev: boolean) => void;

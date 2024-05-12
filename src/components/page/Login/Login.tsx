@@ -12,8 +12,8 @@ interface LoginStateData {
 const Login: React.FC = () => {
   const [showPassword, setShowPassword] = useState<boolean>(false);
 
-  const [loginData, setLoginData] = useState<LoginStateData>();
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const [loginData, setLoginData] = useState({ email: "", password: "" });
+  const handleChange = (e: any) => {
     const key = e.target.id;
     const value = e.target.value;
     setLoginData({ ...loginData, [key]: value });
