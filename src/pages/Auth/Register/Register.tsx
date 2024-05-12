@@ -1,17 +1,13 @@
 import { PasswordInput } from "@/components/custom/Form/Input/PasswordInput/PasswordInput";
 import TextInput from "@/components/custom/Form/Input/TextInput/TextInput";
 import { Button } from "@/components/ui/Button/button";
-import LogoEnter from "../../../assets/images/LogoEnter.png";
+import { FaEnvelope } from "react-icons/fa";
 
-const LoginPage = () => {
+const RegisterPage = () => {
   return (
     <div className="flex h-screen">
       <div className="w-7/12 bg-gradient-to-r from-blue-400 via-blue-500 to-blue-600 p-16">
-        <div className="text-white absolute top-12">
-          <div style={{ width: "195px", height: "86px", marginTop: "62px" }}>
-            <img src={LogoEnter} style={{ width: "100%", height: "100%" }} />
-          </div>
-        </div>
+        <div className="text-white absolute top-12">EnterLeaf</div>
         <div className="flex items-end text-white absolute bottom-12">
           @2024Enterleaf.All right reserved
         </div>
@@ -19,15 +15,22 @@ const LoginPage = () => {
       <div className="w-5/12 flex flex-col justify-center items-center">
         <div className="min-w-[380px] flex flex-col space-y-2">
           <div className="flex flex-col space-y-8">
-            <p className="text-4xl font-bold ...">Enter Leaf</p>
-            <p className="text-2xl font-semibold ...">Welcome Back!</p>
+            <p className="text-4xl font-bold ...">Enterleaf</p>
+            <div>
+              <div>Full Name</div>
+              <TextInput placeholder="Enter your full name" />
+            </div>
             <div>
               <div>Email</div>
-              <TextInput placeholder="Enter Email" />
+              <TextInput placeholder="Enter your Email" />
             </div>
             <div>
               <div>Password</div>
-              <PasswordInput placeholder="Enter Your Password" />
+              <PasswordInput placeholder="Enter your password" />
+            </div>
+            <div>
+              <div>Re-Type Password</div>
+              <PasswordInput placeholder="Enter Your password" />
             </div>
           </div>
           <div className="flex justify-end">
@@ -35,7 +38,7 @@ const LoginPage = () => {
               Forget Password
             </p>
           </div>
-          <Button />
+          <Button> Sign Up</Button>
           <div className="flex items-center my-2 w-full">
             <div className="border-t border-gray-300 flex-grow"></div>
             <div className="text-sm text-gray-500">OR</div>
@@ -84,14 +87,14 @@ const LoginPage = () => {
                 fill="#EA4335"
               />
             </svg>
-            Sign In with Google
+            Continue with Google
           </div>
           <div
             className="w-5/12 flex flex-row justify-center items-center space-y-4"
             style={{ width: "100%" }}
           >
-            Don't have an account ? &nbsp;
-            <div className="underline  text-blue-500"> Sign up</div>
+            Already have an account ? &nbsp;
+            <div className="underline  text-blue-500"> Sign In</div>
           </div>
         </div>
       </div>
@@ -99,4 +102,4 @@ const LoginPage = () => {
   );
 };
 
-export default LoginPage;
+export default RegisterPage;
