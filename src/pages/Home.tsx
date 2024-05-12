@@ -48,7 +48,6 @@ const data = [
 const Home = () => {
   return (
     <AreaCharts
-      data={data}
       width={600}
       height={300}
       margin={{
