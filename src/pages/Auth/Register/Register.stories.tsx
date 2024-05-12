@@ -5,7 +5,7 @@ import RegisterPage from "./Register";
 import { userInfo } from "@/utils/constants";
 
 const meta: Meta<typeof RegisterPage> = {
-  title: "RegisterPage",
+  title: "Auth/RegisterPage",
 
   args: {
     user: userInfo,
