@@ -7,7 +7,7 @@ import {
   ProgressIcon,
   SettingIcon,
 TaskIcon,
-} from "@/components/icons";
+} from "@/components/icons/commonIcons";
 
 export const sidebarItems = () => [
   {

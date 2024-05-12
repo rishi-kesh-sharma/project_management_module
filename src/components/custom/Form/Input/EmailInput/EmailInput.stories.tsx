@@ -7,7 +7,7 @@ const meta: Meta<typeof EmailInput> = {
   title: "Form/Input/EmailInput",
 
   args: {
-    placeholder: "Input here ...",
+    placeholder: "Enter email ...",
   },
   component: EmailInput,
   parameters: {
