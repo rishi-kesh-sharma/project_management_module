@@ -35,12 +35,12 @@ const MessageBox = () => {
           />
           <button
             type="submit"
-            className="absolute end-2.5 bottom-2.5  hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+            className="absolute end-2.5 bottom-2.5  hover:bg-green-100 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
             <GrAttachment />
           </button>
           <button
             type="submit"
-            className="absolute end-12 bottom-2.5 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+            className="absolute end-12 bottom-2.5 hover:bg-green-100 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
             <FaCamera />
           </button>
         </div>
@@ -49,6 +49,7 @@ const MessageBox = () => {
             backgroundColor: "rgb(34, 196, 94)",
             borderRadius: "50%",
             padding: "10px",
+            color:"#ffff"
           }}>
           <GrMicrophone />
         </div>
