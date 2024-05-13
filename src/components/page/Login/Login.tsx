@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/Button/button";
 import LogoEnter from "../../../assets/images/LogoEnter.png";
 import { useState } from "react";
 import PasswordInput from "@/components/custom/Form/Input/PasswordInput/PasswordInput";
+import { Label } from "@/components/ui/Label/label";
 
 const Login: React.FC = () => {
   const [loginData, setLoginData] = useState({ email: "", password: "" });
@@ -28,8 +29,8 @@ const Login: React.FC = () => {
           <div className="flex flex-col space-y-8">
             <p className="text-4xl font-bold ...">Enter Leaf</p>
             <p className="text-2xl font-semibold ...">Welcome Back!</p>
-            <div>
-              <div>Email</div>
+            <div className="flex flex-col gap-3">
+              <Label>Email</Label>
               <TextInput
                 id="email"
                 name="email"
@@ -40,8 +41,8 @@ const Login: React.FC = () => {
                 onChange={handleChange}
               />
             </div>
-            <div>
-              <div>Password</div>
+            <div className="flex flex-col gap-2">
+              <Label>Password</Label>
               <PasswordInput
                 size={"xl"}
                 required={true}
@@ -57,7 +58,7 @@ const Login: React.FC = () => {
               Forgot Password
             </p>
           </div>
-          <Button />
+          <Button size={"lg"}>Login</Button>
           <div className="flex items-center my-2 w-full">
             <div className="border-t border-gray-300 flex-grow"></div>
             <div className="text-sm text-gray-500">OR</div>
@@ -110,7 +111,10 @@ const Login: React.FC = () => {
             className="w-5/12 flex flex-row justify-center items-center space-y-4"
             style={{ width: "100%" }}>
             Don't have an account ? &nbsp;
-            <div className="underline  text-blue-500"> Sign up</div>
+            <Button variant={"link"} className="underline  text-blue-500">
+              {" "}
+              Sign up
+            </Button>
           </div>
         </div>
       </div>

@@ -2,6 +2,7 @@ import TextInput from "@/components/custom/Form/Input/TextInput/TextInput";
 import { Button } from "@/components/ui/Button/button";
 import LogoEnter from "../../../assets/images/LogoEnter.png";
 import PasswordInput from "@/components/custom/Form/Input/PasswordInput/PasswordInput";
+import { Label } from "@/components/ui/Label/label";
 
 const RegisterPage = () => {
   const handleChange = (e: React.ChangeEvent) => {
@@ -22,10 +23,10 @@ const RegisterPage = () => {
       </div>
       <div className="w-5/12 flex flex-col justify-center items-center">
         <div className="min-w-[380px] flex flex-col space-y-2">
-          <div className="flex flex-col space-y-8">
+          <div className="flex flex-col space-y-6">
             <p className="text-4xl font-bold ...">Enterleaf</p>
-            <div>
-              <div>Full Name</div>
+            <div className="flex flex-col gap-3">
+              <Label>Full Name</Label>
               <TextInput
                 placeholder="Enter your full name"
                 required={true}
@@ -34,8 +35,8 @@ const RegisterPage = () => {
                 name={"name"}
               />
             </div>
-            <div>
-              <div>Email</div>
+            <div className="flex flex-col gap-3">
+              <Label>Email</Label>
               <TextInput
                 required={true}
                 id={"email"}
@@ -44,8 +45,8 @@ const RegisterPage = () => {
                 placeholder="Enter your Email"
               />
             </div>
-            <div>
-              <div>Password</div>
+            <div className="flex flex-col gap-3">
+              <Label>Password</Label>
               <PasswordInput
                 required={true}
                 id={"name"}
@@ -54,8 +55,8 @@ const RegisterPage = () => {
                 placeholder="Enter your password"
               />
             </div>
-            <div>
-              <div>Re-Type Password</div>
+            <div className="flex flex-col gap-3">
+              <Label>Re-Type Password</Label>
               <PasswordInput
                 name="confirm_password"
                 id="confirm_password"
@@ -63,11 +64,9 @@ const RegisterPage = () => {
               />
             </div>
           </div>
-          <div className="flex justify-end">
-            <p className="underline text-slate-500 text-sm ...">
-              Forget Password
-            </p>
-          </div>
+          <Button variant={"link"} className="flex justify-end underline">
+            Forget Password
+          </Button>
           <Button> Sign Up</Button>
           <div className="flex items-center my-2 w-full">
             <div className="border-t border-gray-300 flex-grow"></div>
