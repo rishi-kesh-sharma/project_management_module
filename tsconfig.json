@@ -27,5 +27,6 @@
     }
   },
   "include": ["src", "src/components/custom/MessageBox/MessageBox.tsx"],
+  // "include": "*",
   "references": [{ "path": "./tsconfig.node.json" }]
 }

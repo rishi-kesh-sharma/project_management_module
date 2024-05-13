@@ -1,14 +1,35 @@
 import { IDropdownMenuProps } from "@/@types";
-import { DownAngularArrowIcon } from "@/components/icons";
+import { DownAngularArrowIcon } from "@/components/icons/commonIcons";
 import { Button } from "@/components/ui/Button/button";
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
-  //   DropdownMenuLabel,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui//Dropdown/dropdown-menu";
+import { cva } from "class-variance-authority";
+import { buttonVariants } from "@/components/plate-ui/button";
+
+const dropdownVariants = cva("", {
+  variants: {
+    dropdownSize: {
+      sm: "w-[5rem]",
+      md: "w-[10rem]",
+      lg: "w-[15rem]",
+      default: "w-[12rem]",
+    },
+    dropdownVariant: {
+      primary: "bg-primary text-white border-white border-b-1",
+      secondary: "bg-gray-100",
+      default: "bg-gray-100",
+    },
+  },
+  defaultVariants: {
+    dropdownSize: "default",
+    dropdownVariant: "default",
+  },
+});
 
 const Dropdown: React.FC<IDropdownMenuProps> = ({
   menu,
@@ -16,95 +37,16 @@ const Dropdown: React.FC<IDropdownMenuProps> = ({
   dropdownVariant,
   dropdownTriggerSize,
   dropdownTriggerVariant,
-  dropdownTriggerButtonProps,
 }) => {
-  const getDropdownSizeClasses = (dropdownSize: string) => {
-    let classes = "";
-    switch (dropdownSize) {
-      case "sm":
-        classes = "w-[5rem]";
-        break;
-      case "md":
-        classes = "w-[10rem]";
-        break;
-
-      case "lg":
-        classes = "w-[15rem]";
-        break;
-
-      default:
-        classes;
-    }
-    return classes;
-  };
-
-  const getDropdownTriggerSizeClasses = (dropdownTriggerSize: string) => {
-    let classes = "";
-
-    switch (dropdownTriggerSize) {
-      case "sm":
-        classes = "w-[4rem]";
-        break;
-      case "md":
-        classes = "w-[7rem]";
-        break;
-      case "lg":
-        classes = "w-[10rem]";
-        break;
-
-      default:
-        classes;
-    }
-    return classes;
-  };
-
-  const getDropdownVariantClasses = (dropdownVariant: string) => {
-    let classes = "";
-
-    switch (dropdownVariant) {
-      case "primary":
-        classes = "bg-primary text-white border-white border-b-1";
-        break;
-
-      case "secondary":
-        classes = "bg-gray-100";
-        break;
-
-      default:
-        classes;
-        break;
-    }
-    return classes;
-  };
-  const getDropdownTriggerVariantClasses = (dropdownTriggerVariant: string) => {
-    let classes = "";
-    switch (dropdownTriggerVariant) {
-      case "primary":
-        classes = "bg-primary text-white border-white border-b-1";
-        break;
-      case "secondary":
-        classes = "bg-gray-100";
-        break;
-
-      default:
-        classes;
-        break;
-    }
-    return classes;
-  };
-
-  const mergedDropdownClasses = `${getDropdownSizeClasses(dropdownSize)} ${getDropdownVariantClasses(dropdownVariant)}`;
-  const mergedDropdownTriggerClasses = `${getDropdownTriggerSizeClasses(dropdownTriggerSize)} ${getDropdownTriggerVariantClasses(dropdownTriggerVariant)}`;
   return (
     <DropdownMenu>
-      <Button {...dropdownTriggerButtonProps}>
-        <DropdownMenuTrigger
-          className={`flex items-center gap-2 justify-between ${mergedDropdownTriggerClasses}`}>
-          {menu.label} {<DownAngularArrowIcon />}
-        </DropdownMenuTrigger>
-      </Button>
-      {/* <DropdownMenuLabel>{menu.label}</DropdownMenuLabel> */}
-      <DropdownMenuContent className={`${mergedDropdownClasses} `}>
+      <DropdownMenuTrigger
+        // className={`flex items-center gap-2 justify-between ${dropdownTriggerVariants({ dropdownTriggerSize, dropdownTriggerVariant })}`}
+        className={`flex items-center gap-2 justify-between ${ buttonVariants({ size: dropdownTriggerSize, variant: dropdownTriggerVariant })}`}>
+        {menu.label} {<DownAngularArrowIcon />}
+      </DropdownMenuTrigger>
+      <DropdownMenuContent
+        className={`${dropdownVariants({ dropdownSize, dropdownVariant })} `}>
         {dropdownVariant !== "primary" && <DropdownMenuSeparator />}
         {menu.items.map((item) => {
           return (
@@ -119,3 +61,4 @@ const Dropdown: React.FC<IDropdownMenuProps> = ({
 };
 
 export default Dropdown;
+export { dropdownVariants };

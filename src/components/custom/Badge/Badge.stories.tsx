@@ -7,7 +7,6 @@ const meta: Meta<typeof Badge> = {
   title: "Badge",
 
   args: {
-    // user: userInfo,
     label: "badge",
     variant: "outline",
   },
@@ -22,4 +21,9 @@ type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
   args: {},
+};
+export const ExtraLarge: Story = {
+  args: {
+    size:"xl"
+  },
 };

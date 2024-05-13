@@ -15,7 +15,13 @@ const TextInput: React.FC<ITextInputProps> = ({
   onChange,
   ...rest
 }) => {
-  const sizeToClassMapping = {
+  const sizeToClassMapping: {
+    sm: string;
+    md: string;
+    lg: string;
+    xl: string;
+    default: string;
+  } = {
     sm: "w-[8rem]",
     md: "w-[15rem]",
     lg: "w-[20rem]",

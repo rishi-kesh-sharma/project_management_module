@@ -16,9 +16,8 @@ export interface IDropdownMenuProps {
   };
   dropdownSize: "lg" | "md" | "sm" | "default";
   dropdownVariant: "primary" | "secondary" | "default";
-  dropdownTriggerSize: "lg" | "md" | "sm" | "default";
-  dropdownTriggerVariant: "primary" | "secondary" | "default";
-  dropdownTriggerButtonProps: ButtonProps;
+  dropdownTriggerSize: ButtonProps["size"];
+  dropdownTriggerVariant: ButtonProps["variant"];
 }
 
 export interface IAvatarDropdownProps {
