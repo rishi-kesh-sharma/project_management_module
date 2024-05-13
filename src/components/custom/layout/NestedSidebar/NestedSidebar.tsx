@@ -9,7 +9,6 @@ import { buttonVariants } from "@/components/ui/Button/button";
 import config from "./../../../../config/index";
 import { LeftAngularArrowIcon } from "@/components/icons/commonIcons";
 import { Link } from "react-router-dom";
-import React from "react";
 import { SidebarItemProps, SidebarProps } from "@/@types";
 
 const NestedSidebar: React.FC<SidebarProps> = ({ items, path, type }) => {
@@ -17,7 +16,7 @@ const NestedSidebar: React.FC<SidebarProps> = ({ items, path, type }) => {
   // const getActiveCss = (link: string) =>
   //   path === link ? `font-medium text-sm ` : "font-medium text-sm";
   return type === "large" ? (
-    <aside className="flex w-full flex-col gap-6 md:gap-10 bg-primary text-white py-[2rem] ">
+    <aside className="flex  min-h-[100vh]: w-full flex-col gap-6 md:gap-10 bg-primary text-white py-[2rem] ">
       <Link to={`/`} className="flex items-center space-x-2">
         <div className="logo flex items-center justify-between text-2xl gap-3 px-5 ">
           <img src={config.LOGO} alt="enterleaf" className=" object-contain" />
@@ -69,7 +68,7 @@ const NestedSidebar: React.FC<SidebarProps> = ({ items, path, type }) => {
                               //   child.disabled && "cursor-not-allowed opacity-80"
                             )}>
                             {item.icon}
-                            {item.label}
+                            {child.label}
                           </Link>
                         )
                       )}
@@ -106,7 +105,7 @@ const NestedSidebar: React.FC<SidebarProps> = ({ items, path, type }) => {
       ) : null}
     </aside>
   ) : (
-    <aside className="flex w-full flex-col gap-6 md:gap-10 bg-primary text-white py-[2rem] max-w-[70px] ">
+    <aside className="flex  w-full flex-col gap-6 md:gap-10 bg-primary text-white py-[2rem] max-w-[70px] ">
       <Link to={`/`} className="flex items-center space-x-2">
         <div className="logo flex items-center justify-between text-2xl gap-3 px-5 ">
           {/* <img src={config.LOGO} alt="enterleaf" className=" object-contain" /> */}

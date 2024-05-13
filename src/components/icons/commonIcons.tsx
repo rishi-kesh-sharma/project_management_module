@@ -11,6 +11,7 @@ import { TiHomeOutline } from "react-icons/ti";
 import { BiChevronLeft, BiChevronDown } from "react-icons/bi";
 import { FaRegTrashAlt } from "react-icons/fa";
 import { CiEdit } from "react-icons/ci";
+import { PiBookmarkSimpleLight } from "react-icons/pi";
 export {
   FaRegCircleDot as GoalsIcon,
   HiOutlineChartBar as PlanningIcon,
@@ -24,5 +25,6 @@ export {
   BiChevronDown as DownAngularArrowIcon,
   MdLogout as LogoutIcon,
   FaRegTrashAlt as TrashIcon,
-  CiEdit as EditIcon
+  CiEdit as EditIcon,
+  PiBookmarkSimpleLight as BookmarkIcon,
 };
