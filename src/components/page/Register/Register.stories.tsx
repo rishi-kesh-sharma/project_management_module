@@ -1,19 +1,28 @@
 // Sidebar.stories.tsx
 
 import { StoryObj, Meta } from "@storybook/react";
-import Header from "./Header";
+import RegisterPage from "./Register";
 import { userInfo } from "@/utils/constants";
 
-const meta: Meta<typeof Header> = {
-  title: "Header",
+const meta: Meta<typeof RegisterPage> = {
+  title: "Auth/RegisterPage",
 
   args: {
     user: userInfo,
   },
-  component: Header,
+  component: RegisterPage,
   parameters: {
     layout: "top",
   },
+  decorators: [
+    (Story) => {
+      return (
+        <div className="m-[2rem]">
+          <Story />
+        </div>
+      );
+    },
+  ],
 };
 
 export default meta;

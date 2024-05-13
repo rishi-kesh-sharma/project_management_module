@@ -3,7 +3,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import ErrorPage404 from "@/components/custom/common/404Error/ErrorPage404.tsx";
 import { lazy } from "react";
 import Loadable from "@/components/loader/Loadable.tsx";
-import LoginPage from "@/pages/Auth/Login/LoginPage.tsx";
+import LoginPage from "@/components/page/Login/Login.tsx";
 
 const HomePage = Loadable(lazy(() => import("../../pages/Home.tsx")));
 

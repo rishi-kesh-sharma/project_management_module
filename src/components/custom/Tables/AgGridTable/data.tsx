@@ -1,6 +1,7 @@
 import { IRowData } from "@/@types";
 import Badge from "../../Badge/Badge";
 import { IGroupCellRendererParams } from "@ag-grid-community/core";
+import { EditIcon, TrashIcon } from "@/components/icons/commonIcons";
 
 export const rowData: IRowData[] = [
   {
@@ -311,6 +312,22 @@ export const colDefs = [
       const idxA = months.indexOf(valueA);
       const idxB = months.indexOf(valueB);
       return idxA - idxB;
+    },
+  },
+  {
+    field: "Actions",
+    editable: false,
+    floatingFilter: false,
+    filter: false,
+    enablePivot: false,
+    headerCheckboxSelection: false,
+    cellRenderer: (p: { value: string }) => {
+      return (
+        <div className="flex gap-2 items-center justify-start  h-full">
+          <TrashIcon className="text-destructive" />
+          <EditIcon className="text-blue-900" />
+        </div>
+      );
     },
   },
 ];
