@@ -1,52 +1,47 @@
+import { useState } from "react";
 import { cn } from "@/lib/utils";
-import { Input } from "@/components/ui/Input/input";
 import { Button } from "@/components/ui/Button/button";
 import { FaEye } from "react-icons/fa";
 import { FaEyeSlash } from "react-icons/fa";
-import { inputVariants } from "@/components/plate-ui/input";
-type IPasswordInputProps = {
-  size: "sm" | "md" | "lg" | "xl" | "default";
-  placeholder: string;
-  required: boolean;
-  id: string;
+import Input, { InputProps } from "@/components/custom/common/Input/Input";
+interface IPasswordInputProps {
+  size?: InputProps["size"];
+  placeholder?: string;
+  required?: boolean;
+  label?: string;
   name: string;
-  onChange: (e: any) => void;
+  id: string;
+  onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
   className?: string;
-  showPassword: boolean;
-  setShowPassword: (prev: boolean) => void;
-};
+}
 
-const PasswordInput: React.FC<IPasswordInputProps> = (
-  {
-    className,
-    size,
-    placeholder,
-    required,
-    showPassword,
-    setShowPassword,
-    onChange,
-    ...props
-  },
-  ref
-): React.ReactNode => {
+const PasswordInput: React.FC<IPasswordInputProps> = ({
+  className,
+  size,
+  placeholder,
+  required,
+  onChange,
+  name,
+  id,
+  ...props
+}): React.ReactNode => {
   const togglePasswordVisibility = () => {
     setShowPassword(!showPassword);
   };
 
+  const [showPassword, setShowPassword] = useState<boolean>(false);
   return (
     <div className="relative">
       <Input
-        required={required}
-        type={showPassword ? "text" : "password"}
-        placeholder={placeholder}
-        className={cn(
-          "hide-password-toggle pr-10",
-          inputVariants({ size: size }),
-          className
-        )}
-        ref={ref}
-        onChange={onChange}
         {...props}
+        type={showPassword ? "text" : "password"}
+        name={name}
+        id={id}
+        size={size}
+        required={required}
+        placeholder={placeholder}
+        className={cn("hide-password-toggle pr-10", className)}
+        onChange={onChange}
       />
       <Button
         type="button"
@@ -78,4 +73,4 @@ const PasswordInput: React.FC<IPasswordInputProps> = (
 
 PasswordInput.displayName = "PasswordInput";
 
-export { PasswordInput };
+export default PasswordInput;

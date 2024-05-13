@@ -1,9 +1,13 @@
-import { PasswordInput } from "@/components/custom/Form/Input/PasswordInput/PasswordInput";
 import TextInput from "@/components/custom/Form/Input/TextInput/TextInput";
 import { Button } from "@/components/ui/Button/button";
 import LogoEnter from "../../../assets/images/LogoEnter.png";
+import PasswordInput from "@/components/custom/Form/Input/PasswordInput/PasswordInput";
 
 const RegisterPage = () => {
+  const handleChange = (e: React.ChangeEvent) => {
+    console.log(e);
+  };
+
   return (
     <div className="flex h-screen">
       <div className="w-7/12 bg-gradient-to-r from-blue-400 via-blue-500 to-blue-600 p-16">
@@ -22,19 +26,41 @@ const RegisterPage = () => {
             <p className="text-4xl font-bold ...">Enterleaf</p>
             <div>
               <div>Full Name</div>
-              <TextInput placeholder="Enter your full name" />
+              <TextInput
+                placeholder="Enter your full name"
+                required={true}
+                id={"name"}
+                onChange={handleChange}
+                name={"name"}
+              />
             </div>
             <div>
               <div>Email</div>
-              <TextInput placeholder="Enter your Email" />
+              <TextInput
+                required={true}
+                id={"email"}
+                onChange={handleChange}
+                name={"email"}
+                placeholder="Enter your Email"
+              />
             </div>
             <div>
               <div>Password</div>
-              <PasswordInput placeholder="Enter your password" />
+              <PasswordInput
+                required={true}
+                id={"name"}
+                onChange={handleChange}
+                name={"name"}
+                placeholder="Enter your password"
+              />
             </div>
             <div>
               <div>Re-Type Password</div>
-              <PasswordInput placeholder="Enter Your password" />
+              <PasswordInput
+                name="confirm_password"
+                id="confirm_password"
+                placeholder="Confirm your password"
+              />
             </div>
           </div>
           <div className="flex justify-end">
@@ -57,15 +83,13 @@ const RegisterPage = () => {
               display: "flex",
               justifyContent: "center",
               gap: "12px",
-            }}
-          >
+            }}>
             <svg
               width="23"
               height="24"
               viewBox="0 0 23 24"
               fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
+              xmlns="http://www.w3.org/2000/svg">
               <path
                 fill-rule="evenodd"
                 clip-rule="evenodd"
@@ -95,8 +119,7 @@ const RegisterPage = () => {
           </div>
           <div
             className="w-5/12 flex flex-row justify-center items-center space-y-4"
-            style={{ width: "100%" }}
-          >
+            style={{ width: "100%" }}>
             Already have an account ? &nbsp;
             <div className="underline  text-blue-500"> Sign In</div>
           </div>

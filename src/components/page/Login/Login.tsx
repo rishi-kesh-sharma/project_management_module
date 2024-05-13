@@ -1,19 +1,12 @@
-import { PasswordInput } from "@/components/custom/Form/Input/PasswordInput/PasswordInput";
 import TextInput from "@/components/custom/Form/Input/TextInput/TextInput";
 import { Button } from "@/components/ui/Button/button";
 import LogoEnter from "../../../assets/images/LogoEnter.png";
 import { useState } from "react";
-
-interface LoginStateData {
-  email: string;
-  password: string;
-}
+import PasswordInput from "@/components/custom/Form/Input/PasswordInput/PasswordInput";
 
 const Login: React.FC = () => {
-  const [showPassword, setShowPassword] = useState<boolean>(false);
-
   const [loginData, setLoginData] = useState({ email: "", password: "" });
-  const handleChange = (e: any) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const key = e.target.id;
     const value = e.target.value;
     setLoginData({ ...loginData, [key]: value });
@@ -50,8 +43,6 @@ const Login: React.FC = () => {
             <div>
               <div>Password</div>
               <PasswordInput
-                showPassword={showPassword}
-                setShowPassword={setShowPassword}
                 size={"xl"}
                 required={true}
                 id="password"

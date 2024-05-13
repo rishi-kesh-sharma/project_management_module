@@ -8,7 +8,7 @@ const meta: Meta<typeof LoginPage> = {
 
   component: LoginPage,
   parameters: {
-    layout: "centered",
+    layout: "",
   },
 };
 

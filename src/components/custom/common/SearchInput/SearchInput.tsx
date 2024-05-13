@@ -1,13 +1,14 @@
 import { Button, ButtonProps } from "@/components/ui/Button/button";
-import React from "react";
-import { Input } from "@/components/ui/Input/input";
+import Input, { InputProps } from "../Input/Input";
 
 export interface ISearchInput {
-  inputSize: "sm" | "md" | "lg" | "xl" | "default";
-  buttonProps: ButtonProps;
-  buttonVariant: "primary" | "secondary" | "ghost" | "outline";
-  label: string;
-  placeholder: string;
+  inputSize?: InputProps["size"];
+  buttonProps?: ButtonProps;
+  buttonVariant?: "primary" | "secondary" | "ghost" | "outline";
+  label?: string;
+  placeholder?: string;
+  id: string;
+  name: string;
 }
 
 const SearchInput: React.FC<ISearchInput> = ({
@@ -15,10 +16,15 @@ const SearchInput: React.FC<ISearchInput> = ({
   buttonProps,
   label,
   placeholder,
+  id,
+
+  name,
+
+  ...props
 }) => {
   const getInputSizeClasses = (
-    size: "sm" | "md" | "lg" | "xl" | "default"
-  ): string => {
+    size: InputProps["size"]
+  ): string | undefined => {
     const inputSizeToClassMapping = {
       xl: "w-[35rem] h-[3.5rem]",
       lg: "w-[30rem] h-[3rem]",
@@ -28,6 +34,7 @@ const SearchInput: React.FC<ISearchInput> = ({
       default: "w-[20rem]",
     };
 
+    if (!size) return;
     return inputSizeToClassMapping[size];
   };
   const mergedInputClasses = `${getInputSizeClasses(inputSize)} `;
@@ -57,11 +64,12 @@ const SearchInput: React.FC<ISearchInput> = ({
           </svg>
         </div>
         <Input
-          // id="default-search"
+          {...props}
+          name={name}
+          id={id}
           type="Search"
           className={`block p-4 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" ${mergedInputClasses} `}
           placeholder={placeholder}
-          // label="Search"
           required
         />
         <Button

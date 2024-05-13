@@ -75,7 +75,7 @@ export const MediumTrigger: Story = {
   args: {
     menu: dropdownMenus,
     dropdownSize: "md",
-    dropdownTriggerSize: "md",
+    dropdownTriggerSize: "lg",
   },
 };
 export const SmallTrigger: Story = {

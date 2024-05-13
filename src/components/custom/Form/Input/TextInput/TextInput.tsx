@@ -1,14 +1,17 @@
-import { Input } from "@/components/ui/Input/input";
+import Input, { InputProps } from "@/components/custom/common/Input/Input";
+import { cn } from "@/lib/utils";
 
 interface ITextInputProps {
-  size: "sm" | "md" | "lg" | "xl" | "default";
-  placeholder: string;
-  required: boolean;
-  label: string;
+  size?: InputProps["size"];
+  placeholder?: string;
+  required?: boolean;
+  label?: string;
   name: string;
   id: string;
-  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  className?: string;
 }
+
 const TextInput: React.FC<ITextInputProps> = ({
   placeholder,
   size,
@@ -16,31 +19,20 @@ const TextInput: React.FC<ITextInputProps> = ({
   name,
   id,
   onChange,
+  className,
   ...props
 }) => {
-  const sizeToClassMapping = {
-    sm: "w-[8rem]",
-    md: "w-[15rem]",
-    lg: "w-[20rem]",
-    xl: "w-[25rem]",
-    default: "w-[10rem]",
-  };
-
-  const getSizeClasses = (size: string) => {
-    return sizeToClassMapping[size];
-  };
-
-  const mergedClasses = `${getSizeClasses(size)}`;
   return (
     <Input
+      {...props}
       type="text"
       placeholder={placeholder}
-      className={mergedClasses}
       required={required}
       onChange={onChange}
       name={name}
       id={id}
-      {...props}
+      size={size}
+      className={`${cn(className)}`}
     />
   );
 };
