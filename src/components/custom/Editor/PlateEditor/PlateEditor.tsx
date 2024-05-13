@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useRef } from "react";
+import { useRef } from "react";
 import { cn } from "@udecode/cn";
 import { CommentsProvider } from "@udecode/plate-comments";
 import { Plate } from "@udecode/plate-common";
@@ -47,7 +47,7 @@ export default function PlateEditor() {
             </FixedToolbar>
 
             <Editor
-              className="px-[96px] py-16"
+              className="px-[96px] py-16 h-[300px]"
               autoFocus
               focusRing={false}
               variant="ghost"

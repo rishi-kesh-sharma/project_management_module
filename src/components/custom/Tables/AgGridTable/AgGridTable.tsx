@@ -217,8 +217,7 @@ const AgGridTable: React.FC<IAgGridTableProps> = ({
     <div style={containerStyle}>
       <div
         className="flex items-center gap-[1rem] justify-end"
-        style={{ margin: "10px 0" }}
-      >
+        style={{ margin: "10px 0" }}>
         <Button variant={"outline"} onClick={onBtnCSVExport}>
           Export CSV{" "}
         </Button>
