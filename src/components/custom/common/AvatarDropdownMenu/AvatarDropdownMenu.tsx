@@ -90,7 +90,7 @@ const AvatarDropdown: React.FC<IAvatarDropdownProps> = ({
         {dropdownVariant !== "primary" && <DropdownMenuSeparator />}
         {menu.items.map((item: IDropdownMenuItem) => {
           return (
-            <DropdownMenuItem className="cursor-pointer">
+            <DropdownMenuItem className="cursor-pointer hover:bg-primary/20">
               {item.label}
             </DropdownMenuItem>
           );

@@ -81,7 +81,7 @@ const AgGridTable: React.FC<IAgGridTableProps> = ({
   onCellValueChanged,
   onRowSelected,
   onFilterOpened,
-  sidebar = true,
+  sidebar = false,
   suppressMenuHide = false,
   rowDragMultiRow = true,
   rowMultiSelectWithClick = true,

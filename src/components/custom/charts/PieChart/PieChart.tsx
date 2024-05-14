@@ -7,6 +7,8 @@ const PieChart = () => {
   const options: any = {
     plugins: {
       title: {
+        position: "top" as const,
+        align: "start" as const,
         display: true,
         text: "Inventory Categories",
         font: {
@@ -34,7 +36,8 @@ const PieChart = () => {
         color: "#00000", // Set text color to pitch black
       },
       devicePixelRatio: window.devicePixelRatio || 1,
-      maintainAspectRatio: false, // This allows the chart to have a dynamic aspect ratio
+      maintainAspectRatio: false,
+      // This allows the chart to have a dynamic aspect ratio
     },
   };
   const data = {
@@ -61,7 +64,9 @@ const PieChart = () => {
     ],
   };
 
-  return <Doughnut className="chart-container" options={options} data={data} />;
+  return (
+    <Doughnut className="chart-container " options={options} data={data} />
+  );
 };
 
 export default PieChart;
