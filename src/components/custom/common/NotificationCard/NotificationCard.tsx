@@ -19,32 +19,17 @@ type TNotification = {
 
 type CardProps = React.ComponentProps<typeof ShadCard>;
 
-type ExtendedCardProps = CardProps;
-
-
-export const  notifications = [
-  {
-    title: "Your call has been confirmed.",
-    description: "1 hour ago",
-  },
-  {
-    title: "You have a new message!",
-    description: "1 hour ago",
-  },
-  {
-    title: "Your subscription is expiring soon!",
-    description: "2 hours ago",
-  },
-];
-
+type ExtendedCardProps = CardProps & {
+  notifications: TNotification[];
+};
 
 const NotificationCard: React.FC<ExtendedCardProps> = ({
   className,
-  // notifications,
+  notifications,
   ...props
 }) => {
   return (
-    <ShadCard className={cn("w-[380px]", className)} {...props}>
+    <ShadCard className={cn("w-[380px]", "shadow-lg", className)} {...props}>
       <CardHeader>
         <CardTitle>Notifications</CardTitle>
         <CardDescription>You have {} unread messages.</CardDescription>

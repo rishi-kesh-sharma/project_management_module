@@ -29,7 +29,7 @@ export interface IAvatarDropdownProps {
   dropdownVariant: "primary" | "secondary" | "default";
   avatarSize: "lg" | "md" | "sm" | "default";
   name: string;
-  imgSrc: string;
+  imgSrc?: string;
 }
 
 export interface SidebarItemProps {
@@ -39,7 +39,6 @@ export interface SidebarItemProps {
   items?: SidebarItemProps[];
 }
 export interface SidebarProps {
-  type: "small" | "large";
   path: string;
   items: SidebarItemProps[];
 }
@@ -56,11 +55,11 @@ export interface IUser {
 }
 
 export interface IHeaderProps {
-  user: IUser;
+  // user: IUser;
 }
 
 export interface IAvatarProps extends AvatarProps {
-  imgSrc: string;
+  imgSrc?: string;
   name: string;
 }
 

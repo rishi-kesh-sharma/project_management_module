@@ -1,7 +1,7 @@
 import { IRowData } from "@/@types";
 import Badge from "../../Badge/Badge";
 import { IGroupCellRendererParams } from "@ag-grid-community/core";
-import { EditIcon, TrashIcon } from "@/components/icons/commonIcons";
+import { EditIcon, EyeIcon, TrashIcon } from "@/components/icons/commonIcons";
 
 export const rowData: IRowData[] = [
   {
@@ -321,11 +321,13 @@ export const colDefs = [
     filter: false,
     enablePivot: false,
     headerCheckboxSelection: false,
+
     cellRenderer: (p: { value: string }) => {
       return (
-        <div className="flex gap-2 items-center justify-start  h-full">
-          <TrashIcon className="text-destructive" />
-          <EditIcon className="text-blue-900" />
+        <div className="flex gap-4 items-center justify-start  h-full">
+          <TrashIcon className="text-destructive cursor-pointer" />
+          <EditIcon className="text-blue-900 cursor-pointer" />
+          <EyeIcon className="text-black-900 cursor-pointer" />
         </div>
       );
     },

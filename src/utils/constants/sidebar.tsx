@@ -18,13 +18,30 @@ export const sidebarItems = () => [
   },
   {
     label: "Workspaces",
-    link: `/overview`,
+    link: `/workspaces`,
     icon: <OverviewIcon />,
     items: [
       {
         label: "Workspace1",
         link: `/workspace1`,
         icon: <AnalysticIcon />,
+        items: [
+          {
+            label: "Project1",
+            link: "projects/project1",
+            icon: <AnalysticIcon />,
+          },
+          {
+            label: "Project2",
+            link: "projects/project2",
+            icon: <AnalysticIcon />,
+          },
+          {
+            label: "Project3",
+            link: "projects/project3",
+            icon: <AnalysticIcon />,
+          },
+        ],
       },
       {
         label: "Workspace2",
@@ -38,6 +55,29 @@ export const sidebarItems = () => [
       },
     ],
   },
+  {
+    label: "Projects",
+    link: `/projects`,
+    icon: <OverviewIcon />,
+    items: [
+      {
+        label: "Project1",
+        link: "projects/project1",
+        icon: <AnalysticIcon />,
+      },
+      {
+        label: "Project2",
+        link: "projects/project2",
+        icon: <AnalysticIcon />,
+      },
+      {
+        label: "Project3",
+        link: "projects/project3",
+        icon: <AnalysticIcon />,
+      },
+    ],
+  },
+
   {
     label: "Bookmarks",
     link: `/bookmarks`,
