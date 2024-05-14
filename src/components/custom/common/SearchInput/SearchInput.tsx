@@ -17,9 +17,7 @@ const SearchInput: React.FC<ISearchInput> = ({
   label,
   placeholder,
   id,
-
   name,
-
   ...props
 }) => {
   const getInputSizeClasses = (
