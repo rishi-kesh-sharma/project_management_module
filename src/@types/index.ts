@@ -113,3 +113,5 @@ export interface IBadgeProps {
   label: string;
   variant: "default" | "secondary" | "destructive" | "outline";
 }
+
+export type TRole = "admin" | "user" | "manager";
