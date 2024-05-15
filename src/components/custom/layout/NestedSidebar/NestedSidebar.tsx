@@ -40,7 +40,7 @@ const NestedSidebar: React.FC<SidebarProps> = ({ path, items }) => {
   //   path === link ? `font-medium text-sm ` : "font-medium text-sm";
   return (
     <aside
-      className={` ${isSidebarExpanded ? "w-[240px]" : "w-[70px]"}  bg-primary text-[#FFFFFF] h-full   py-4 hidden md:flex md:flex-col gap-7  border-r-[1px] border-primary-100  cursor-pointer min-h-screen transition-all sticky top-0 `}>
+      className={` ${isSidebarExpanded ? "w-[240px]" : "w-[70px]"}  bg-primary dark:bg-background text-[#FFFFFF] h-full   py-4 hidden md:flex md:flex-col gap-7  border-r-[1px] border-primary-100  cursor-pointer min-h-screen transition-all sticky top-0 `}>
       <div className="logo flex items-center justify-between text-2xl gap-3 w-full ">
         {isSidebarExpanded && (
           <Link to={`/`}>

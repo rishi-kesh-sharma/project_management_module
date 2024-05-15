@@ -14,17 +14,17 @@ const Login: React.FC = () => {
   };
   return (
     <div className="flex h-screen">
-      <div className="w-7/12 bg-gradient-to-r from-blue-400 via-blue-500 to-blue-600 p-16">
-        <div className="text-white absolute top-12">
+      <div className="w-7/12 bg-gradient-to-r from-primary/80 via-primary/90 to-primary/100 p-16">
+        <div className="text-primary-foreground absolute top-12">
           <div style={{ width: "195px", height: "86px", marginTop: "62px" }}>
             <img src={LogoEnter} style={{ width: "100%", height: "100%" }} />
           </div>
         </div>
-        <div className="flex items-end text-white absolute bottom-12">
+        <div className="flex items-end text-primary-foreground absolute bottom-12">
           @2024Enterleaf.All right reserved
         </div>
       </div>
-      <div className="w-5/12 flex flex-col justify-center items-center">
+      <div className="w-5/12 flex flex-col justify-center items-center ">
         <div className="min-w-[380px] flex flex-col space-y-2">
           <div className="flex flex-col space-y-8">
             <p className="text-4xl font-bold ...">Enter Leaf</p>
@@ -108,10 +108,12 @@ const Login: React.FC = () => {
             Sign In with Google
           </div>
           <div
-            className="w-5/12 flex flex-row justify-center items-center space-y-4"
+            className="w-5/12 flex flex-row justify-center items-center space-y-4 text-muted-foreground"
             style={{ width: "100%" }}>
             Don't have an account ? &nbsp;
-            <Button variant={"link"} className="underline  text-blue-500">
+            <Button
+              variant={"link"}
+              className="underline  text-primary-foreground">
               {" "}
               Sign up
             </Button>

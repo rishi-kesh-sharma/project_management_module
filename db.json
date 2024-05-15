@@ -1,0 +1,224 @@
+{
+  "users": [
+    {
+      "_id": "affc26ed-3a36-4145-958f-76a4ff23de68",
+      "avatar": "https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/326.jpg",
+      "birthday": "1963-08-03T01:03:46.862Z",
+      "email": "Chadd_Sporer@gmail.com",
+      "firstName": "Heather",
+      "lastName": "Rutherford",
+      "sex": "male",
+      "role": "manager",
+      "subscriptionTier": "business"
+    },
+    {
+      "_id": "8bfc3e35-fc23-4072-b9dc-acc2910c30af",
+      "avatar": "https://avatars.githubusercontent.com/u/17817971",
+      "birthday": "1967-03-03T12:02:20.445Z",
+      "email": "Anabel.Hoeger24@gmail.com",
+      "firstName": "Rosalinda",
+      "lastName": "Quigley",
+      "sex": "male",
+      "role": "employee",
+      "subscriptionTier": "basic"
+    },
+    {
+      "_id": "aceecbbf-74dc-4833-9731-5bd0d4fef420",
+      "avatar": "https://avatars.githubusercontent.com/u/40332416",
+      "birthday": "1956-03-10T12:51:51.702Z",
+      "email": "Rosa_Bogan97@hotmail.com",
+      "firstName": "Jarrett",
+      "lastName": "Wiegand",
+      "sex": "female",
+      "role": "admin",
+      "subscriptionTier": "basic"
+    },
+    {
+      "_id": "36c8a5fb-937f-4278-9a0b-aa55390b7aee",
+      "avatar": "https://avatars.githubusercontent.com/u/98124441",
+      "birthday": "1972-04-14T12:44:46.718Z",
+      "email": "Barrett_Schuster89@gmail.com",
+      "firstName": "Heidi",
+      "lastName": "Morissette",
+      "sex": "male",
+      "role": "manager",
+      "subscriptionTier": "basic"
+    },
+    {
+      "_id": "bfebe271-1e25-459b-92ea-362604e40020",
+      "avatar": "https://avatars.githubusercontent.com/u/89831541",
+      "birthday": "1991-11-17T14:38:07.216Z",
+      "email": "Izaiah98@hotmail.com",
+      "firstName": "Ophelia",
+      "lastName": "Stark",
+      "sex": "male",
+      "role": "admin",
+      "subscriptionTier": "free"
+    },
+    {
+      "_id": "53d21768-5913-4615-baeb-619fb54b2f5f",
+      "avatar": "https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/110.jpg",
+      "birthday": "1965-03-24T05:45:56.407Z",
+      "email": "Trystan_VonRueden71@hotmail.com",
+      "firstName": "Juanita",
+      "lastName": "Cartwright",
+      "sex": "male",
+      "role": "employee",
+      "subscriptionTier": "basic"
+    },
+    {
+      "_id": "e007c910-c25c-430b-89c9-a54bcf09ca56",
+      "avatar": "https://avatars.githubusercontent.com/u/54437766",
+      "birthday": "1971-01-27T13:17:10.504Z",
+      "email": "Margot4@hotmail.com",
+      "firstName": "Viviane",
+      "lastName": "Greenfelder",
+      "sex": "male",
+      "role": "admin",
+      "subscriptionTier": "free"
+    },
+    {
+      "_id": "b30d752b-1b08-4ab9-a233-a836eadf8895",
+      "avatar": "https://avatars.githubusercontent.com/u/44513796",
+      "birthday": "1966-06-04T01:29:49.695Z",
+      "email": "Emerson.Murazik@gmail.com",
+      "firstName": "Antwan",
+      "lastName": "Conroy",
+      "sex": "male",
+      "role": "admin",
+      "subscriptionTier": "business"
+    },
+    {
+      "_id": "8d187610-d799-46a1-8108-671a05bffc93",
+      "avatar": "https://avatars.githubusercontent.com/u/3428112",
+      "birthday": "1995-10-21T02:24:50.173Z",
+      "email": "Taurean_Kuphal@gmail.com",
+      "firstName": "Queen",
+      "lastName": "Pagac",
+      "sex": "male",
+      "role": "manager",
+      "subscriptionTier": "free"
+    },
+    {
+      "_id": "11d1d5e7-5de2-4ce3-85ad-60261d9d5044",
+      "avatar": "https://avatars.githubusercontent.com/u/21291559",
+      "birthday": "1953-04-26T04:29:34.806Z",
+      "email": "Ellen_Crona20@yahoo.com",
+      "firstName": "Clare",
+      "lastName": "Hermann",
+      "sex": "female",
+      "role": "employee",
+      "subscriptionTier": "free"
+    },
+    {
+      "_id": "4cb5e4bc-74c4-435a-87d3-19fee04e55b7",
+      "avatar": "https://avatars.githubusercontent.com/u/64697158",
+      "birthday": "1965-08-26T02:37:18.733Z",
+      "email": "Mackenzie.Kirlin-Abernathy98@yahoo.com",
+      "firstName": "Madison",
+      "lastName": "Franecki",
+      "sex": "female",
+      "role": "admin",
+      "subscriptionTier": "business"
+    },
+    {
+      "_id": "5834b17a-ac07-4349-9491-75506c988857",
+      "avatar": "https://avatars.githubusercontent.com/u/20793012",
+      "birthday": "2005-05-16T15:44:19.369Z",
+      "email": "Vito.Erdman@gmail.com",
+      "firstName": "Naomi",
+      "lastName": "Rath",
+      "sex": "male",
+      "role": "admin",
+      "subscriptionTier": "business"
+    },
+    {
+      "_id": "643cfbb8-5966-4c36-a89b-534d5d03eaa1",
+      "avatar": "https://avatars.githubusercontent.com/u/21069352",
+      "birthday": "1960-01-04T12:02:27.032Z",
+      "email": "Zoey_Kshlerin39@hotmail.com",
+      "firstName": "Layla",
+      "lastName": "Frami-Deckow",
+      "sex": "male",
+      "role": "employee",
+      "subscriptionTier": "free"
+    },
+    {
+      "_id": "21eb7509-cd77-4550-8ffc-30fcce9256cb",
+      "avatar": "https://avatars.githubusercontent.com/u/22345640",
+      "birthday": "1985-01-23T06:19:18.566Z",
+      "email": "Kristy78@gmail.com",
+      "firstName": "Cecil",
+      "lastName": "Romaguera",
+      "sex": "female",
+      "role": "employee",
+      "subscriptionTier": "basic"
+    },
+    {
+      "_id": "a75d35b1-01b0-4ea2-ba61-d0cc962cf9ca",
+      "avatar": "https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/298.jpg",
+      "birthday": "1978-10-12T03:13:04.699Z",
+      "email": "Preston41@gmail.com",
+      "firstName": "Shayne",
+      "lastName": "Stroman",
+      "sex": "male",
+      "role": "employee",
+      "subscriptionTier": "basic"
+    },
+    {
+      "_id": "b15b5d6b-449d-435b-9d6e-37d78f9f947e",
+      "avatar": "https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/680.jpg",
+      "birthday": "2005-04-21T20:32:53.603Z",
+      "email": "Myrtie.Littel67@hotmail.com",
+      "firstName": "Electa",
+      "lastName": "Hahn",
+      "sex": "male",
+      "role": "employee",
+      "subscriptionTier": "business"
+    },
+    {
+      "_id": "26a0185d-a71e-4d78-b849-4c45c3632dae",
+      "avatar": "https://avatars.githubusercontent.com/u/55409250",
+      "birthday": "1972-02-03T00:42:04.997Z",
+      "email": "Rosa.Bins60@gmail.com",
+      "firstName": "Veda",
+      "lastName": "Wyman",
+      "sex": "female",
+      "role": "manager",
+      "subscriptionTier": "free"
+    },
+    {
+      "_id": "9f5de76b-8bff-4746-9cb5-a058f0bc1bff",
+      "avatar": "https://avatars.githubusercontent.com/u/5652139",
+      "birthday": "1998-11-27T05:33:30.056Z",
+      "email": "Evans.Cormier17@yahoo.com",
+      "firstName": "Maiya",
+      "lastName": "Hermann",
+      "sex": "male",
+      "role": "employee",
+      "subscriptionTier": "business"
+    },
+    {
+      "_id": "c77cc984-f98f-475f-b2c4-582c49f305aa",
+      "avatar": "https://avatars.githubusercontent.com/u/96110769",
+      "birthday": "1960-06-10T22:18:54.753Z",
+      "email": "Chelsey_Schumm@gmail.com",
+      "firstName": "Clovis",
+      "lastName": "Von",
+      "sex": "male",
+      "role": "manager",
+      "subscriptionTier": "business"
+    },
+    {
+      "_id": "35ef071a-bd5f-4ee2-a847-cf313c72e5e2",
+      "avatar": "https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/214.jpg",
+      "birthday": "1995-12-26T16:49:52.740Z",
+      "email": "Tony.Rohan@gmail.com",
+      "firstName": "Trevion",
+      "lastName": "Marquardt",
+      "sex": "male",
+      "role": "manager",
+      "subscriptionTier": "free"
+    }
+  ]
+}
