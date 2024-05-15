@@ -14,7 +14,7 @@ const Login: React.FC = () => {
   };
   return (
     <div className="flex h-screen">
-      <div className="w-7/12 bg-gradient-to-r from-primary/30 via-primary/50 to-primary-80 p-16">
+      <div className="w-7/12  bg-gradient-to-r from-primary/30 via-primary to-primary  p-16">
         <div className="text-primary-foreground absolute top-12">
           <div style={{ width: "195px", height: "86px", marginTop: "62px" }}>
             <img src={LogoEnter} style={{ width: "100%", height: "100%" }} />
@@ -24,7 +24,7 @@ const Login: React.FC = () => {
           @2024Enterleaf.All right reserved
         </div>
       </div>
-      <div className="w-5/12 flex flex-col justify-center items-center ">
+      <div className="w-5/12 flex flex-col justify-center items-center bg-background ">
         <div className="min-w-[380px] flex flex-col space-y-2">
           <div className="flex flex-col space-y-8">
             <p className="text-4xl font-bold ...">Enter Leaf</p>
