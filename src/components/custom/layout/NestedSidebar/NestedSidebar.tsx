@@ -82,7 +82,7 @@ const NestedSidebar: React.FC<SidebarProps> = ({ path, items }) => {
                       {isSidebarExpanded && item.label}
                     </div>
                   </AccordionTrigger>
-                  <AccordionContent className="bg-primary py-0 ">
+                  <AccordionContent className="bg-primary dark:bg-background/10 py-0 ">
                     <div className="flex flex-col ">
                       {item.items.map(
                         (child: SidebarItemProps, index: number) => (
