@@ -70,9 +70,3 @@ export const userInfo = {
   email: "user@gmail.com",
   role: "manager",
 };
-
-export const ROLE = {
-  ADMIN: "admin",
-  MANAGER: "manager",
-  USER: "user",
-};

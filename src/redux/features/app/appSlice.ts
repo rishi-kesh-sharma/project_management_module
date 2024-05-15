@@ -7,7 +7,7 @@ interface IUser {
   name: string;
   username: string;
   email: string;
-  role: "admin" | "user" | "manager";
+  role: "admin" | "superadmin" | "manager";
   image?: string;
 }
 interface INotification {
@@ -26,7 +26,6 @@ interface INavigation {
 }
 interface AppState {
   isSidebarExpanded: boolean;
-  isLoggedIn: boolean;
   user: IUser;
   notifications: INotification[];
   navigation: INavigation;
@@ -35,7 +34,6 @@ interface AppState {
 // Define the initial state using that type
 const initialState: AppState = {
   isSidebarExpanded: true,
-  isLoggedIn: true,
   user: {
     name: "User",
     username: "user",
@@ -104,6 +102,5 @@ export const selectNotifications = (state: RootState) =>
   state.app.notifications;
 export const selectUser = (state: RootState) => state.app.user;
 export const selectNavigation = (state: RootState) => state.app.navigation;
-export const selectIsLoggedIn = (state: RootState) => state.app.isLoggedIn;
 
 export default appSlice.reducer;

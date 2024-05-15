@@ -18,7 +18,7 @@ const Header: React.FC<IHeaderProps> = () => {
     setShowNotifications((prev) => !prev);
   };
   return (
-    <div className="flex  gap-5 items-center justify-between px-2 w-full min-w-[400px] relative ">
+    <div className="flex gap-5 items-center justify-between px-2 w-full min-w-[400px] relative ">
       <Link to={"/project/create"}>
         <Button type="button" variant={"default"}>
           <BiPlus />

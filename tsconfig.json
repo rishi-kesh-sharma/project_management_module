@@ -6,8 +6,6 @@
     "module": "ESNext",
     "skipLibCheck": true,
 
-    // for faker to work
-    "esModuleInterop": true,
     /* Bundler mode */
     "moduleResolution": "node",
     "allowImportingTsExtensions": true,
@@ -28,7 +26,7 @@
       "@/*": ["./src/*"]
     }
   },
-  "include": ["*", "src", "src/components/custom/MessageBox/MessageBox.tsx"],
+  "include": ["src", "src/components/custom/MessageBox/MessageBox.tsx"],
   // "include": "*",
   "references": [{ "path": "./tsconfig.node.json" }]
 }
