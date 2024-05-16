@@ -13,6 +13,7 @@ import { FaRegTrashAlt } from "react-icons/fa";
 import { CiEdit } from "react-icons/ci";
 import { PiBookmarkSimpleLight } from "react-icons/pi";
 import { IoEyeOutline } from "react-icons/io5";
+import { BsThreeDotsVertical } from "react-icons/bs";
 export {
   FaRegCircleDot as GoalsIcon,
   HiOutlineChartBar as PlanningIcon,
@@ -30,4 +31,5 @@ export {
   PiBookmarkSimpleLight as BookmarkIcon,
   BiChevronRight as RightAngularArrowIcon,
   IoEyeOutline as EyeIcon,
+  BsThreeDotsVertical as ThreeVerticalDots,
 };

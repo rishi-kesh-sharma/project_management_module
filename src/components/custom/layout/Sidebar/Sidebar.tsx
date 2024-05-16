@@ -4,6 +4,8 @@ import {
   LeftAngularArrowIcon,
   LogoutIcon,
   RightAngularArrowIcon,
+  SettingIcon,
+  // SettingIcon,
 } from "@/components/icons/commonIcons";
 import { SidebarItemProps, SidebarProps } from "@/@types";
 import * as React from "react";
@@ -23,8 +25,17 @@ import {
 import { buttonVariants } from "@/components/ui/Button/button";
 import { cn } from "@/lib/utils";
 
-const NestedSidebar: React.FC<SidebarProps> = ({ path, items }) => {
+const settings = {
+  label: "Settings",
+  icon: <SettingIcon />,
+  items: [
+    { label: "My Account", link: "/my-account" },
+    { label: "Profile", link: "/profile" },
+  ],
+};
+const Sidebar: React.FC<SidebarProps> = ({ path, items }) => {
   const isSidebarExpanded: boolean = useAppSelector(selectIsSidebarExpanded);
+
   const dispatch = useAppDispatch();
 
   const handleCollapse = () => {
@@ -75,7 +86,8 @@ const NestedSidebar: React.FC<SidebarProps> = ({ path, items }) => {
                         variant: "ghost",
                       }),
                       "justify-between",
-                      "border-b-1 border-white flex py-6  w-full rounded-none gap-0 no-underline hover:no-underline  "
+                      "border-b-1 border-white flex py-6  w-full rounded-none gap-0 no-underline hover:no-underline   ",
+                      "hover:text-primary"
                     )}>
                     <div className="flex items-center justify-start w-full gap-1 ">
                       {item.icon && item.icon}
@@ -101,7 +113,9 @@ const NestedSidebar: React.FC<SidebarProps> = ({ path, items }) => {
                               "active::no-underline",
                               "flex",
                               "gap-2",
-                              "border-b-2 rounded-none  border-white  last-of-type:border-none p-6"
+                              "border-b-2 rounded-none  border-white  last-of-type:border-none p-6",
+                              "hover:text-primary"
+
                               //   child.disabled && "cursor-not-allowed opacity-80"
                             )}>
                             {item.icon}
@@ -130,7 +144,8 @@ const NestedSidebar: React.FC<SidebarProps> = ({ path, items }) => {
                     "gap-1",
                     "rounded-none",
                     "py-6",
-                    "border-b-2"
+                    "border-b-2",
+                    "hover:text-primary"
                   )}>
                   {item.icon && item.icon}
                   {isSidebarExpanded && item.label}
@@ -139,13 +154,66 @@ const NestedSidebar: React.FC<SidebarProps> = ({ path, items }) => {
             )
           )}
         </nav>
-        <div className="flex  px-5 gap-2 font-semibold items-center mt-[2rem]">
-          <LogoutIcon className="text-[1rem]" />
-          {isSidebarExpanded && "Log out"}
+
+        <div className="flex flex-col justify-center  font-semibold  mt-[2rem] w-full">
+          <Accordion type="single" className="" collapsible>
+            <AccordionItem
+              className="flex flex-col gap-0 w-full h-full "
+              value={settings.label}>
+              <AccordionTrigger
+                className={cn(
+                  buttonVariants({
+                    size: "sm",
+                    variant: "ghost",
+                  }),
+                  "justify-between",
+                  "border-b-1 border-white flex py-7  w-full rounded-none gap-0 no-underline hover:no-underline   ",
+                  "hover:text-primary"
+                )}>
+                <div className="flex items-center justify-start w-full gap-1 ">
+                  {settings.icon && settings.icon}
+                  {isSidebarExpanded && settings.label}
+                </div>
+              </AccordionTrigger>
+              <AccordionContent className="bg-primary dark:bg-background/10 py-0 ">
+                <div className="flex flex-col ">
+                  {settings.items.map((child, index: number) => (
+                    <Link
+                      key={index}
+                      to={child.link || "/"}
+                      className={cn(
+                        buttonVariants({
+                          size: "sm",
+
+                          variant: "ghost",
+                        }),
+                        "justify-start",
+                        "no-underline ",
+                        "hover:no-underline",
+                        "active::no-underline",
+                        "flex",
+                        "gap-2",
+                        "border-b-2 rounded-none  border-white  last-of-type:border-none p-6",
+                        "hover:text-primary"
+
+                        //   child.disabled && "cursor-not-allowed opacity-80"
+                      )}>
+                      {isSidebarExpanded && child.label}
+                    </Link>
+                  ))}
+                </div>
+              </AccordionContent>
+            </AccordionItem>
+          </Accordion>
+
+          <div className="flex items-center pl-4 gap-1 hover:text-primary hover:bg-white py-4 text-sm  ">
+            <LogoutIcon className="" />
+            {isSidebarExpanded && "Log out"}
+          </div>
         </div>
       </div>
     </aside>
   );
 };
 
-export default NestedSidebar;
+export default Sidebar;

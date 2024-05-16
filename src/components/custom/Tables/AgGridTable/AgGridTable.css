@@ -3,16 +3,21 @@
   /* Changes the color of the grid text */
   /* Changes the color of the grid background */
   /* Changes the header color of the top row */
-  /* --ag-header-background-color: rgb(228, 237, 250); */
+  /* --ag-header-background-color: black; */
   /* Changes the hover color of the row*/
 
-  /* --ag-header-foreground-color: white;
+  /* --ag-header-foreground-color: white; */
 
-  --ag-header-background-color: hsla(208, 89%, 49%, 1);
-  --ag-header-text-color: white; */
+  /* --ag-header-background-color: hsla(208, 89%, 49%, 1); */
+  /* --ag-header-text-color: black;
   --ag-col-border-style: solid;
   --ag-col-border-color: black;
-  --ag-col-border-width: 1px;
+  --ag-col-border-width: 1px; */
+
+  /* --ag-header-foreground-color: white;
+  --ag-header-background-color: black; */
+  /* --ag-header-cell-hover-background-color: rgb(80, 40, 140);
+  --ag-header-cell-moving-background-color: rgb(80, 40, 140); */
 }
 
 .ag-header-cell-filtered {
@@ -27,7 +32,7 @@
 /* width */
 ::-webkit-scrollbar {
   width: 7px;
-  height:7pxa
+  height: 7pxa;
 }
 
 /* Track */

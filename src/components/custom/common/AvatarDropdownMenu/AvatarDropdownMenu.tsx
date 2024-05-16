@@ -92,7 +92,7 @@ const AvatarDropdown: React.FC<IAvatarDropdownProps> = ({
         {menu.items.map((item: IDropdownMenuItem) => {
           return (
             <DropdownMenuItem
-              className="cursor-pointer bg-primary  hover:bg-primary/10  dark:border-b-foreground  dark:hover:bg-foreground dark:hover:text-background
+              className="cursor-pointer bg-secondary  hover:bg-primary/10  dark:border-b-foreground  dark:hover:bg-foreground dark:hover:text-background
              ">
               {item.label}
             </DropdownMenuItem>

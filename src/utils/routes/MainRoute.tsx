@@ -4,10 +4,10 @@ import ErrorPage404 from "@/components/custom/common/404Error/ErrorPage404.tsx";
 import LoginPage from "@/components/page/Login/Login.tsx";
 import RegisterPage from "@/components/page/Register/Register.tsx";
 import AnalyticsPage from "@/pages/AnalyticsPage.tsx";
-import ProjectsPage from "@/pages/ProjectsPage.tsx";
 import ProjectDetailPage from "@/pages/ProjectDetailPage.tsx";
 import { PrivateRoute } from "@/layouts/PrivateRoute.tsx";
 import { TRole } from "@/@types";
+import WorkspaceDetailPage from "@/pages/WorkspaceDetailPage.tsx";
 
 interface IROLE {
   ADMIN: TRole;
@@ -30,12 +30,14 @@ export function MainRoute() {
           path="/"
           element={
             <PrivateRoute roles={[ROLE.ADMIN]} component={CommonLayout} />
-          }
-        />
-
-        <Route path="/" element={<AnalyticsPage />} />
-        <Route path="/projects" element={<ProjectsPage />} />
-        <Route path="/projects/:projectId" element={<ProjectDetailPage />} />
+          }>
+          <Route path="/" element={<AnalyticsPage />} />
+          <Route
+            path="/workspace/:workspaceId"
+            element={<WorkspaceDetailPage />}
+          />
+          <Route path="/projects/:projectId" element={<ProjectDetailPage />} />
+        </Route>
 
         {/* public routes */}
         <Route path="/login" element={<LoginPage />} />

@@ -102,9 +102,6 @@ export const SecondaryTriggerButton: Story = {
   args: {
     menu: dropdownMenus,
     // dropdownVariant: "secondary",
-    dropdownTriggerButtonProps: {
-      variant: "secondary",
-    },
   },
 };
 
@@ -112,9 +109,6 @@ export const OutlinedTriggerButton: Story = {
   args: {
     menu: dropdownMenus,
     // dropdownVariant: "secondary",
-    dropdownTriggerButtonProps: {
-      variant: "outline",
-    },
   },
 };
 

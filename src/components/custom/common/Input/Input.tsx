@@ -26,8 +26,11 @@ const inputVariants = cva("", {
   },
 });
 
-const Input: React.FC<InputProps> = ({ size, ...props }) => {
-  return <ShadInput {...props} className={cn(inputVariants({ size }))} />;
+const Input: React.FC<InputProps> = ({ size, className, ...props }) => {
+  return (
+    <ShadInput className={cn(inputVariants({ size }), className)} {...props} />
+  );
 };
 
 export default Input;
+export { inputVariants };

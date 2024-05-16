@@ -263,7 +263,7 @@ export const colDefs = [
     field: "make",
     headerCheckboxSelection: true,
     headerName: "Brand",
-    enableRowGroup: true,
+    // enableRowGroup: true,
 
     // rowGroup: true,
     cellEditor: "agSelectCellEditor",
@@ -287,7 +287,7 @@ export const colDefs = [
     },
   },
   { field: "model" },
-  { field: "price", filter: "agNumberColumnFilter", aggFunc: "sum" },
+  { field: "price" },
   { field: "electric" },
   {
     field: "month",

@@ -19,68 +19,45 @@ export default meta;
 export const Default: Story = {
   args: {
     inputSize: "default",
-    buttonProps: { size: "default" },
   },
 };
 export const ExtraLarge: Story = {
   args: {
     inputSize: "xl",
-    buttonProps: {
-      size: "lg",
-    },
   },
 };
 
 export const Large: Story = {
   args: {
     inputSize: "lg",
-    buttonProps: { size: "default" },
   },
 };
 
 export const Medium: Story = {
   args: {
     inputSize: "md",
-    buttonProps: {
-      size: "sm",
-    },
   },
 };
 export const Small: Story = {
   args: {
     inputSize: "sm",
-    buttonProps: {
-      size: "sm",
-    },
   },
 };
 
 export const Primary: Story = {
   args: {
     inputSize: "lg",
-    buttonProps: {
-      size: "sm",
-      variant: "default",
-    },
   },
 };
 
 export const Secondary: Story = {
   args: {
     inputSize: "lg",
-    buttonProps: {
-      size: "sm",
-      variant: "secondary",
-    },
   },
 };
 
 export const Outline: Story = {
   args: {
     inputSize: "lg",
-    buttonProps: {
-      size: "sm",
-      variant: "outline",
-    },
   },
 };
