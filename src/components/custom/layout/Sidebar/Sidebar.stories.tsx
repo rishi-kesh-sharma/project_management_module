@@ -1,13 +1,13 @@
 // Sidebar.stories.tsx
 
 import { StoryObj, Meta } from "@storybook/react";
-import NestedSidebar from "./NestedSidebar";
+import Sidebar from "./Sidebar";
 import { sidebarItems } from "@/utils/constants/sidebar";
 import { Provider as ReduxProvider } from "react-redux";
 import store from "@/redux/store";
 
-const meta: Meta<typeof NestedSidebar> = {
-  title: "NestedSidebar",
+const meta: Meta<typeof Sidebar> = {
+  title: "Sidebar",
   decorators: (Story) => {
     return (
       <ReduxProvider store={store}>
@@ -16,7 +16,7 @@ const meta: Meta<typeof NestedSidebar> = {
     );
   },
 
-  component: NestedSidebar,
+  component: Sidebar,
   parameters: {
     layout: "left",
   },

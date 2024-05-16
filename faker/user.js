@@ -2,7 +2,7 @@ import { faker } from "@faker-js/faker";
 
 function createRandomUser() {
   return {
-    _id: faker.string.uuid(),
+    id: faker.string.uuid(),
     avatar: faker.image.avatar(),
     birthday: faker.date.birthdate(),
     email: faker.internet.email(),
@@ -17,10 +17,10 @@ function createRandomUser() {
 const user = createRandomUser();
 
 const createNUsers = (count) => {
-  const users = Array.from(Array(count)).map(() => {
+  const data = Array.from(Array(count)).map(() => {
     return createRandomUser();
   });
-  return users;
+  return data;
 };
 
 export { user, createRandomUser, createNUsers };

@@ -1,9 +1,14 @@
 import { Meta, StoryObj } from "@storybook/react";
 import PieChart from "./PieChart";
+import { pieChartData } from "@/utils/constants";
 
 const meta: Meta<typeof PieChart> = {
   title: "Charts/Pie",
   component: PieChart,
+  args: {
+    data: pieChartData,
+    title: "Project Status",
+  },
   parameters: {
     layout: "centered",
   },
@@ -12,7 +17,7 @@ const meta: Meta<typeof PieChart> = {
 type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
-  args: {},
+  // args: {},
 };
 
 export default meta;

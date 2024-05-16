@@ -13,7 +13,7 @@ interface IUser {
 interface INotification {
   title: string;
   description: string;
-  date: Date;
+  // date: Date;
   time: string;
 }
 interface IBreadCrumb {
@@ -46,19 +46,19 @@ const initialState: AppState = {
     {
       title: "Meeting Reminder",
       description: "Don't forget about the team meeting at 10 AM",
-      date: new Date("2024-05-15"),
+      // date: new Date(Date.now()),
       time: "10:00 AM",
     },
     {
       title: "Birthday Reminder",
       description: "Wish John a happy birthday today",
-      date: new Date("2024-05-16"),
+      // date: new Date(Date.now()),
       time: "All day",
     },
     {
       title: "Project Deadline",
       description: "Submit the project report by end of day",
-      date: new Date("2024-05-18"),
+      // date: new Date(Date.now()),
       time: "11:59 PM",
     },
   ],

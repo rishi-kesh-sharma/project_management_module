@@ -8,13 +8,13 @@ import React, {
 } from "react";
 import { Helmet } from "react-helmet";
 import { AgGridReact } from "@ag-grid-community/react";
-import { ClipboardModule } from "@ag-grid-enterprise/clipboard";
-import { MenuModule } from "@ag-grid-enterprise/menu";
-import { RowGroupingModule } from "@ag-grid-enterprise/row-grouping";
-import { RangeSelectionModule } from "@ag-grid-enterprise/range-selection";
-import { ColumnsToolPanelModule } from "@ag-grid-enterprise/column-tool-panel";
-import { FiltersToolPanelModule } from "@ag-grid-enterprise/filter-tool-panel";
-import { SetFilterModule } from "@ag-grid-enterprise/set-filter";
+// import { ClipboardModule } from "@ag-grid-enterprise/clipboard";
+// import { MenuModule } from "@ag-grid-enterprise/menu";
+// import { RowGroupingModule } from "@ag-grid-enterprise/row-grouping";
+// import { RangeSelectionModule } from "@ag-grid-enterprise/range-selection";
+// import { ColumnsToolPanelModule } from "@ag-grid-enterprise/column-tool-panel";
+// import { FiltersToolPanelModule } from "@ag-grid-enterprise/filter-tool-panel";
+// import { SetFilterModule } from "@ag-grid-enterprise/set-filter";
 import { CsvExportModule } from "@ag-grid-community/csv-export";
 import { ExcelExportModule } from "@ag-grid-enterprise/excel-export";
 import { IAgGridTableProps } from "@/@types";
@@ -45,24 +45,29 @@ import "./AgGridTable.css";
 import "@ag-grid-community/styles/ag-grid.css";
 import "@ag-grid-community/styles/ag-theme-quartz.css";
 import "@ag-grid-community/styles/ag-theme-alpine.css";
-import { Button } from "@/components/ui/Button/button";
+// import { Button } from "@/components/ui/Button/button";
+import SearchInput from "../../common/SearchInput/SearchInput";
+import IconDropdown from "../../common/IconDropdown/IconDropdown";
+import { ThreeVerticalDots } from "@/components/icons/commonIcons";
 
 // module registration
 ModuleRegistry.registerModules([
   ClientSideRowModelModule,
-  ClipboardModule,
-  MenuModule,
-  RangeSelectionModule,
-  RowGroupingModule,
-  FiltersToolPanelModule,
-  ColumnsToolPanelModule,
-  SetFilterModule,
+  // ClipboardModule,
+  // MenuModule,
+  // RangeSelectionModule,
+  // RowGroupingModule,
+  // FiltersToolPanelModule,
+  // ColumnsToolPanelModule,
+  // SetFilterModule,
   CsvExportModule,
   ExcelExportModule,
 ]);
 
 // react table props interface
 const AgGridTable: React.FC<IAgGridTableProps> = ({
+  heading = "Table Heading",
+  dropdownMenus = [],
   theme = "ag-theme-quartz",
   height = 500,
   variant,
@@ -75,7 +80,7 @@ const AgGridTable: React.FC<IAgGridTableProps> = ({
   paginationPageSizeSelector = [10, 25, 50, 100],
   rowBuffer = 0,
   rowModelType = "clientSide",
-  rowHeight = 50,
+  rowHeight = 45,
   onGridReady = () => {},
   onCellClicked,
   onCellValueChanged,
@@ -111,16 +116,19 @@ const AgGridTable: React.FC<IAgGridTableProps> = ({
   // default columns defination
   const defaultColDef = useMemo<ColDef>(() => {
     return {
-      filter: true,
+      headerClass(params) {
+        return "bg-[#F1F1F1]";
+      },
+      filter: false,
       editable: true,
-      floatingFilter: true,
-      resizable: true,
+      // floatingFilter: true,
+      resizable: false,
       headerCheckboxSelection: false,
       showDisabledCheckboxes: true,
       headerCheckboxSelectionFilteredOnly: false,
       // cellRenderer: "agGroupCellRenderer",
       flex: 1,
-      minWidth: 200,
+      minWidth: 150,
 
       // cellRendererParams: {
       //   checkbox: true,
@@ -199,31 +207,47 @@ const AgGridTable: React.FC<IAgGridTableProps> = ({
 
   // use effect to set the  column definations and table data
 
-  const onBtnCSVExport = useCallback(() => {
-    const exportCsvParams = { allColumns: true };
-    gridRef.current!.api.exportDataAsCsv(exportCsvParams);
-  }, []);
-  const onBtnXLSXExport = useCallback(() => {
-    const exportXLSXParams = { allColumns: true };
-    gridRef.current!.api.exportDataAsExcel(exportXLSXParams);
-  }, []);
+  // const onBtnCSVExport = useCallback(() => {
+  //   const exportCsvParams = { allColumns: true };
+  //   gridRef.current!.api.exportDataAsCsv(exportCsvParams);
+  // }, []);
+  // const onBtnXLSXExport = useCallback(() => {
+  //   const exportXLSXParams = { allColumns: true };
+  //   gridRef.current!.api.exportDataAsExcel(exportXLSXParams);
+  // }, []);
 
   useEffect(() => {
     setColumnDefs(columnDefinations);
     setRowData(tableData);
   }, [columnDefinations, tableData]);
 
-  return (
-    <div style={containerStyle}>
-      <div
-        className="flex items-center gap-[1rem] justify-end"
-        style={{ margin: "10px 0" }}>
-        <Button variant={"outline"} onClick={onBtnCSVExport}>
+  {
+    /* <Button variant={"outline"} onClick={onBtnCSVExport}>
           Export CSV{" "}
         </Button>
         <Button variant={"default"} onClick={onBtnXLSXExport}>
           Export XLSX{" "}
-        </Button>
+        </Button> */
+  }
+  return (
+    <div style={containerStyle}>
+      <div className="flex items-end w-full justify-between my-[1rem]">
+        <h2 className="font-semibold text-xl">{heading}</h2>
+        <div className="w-full flex flex-col gap-[1rem]  items-end">
+          <IconDropdown
+            menu={dropdownMenus}
+            dropdownSize="sm"
+            dropdownVariant="secondary"
+            icon={<ThreeVerticalDots />}
+          />
+          <SearchInput
+            id="workspace-search"
+            name="workspace-search"
+            inputSize="lg"
+            placeholder="Search here..."
+            className=""
+          />
+        </div>
       </div>
       <div className={`${theme}`} style={{ ...gridStyle, height: height }}>
         {variant === "primary" && (
@@ -244,7 +268,7 @@ const AgGridTable: React.FC<IAgGridTableProps> = ({
           paginationPageSize={paginationPageSize}
           paginationPageSizeSelector={paginationPageSizeSelector}
           onGridReady={onGridReady}
-          enableRangeSelection={true}
+          enableRangeSelection={false}
           rowMultiSelectWithClick={rowMultiSelectWithClick}
           rowDragMultiRow={rowDragMultiRow}
           sideBar={sidebar}
@@ -259,6 +283,8 @@ const AgGridTable: React.FC<IAgGridTableProps> = ({
           groupSelectsChildren={true}
           groupSelectsFiltered={true}
           onRowSelected={onRowSelected}
+          suppressCopyRowsToClipboard={true}
+
           // rowDragEntireRow={true}
 
           // suppressCellFocus={true}

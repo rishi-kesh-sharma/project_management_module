@@ -10,7 +10,8 @@ import {
 } from "chart.js";
 import { Bar } from "react-chartjs-2";
 
-const BarChart = () => {
+
+const BarChart = ({ data, title }: { title: string }) => {
   ChartJS.register(
     CategoryScale,
     LinearScale,
@@ -32,7 +33,7 @@ const BarChart = () => {
       },
       title: {
         display: true,
-        text: "Purchase and Sales Overview",
+        text: title,
         color: "#00000",
         position: "top" as const,
         align: "start" as const,
@@ -69,38 +70,6 @@ const BarChart = () => {
         },
       },
     },
-  };
-
-  const data = {
-    labels: [
-      "Jan",
-      "Feb",
-      "Mar",
-      "Apr",
-      "May",
-      "Jun",
-      "Jul",
-      "Aug",
-      "Sept",
-      "Oct",
-      "Nov",
-      "Dec",
-    ],
-    datasets: [
-      {
-        label: "Purchase",
-        data: [12, 10, 8, 12, 10, 8, 12, 10, 8, 12, 10, 8],
-        backgroundColor: "#0E84ED",
-        borderRadius: 5,
-        pointStyle: "square",
-      },
-      {
-        label: "Sale",
-        data: [8, 15, 10, 12, 10, 8, 12, 10, 8, 12, 10, 8],
-        backgroundColor: "#99D045",
-        borderRadius: 5,
-      },
-    ],
   };
 
   return (

@@ -9,6 +9,7 @@ import { useState } from "react";
 import NotificationCard from "@/components/custom/common/NotificationCard/NotificationCard";
 import { useAppSelector } from "@/hooks";
 import { selectNotifications, selectUser } from "@/redux/features/app/appSlice";
+import SearchInput from "@/components/custom/common/SearchInput/SearchInput";
 
 const Header: React.FC<IHeaderProps> = () => {
   const [showNotifications, setShowNotifications] = useState(false);
@@ -25,6 +26,7 @@ const Header: React.FC<IHeaderProps> = () => {
           Create
         </Button>
       </Link>
+      <SearchInput id="global-search" name="global-search" inputSize="lg" />
 
       <div className="flex gap-5 items-center px-2">
         <div className="text-2xl ">
