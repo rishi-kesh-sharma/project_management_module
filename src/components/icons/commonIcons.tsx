@@ -8,9 +8,12 @@ import {
   MdLogout,
 } from "react-icons/md";
 import { TiHomeOutline } from "react-icons/ti";
-import { BiChevronLeft, BiChevronDown } from "react-icons/bi";
+import { BiChevronLeft, BiChevronDown, BiChevronRight } from "react-icons/bi";
 import { FaRegTrashAlt } from "react-icons/fa";
 import { CiEdit } from "react-icons/ci";
+import { PiBookmarkSimpleLight } from "react-icons/pi";
+import { IoEyeOutline } from "react-icons/io5";
+import { BsThreeDotsVertical } from "react-icons/bs";
 export {
   FaRegCircleDot as GoalsIcon,
   HiOutlineChartBar as PlanningIcon,
@@ -24,5 +27,9 @@ export {
   BiChevronDown as DownAngularArrowIcon,
   MdLogout as LogoutIcon,
   FaRegTrashAlt as TrashIcon,
-  CiEdit as EditIcon
+  CiEdit as EditIcon,
+  PiBookmarkSimpleLight as BookmarkIcon,
+  BiChevronRight as RightAngularArrowIcon,
+  IoEyeOutline as EyeIcon,
+  BsThreeDotsVertical as ThreeVerticalDots,
 };

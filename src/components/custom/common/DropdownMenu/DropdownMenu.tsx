@@ -1,6 +1,5 @@
 import { IDropdownMenuProps } from "@/@types";
 import { DownAngularArrowIcon } from "@/components/icons/commonIcons";
-import { Button } from "@/components/ui/Button/button";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -8,8 +7,8 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui//Dropdown/dropdown-menu";
+import { buttonVariants } from "@/components/ui/Button/button";
 import { cva } from "class-variance-authority";
-import { buttonVariants } from "@/components/plate-ui/button";
 
 const dropdownVariants = cva("", {
   variants: {
@@ -42,7 +41,7 @@ const Dropdown: React.FC<IDropdownMenuProps> = ({
     <DropdownMenu>
       <DropdownMenuTrigger
         // className={`flex items-center gap-2 justify-between ${dropdownTriggerVariants({ dropdownTriggerSize, dropdownTriggerVariant })}`}
-        className={`flex items-center gap-2 justify-between ${ buttonVariants({ size: dropdownTriggerSize, variant: dropdownTriggerVariant })}`}>
+        className={`flex items-center gap-2 justify-between ${buttonVariants({ size: dropdownTriggerSize, variant: dropdownTriggerVariant })}`}>
         {menu.label} {<DownAngularArrowIcon />}
       </DropdownMenuTrigger>
       <DropdownMenuContent

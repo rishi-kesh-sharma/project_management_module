@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/Button/button";
 import LogoEnter from "../../../assets/images/LogoEnter.png";
 import { useState } from "react";
 import PasswordInput from "@/components/custom/Form/Input/PasswordInput/PasswordInput";
+import { Label } from "@/components/ui/Label/label";
 
 const Login: React.FC = () => {
   const [loginData, setLoginData] = useState({ email: "", password: "" });
@@ -13,23 +14,23 @@ const Login: React.FC = () => {
   };
   return (
     <div className="flex h-screen">
-      <div className="w-7/12 bg-gradient-to-r from-blue-400 via-blue-500 to-blue-600 p-16">
-        <div className="text-white absolute top-12">
+      <div className="w-7/12 bg-gradient-to-r from-primary/80 via-primary/90 to-primary/100 p-16">
+        <div className="text-primary-foreground absolute top-12">
           <div style={{ width: "195px", height: "86px", marginTop: "62px" }}>
             <img src={LogoEnter} style={{ width: "100%", height: "100%" }} />
           </div>
         </div>
-        <div className="flex items-end text-white absolute bottom-12">
+        <div className="flex items-end text-primary-foreground absolute bottom-12">
           @2024Enterleaf.All right reserved
         </div>
       </div>
-      <div className="w-5/12 flex flex-col justify-center items-center">
+      <div className="w-5/12 flex flex-col justify-center items-center ">
         <div className="min-w-[380px] flex flex-col space-y-2">
           <div className="flex flex-col space-y-8">
             <p className="text-4xl font-bold ...">Enter Leaf</p>
             <p className="text-2xl font-semibold ...">Welcome Back!</p>
-            <div>
-              <div>Email</div>
+            <div className="flex flex-col gap-3">
+              <Label>Email</Label>
               <TextInput
                 id="email"
                 name="email"
@@ -40,8 +41,8 @@ const Login: React.FC = () => {
                 onChange={handleChange}
               />
             </div>
-            <div>
-              <div>Password</div>
+            <div className="flex flex-col gap-2">
+              <Label>Password</Label>
               <PasswordInput
                 size={"xl"}
                 required={true}
@@ -57,7 +58,7 @@ const Login: React.FC = () => {
               Forgot Password
             </p>
           </div>
-          <Button />
+          <Button size={"lg"}>Login</Button>
           <div className="flex items-center my-2 w-full">
             <div className="border-t border-gray-300 flex-grow"></div>
             <div className="text-sm text-gray-500">OR</div>
@@ -107,10 +108,15 @@ const Login: React.FC = () => {
             Sign In with Google
           </div>
           <div
-            className="w-5/12 flex flex-row justify-center items-center space-y-4"
+            className="w-5/12 flex flex-row justify-center items-center space-y-4 text-muted-foreground"
             style={{ width: "100%" }}>
             Don't have an account ? &nbsp;
-            <div className="underline  text-blue-500"> Sign up</div>
+            <Button
+              variant={"link"}
+              className="underline  text-primary-foreground">
+              {" "}
+              Sign up
+            </Button>
           </div>
         </div>
       </div>

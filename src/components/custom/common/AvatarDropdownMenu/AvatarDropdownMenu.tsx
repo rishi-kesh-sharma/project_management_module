@@ -61,11 +61,12 @@ const AvatarDropdown: React.FC<IAvatarDropdownProps> = ({
 
     switch (dropdownVariant) {
       case "primary":
-        classes = "bg-primary text-white border-white border-b-1";
+        classes =
+          "bg-primary dark:bg-background text-white border-white border-b-1";
         break;
 
       case "secondary":
-        classes = "bg-gray-100";
+        classes = "bg-gray-100 dark:bg-primary";
         break;
 
       default:
@@ -90,7 +91,9 @@ const AvatarDropdown: React.FC<IAvatarDropdownProps> = ({
         {dropdownVariant !== "primary" && <DropdownMenuSeparator />}
         {menu.items.map((item: IDropdownMenuItem) => {
           return (
-            <DropdownMenuItem className="cursor-pointer">
+            <DropdownMenuItem
+              className="cursor-pointer bg-secondary  hover:bg-primary/10  dark:border-b-foreground  dark:hover:bg-foreground dark:hover:text-background
+             ">
               {item.label}
             </DropdownMenuItem>
           );

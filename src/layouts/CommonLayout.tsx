@@ -1,32 +1,33 @@
 import Header from "./Header/Header.tsx";
 import "../index.css";
 import { Outlet, useLocation } from "react-router-dom";
-import Sidebar from "@/components/custom/layout/Sidebar/Sidebar.tsx";
 import { sidebarItems } from "@/utils/constants/sidebar.tsx";
-import { userInfo } from "@/utils/constants/index.tsx";
-export type CommonLayoutProps = {
-  type: "small" | "large";
-};
+import Sidebar from "@/components/custom/layout/Sidebar/Sidebar.tsx";
+import Breadcrumb from "@/components/custom/common/Breadcrumb/Breadcrumb.tsx";
+import { useGetWorkspaceQuery } from "@/api/workspace";
+import { useGetBookmarkQuery } from "@/api/bookmark.ts";
 
-const CommonLayout = ({ type }: CommonLayoutProps) => {
+const CommonLayout = () => {
   const location = useLocation();
   const path = location.pathname;
-  return (
-    <div className="relative w-full h-screen grid grid-cols-12">
-      {type === "large" ? (
-        <Sidebar items={sidebarItems()} path="" type="large" />
-      ) : (
-        <Sidebar path={path} items={sidebarItems()} type="small" />
-      )}
 
-      <div
-        className={`${
-          type === "large" ? "col-span-10" : "col-span-11"
-        } flex flex-col `}>
-        <div className="z-[100] sticky top-0 flex h-[70px] w-full justify-between  items-center px-8 border-b-2 border-primary-100 bg-[#ffffff]">
-          <Header user={userInfo} />
+  const { data: workspaces, isLoading } = useGetWorkspaceQuery("");
+  const { data: bookmarks } = useGetBookmarkQuery("");
+
+  if (isLoading) return "Loading...";
+  return (
+    <div className="relative w-full min-h-screen flex  ">
+      <Sidebar items={sidebarItems({ workspaces, bookmarks })} path={path} />
+
+      <div className={`flex flex-col flex-1 `}>
+        <div className="z-[100] sticky top-0 flex h-[70px] w-full justify-between  items-center px-8 border-b-2 border-primary-100 bg-background">
+          <Header />
         </div>
-        <div className="justify-end items-center max-h-[calc(100vh-56px)]">
+
+        <div className="w-full px-[2rem] py-[1rem]">
+          <div>
+            <Breadcrumb />
+          </div>
           <Outlet />
         </div>
       </div>

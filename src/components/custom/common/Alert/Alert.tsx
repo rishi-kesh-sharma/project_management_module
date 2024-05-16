@@ -1,0 +1,22 @@
+import { RocketIcon } from "@radix-ui/react-icons";
+
+import {
+  Alert as ShadAlert,
+  AlertDescription,
+  AlertTitle,
+} from "@/components/ui/Alert/alert";
+
+interface IAlertProps {
+  title: string;
+  description: string;
+}
+
+export default function Alert({ title, description }: IAlertProps) {
+  return (
+    <ShadAlert>
+      <RocketIcon className="h-4 w-4" />
+      <AlertTitle>{title}</AlertTitle>
+      <AlertDescription>{description}</AlertDescription>
+    </ShadAlert>
+  );
+}

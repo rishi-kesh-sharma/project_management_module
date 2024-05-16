@@ -3,9 +3,18 @@
 import { StoryObj, Meta } from "@storybook/react";
 import Sidebar from "./Sidebar";
 import { sidebarItems } from "@/utils/constants/sidebar";
+import { Provider as ReduxProvider } from "react-redux";
+import store from "@/redux/store";
 
 const meta: Meta<typeof Sidebar> = {
   title: "Sidebar",
+  decorators: (Story) => {
+    return (
+      <ReduxProvider store={store}>
+        <Story />
+      </ReduxProvider>
+    );
+  },
 
   component: Sidebar,
   parameters: {
@@ -18,8 +27,8 @@ type Story = StoryObj<typeof meta>;
 
 export const Large: Story = {
   args: {
-    type: "large",
     items: sidebarItems(),
+
     path: "/",
   },
 };

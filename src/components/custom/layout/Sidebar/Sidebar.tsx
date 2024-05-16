@@ -1,81 +1,216 @@
-import { getUniqueKey } from "@/utils/methods/stringMethods";
-import React from "react";
-import { useNavigate } from "react-router";
+// import { getUniqueKey } from "@/utils/methods/stringMethods";
 import config from "@/config";
 import {
-  DownAngularArrowIcon,
   LeftAngularArrowIcon,
   LogoutIcon,
+  RightAngularArrowIcon,
+  SettingIcon,
+  // SettingIcon,
 } from "@/components/icons/commonIcons";
-import { SidebarProps } from "@/@types";
+import { SidebarItemProps, SidebarProps } from "@/@types";
+import * as React from "react";
+import { useAppDispatch, useAppSelector } from "@/hooks";
+import {
+  collapseSidebar,
+  expandSidebar,
+  selectIsSidebarExpanded,
+} from "@/redux/features/app/appSlice";
+import { Link } from "react-router-dom";
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/Accordion/accordion";
+import { buttonVariants } from "@/components/ui/Button/button";
+import { cn } from "@/lib/utils";
 
-const Sidebar: React.FC<SidebarProps> = ({ type, path, items }) => {
-  const navigate = useNavigate();
+const settings = {
+  label: "Settings",
+  icon: <SettingIcon />,
+  items: [
+    { label: "My Account", link: "/my-account" },
+    { label: "Profile", link: "/profile" },
+  ],
+};
+const Sidebar: React.FC<SidebarProps> = ({ path, items }) => {
+  const isSidebarExpanded: boolean = useAppSelector(selectIsSidebarExpanded);
 
+  const dispatch = useAppDispatch();
+
+  const handleCollapse = () => {
+    console.log("collapsed");
+    dispatch(collapseSidebar());
+  };
+  const handleExpand = () => {
+    dispatch(expandSidebar());
+  };
+  console.log(path);
   //   Active Menu Css
-  const getActiveCss = (link: string) =>
-    path === link ? `font-medium text-sm ` : "font-medium text-sm";
-  return type === "large" ? (
-    <aside className="col-span-2 bg-[#0E84ED] bg-primary text-[#FFFFFF] h-full w-full  py-4 hidden md:flex md:flex-col gap-4  border-r-[1px] border-primary-100  cursor-pointer">
-      <div className="logo flex items-center justify-between text-2xl gap-3 px-5 ">
-        <img src={config.LOGO} alt="enterleaf" className=" object-contain" />
-        <LeftAngularArrowIcon />
-      </div>
-      <div className="flex flex-col gap-2 flex-1 py-2 ">
-        {items?.map(
-          (
-            {
-              label,
-              link,
-              icon,
-            }: { label: string; link: string; icon: React.ReactElement },
-            idx: number
-          ) => (
-            <div
-              className="flex w-full py-2 px-5 justify-between items-center border-b-[1px] border-gray-50 gap-2"
-              key={getUniqueKey(idx, label)}>
-              <div className="flex gap-2 l1-r ">
-                {icon}
-                <p
-                  onClick={() => navigate(link)}
-                  className={getActiveCss(link)}>
-                  {label}
-                </p>
-              </div>
-              {idx != 0 ? <DownAngularArrowIcon size={20} /> : ""}
-            </div>
-          )
+  // const getActiveCss = (link: string) =>
+  //   path === link ? `font-medium text-sm ` : "font-medium text-sm";
+  return (
+    <aside
+      className={` ${isSidebarExpanded ? "w-[240px]" : "w-[70px]"}  bg-primary dark:bg-background text-[#FFFFFF] h-full   py-4 hidden md:flex md:flex-col gap-7  border-r-[1px] border-primary-100  cursor-pointer min-h-screen transition-all sticky top-0 `}>
+      <div className="logo flex items-center justify-between text-2xl gap-3 w-full ">
+        {isSidebarExpanded && (
+          <Link to={`/`}>
+            <img
+              src={config.LOGO}
+              alt={config.APP_NAME}
+              className=" object-contain justify-self-end ml-5"
+            />
+          </Link>
+        )}
+        {isSidebarExpanded ? (
+          <LeftAngularArrowIcon onClick={handleCollapse} className="mr-4" />
+        ) : (
+          <RightAngularArrowIcon
+            onClick={handleExpand}
+            className=" ml-auto mr-4"
+          />
         )}
       </div>
-      <div className="flex py-2 px-5 gap-2 text-sm items-center">
-        <LogoutIcon className="text-[1.5rem]" />
-        Log out
-      </div>
-    </aside>
-  ) : (
-    <aside className="col-span-1 bg-[#0E84ED] text-[#FFFFFF] h-full w-full max-w-[100px] py-4 hidden md:flex md:flex-col gap-4  border-r-[1px] border-primary-100  cursor-pointer">
-      <div className="logo flex items-center justify-between text-2xl gap-3 px-5">
-        {/* <img src={Logo} alt="enterleaf" className="h-20 w-[150px] " /> */}
-        <LeftAngularArrowIcon />
-      </div>
-      <div className="flex flex-col gap-2 flex-1 ">
-        {items?.map(
-          (
-            { label, icon }: { label: string; icon: React.ReactElement },
-            idx: number
-          ) => (
-            <div
-              className="flex w-full py-2 px-5 justify-between items-center border-b-[1px] border-gray-50 gap-2"
-              key={getUniqueKey(idx, label)}>
-              <div className="flex gap-2 l1-r ">{icon}</div>
-              {idx != 0 ? <DownAngularArrowIcon size={20} /> : ""}
-            </div>
-          )
-        )}
-      </div>
-      <div className="flex py-2 px-5 gap-2 text-sm text-center">
-        <LogoutIcon className="text-[1.5rem]" />
-        {/* Log out */}
+      <div className="h-full flex flex-col justify-between min-h-[calc(100vh-6.50rem)] ">
+        <nav className="flex flex-col  w-full ">
+          {items?.map((item: SidebarItemProps, index: number) =>
+            item.items ? (
+              <Accordion type="single" className="" collapsible>
+                <AccordionItem
+                  className="flex flex-col gap-0 w-full h-full"
+                  value={item.label}>
+                  <AccordionTrigger
+                    className={cn(
+                      buttonVariants({
+                        size: "sm",
+                        variant: "ghost",
+                      }),
+                      "justify-between",
+                      "border-b-1 border-white flex py-6  w-full rounded-none gap-0 no-underline hover:no-underline   ",
+                      "hover:text-primary"
+                    )}>
+                    <div className="flex items-center justify-start w-full gap-1 ">
+                      {item.icon && item.icon}
+                      {isSidebarExpanded && item.label}
+                    </div>
+                  </AccordionTrigger>
+                  <AccordionContent className="bg-primary dark:bg-background/10 py-0 ">
+                    <div className="flex flex-col ">
+                      {item.items.map(
+                        (child: SidebarItemProps, index: number) => (
+                          <Link
+                            key={index}
+                            to={child.link || "/"}
+                            className={cn(
+                              buttonVariants({
+                                size: "sm",
+
+                                variant: "ghost",
+                              }),
+                              "justify-start",
+                              "no-underline ",
+                              "hover:no-underline",
+                              "active::no-underline",
+                              "flex",
+                              "gap-2",
+                              "border-b-2 rounded-none  border-white  last-of-type:border-none p-6",
+                              "hover:text-primary"
+
+                              //   child.disabled && "cursor-not-allowed opacity-80"
+                            )}>
+                            {item.icon}
+                            {isSidebarExpanded && child.label}
+                          </Link>
+                        )
+                      )}
+                    </div>
+                  </AccordionContent>
+                </AccordionItem>
+              </Accordion>
+            ) : (
+              item.link && (
+                <Link
+                  key={index}
+                  to={item.link}
+                  className={cn(
+                    buttonVariants({
+                      size: "sm",
+                      variant: "ghost",
+                    }),
+                    "justify-start",
+                    "no-underline ",
+                    "hover:no-underline",
+                    "flex",
+                    "gap-1",
+                    "rounded-none",
+                    "py-6",
+                    "border-b-2",
+                    "hover:text-primary"
+                  )}>
+                  {item.icon && item.icon}
+                  {isSidebarExpanded && item.label}
+                </Link>
+              )
+            )
+          )}
+        </nav>
+
+        <div className="flex flex-col justify-center  font-semibold  mt-[2rem] w-full">
+          <Accordion type="single" className="" collapsible>
+            <AccordionItem
+              className="flex flex-col gap-0 w-full h-full "
+              value={settings.label}>
+              <AccordionTrigger
+                className={cn(
+                  buttonVariants({
+                    size: "sm",
+                    variant: "ghost",
+                  }),
+                  "justify-between",
+                  "border-b-1 border-white flex py-7  w-full rounded-none gap-0 no-underline hover:no-underline   ",
+                  "hover:text-primary"
+                )}>
+                <div className="flex items-center justify-start w-full gap-1 ">
+                  {settings.icon && settings.icon}
+                  {isSidebarExpanded && settings.label}
+                </div>
+              </AccordionTrigger>
+              <AccordionContent className="bg-primary dark:bg-background/10 py-0 ">
+                <div className="flex flex-col ">
+                  {settings.items.map((child, index: number) => (
+                    <Link
+                      key={index}
+                      to={child.link || "/"}
+                      className={cn(
+                        buttonVariants({
+                          size: "sm",
+
+                          variant: "ghost",
+                        }),
+                        "justify-start",
+                        "no-underline ",
+                        "hover:no-underline",
+                        "active::no-underline",
+                        "flex",
+                        "gap-2",
+                        "border-b-2 rounded-none  border-white  last-of-type:border-none p-6",
+                        "hover:text-primary"
+
+                        //   child.disabled && "cursor-not-allowed opacity-80"
+                      )}>
+                      {isSidebarExpanded && child.label}
+                    </Link>
+                  ))}
+                </div>
+              </AccordionContent>
+            </AccordionItem>
+          </Accordion>
+
+          <div className="flex items-center pl-4 gap-1 hover:text-primary hover:bg-white py-4 text-sm  ">
+            <LogoutIcon className="" />
+            {isSidebarExpanded && "Log out"}
+          </div>
+        </div>
       </div>
     </aside>
   );

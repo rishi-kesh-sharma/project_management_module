@@ -1,55 +1,36 @@
-import { Button, ButtonProps } from "@/components/ui/Button/button";
+import { cn } from "@/lib/utils";
 import Input, { InputProps } from "../Input/Input";
 
 export interface ISearchInput {
   inputSize?: InputProps["size"];
-  buttonProps?: ButtonProps;
-  buttonVariant?: "primary" | "secondary" | "ghost" | "outline";
   label?: string;
   placeholder?: string;
   id: string;
+  className: string;
   name: string;
 }
 
 const SearchInput: React.FC<ISearchInput> = ({
   inputSize,
-  buttonProps,
+  // buttonProps,
   label,
   placeholder,
   id,
-
   name,
-
+  className,
   ...props
 }) => {
-  const getInputSizeClasses = (
-    size: InputProps["size"]
-  ): string | undefined => {
-    const inputSizeToClassMapping = {
-      xl: "w-[35rem] h-[3.5rem]",
-      lg: "w-[30rem] h-[3rem]",
-      md: "w-[25rem] h-[3rem]",
-      sm: "w-[14rem] h-[3.2rem]",
-      xs: "w-[5rem]",
-      default: "w-[20rem]",
-    };
-
-    if (!size) return;
-    return inputSizeToClassMapping[size];
-  };
-  const mergedInputClasses = `${getInputSizeClasses(inputSize)} `;
-
   return (
-    <form className=" mx-auto">
+    <form className=" ">
       <label
         htmlFor="default-search"
         className="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white">
         {label}
       </label>
       <div className="relative">
-        <div className="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
+        <div className="absolute peer-active:hidden  inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
           <svg
-            className="w-4 h-4 text-gray-500 dark:text-gray-400"
+            className="w-4 h-4  text-gray-500 dark:text-gray-400"
             aria-hidden="true"
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
@@ -64,20 +45,21 @@ const SearchInput: React.FC<ISearchInput> = ({
           </svg>
         </div>
         <Input
-          {...props}
           name={name}
           id={id}
           type="Search"
-          className={`block p-4 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" ${mergedInputClasses} `}
+          size={inputSize}
           placeholder={placeholder}
           required
+          {...props}
+          className={cn(`pl-9`, className)}
         />
-        <Button
+        {/* <Button
           {...buttonProps}
           className=" absolute end-2.5 top-[50%] translate-y-[-50%]  "
           type="submit">
           {label}
-        </Button>
+        </Button> */}
       </div>
     </form>
   );

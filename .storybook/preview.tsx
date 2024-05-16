@@ -1,14 +1,23 @@
 import type { Preview, StoryObj } from "@storybook/react";
 import React from "react";
 import { BrowserRouter } from "react-router-dom";
+import { Provider as ReduxProvider } from "react-redux";
 
 import "../src/index.css";
-// import "!style-loader!css-loader!postcss-loader!tailwindcss/tailwind.css";
+import store from "./../src/redux/store";
 const ReactRoutingWrapper = (Story: any) => {
   return (
     <BrowserRouter>
       <Story />
     </BrowserRouter>
+  );
+};
+
+const ReduxWrapper = (Story: any) => {
+  return (
+    <ReduxProvider store={store}>
+      <Story />
+    </ReduxProvider>
   );
 };
 const preview: Preview = {
@@ -20,7 +29,7 @@ const preview: Preview = {
       },
     },
   },
-  decorators: [ReactRoutingWrapper],
+  decorators: [ReactRoutingWrapper, ReduxWrapper],
 };
 
 export default preview;
