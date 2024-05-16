@@ -39,6 +39,7 @@ export default function Combobox({
 }: {
   comboboxData: IComboboxProps;
 }) {
+  console.log(comboboxGroups, "combobox groups");
   const [open, setOpen] = React.useState(false);
   const [value, setValue] = React.useState("");
   return (
@@ -68,27 +69,28 @@ export default function Combobox({
           <CommandInput placeholder={placeholder} className="h-9" />
           <CommandEmpty>{emptyText}</CommandEmpty>
 
-          {comboboxGroups.map((group: IComboboxGroup) => {
+          {comboboxGroups?.map((group: IComboboxGroup) => {
             return (
               <div>
                 <CommandGroup heading={group.heading}>
-                  {group?.comboboxItems?.map((commandItem: IComboboxItem) => {
+                  {group.comboboxItems.map((comboboxItem: IComboboxItem) => {
+                    console.log(comboboxItem);
                     return (
                       <>
                         <CommandItem
-                          key={commandItem.value}
-                          value={commandItem.value}
+                          key={comboboxItem.value}
+                          value={comboboxItem.value}
                           onSelect={(currentValue) => {
                             setValue(
                               currentValue === value ? "" : currentValue
                             );
                             setOpen(false);
                           }}>
-                          {commandItem.label}
+                          {comboboxItem.label}
                           <CheckIcon
                             className={cn(
                               "ml-auto h-4 w-4",
-                              value === commandItem.value
+                              value === comboboxItem.value
                                 ? "opacity-100"
                                 : "opacity-0"
                             )}
