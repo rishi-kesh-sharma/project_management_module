@@ -1,12 +1,13 @@
 import { ButtonProps } from "@/components/ui/Button/button";
 import { AvatarProps } from "@radix-ui/react-avatar";
 import { ColDef } from "@ag-grid-community/core";
+import { IProject } from "@/api/workspace";
 
 export interface IDropdownMenuItem {
   id: string | number;
   isLink: boolean;
   label: string;
-  link: string;
+  link?: string;
 }
 
 export interface IDropdownMenuProps {
@@ -18,6 +19,16 @@ export interface IDropdownMenuProps {
   dropdownVariant: "primary" | "secondary" | "default";
   dropdownTriggerSize: ButtonProps["size"];
   dropdownTriggerVariant: ButtonProps["variant"];
+}
+
+export interface IIconDropdownMenuProps {
+  menu: {
+    label: string;
+    items: IDropdownMenuItem[];
+  };
+  dropdownSize: "lg" | "md" | "sm" | "default";
+  dropdownVariant: "primary" | "secondary" | "default";
+  icon: React.ReactNode;
 }
 
 export interface IAvatarDropdownProps {
@@ -79,13 +90,19 @@ export type RowModelType =
 
 export type IsRowSelectable = unknown;
 export interface IAgGridTableProps {
+  heading: string;
+  dropdownMenus: {
+    label: string;
+    items: [];
+  };
   theme:
     | "ag-theme-quartz"
     | "ag-theme-alpine"
     | "ag-theme-quartz-dark"
     | "ag-theme-quartz-alpine";
   height: number;
-  rowData: IRowData[];
+  // rowData: IRowData[];
+  rowData?: IProject[] | undefined;
   colDefs: ColDef[];
   rowSelection: "multiple" | "single";
   sidebar: string | boolean;
