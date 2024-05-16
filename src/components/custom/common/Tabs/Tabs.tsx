@@ -13,7 +13,7 @@ const Tabs = ({ triggers, contents }: TTabsProps) => {
             <TabsList>
                 {triggers.map((trigger: ITabTrigger) => {
                     return <TabsTrigger value={trigger.id} id={trigger.id}>{trigger.label}</TabsTrigger>
-                })}
+                })}c
             </TabsList>
             {contents.map((content: ITabContent, index: number) => {
 
