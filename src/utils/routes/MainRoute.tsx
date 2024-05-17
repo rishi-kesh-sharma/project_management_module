@@ -53,8 +53,13 @@ export function MainRoute() {
           },
         },
         {
-          path: "/project/:projectId",
+          path: "/workspace/:workspaceId/:projectId",
           element: <ProjectDetailPage />,
+          handle: {
+            crumb: (id: string) => {
+              return <Link to={`/project/${id}`}>{id}</Link>;
+            },
+          },
         },
       ],
     },

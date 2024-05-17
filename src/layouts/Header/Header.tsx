@@ -8,7 +8,7 @@ import AvatarDropdown from "@/components/custom/common/AvatarDropdownMenu/Avatar
 import { avatarDropdownMenu } from "@/utils/constants";
 import { useState } from "react";
 import NotificationCard from "@/components/custom/common/NotificationCard/NotificationCard";
-import { useAppSelector } from "@/hooks";
+import { useAppDispatch, useAppSelector } from "@/hooks";
 import {
   selectNotifications,
   selectUser,
@@ -19,9 +19,11 @@ import Dropdown from "@/components/custom/common/DropdownMenu/DropdownMenu";
 import { availableLanguages } from "@/utils/constants/intl";
 import { availableThemes } from "@/utils/constants/theme";
 import { useTheme } from "@/components/Theme/ThemeProvider";
+import i18n from "@/intl/i18n";
 
 const Header: React.FC<IHeaderProps> = () => {
   const [showNotifications, setShowNotifications] = useState(false);
+  const dispatch = useAppDispatch();
   const notifications = useAppSelector(selectNotifications);
   const { setTheme } = useTheme();
 
@@ -36,7 +38,7 @@ const Header: React.FC<IHeaderProps> = () => {
 
   const handleLanguageSelect = (e: any) => {
     if (e && e.target && e.target.id) {
-      setLanguage({ language: e.target.id });
+      dispatch(setLanguage({ language: e.target.id }));
     }
   };
   const handleThemeSelect = (e: any) => {
@@ -50,7 +52,7 @@ const Header: React.FC<IHeaderProps> = () => {
       <Link to={"/project/create"}>
         <Button type="button" variant={"default"}>
           <BiPlus />
-          Create
+          {i18n.t(`component.button.create`)}
         </Button>
       </Link>
       <SearchInput

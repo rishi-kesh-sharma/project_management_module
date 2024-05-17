@@ -22,6 +22,19 @@ export interface IDropdownMenuProps {
   className?: string;
   onSelect?: (e: Event) => void;
 }
+export interface ICheckboxDropdownMenuProps {
+  menu: {
+    label: string;
+    items: IDropdownMenuItem[];
+  };
+  dropdownSize: "lg" | "md" | "sm" | "default";
+  dropdownVariant: "primary" | "secondary" | "default";
+  dropdownTriggerSize: ButtonProps["size"];
+  dropdownTriggerVariant: ButtonProps["variant"];
+  className?: string;
+  icon?: React.ReactNode;
+  onSelect?: (e: Event) => void;
+}
 
 export interface IIconDropdownMenuProps {
   menu: {
