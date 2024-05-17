@@ -1,10 +1,10 @@
 import { faker } from "@faker-js/faker";
-import { createNTasks } from "./task.js";
+import { createNSubTasks } from "./subTasks.js";
 
-function createRandomProjects(value) {
+function createRandomTasks(value) {
   return {
     id: faker.string.uuid(),
-    projectName: `Project ${value}`,
+    taskName: `Task ${value}`,
     createdBy: faker.person.fullName(),
     startDate: faker.date.past(),
     status: faker.helpers.arrayElement([
@@ -14,18 +14,18 @@ function createRandomProjects(value) {
       "Completed",
     ]),
     dueDate: faker.date.future(),
+    subTasks: createNSubTasks(4),
     priority: faker.helpers.arrayElement(["Low", "Normal", "High"]),
-    tasks: createNTasks(4),
   };
 }
 
-const user = createRandomProjects();
+const user = createRandomTasks();
 
-const createNProjects = (count) => {
+const createNTasks = (count) => {
   const data = Array.from(Array(count)).map((_, index) => {
-    return createRandomProjects(index + 1);
+    return createRandomTasks(index + 1);
   });
   return data;
 };
 
-export { user, createRandomProjects, createNProjects };
+export { user, createRandomTasks, createNTasks };

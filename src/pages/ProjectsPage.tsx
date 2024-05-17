@@ -1,4 +1,4 @@
-import Projects from "@/components/page/Projects/Projects";
+import Projects from "@/components/page/Projects/ProjectsDetail";
 
 interface Props {}
 
