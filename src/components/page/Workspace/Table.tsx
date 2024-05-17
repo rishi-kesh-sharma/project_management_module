@@ -1,6 +1,7 @@
 import AgGridTable from "@/components/custom/Tables/AgGridTable/AgGridTable";
-import { colDefs } from "./colDefs";
 import { IWorkspace } from "@/api/workspace";
+import TableToolbar from "@/components/custom/TableToolbar/TableToolbar";
+import { colDefs } from "./colDefs";
 
 const dropdownMenus = {
   items: [
@@ -10,10 +11,20 @@ const dropdownMenus = {
   ],
 };
 
-const WorkspaceDetailTable = ({ workspace }: { workspace: IWorkspace }) => {
+const ProjectTable = ({ workspace }: { workspace: IWorkspace }) => {
+  const handleSearch = (e: React.FormEvent) => {
+    e.preventDefault();
+  };
   if (!workspace) return "loading...";
   return (
     <AgGridTable
+      tableToolbar={
+        <TableToolbar
+          heading={workspace.workspaceName}
+          handleSearch={handleSearch}
+          dropdownMenus={dropdownMenus}
+        />
+      }
       rowData={workspace.projects}
       heading={workspace.workspaceName}
       dropdownMenus={dropdownMenus}
@@ -22,4 +33,4 @@ const WorkspaceDetailTable = ({ workspace }: { workspace: IWorkspace }) => {
   );
 };
 
-export default WorkspaceDetailTable;
+export default ProjectTable;

@@ -47,7 +47,7 @@ export interface IIconDropdownMenuProps {
 
 export interface IAvatarDropdownProps {
   menu: {
-    label: string;
+    // label: string;
     items: IDropdownMenuItem[];
   };
   dropdownSize: "lg" | "md" | "sm" | "default";
@@ -89,11 +89,56 @@ export interface IAvatarProps extends AvatarProps {
 }
 
 export interface IRowData {
+  id?: string;
   make: string;
   model: string;
   price: number;
   electric: boolean;
   month: string;
+}
+
+export interface IWorkspaceRowData {
+  id: string;
+  projectName: string;
+  createdBy: string;
+  startDate: string;
+  dueDate: string;
+  status: string;
+  priority: string;
+}
+
+export interface ISubTaskRowData {
+  id: string;
+  projectName: string;
+  createdBy: string;
+  startDate: string;
+  dueDate: string;
+  status: string;
+  priority: string;
+  assignee: string;
+}
+export interface ITaskRowData {
+  id: string;
+  projectName: string;
+  createdBy: string;
+  startDate: string;
+  dueDate: string;
+  status: string;
+  priority: string;
+  assignee: string;
+  subTasks: ISubTaskRowData[];
+}
+
+export interface IProjectRowData {
+  id: string;
+  projectName: string;
+  createdBy: string;
+  startDate: string;
+  dueDate: string;
+  status: string;
+  priority: string;
+  assignee: string;
+  tasks: ITaskRowData[];
 }
 
 export type RowModelType =
@@ -114,8 +159,9 @@ export interface IAgGridTableProps {
     | "ag-theme-quartz-dark"
     | "ag-theme-quartz-alpine";
   height?: number;
+  tableToolbar: React.ReactNode;
   // rowData?: IRowData[];
-  rowData?: IProject[] | undefined;
+  rowData?: [] | undefined;
   colDefs?: ColDef[];
   rowSelection?: "multiple" | "single";
   sidebar?: string | boolean;

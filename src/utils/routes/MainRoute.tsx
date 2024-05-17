@@ -7,7 +7,10 @@ import ProjectDetailPage from "@/pages/ProjectDetailPage.tsx";
 import { PrivateRoute } from "@/layouts/PrivateRoute.tsx";
 import { TRole } from "@/@types";
 import WorkspaceDetailPage from "@/pages/WorkspaceDetailPage.tsx";
+
 import i18n from "@/intl/i18n.ts";
+
+import { BreadcrumbSeparator } from "@/components/ui/Breadcrumb/breadcrumb.tsx";
 
 interface IROLE {
   ADMIN: TRole;
@@ -48,17 +51,34 @@ export function MainRoute() {
           path: "/workspace/:workspaceId",
           element: <WorkspaceDetailPage />,
           handle: {
-            crumb: (id: string) => {
-              return <Link to={`/workspace/${id}`}>{id}</Link>;
+            crumb: ({ workspaceId }: { workspaceId: string }) => {
+              return (
+                <Link to={`/workspace/${workspaceId}`}>{workspaceId}</Link>
+              );
             },
           },
         },
         {
-          path: "/workspace/:workspaceId/:projectId",
+          path: "/workspace/:workspaceId/project/:projectId",
           element: <ProjectDetailPage />,
           handle: {
-            crumb: (id: string) => {
-              return <Link to={`/project/${id}`}>{id}</Link>;
+            crumb: ({
+              workspaceId,
+              projectId,
+            }: {
+              workspaceId: string;
+              projectId: string;
+            }) => {
+              return (
+                <>
+                  {" "}
+                  <Link to={`/workspace/${workspaceId}`}>{workspaceId}</Link>
+                  <BreadcrumbSeparator />
+                  <Link to={`/workspace/${workspaceId}/project/${projectId}`}>
+                    {workspaceId}
+                  </Link>
+                </>
+              );
             },
           },
         },

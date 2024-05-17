@@ -29,10 +29,10 @@ const Breadcrumb = () => {
   console.log(matches, "matches");
 
   useEffect(() => {
-    const lastParamValue = Object.values(params).slice(-1)[0];
+    // const lastParamValue = Object.values(params).slice(-1)[0];
     const crumbs = matches
       .filter((match: RouteObject) => Boolean(match.handle?.crumb))
-      .map((match: RouteObject) => match.handle.crumb(lastParamValue));
+      .map((match: RouteObject) => match.handle.crumb(params));
     if (crumbs) setCrumbs(crumbs);
   }, [location, matches, params]);
   console.log(crumbs);
