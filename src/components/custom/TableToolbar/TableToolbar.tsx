@@ -1,6 +1,6 @@
 import {
   PlusIcon,
-  StartIcon,
+  StarIcon,
   ThreeHorizontalInsideCircle,
   ThreeVerticalDots,
 } from "@/components/icons/commonIcons";
@@ -8,6 +8,8 @@ import IconDropdown from "../common/IconDropdown/IconDropdown";
 import SearchInput from "../common/SearchInput/SearchInput";
 import { Button } from "@/components/plate-ui/button";
 import { IIconDropdownMenuProps } from "@/@types";
+import { getSuccessToast } from "@/utils/constants/toast";
+import { useTheme } from "@/components/Theme/ThemeProvider";
 
 export interface ITableToolbar {
   handleSearch: (e: React.FormEvent) => void;
@@ -19,13 +21,20 @@ const TableToolbar: React.FC<ITableToolbar> = ({
   dropdownMenus,
   heading,
 }) => {
+  const { theme } = useTheme();
+  const handleBookmarkClick = () => {
+    getSuccessToast("Workspace bookmarked", theme );
+  };
   return (
     <div>
       <div className="flex items-end w-full justify-between mb-[1rem]">
         <div className="flex items-center gap-5 ">
           <h2 className="text-nowrap text-xl font-semibold">{heading}</h2>
           <div className="flex gap-2  ">
-            <StartIcon className="text-orange-400 text-lg cursor-pointer" />
+            <StarIcon
+              onClick={handleBookmarkClick}
+              className="text-orange-400 text-lg cursor-pointer"
+            />
             <ThreeHorizontalInsideCircle className="text-primary text-lg cursor-pointer" />
           </div>
         </div>
