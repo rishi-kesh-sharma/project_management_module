@@ -22,8 +22,8 @@ export const sidebarItems = (injectables: ISidebarItemsProps) => [
     label: i18n.t("component.sidebar.menu.dashboard", "Dashboard"),
     link: `/`,
     icon: <OverviewIcon />,
-  },
 
+  },
   (() => {
     const workspaces = injectables.workspaces;
     const items = workspaces?.map((workspace: IWorkspace) => {
@@ -34,7 +34,7 @@ export const sidebarItems = (injectables: ISidebarItemsProps) => [
       return { link, label: workspace.workspaceName, items };
     });
     return {
-      label: "Workspaces",
+      label: i18n.t("component.sidebar.menu.workspaces", "Workspaces"),
       link: `/workspaces`,
       icon: <AnalysticIcon />,
       items,
@@ -49,7 +49,7 @@ export const sidebarItems = (injectables: ISidebarItemsProps) => [
     });
 
     return {
-      label: "Bookmarks",
+      label: i18n.t("component.sidebar.menu.bookmarks", "Marcadores"),
       link: `/bookmarks`,
       icon: <BookmarkIcon />,
       items,

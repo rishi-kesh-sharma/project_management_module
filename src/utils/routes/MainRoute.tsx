@@ -7,6 +7,7 @@ import ProjectDetailPage from "@/pages/ProjectDetailPage.tsx";
 import { PrivateRoute } from "@/layouts/PrivateRoute.tsx";
 import { TRole } from "@/@types";
 import WorkspaceDetailPage from "@/pages/WorkspaceDetailPage.tsx";
+import i18n from "@/intl/i18n.ts";
 
 interface IROLE {
   ADMIN: TRole;
@@ -34,7 +35,7 @@ export function MainRoute() {
       path: "/",
       handle: {
         crumb: () => {
-          return <Link to={`/`}>Dashboard</Link>;
+          return <Link to={`/`}>{i18n.t("component.sidebar.menu.dashboard", "Dashboard")}</Link>;
         },
       },
       element: <PrivateRoute roles={[ROLE.ADMIN]} component={CommonLayout} />,

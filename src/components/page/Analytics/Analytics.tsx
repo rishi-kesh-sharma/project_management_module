@@ -4,6 +4,7 @@ import BarChart from "@/components/custom/charts/BarChart/BarChart";
 import LineChart from "@/components/custom/charts/LineChart/LineChart";
 import PieChart from "@/components/custom/charts/PieChart/PieChart";
 import { Card } from "@/components/ui/Card/card";
+import i18n from "@/intl/i18n";
 import {
   barChartData,
   basicTableData,
@@ -29,12 +30,12 @@ const Analytics = () => {
 
       <div className="grid grid-cols-2 py-[2rem] gap-[2rem] overflow-hidden ">
         <div className="w-full  p-[2rem] border rounded-lg ">
-          <PieChart data={pieChartData} title={`Project Status`} />
+          <PieChart data={pieChartData} title={i18n.t("component.home.text.projectStatus", "Project Sta   tus")} />
         </div>
         <BasicTable {...basicTableData} />
 
         <div className="w-full col-span-2  p-[2rem] border rounded-lg ">
-          <BarChart title={`Budget Estimation`} data={barChartData} />
+          <BarChart title={i18n.t("component.home.text.budgetEstimation", "Budget Estimation")} data={barChartData} />
         </div>
         <div className="w-full col-span-2  p-[2rem] border rounded-lg ">
           <LineChart />

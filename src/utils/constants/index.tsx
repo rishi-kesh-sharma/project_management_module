@@ -1,3 +1,5 @@
+import i18n from "@/intl/i18n";
+
 export const avatarDropdownMenu = {
   label: "",
   items: [
@@ -78,7 +80,7 @@ export const ROLE = {
 };
 
 export const pieChartData = {
-  labels: ["Pending", "Not Started", "On Progress", "Completed"],
+  labels: [i18n.t("component.home.text.projectStatus.pending", "pending"), i18n.t("component.home.text.projectStatus.notStarted", "Not Started"), i18n.t("component.home.text.projectStatus.onProgress", "On Progress"), i18n.t("component.home.text.projectStatus.completed", "Completed"),],
   datasets: [
     {
       data: [12, 10, 8, 12],
@@ -111,14 +113,14 @@ export const barChartData = {
   ],
   datasets: [
     {
-      label: "Actual",
+      label: i18n.t("component.home.text.budgetEstimation.actual", "Actual"),
       data: [12, 10, 8, 12, 10, 8, 12, 10, 8, 12, 10, 8],
       backgroundColor: "#0E84ED",
       borderRadius: 5,
       pointStyle: "square",
     },
     {
-      label: "Expected",
+      label: i18n.t("component.home.text.budgetEstimation.expected", "Esperado"),
       data: [8, 15, 10, 12, 10, 8, 12, 10, 8, 12, 10, 8],
       backgroundColor: "#99D045",
       borderRadius: 5,
@@ -129,12 +131,12 @@ export const barChartData = {
 
 export const basicTableData = {
   // tableCaption: "A list of your recent invoices",
-  tableCaption: "Overdue Projects",
+  tableCaption: i18n.t("component.home.analytics.overdueProject", "Overdue Projects"),
   columns: [
-    { label: "Overdue", id: "overdue" },
-    { label: "Project Name", id: "projectName" },
+    { label: i18n.t("component.home.text.overdueProject.overdue", "Overdue"), id: "overdue" },
+    { label: i18n.t("component.home.text.overdueProject.projectName", "Nombre del proyecto"), id: "projectName" },
     {
-      label: "Deadline",
+      label: i18n.t("component.home.text.overdueProject.deadline", "Fecha límite"),
       id: "deadline",
     },
   ],
@@ -187,14 +189,14 @@ export const basicTableData = {
 export const cardData = [
   {
     count: 10,
-    label: "No. of Workspaces",
+    label: i18n.t("component.home.analytics.workspaceNum", "No. of workspace"),
   },
   {
     count: 40,
-    label: "No. of Projects",
+    label: i18n.t("component.home.analytics.projectNum", "No. of Projects"),
   },
   {
     count: 80,
-    label: "No. of Members ",
+    label: i18n.t("component.home.analytics.memberNum", "No. of Members"),
   },
 ];

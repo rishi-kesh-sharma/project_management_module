@@ -1,4 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
+import i18n from "@/intl/i18n";
 import {
   Chart as ChartJS,
   LinearScale,
@@ -35,7 +36,7 @@ const LineChart = () => {
       },
       title: {
         display: true,
-        text: "Sales Trend",
+        text: i18n.t("component.home.text.budgetEstimation", "Budget Estimation"),
         color: "#00000",
         position: "top" as const,
         align: "start" as const,
@@ -93,7 +94,7 @@ const LineChart = () => {
     ],
     datasets: [
       {
-        label: "Income",
+        label: i18n.t("component.home.text.salesTrend.income", "Ingreso"),
         data: [15, 12, 10, 18, 22, 16, 28, 24, 30, 20, 18, 14],
         borderColor: "#0E84ED",
         backgroundColor: "rgba(14, 132, 237, 0.1)", // Optional: Add a transparent fill
@@ -104,7 +105,7 @@ const LineChart = () => {
         fill: false, // Fill the area under the line
       },
       {
-        label: "Expense",
+        label: i18n.t("component.home.text.salesTrend.expense", "Gastos"),
         data: [10, 15, 8, 12, 18, 14, 20, 22, 16, 25, 30, 28],
         borderColor: "#99D045",
         backgroundColor: "rgba(153, 208, 69, 0.1)", // Optional: Add a transparent fill
