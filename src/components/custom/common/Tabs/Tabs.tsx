@@ -1,13 +1,14 @@
 import { ITabContent, ITabTrigger, TTabsProps } from "@/@types";
 import { Button, buttonVariants } from "@/components/ui/Button/button";
 import {
-  TabsContent,
-  TabsList,
-  TabsTrigger,
-  Tabs as ShadTabs,
+    TabsContent,
+    TabsList,
+    TabsTrigger,
+    Tabs as ShadTabs,
 } from "@/components/ui/Tabs/tabs";
 
 const Tabs = ({ triggers, contents }: TTabsProps) => {
+
   return (
     <ShadTabs defaultValue={triggers[0].id} className="">
       <TabsList className="w-full px-0 pb-0 flex border-b-[3px] border-b-gray-100 shadow-none items-center justify-between    py-[1rem] bg-white  gap-[1rem] dark:bg-background rounded-none dark:border-gray-700  ">
@@ -34,6 +35,7 @@ const Tabs = ({ triggers, contents }: TTabsProps) => {
       })}
     </ShadTabs>
   );
+
 };
 
 export default Tabs;

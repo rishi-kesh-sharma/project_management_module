@@ -25,13 +25,14 @@ import {
 } from "@/components/ui/Accordion/accordion";
 import { buttonVariants } from "@/components/ui/Button/button";
 import { cn } from "@/lib/utils";
+import i18n from "@/intl/i18n";
 
 const settings = {
-  label: "Settings",
+  label: i18n.t("component.sidebar.menu.settings", "Settings"),
   icon: <SettingIcon />,
   items: [
-    { label: "My Account", link: "/my-account", icon: <AccountIcon /> },
-    { label: "Profile", link: "/profile", icon: <AccountIcon /> },
+    { label: i18n.t("component.sidebar.menu.account", "Account"), link: "/my-account", icon: <AccountIcon /> },
+    { label: i18n.t("component.sidebar.menu.profile", "profile"), link: "/profile", icon: <AccountIcon /> },
   ],
 };
 const Sidebar: React.FC<SidebarProps> = ({ path, items }) => {
@@ -210,7 +211,7 @@ const Sidebar: React.FC<SidebarProps> = ({ path, items }) => {
 
           <div className="flex items-center pl-4 gap-1 hover:text-primary hover:bg-white dark:hover:bg-primary/15 py-4 text-sm  ">
             <LogoutIcon className="" />
-            {isSidebarExpanded && "Log out"}
+            {isSidebarExpanded && i18n.t("component.sidebar.menu.logout", "Log out")}
           </div>
         </div>
       </div>

@@ -58,7 +58,7 @@ const Header: React.FC<IHeaderProps> = () => {
       <SearchInput
         id="global-search"
         name="global-search"
-        placeholder="Search here..."
+        placeholder={i18n.t("component.header.search", "Search")}
         inputSize="lg"
         className=""
         onSubmit={handleGlobalSearch}
@@ -66,7 +66,7 @@ const Header: React.FC<IHeaderProps> = () => {
 
       <div className="flex gap-5 items-center px-2">
         <Dropdown
-          menu={{ label: "Select theme", items: availableThemes }}
+          menu={{ label: i18n.t("component.button.theme", "Select Theme"), items: availableThemes }}
           dropdownSize="sm"
           dropdownVariant="secondary"
           dropdownTriggerSize={"sm"}
@@ -74,7 +74,7 @@ const Header: React.FC<IHeaderProps> = () => {
           onSelect={handleThemeSelect}
         />
         <Dropdown
-          menu={{ label: "Select language", items: availableLanguages }}
+          menu={{ label: i18n.t("component.button.language", "Select Language"), items: availableLanguages }}
           dropdownSize="sm"
           dropdownVariant="secondary"
           dropdownTriggerSize={"sm"}

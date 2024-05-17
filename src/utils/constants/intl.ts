@@ -13,4 +13,11 @@ export const availableLanguages = [
     id: "fr",
     isLink: false,
   },
+  {
+    label: "Spanish",
+    value: "es",
+    key: "es",
+    id: "es",
+    isLink: false,
+  },
 ];

@@ -1,3 +1,5 @@
+import i18n from "@/intl/i18n";
+
 const breadcrumbsList = [
   {
     path: "/",
@@ -13,13 +15,13 @@ const breadcrumbsList = [
     breadcrumb: [
       {
         path: "/",
-        label: "Dashboard",
+        label: i18n.t("component.sidebar.menu.dashboard", "Dashboard"),
       },
       {
         path: "/workspaces",
         label: "Workspaces",
       },
-   
+
       {
         path: "/workspace1",
         label: "Workspace 1",
@@ -31,13 +33,13 @@ const breadcrumbsList = [
     breadcrumb: [
       {
         path: "/",
-        label: "Dashboard",
+        label: i18n.t("component.sidebar.menu.dashboard", "Dashboard"),
       },
       {
         path: "/workspaces",
         label: "Workspaces",
       },
-     
+
     ],
   },
   {
@@ -45,7 +47,7 @@ const breadcrumbsList = [
     breadcrumb: [
       {
         path: "/",
-        label: "Dashboard",
+        label: i18n.t("component.sidebar.menu.dashboard", "Dashboard"),
       },
       {
         path: "/workspaces",
@@ -58,7 +60,7 @@ const breadcrumbsList = [
     breadcrumb: [
       {
         path: "/",
-        label: "Dashboard",
+        label: i18n.t("component.sidebar.menu.dashboard", "Dashboard"),
       },
       {
         path: "/project",
@@ -75,7 +77,7 @@ const breadcrumbsList = [
     breadcrumb: [
       {
         path: "/",
-        label: "Dashboard",
+        label: i18n.t("component.sidebar.menu.dashboard", "Dashboard"),
       },
       {
         path: "/project",
@@ -92,7 +94,7 @@ const breadcrumbsList = [
     breadcrumb: [
       {
         path: "/",
-        label: "Dashboard",
+        label:i18n.t("component.sidebar.menu.dashboard", "Dashboard"),
       },
       {
         path: "/project",
@@ -109,7 +111,7 @@ const breadcrumbsList = [
     breadcrumb: [
       {
         path: "/",
-        label: "Dashboard",
+        label:i18n.t("component.sidebar.menu.dashboard", "Dashboard"),
       },
       {
         path: "/bookmarked",
