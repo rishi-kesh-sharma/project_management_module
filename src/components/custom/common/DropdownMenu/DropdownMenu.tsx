@@ -36,9 +36,11 @@ const Dropdown: React.FC<IDropdownMenuProps> = ({
   dropdownVariant,
   dropdownTriggerSize,
   dropdownTriggerVariant,
+  onSelect,
+  ...props
 }) => {
   return (
-    <DropdownMenu>
+    <DropdownMenu {...props}>
       <DropdownMenuTrigger
         // className={`flex items-center gap-2 justify-between ${dropdownTriggerVariants({ dropdownTriggerSize, dropdownTriggerVariant })}`}
         className={`flex items-center gap-2 justify-between ${buttonVariants({ size: dropdownTriggerSize, variant: dropdownTriggerVariant })}`}>
@@ -49,7 +51,11 @@ const Dropdown: React.FC<IDropdownMenuProps> = ({
         {dropdownVariant !== "primary" && <DropdownMenuSeparator />}
         {menu.items.map((item) => {
           return (
-            <DropdownMenuItem className="cursor-pointer">
+            <DropdownMenuItem
+              textValue={item.id}
+              id={item.id}
+              onSelect={onSelect}
+              className="cursor-pointer text-foreground">
               {item.label}
             </DropdownMenuItem>
           );

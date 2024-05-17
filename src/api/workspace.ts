@@ -37,7 +37,7 @@ export const workspaceApi = createApi({
     addWorkspace: build.mutation<IWorkspace, Partial<IWorkspace>>({
       query: (body) => ({
         url: `workspaces`,
-        method: "WORKSPACE",
+        method: "POST",
         body,
       }),
       invalidatesTags: [{ type: "Workspace", id: "LIST" }],

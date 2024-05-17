@@ -14,6 +14,7 @@ import { CiEdit } from "react-icons/ci";
 import { PiBookmarkSimpleLight } from "react-icons/pi";
 import { IoEyeOutline } from "react-icons/io5";
 import { BsThreeDotsVertical } from "react-icons/bs";
+import { MdOutlineAccountCircle } from "react-icons/md";
 export {
   FaRegCircleDot as GoalsIcon,
   HiOutlineChartBar as PlanningIcon,
@@ -32,4 +33,5 @@ export {
   BiChevronRight as RightAngularArrowIcon,
   IoEyeOutline as EyeIcon,
   BsThreeDotsVertical as ThreeVerticalDots,
+  MdOutlineAccountCircle as AccountIcon,
 };

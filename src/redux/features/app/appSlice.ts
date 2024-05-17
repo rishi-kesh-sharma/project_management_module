@@ -16,20 +16,17 @@ interface INotification {
   // date: Date;
   time: string;
 }
-interface IBreadCrumb {
+export interface IBreadCrumb {
   path: string;
   label: string;
 }
-interface INavigation {
-  currentPath: string;
-  breadcrumbItems: IBreadCrumb[];
-}
+
 interface AppState {
   isSidebarExpanded: boolean;
   isLoggedIn: boolean;
   user: IUser;
   notifications: INotification[];
-  navigation: INavigation;
+  language: "en";
 }
 
 // Define the initial state using that type
@@ -62,14 +59,8 @@ const initialState: AppState = {
       time: "11:59 PM",
     },
   ],
-  navigation: {
-    currentPath: "/components/breadcrumb",
-    breadcrumbItems: [
-      { label: "Home", path: "/" },
-      { label: "Components", path: "/components" },
-      { label: "BreadCrumb", path: "/components/breadcrumb" },
-    ],
-  },
+
+  language: "en",
 };
 
 export const appSlice = createSlice({
@@ -83,19 +74,13 @@ export const appSlice = createSlice({
       state.isSidebarExpanded = false;
     },
 
-    updateNavigation: (
-      state,
-      action: PayloadAction<{ location: { pathname: string } }>
-    ) => {
-      state.navigation = {
-        ...state.navigation,
-        currentPath: action.payload.location.pathname,
-      };
+    setLanguage: (state, action: PayloadAction<{ language: "en" }>) => {
+      state.language = action.payload.language;
     },
   },
 });
 
-export const { expandSidebar, collapseSidebar } = appSlice.actions;
+export const { expandSidebar, collapseSidebar, setLanguage } = appSlice.actions;
 
 // Other code such as selectors can use the imported `RootState` type
 export const selectIsSidebarExpanded = (state: RootState) =>
@@ -103,7 +88,7 @@ export const selectIsSidebarExpanded = (state: RootState) =>
 export const selectNotifications = (state: RootState) =>
   state.app.notifications;
 export const selectUser = (state: RootState) => state.app.user;
-export const selectNavigation = (state: RootState) => state.app.navigation;
 export const selectIsLoggedIn = (state: RootState) => state.app.isLoggedIn;
+export const selectLanguage = (state: RootState) => state.app.language;
 
 export default appSlice.reducer;

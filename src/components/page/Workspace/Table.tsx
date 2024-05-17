@@ -1,16 +1,16 @@
 import AgGridTable from "@/components/custom/Tables/AgGridTable/AgGridTable";
 import { colDefs } from "./colDefs";
+import { IWorkspace } from "@/api/workspace";
 
 const dropdownMenus = {
-  label: "Actions",
   items: [
-    { id: 1, isLink: false, label: "Export CSV" },
-    { id: 2, isLink: false, label: "Export XLSX" },
-    { id: 3, isLink: false, label: "Send Email" },
+    { id: "1", isLink: false, label: "Export CSV" },
+    { id: "2", isLink: false, label: "Export XLSX" },
+    { id: "3", isLink: false, label: "Send Email" },
   ],
 };
 
-const WorkspaceDetailTable = ({ workspace }: { workspace: any }) => {
+const WorkspaceDetailTable = ({ workspace }: { workspace: IWorkspace }) => {
   if (!workspace) return "loading...";
   return (
     <AgGridTable

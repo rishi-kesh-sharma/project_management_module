@@ -66,7 +66,7 @@ const AvatarDropdown: React.FC<IAvatarDropdownProps> = ({
         break;
 
       case "secondary":
-        classes = "bg-gray-100 dark:bg-primary";
+        classes = "bg-gray-100 ";
         break;
 
       default:

@@ -122,6 +122,7 @@ export const barChartData = {
       data: [8, 15, 10, 12, 10, 8, 12, 10, 8, 12, 10, 8],
       backgroundColor: "#99D045",
       borderRadius: 5,
+      pointStyle: "square",
     },
   ],
 };

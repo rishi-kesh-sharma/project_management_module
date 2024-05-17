@@ -1,6 +1,7 @@
 // import { getUniqueKey } from "@/utils/methods/stringMethods";
 import config from "@/config";
 import {
+  AccountIcon,
   LeftAngularArrowIcon,
   LogoutIcon,
   RightAngularArrowIcon,
@@ -29,8 +30,8 @@ const settings = {
   label: "Settings",
   icon: <SettingIcon />,
   items: [
-    { label: "My Account", link: "/my-account" },
-    { label: "Profile", link: "/profile" },
+    { label: "My Account", link: "/my-account", icon: <AccountIcon /> },
+    { label: "Profile", link: "/profile", icon: <AccountIcon /> },
   ],
 };
 const Sidebar: React.FC<SidebarProps> = ({ path, items }) => {
@@ -198,6 +199,7 @@ const Sidebar: React.FC<SidebarProps> = ({ path, items }) => {
 
                         //   child.disabled && "cursor-not-allowed opacity-80"
                       )}>
+                      {child.icon}
                       {isSidebarExpanded && child.label}
                     </Link>
                   ))}
@@ -206,7 +208,7 @@ const Sidebar: React.FC<SidebarProps> = ({ path, items }) => {
             </AccordionItem>
           </Accordion>
 
-          <div className="flex items-center pl-4 gap-1 hover:text-primary hover:bg-white py-4 text-sm  ">
+          <div className="flex items-center pl-4 gap-1 hover:text-primary hover:bg-white dark:hover:bg-primary/15 py-4 text-sm  ">
             <LogoutIcon className="" />
             {isSidebarExpanded && "Log out"}
           </div>

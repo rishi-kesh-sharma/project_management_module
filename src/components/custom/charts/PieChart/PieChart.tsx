@@ -1,8 +1,9 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
+import { IPieChartProps } from "@/@types";
 import { Chart as ChartJS, ArcElement, Tooltip, Title, Legend } from "chart.js";
 import { Doughnut } from "react-chartjs-2";
 
-const PieChart = ({ title, data }: { title: string }) => {
+const PieChart: React.FC<IPieChartProps> = ({ title, data }) => {
   ChartJS.register(ArcElement, Tooltip, Title, Legend);
   const options: any = {
     plugins: {

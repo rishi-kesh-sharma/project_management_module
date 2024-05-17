@@ -1,5 +1,3 @@
-import * as React from "react";
-
 import { Card, CardContent } from "@/components/ui/Card/card";
 import {
   Carousel as ShadCarousel,
@@ -8,14 +6,7 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/components/ui/Carousel/carousel";
-
-export interface ICarouselItem {
-  content: React.ReactNode;
-}
-
-export interface ICarouselProps {
-  carouselData: ICarouselItem[];
-}
+import { ICarouselItem, ICarouselProps } from "@/@types";
 
 export default function Carousel({ carouselData }: ICarouselProps) {
   return (

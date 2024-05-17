@@ -1,3 +1,4 @@
+import { IModalProps } from "@/@types";
 import {
   Dialog,
   DialogContent,
@@ -7,15 +8,6 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/Dialog/dialog";
-
-export interface IModalProps {
-  trigger: React.ReactNode;
-  title: React.ReactNode;
-  description: React.ReactNode;
-  body: React.ReactNode;
-
-  footer: React.ReactNode;
-}
 
 const Modal: React.FC<IModalProps> = ({
   trigger,

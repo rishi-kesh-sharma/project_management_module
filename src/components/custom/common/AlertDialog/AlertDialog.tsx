@@ -1,3 +1,4 @@
+import { IAlertDialogProps } from "@/@types";
 import {
   AlertDialog as ShadAlertDialog,
   AlertDialogAction,
@@ -9,15 +10,6 @@ import {
   AlertDialogTitle,
   AlertDialogTrigger,
 } from "@/components/ui/AlertDialog/alert-dialog";
-
-interface IAlertDialogProps {
-  trigger: React.ReactNode;
-  title: string;
-  //   headerTitleClasses: string;
-  description: string;
-  CancelText: string;
-  actionText: string;
-}
 
 export default function AlertDialog(props: IAlertDialogProps) {
   return (

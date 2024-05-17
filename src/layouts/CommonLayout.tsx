@@ -8,23 +8,24 @@ import { useGetWorkspaceQuery } from "@/api/workspace";
 import { useGetBookmarkQuery } from "@/api/bookmark.ts";
 
 const CommonLayout = () => {
-  const location = useLocation();
-  const path = location.pathname;
-
+  const { pathname: currentPath } = useLocation();
   const { data: workspaces, isLoading } = useGetWorkspaceQuery("");
   const { data: bookmarks } = useGetBookmarkQuery("");
 
   if (isLoading) return "Loading...";
   return (
-    <div className="relative w-full min-h-screen flex  ">
-      <Sidebar items={sidebarItems({ workspaces, bookmarks })} path={path} />
+    <div className="relative w-full min-h-screen flex">
+      <Sidebar
+        items={sidebarItems({ workspaces, bookmarks })}
+        path={currentPath}
+      />
 
       <div className={`flex flex-col flex-1 `}>
         <div className="z-[100] sticky top-0 flex h-[70px] w-full justify-between  items-center px-8 border-b-2 border-primary-100 bg-background">
           <Header />
         </div>
 
-        <div className="w-full px-[2rem] py-[1rem]">
+        <div className="w-full px-[2rem] pt-[1rem]">
           <div>
             <Breadcrumb />
           </div>

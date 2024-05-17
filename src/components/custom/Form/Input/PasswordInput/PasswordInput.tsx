@@ -3,17 +3,8 @@ import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/Button/button";
 import { FaEye } from "react-icons/fa";
 import { FaEyeSlash } from "react-icons/fa";
-import Input, { InputProps } from "@/components/custom/common/Input/Input";
-interface IPasswordInputProps {
-  size?: InputProps["size"];
-  placeholder?: string;
-  required?: boolean;
-  label?: string;
-  name: string;
-  id: string;
-  onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
-  className?: string;
-}
+import Input from "@/components/custom/common/Input/Input";
+import { IPasswordInputProps } from "@/@types";
 
 const PasswordInput: React.FC<IPasswordInputProps> = ({
   className,

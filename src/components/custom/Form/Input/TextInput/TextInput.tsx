@@ -1,16 +1,6 @@
-import Input, { InputProps } from "@/components/custom/common/Input/Input";
+import { ITextInputProps } from "@/@types";
+import Input from "@/components/custom/common/Input/Input";
 import { cn } from "@/lib/utils";
-
-interface ITextInputProps {
-  size?: InputProps["size"];
-  placeholder?: string;
-  required?: boolean;
-  label?: string;
-  name: string;
-  id: string;
-  onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
-  className?: string;
-}
 
 const TextInput: React.FC<ITextInputProps> = ({
   placeholder,

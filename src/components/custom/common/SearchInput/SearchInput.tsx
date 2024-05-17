@@ -1,27 +1,19 @@
 import { cn } from "@/lib/utils";
-import Input, { InputProps } from "../Input/Input";
-
-export interface ISearchInput {
-  inputSize?: InputProps["size"];
-  label?: string;
-  placeholder?: string;
-  id: string;
-  className: string;
-  name: string;
-}
+import Input from "../Input/Input";
+import { ISearchInput } from "@/@types";
 
 const SearchInput: React.FC<ISearchInput> = ({
   inputSize,
-  // buttonProps,
   label,
   placeholder,
   id,
   name,
   className,
+  onSubmit,
   ...props
 }) => {
   return (
-    <form className=" ">
+    <form onSubmit={onSubmit} className=" ">
       <label
         htmlFor="default-search"
         className="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white">
@@ -54,12 +46,6 @@ const SearchInput: React.FC<ISearchInput> = ({
           {...props}
           className={cn(`pl-9`, className)}
         />
-        {/* <Button
-          {...buttonProps}
-          className=" absolute end-2.5 top-[50%] translate-y-[-50%]  "
-          type="submit">
-          {label}
-        </Button> */}
       </div>
     </form>
   );

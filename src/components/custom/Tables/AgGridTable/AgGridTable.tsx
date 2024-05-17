@@ -1,11 +1,5 @@
 "use strict";
-import React, {
-  useCallback,
-  useEffect,
-  useMemo,
-  useRef,
-  useState,
-} from "react";
+import React, { useEffect, useMemo, useRef, useState } from "react";
 import { Helmet } from "react-helmet";
 import { AgGridReact } from "@ag-grid-community/react";
 // import { ClipboardModule } from "@ag-grid-enterprise/clipboard";
@@ -49,6 +43,7 @@ import "@ag-grid-community/styles/ag-theme-alpine.css";
 import SearchInput from "../../common/SearchInput/SearchInput";
 import IconDropdown from "../../common/IconDropdown/IconDropdown";
 import { ThreeVerticalDots } from "@/components/icons/commonIcons";
+import { useTheme } from "@/components/Theme/ThemeProvider";
 
 // module registration
 ModuleRegistry.registerModules([
@@ -67,7 +62,7 @@ ModuleRegistry.registerModules([
 // react table props interface
 const AgGridTable: React.FC<IAgGridTableProps> = ({
   heading = "Table Heading",
-  dropdownMenus = [],
+  dropdownMenus,
   theme = "ag-theme-quartz",
   height = 500,
   variant,
@@ -97,6 +92,7 @@ const AgGridTable: React.FC<IAgGridTableProps> = ({
   const [rowData, setRowData] = useState(tableData);
 
   const [columnDefs, setColumnDefs] = useState<ColDef[]>();
+  const { theme: appTheme } = useTheme();
 
   // container style
   // const containerStyle = useMemo(() => ({ width: "100%", height: "100%" }), []);
@@ -117,7 +113,8 @@ const AgGridTable: React.FC<IAgGridTableProps> = ({
   const defaultColDef = useMemo<ColDef>(() => {
     return {
       headerClass(params) {
-        return "bg-[#F1F1F1]";
+        console.log(params);
+        if (appTheme !== "dark") return "bg-[#F1F1F1]";
       },
       filter: false,
       editable: true,
@@ -229,9 +226,13 @@ const AgGridTable: React.FC<IAgGridTableProps> = ({
           Export XLSX{" "}
         </Button> */
   }
+
+  const handleSearch = (e: React.FormEvent) => {
+    e.preventDefault();
+  };
   return (
     <div style={containerStyle}>
-      <div className="flex items-end w-full justify-between my-[1rem]">
+      <div className="flex items-end w-full justify-between mb-[1rem]">
         <h2 className="font-semibold text-xl">{heading}</h2>
         <div className="w-full flex flex-col gap-[1rem]  items-end">
           <IconDropdown
@@ -241,6 +242,7 @@ const AgGridTable: React.FC<IAgGridTableProps> = ({
             icon={<ThreeVerticalDots />}
           />
           <SearchInput
+            onSubmit={handleSearch}
             id="workspace-search"
             name="workspace-search"
             inputSize="lg"
@@ -249,7 +251,9 @@ const AgGridTable: React.FC<IAgGridTableProps> = ({
           />
         </div>
       </div>
-      <div className={`${theme}`} style={{ ...gridStyle, height: height }}>
+      <div
+        className={`${appTheme == "dark" ? "ag-theme-quartz-dark" : theme}`}
+        style={{ ...gridStyle, height: height }}>
         {variant === "primary" && (
           <Helmet>
             <link rel="stylesheet" href="/src/AgGridPrimaryTable.css" />

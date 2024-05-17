@@ -12,24 +12,7 @@ import {
   CommandSeparator,
   CommandShortcut,
 } from "@/components/ui/Command//command";
-
-export interface ICommandItem {
-  icon?: React.ReactNode;
-  text?: string;
-  shortcut?: string;
-}
-
-export interface ICommandGroup {
-  heading: string;
-  commandItems: ICommandItem[];
-}
-export interface ICommandProps {
-  shortcut: string;
-
-  placeholder: string;
-  emptyText: string;
-  commandGroups: ICommandGroup[];
-}
+import { ICommandGroup, ICommandItem, ICommandProps } from "@/@types";
 
 export default function CommandDialog({
   commandData: { shortcut, placeholder, emptyText, commandGroups },

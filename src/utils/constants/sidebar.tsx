@@ -11,10 +11,11 @@ import {
   // SettingIcon,
 } from "@/components/icons/commonIcons";
 
-export const sidebarItems = (injectables: {
+interface ISidebarItemsProps {
   workspaces: IWorkspace[];
   bookmarks: IProject[];
-}) => [
+}
+export const sidebarItems = (injectables: ISidebarItemsProps) => [
   {
     label: "Dashboard ",
     link: `/`,

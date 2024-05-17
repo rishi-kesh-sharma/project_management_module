@@ -1,129 +1,122 @@
-const breadcrumbs = [
-    {
+const breadcrumbsList = [
+  {
+    path: "/",
+    breadcrumb: [
+      {
         path: "/",
-        breadcrumb: [
-            {
-                path: "/",
-                label: ""
-            }
-        ]
-    },
-    {
-        path: "/workspaces/detail/:workspaceId",
-        breadcrumb: [
-            {
-                path: "/",
-                label: "Dashboard"
-            },
-            {
-                path: "/workspaces",
-                label: "Workspaces"
-            },
-            {
-                path: "/detail",
-                label: "Detail"
-            },
-            {
-                path: "/workspace1",
-                label: "Workspace 1"
-            }
-        ]
-    },
-    {
-        path: "/workspaces/detail",
-        breadcrumb: [
-            {
-                path: "/",
-                label: "Dashboard"
-            },
-            {
-                path: "/workspaces",
-                label: "Workspaces"
-            },
-            {
-                path: "/detail",
-                label: "Detail"
-            }
-        ]
-    },
-    {
+        label: "",
+      },
+    ],
+  },
+  {
+    path: "/workspaces/detail/:workspaceId",
+    breadcrumb: [
+      {
+        path: "/",
+        label: "Dashboard",
+      },
+      {
         path: "/workspaces",
-        breadcrumb: [
-            {
-                path: "/",
-                label: "Dashboard"
-            },
-            {
-                path: "/workspaces",
-                label: "Workspaces"
-            }
-        ]
-    },
-    {
-        path: "/project/:projectId",
-        breadcrumb: [
-            {
-                path: "/",
-                label: "Dashboard"
-            },
-            {
-                path: "/project",
-                label: "Projects"
-            },
-            {
-                path: "/project1",
-                label: "Project 1"
-            }
-        ]
-
-    },
-    {
-        path: "/project/updateProject",
-        breadcrumb: [
-            {
-                path: "/",
-                label: "Dashboard"
-            },
-            {
-                path: "/project",
-                label: "Projects"
-            },
-            {
-                path: "/updateProject",
-                label: "Update Project"
-            }
-        ]
-    },
-    {
-        path: "/project/createProject",
-        breadcrumb: [
-            {
-                path: "/",
-                label: "Dashboard"
-            },
-            {
-                path: "/project",
-                label: "Projects"
-            },
-            {
-                path: "/createProject",
-                label: "Create Project"
-            }
-        ]
-    },
-    {
+        label: "Workspaces",
+      },
+   
+      {
+        path: "/workspace1",
+        label: "Workspace 1",
+      },
+    ],
+  },
+  {
+    path: "/workspaces/detail",
+    breadcrumb: [
+      {
+        path: "/",
+        label: "Dashboard",
+      },
+      {
+        path: "/workspaces",
+        label: "Workspaces",
+      },
+     
+    ],
+  },
+  {
+    path: "/workspaces",
+    breadcrumb: [
+      {
+        path: "/",
+        label: "Dashboard",
+      },
+      {
+        path: "/workspaces",
+        label: "Workspaces",
+      },
+    ],
+  },
+  {
+    path: "/project/:projectId",
+    breadcrumb: [
+      {
+        path: "/",
+        label: "Dashboard",
+      },
+      {
+        path: "/project",
+        label: "Projects",
+      },
+      {
+        path: "/project1",
+        label: "Project 1",
+      },
+    ],
+  },
+  {
+    path: "/project/updateProject",
+    breadcrumb: [
+      {
+        path: "/",
+        label: "Dashboard",
+      },
+      {
+        path: "/project",
+        label: "Projects",
+      },
+      {
+        path: "/updateProject",
+        label: "Update Project",
+      },
+    ],
+  },
+  {
+    path: "/project/createProject",
+    breadcrumb: [
+      {
+        path: "/",
+        label: "Dashboard",
+      },
+      {
+        path: "/project",
+        label: "Projects",
+      },
+      {
+        path: "/createProject",
+        label: "Create Project",
+      },
+    ],
+  },
+  {
+    path: "/bookmarked",
+    breadcrumb: [
+      {
+        path: "/",
+        label: "Dashboard",
+      },
+      {
         path: "/bookmarked",
-        breadcrumb: [
-            {
-                path: "/",
-                label: "Dashboard"
-            },
-            {
-                path: "/bookmarked",
-                label: "Bookmarked"
-            }
-        ]
-    }
-]
+        label: "Bookmarked",
+      },
+    ],
+  },
+];
 
-export default breadcrumbs
+export default breadcrumbsList;

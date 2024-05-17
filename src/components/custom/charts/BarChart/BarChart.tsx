@@ -1,4 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
+import { IBarChartProps } from "@/@types";
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -10,8 +11,7 @@ import {
 } from "chart.js";
 import { Bar } from "react-chartjs-2";
 
-
-const BarChart = ({ data, title }: { title: string }) => {
+const BarChart: React.FC<IBarChartProps> = ({ data, title }) => {
   ChartJS.register(
     CategoryScale,
     LinearScale,

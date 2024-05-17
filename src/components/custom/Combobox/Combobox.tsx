@@ -16,23 +16,7 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from "@/components/ui/Popover/popover";
-
-export interface IComboboxItem {
-  icon?: React.ReactNode;
-  label?: string;
-  value?: string;
-}
-
-export interface IComboboxGroup {
-  heading: string;
-  comboboxItems: IComboboxItem[];
-}
-export interface IComboboxProps {
-  placeholder: string;
-  defaultText: string;
-  emptyText: string;
-  comboboxGroups: IComboboxGroup[];
-}
+import { IComboboxGroup, IComboboxItem, IComboboxProps } from "@/@types";
 
 export default function Combobox({
   comboboxData: { defaultText, placeholder, emptyText, comboboxGroups },

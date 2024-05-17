@@ -3,7 +3,6 @@
 @tailwind components;
 @tailwind utilities;
 
-
 @layer base {
   :root {
     --background: 0 0% 100%;
@@ -66,7 +65,9 @@
     --destructive: 0 62.8% 30.6%;
     --destructive-foreground: 210 40% 98%;
 
-    --border: 214.3 31.8% 91.4%;
+    /* --border: 214.3 31.8% 91.4%; */
+    /* --border: 221°, 3%, 86%; */
+    --border: 210°, 1%, 50%;
 
     --input: 214.3 31.8% 91.4%;
 

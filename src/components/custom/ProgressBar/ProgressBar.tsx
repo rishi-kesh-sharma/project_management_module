@@ -5,13 +5,7 @@ import * as React from "react";
 import { Progress } from "@/components/ui/Progress/progress";
 import { cva } from "class-variance-authority";
 import { cn } from "@/lib/utils";
-
-interface IProgressBarProps {
-  progress: number;
-  size: "lg" | "md" | "sm" | "full";
-  variant: "primary" | "secondary";
-  className: string;
-}
+import { IProgressBarProps } from "@/@types";
 
 const progressBarVariants = cva("", {
   variants: {

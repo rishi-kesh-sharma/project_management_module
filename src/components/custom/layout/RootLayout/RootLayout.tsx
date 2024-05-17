@@ -2,15 +2,12 @@ import { cn } from "@udecode/cn";
 
 import { TooltipProvider } from "@/components/plate-ui/tooltip";
 import { ThemeProvider } from "@/components/Theme/ThemeProvider";
-
-interface RootLayoutProps {
-  children: React.ReactNode;
-}
+import { RootLayoutProps } from "@/@types";
 
 export default function RootLayout({ children }: RootLayoutProps) {
   return (
     <>
-      <ThemeProvider defaultTheme="system" storageKey="vite-ui-theme">
+      <ThemeProvider defaultTheme={"system"} storageKey="vite-ui-theme">
         <div
           className={cn(
             "min-h-screen bg-background font-sans antialiased",

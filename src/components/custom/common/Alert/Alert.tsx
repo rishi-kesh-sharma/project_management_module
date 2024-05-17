@@ -5,11 +5,7 @@ import {
   AlertDescription,
   AlertTitle,
 } from "@/components/ui/Alert/alert";
-
-interface IAlertProps {
-  title: string;
-  description: string;
-}
+import { IAlertProps } from "@/@types";
 
 export default function Alert({ title, description }: IAlertProps) {
   return (

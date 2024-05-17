@@ -1,6 +1,5 @@
 import CommonLayout from "../../layouts/CommonLayout.tsx";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
-import ErrorPage404 from "@/components/custom/common/404Error/ErrorPage404.tsx";
+import { createBrowserRouter, Link, RouterProvider } from "react-router-dom";
 import LoginPage from "@/components/page/Login/Login.tsx";
 import RegisterPage from "@/components/page/Register/Register.tsx";
 import AnalyticsPage from "@/pages/AnalyticsPage.tsx";
@@ -22,29 +21,43 @@ const ROLE: IROLE = {
 };
 
 export function MainRoute() {
-  return (
-    <BrowserRouter>
-      <Routes>
-        {/* private routes */}
-        <Route
-          path="/"
-          element={
-            <PrivateRoute roles={[ROLE.ADMIN]} component={CommonLayout} />
-          }>
-          <Route path="/" element={<AnalyticsPage />} />
-          <Route
-            path="/workspace/:workspaceId"
-            element={<WorkspaceDetailPage />}
-          />
-          <Route path="/projects/:projectId" element={<ProjectDetailPage />} />
-        </Route>
-
-        {/* public routes */}
-        <Route path="/login" element={<LoginPage />} />
-        <Route path="/signup" element={<RegisterPage />} />
-        <Route path="*" element={<ErrorPage404 />} />
-        <Route />
-      </Routes>
-    </BrowserRouter>
-  );
+  const router = createBrowserRouter([
+    {
+      path: "/login",
+      element: <LoginPage />,
+    },
+    {
+      path: "/signup",
+      element: <RegisterPage />,
+    },
+    {
+      path: "/",
+      handle: {
+        crumb: () => {
+          return <Link to={`/`}>Dashboard</Link>;
+        },
+      },
+      element: <PrivateRoute roles={[ROLE.ADMIN]} component={CommonLayout} />,
+      children: [
+        {
+          path: "/",
+          element: <AnalyticsPage />,
+        },
+        {
+          path: "/workspace/:workspaceId",
+          element: <WorkspaceDetailPage />,
+          handle: {
+            crumb: (id: string) => {
+              return <Link to={`/workspace/${id}`}>{id}</Link>;
+            },
+          },
+        },
+        {
+          path: "/project/:projectId",
+          element: <ProjectDetailPage />,
+        },
+      ],
+    },
+  ]);
+  return <RouterProvider router={router} />;
 }
