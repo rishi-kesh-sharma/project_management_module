@@ -5,7 +5,7 @@ function createRandomWorkspaces(value) {
   return {
     id: faker.string.uuid(),
     workspaceName: `My Workspace ${value}`,
-    projects: createNProjects(6),
+    projects: createNProjects(4),
   };
 }
 

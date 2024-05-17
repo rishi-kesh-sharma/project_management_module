@@ -40,18 +40,8 @@ import "@ag-grid-community/styles/ag-grid.css";
 import "@ag-grid-community/styles/ag-theme-quartz.css";
 import "@ag-grid-community/styles/ag-theme-alpine.css";
 // import { Button } from "@/components/ui/Button/button";
-import SearchInput from "../../common/SearchInput/SearchInput";
-import IconDropdown from "../../common/IconDropdown/IconDropdown";
-import {
-  PlusIcon,
-  StartIcon,
-  ThreeHorizontalInsideCircle,
-  ThreeVerticalDots,
-} from "@/components/icons/commonIcons";
+
 import { useTheme } from "@/components/Theme/ThemeProvider";
-import { Button } from "@/components/ui/Button/button";
-import CheckboxDropdown from "../../CheckboxDropdown/CheckboxDropdown";
-import Select from "../../Form/Select/Select";
 
 // module registration
 ModuleRegistry.registerModules([
@@ -69,9 +59,8 @@ ModuleRegistry.registerModules([
 
 // react table props interface
 const AgGridTable: React.FC<IAgGridTableProps> = ({
-  heading = "Table Heading",
-  dropdownMenus,
   theme = "ag-theme-quartz",
+  tableToolbar,
   height = 500,
   variant,
   colDefs: columnDefinations,
@@ -235,44 +224,9 @@ const AgGridTable: React.FC<IAgGridTableProps> = ({
         </Button> */
   }
 
-  const handleSearch = (e: React.FormEvent) => {
-    e.preventDefault();
-  };
   return (
     <div style={containerStyle}>
-      <div className="flex items-end w-full justify-between mb-[1rem]">
-        <div className="flex items-center gap-5 ">
-          <h2 className="text-nowrap text-xl font-semibold">{heading}</h2>
-          <div className="flex gap-2  ">
-            <StartIcon className="text-orange-400 text-lg cursor-pointer" />
-            <ThreeHorizontalInsideCircle className="text-primary text-lg cursor-pointer" />
-          </div>
-        </div>
-
-        <div className="w-full flex flex-col gap-[1rem]  items-end">
-          <IconDropdown
-            menu={dropdownMenus}
-            dropdownSize="sm"
-            dropdownVariant="secondary"
-            icon={<ThreeVerticalDots />}
-          />
-
-          <div className="flex items-center  gap-[1rem]">
-            <SearchInput
-              onSubmit={handleSearch}
-              id="workspace-search"
-              name="workspace-search"
-              inputSize="lg"
-              placeholder="Search here..."
-              className=""
-            />
-            <Button className="flex gap-2">
-              <PlusIcon />
-              <span>Project</span>
-            </Button>
-          </div>
-        </div>
-      </div>
+      {tableToolbar}
       <div
         className={`${appTheme == "dark" ? "ag-theme-quartz-dark" : theme}`}
         style={{ ...gridStyle, height: height }}>
