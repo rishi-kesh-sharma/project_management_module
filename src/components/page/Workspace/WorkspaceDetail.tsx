@@ -9,7 +9,7 @@ const WorkspaceDetail = () => {
 
   if (isLoading || !data) return "Loading...";
   return (
-    <div className="my-[2rem]">
+    <div className="mb-[2rem]">
       <div className="flex items-end w-full ml-auto"></div>
       <WorkspaceDetailTable workspace={data} />
     </div>

@@ -15,6 +15,10 @@ import { PiBookmarkSimpleLight } from "react-icons/pi";
 import { IoEyeOutline } from "react-icons/io5";
 import { BsThreeDotsVertical } from "react-icons/bs";
 import { MdOutlineAccountCircle } from "react-icons/md";
+import { FaPlus } from "react-icons/fa";
+import { FaRegStar } from "react-icons/fa";
+import { TbDotsCircleHorizontal } from "react-icons/tb";
+
 export {
   FaRegCircleDot as GoalsIcon,
   HiOutlineChartBar as PlanningIcon,
@@ -34,4 +38,7 @@ export {
   IoEyeOutline as EyeIcon,
   BsThreeDotsVertical as ThreeVerticalDots,
   MdOutlineAccountCircle as AccountIcon,
+  FaPlus as PlusIcon,
+  FaRegStar as StartIcon,
+  TbDotsCircleHorizontal as ThreeHorizontalInsideCircle,
 };

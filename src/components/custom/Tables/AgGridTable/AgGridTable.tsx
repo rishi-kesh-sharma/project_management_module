@@ -42,8 +42,16 @@ import "@ag-grid-community/styles/ag-theme-alpine.css";
 // import { Button } from "@/components/ui/Button/button";
 import SearchInput from "../../common/SearchInput/SearchInput";
 import IconDropdown from "../../common/IconDropdown/IconDropdown";
-import { ThreeVerticalDots } from "@/components/icons/commonIcons";
+import {
+  PlusIcon,
+  StartIcon,
+  ThreeHorizontalInsideCircle,
+  ThreeVerticalDots,
+} from "@/components/icons/commonIcons";
 import { useTheme } from "@/components/Theme/ThemeProvider";
+import { Button } from "@/components/ui/Button/button";
+import CheckboxDropdown from "../../CheckboxDropdown/CheckboxDropdown";
+import Select from "../../Form/Select/Select";
 
 // module registration
 ModuleRegistry.registerModules([
@@ -233,7 +241,14 @@ const AgGridTable: React.FC<IAgGridTableProps> = ({
   return (
     <div style={containerStyle}>
       <div className="flex items-end w-full justify-between mb-[1rem]">
-        <h2 className="font-semibold text-xl">{heading}</h2>
+        <div className="flex items-center gap-5 ">
+          <h2 className="text-nowrap text-xl font-semibold">{heading}</h2>
+          <div className="flex gap-2  ">
+            <StartIcon className="text-orange-400 text-lg cursor-pointer" />
+            <ThreeHorizontalInsideCircle className="text-primary text-lg cursor-pointer" />
+          </div>
+        </div>
+
         <div className="w-full flex flex-col gap-[1rem]  items-end">
           <IconDropdown
             menu={dropdownMenus}
@@ -241,14 +256,21 @@ const AgGridTable: React.FC<IAgGridTableProps> = ({
             dropdownVariant="secondary"
             icon={<ThreeVerticalDots />}
           />
-          <SearchInput
-            onSubmit={handleSearch}
-            id="workspace-search"
-            name="workspace-search"
-            inputSize="lg"
-            placeholder="Search here..."
-            className=""
-          />
+
+          <div className="flex items-center  gap-[1rem]">
+            <SearchInput
+              onSubmit={handleSearch}
+              id="workspace-search"
+              name="workspace-search"
+              inputSize="lg"
+              placeholder="Search here..."
+              className=""
+            />
+            <Button className="flex gap-2">
+              <PlusIcon />
+              <span>Project</span>
+            </Button>
+          </div>
         </div>
       </div>
       <div

@@ -76,6 +76,9 @@ export const appSlice = createSlice({
 
     setLanguage: (state, action: PayloadAction<{ language: "en" }>) => {
       state.language = action.payload.language;
+      console.log(action.payload.language, "language");
+      localStorage.setItem("lang", JSON.stringify(action.payload.language));
+      window.location.reload();
     },
   },
 });

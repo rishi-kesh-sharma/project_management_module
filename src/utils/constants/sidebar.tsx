@@ -10,6 +10,7 @@ import {
   // TaskIcon,
   // SettingIcon,
 } from "@/components/icons/commonIcons";
+import i18n from "@/intl/i18n";
 
 interface ISidebarItemsProps {
   workspaces: IWorkspace[];
@@ -17,7 +18,8 @@ interface ISidebarItemsProps {
 }
 export const sidebarItems = (injectables: ISidebarItemsProps) => [
   {
-    label: "Dashboard ",
+    // label: "Dashboard ",
+    label: i18n.t("component.sidebar.menu.dashboard", "Dashboard"),
     link: `/`,
     icon: <OverviewIcon />,
   },
