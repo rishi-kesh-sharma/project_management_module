@@ -30,6 +30,8 @@ const InventoriesTable = ({
             heading={"Inventories"}
             handleSearch={handleSearch}
             dropdownMenus={dropdownMenus}
+            createButtonText="Inventory"
+            createPagePath={`/inventory/create`}
           />
         }
         rowData={inventories}

@@ -48,6 +48,8 @@ const ProjectTable = ({
             heading={project.projectName}
             handleSearch={handleSearch}
             dropdownMenus={dropdownMenus}
+            createButtonText="Task"
+            createPagePath="/workspace/:workspaceId/project/:projectId/task/create"
           />
         }
         rowData={project.tasks}
