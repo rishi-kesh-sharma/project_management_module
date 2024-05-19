@@ -61,8 +61,7 @@ const AvatarDropdown: React.FC<IAvatarDropdownProps> = ({
 
     switch (dropdownVariant) {
       case "primary":
-        classes =
-          "bg-primary dark:bg-background text-white border-white border-b-1";
+        classes = "bg-primary  text-white border-white border-b-1";
         break;
 
       case "secondary":
@@ -88,14 +87,17 @@ const AvatarDropdown: React.FC<IAvatarDropdownProps> = ({
         />
       </DropdownMenuTrigger>
       <DropdownMenuContent className={`${mergedDropdownClasses} `}>
-        {dropdownVariant !== "primary" && <DropdownMenuSeparator />}
         {menu.items.map((item: IDropdownMenuItem) => {
           return (
-            <DropdownMenuItem
-              className="cursor-pointer bg-secondary  hover:bg-primary/10  dark:border-b-foreground  dark:hover:bg-foreground dark:hover:text-background
+            <>
+              <DropdownMenuItem
+                className="cursor-pointer text-secondary-foreground
              ">
-              {item.label}
-            </DropdownMenuItem>
+                {item.label}
+              </DropdownMenuItem>
+
+              <DropdownMenuSeparator className="last-of-type:hidden" />
+            </>
           );
         })}
       </DropdownMenuContent>

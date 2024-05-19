@@ -2,6 +2,7 @@ import AgGridTable from "@/components/custom/Tables/AgGridTable/AgGridTable";
 import { IWorkspace } from "@/api/workspace";
 import TableToolbar from "@/components/custom/TableToolbar/TableToolbar";
 import { colDefs } from "./colDefs";
+import { useParams } from "react-router";
 
 const dropdownMenus = {
   items: [
@@ -12,6 +13,7 @@ const dropdownMenus = {
 };
 
 const ProjectTable = ({ workspace }: { workspace: IWorkspace }) => {
+  const { workspaceId } = useParams();
   const handleSearch = (e: React.FormEvent) => {
     e.preventDefault();
   };
@@ -23,6 +25,8 @@ const ProjectTable = ({ workspace }: { workspace: IWorkspace }) => {
           heading={workspace.workspaceName}
           handleSearch={handleSearch}
           dropdownMenus={dropdownMenus}
+          createPagePath={`/workspace/${workspaceId}/project/create`}
+          createButtonText={"Project"}
         />
       }
       rowData={workspace.projects}

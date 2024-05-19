@@ -1,7 +1,6 @@
 import { ButtonProps } from "@/components/ui/Button/button";
 import { AvatarProps } from "@radix-ui/react-avatar";
 import { ColDef } from "@ag-grid-community/core";
-import { IProject } from "@/api/workspace";
 
 export interface IDropdownMenuItem {
   id: string;
@@ -308,12 +307,12 @@ export interface IEmailInputProps {
 }
 
 export interface INumberInputProps {
-  size: "sm" | "md" | "lg" | "xl" | "default";
-  placeholder: string;
-  required: boolean;
-  label: string;
-  className: string;
-  onChange: () => void;
+  size?: "sm" | "md" | "lg" | "xl" | "default";
+  placeholder?: string;
+  required?: boolean;
+  label?: string;
+  className?: string;
+  onChange?: () => void;
 }
 
 export interface IPasswordInputProps {

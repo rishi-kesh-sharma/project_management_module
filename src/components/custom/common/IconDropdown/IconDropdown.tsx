@@ -19,7 +19,7 @@ const iconDropdownVariants = cva("", {
     dropdownVariant: {
       primary: "bg-primary text-white border-white border-b-1",
       secondary: "bg-gray-100",
-      default: "bg-gray-100",
+      default: "bg-background",
     },
   },
   defaultVariants: {
@@ -39,12 +39,14 @@ const IconDropdown: React.FC<IIconDropdownMenuProps> = ({
       <DropdownMenuTrigger>{icon}</DropdownMenuTrigger>
       <DropdownMenuContent
         className={`${iconDropdownVariants({ dropdownSize, dropdownVariant })} `}>
-        {dropdownVariant !== "primary" && <DropdownMenuSeparator />}
         {menu.items.map((item) => {
           return (
-            <DropdownMenuItem className="cursor-pointer">
-              {item.label}
-            </DropdownMenuItem>
+            <>
+              <DropdownMenuItem className="cursor-pointer">
+                {item.label}
+              </DropdownMenuItem>
+              <DropdownMenuSeparator className="last-of-type:hidden" />
+            </>
           );
         })}
       </DropdownMenuContent>
