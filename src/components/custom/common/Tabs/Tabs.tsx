@@ -1,16 +1,19 @@
 import { ITabContent, ITabTrigger, TTabsProps } from "@/@types";
-import { Button, buttonVariants } from "@/components/ui/Button/button";
+import { Button } from "@/components/ui/Button/button";
 import {
-    TabsContent,
-    TabsList,
-    TabsTrigger,
-    Tabs as ShadTabs,
+  TabsContent,
+  TabsList,
+  TabsTrigger,
+  Tabs as ShadTabs,
 } from "@/components/ui/Tabs/tabs";
+import { cn } from "@/lib/utils";
 
-const Tabs = ({ triggers, contents }: TTabsProps) => {
-
+const Tabs = ({ triggers, contents, className, ...props }: TTabsProps) => {
   return (
-    <ShadTabs defaultValue={triggers[0].id} className="">
+    <ShadTabs
+      defaultValue={triggers[0].id}
+      {...props}
+      className={`${cn(className)}`}>
       <TabsList className="w-full px-0 pb-0 flex border-b-[3px] border-b-gray-100 shadow-none items-center justify-between    py-[1rem] bg-white  gap-[1rem] dark:bg-background rounded-none dark:border-gray-700  ">
         {triggers.map((trigger: ITabTrigger) => {
           return (
@@ -28,14 +31,13 @@ const Tabs = ({ triggers, contents }: TTabsProps) => {
       </TabsList>
       {contents.map((content: ITabContent) => {
         return (
-          <TabsContent className=" " value={content.id} id={content.id}>
+          <TabsContent className="mt-[3rem]" value={content.id} id={content.id}>
             {content.element}
           </TabsContent>
         );
       })}
     </ShadTabs>
   );
-
 };
 
 export default Tabs;

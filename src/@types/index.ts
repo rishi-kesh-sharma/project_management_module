@@ -1,6 +1,7 @@
 import { ButtonProps } from "@/components/ui/Button/button";
 import { AvatarProps } from "@radix-ui/react-avatar";
 import { ColDef } from "@ag-grid-community/core";
+import { ClassProp } from "class-variance-authority/dist/types";
 
 export interface IDropdownMenuItem {
   id: string;
@@ -82,6 +83,16 @@ export interface IHeaderProps {
   // user: IUser;
 }
 
+export interface IInventories {
+  id: string;
+  itemName: string;
+  category: string;
+  subCategory: string;
+  unitPrice: number;
+  quantity: number;
+  totalPrice: number;
+}
+
 export interface IAvatarProps extends AvatarProps {
   imgSrc?: string;
   name: string;
@@ -138,6 +149,16 @@ export interface IProjectRowData {
   priority: string;
   assignee: string;
   tasks: ITaskRowData[];
+}
+
+export interface IInventoriesRowData {
+  id: string;
+  itemName: string;
+  category: string;
+  subCategory: string;
+  unitPrice: number;
+  quantity: number;
+  totalPrice: number;
 }
 
 export type RowModelType =
@@ -280,6 +301,7 @@ export interface ITabContent {
 export type TTabsProps = {
   triggers: ITabTrigger[];
   contents: ITabContent[];
+  className?: string;
 };
 
 export interface ISelectGroupItem {

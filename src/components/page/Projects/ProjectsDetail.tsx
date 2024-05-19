@@ -19,8 +19,39 @@ const projectDetailTabTriggers = [
   },
 ];
 
+const planningTabTriggers = [
+  {
+    id: "kanban-board",
+    label: "Kanban",
+  },
+  {
+    id: "gantt-chart",
+    label: "Gantt chart",
+  },
+];
+
+const resourceTabTriggers = [
+  {
+    id: "inventories",
+    label: "Inventories",
+  },
+  {
+    id: "human-resources",
+    label: "Human Resources",
+  },
+  {
+    id: "equipments",
+    label: "Equipments",
+  },
+  {
+    id: "budgeting",
+    label: "Budgeting",
+  },
+];
 import { useGetWorkspaceQuery } from "@/api/workspace";
 import Tabs from "@/components/custom/common/Tabs/Tabs";
+import InventoriesDetail from "@/components/custom/InventoriesTable/InventoriesDetail";
+import { KanbanBoard } from "@/components/custom/Kanban/KanbanBoard";
 import { useParams } from "react-router";
 const WorkspaceDetail = () => {
   const { workspaceId } = useParams();
@@ -40,11 +71,62 @@ const WorkspaceDetail = () => {
           },
           {
             id: "planning",
-            element: <div>Planning tab</div>,
+            element: (
+              <Tabs
+                className={`mt-[1rem]`}
+                triggers={planningTabTriggers}
+                contents={[
+                  {
+                    id: "gantt-chart",
+                    element: <div>Gantt Chart</div>,
+                  },
+                  {
+                    id: "kanban-board",
+                    element: (
+                      <div>
+                        <h1 className="text-xl font-semibold mb-[1.5rem]">
+                          Kanban Board
+                        </h1>
+
+                        <KanbanBoard />
+                      </div>
+                    ),
+                  },
+                ]}
+              />
+            ),
           },
           {
             id: "resources",
-            element: <div>Resources tab</div>,
+            element: (
+              <Tabs
+                className={`mt-[1rem]`}
+                triggers={resourceTabTriggers}
+                contents={[
+                  {
+                    id: "inventories",
+                    element: (
+                      <div>
+                        <InventoriesDetail />
+                      </div>
+                    ),
+                  },
+                  {
+                    id: "human-resources",
+                    element: <div>Human Resources</div>,
+                  },
+                  {
+                    id: "equipments",
+                    element: <div>Equipments</div>,
+                  },
+
+                  {
+                    id: "budgeting",
+                    element: <div>Budgeting</div>,
+                  },
+                ]}
+              />
+            ),
           },
           {
             id: "time-tracking",
