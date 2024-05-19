@@ -39,6 +39,6 @@ export {
   BsThreeDotsVertical as ThreeVerticalDots,
   MdOutlineAccountCircle as AccountIcon,
   FaPlus as PlusIcon,
-  FaRegStar as StartIcon,
+  FaRegStar as StarIcon,
   TbDotsCircleHorizontal as ThreeHorizontalInsideCircle,
 };

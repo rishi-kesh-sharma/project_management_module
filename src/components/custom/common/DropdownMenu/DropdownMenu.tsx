@@ -19,9 +19,9 @@ const dropdownVariants = cva("", {
       default: "w-[12rem]",
     },
     dropdownVariant: {
-      primary: "bg-primary text-white border-white border-b-1",
+      primary: "bg-primary text-white border-white",
       secondary: "bg-gray-100",
-      default: "bg-gray-100",
+      default: "bg-background",
     },
   },
   defaultVariants: {
@@ -42,22 +42,23 @@ const Dropdown: React.FC<IDropdownMenuProps> = ({
   return (
     <DropdownMenu {...props}>
       <DropdownMenuTrigger
-        // className={`flex items-center gap-2 justify-between ${dropdownTriggerVariants({ dropdownTriggerSize, dropdownTriggerVariant })}`}
         className={`flex items-center gap-2 justify-between ${buttonVariants({ size: dropdownTriggerSize, variant: dropdownTriggerVariant })}`}>
         {menu.label} {<DownAngularArrowIcon />}
       </DropdownMenuTrigger>
       <DropdownMenuContent
-        className={`${dropdownVariants({ dropdownSize, dropdownVariant })} `}>
-        {dropdownVariant !== "primary" && <DropdownMenuSeparator />}
+        className={`${dropdownVariants({ dropdownSize, dropdownVariant })}  `}>
         {menu.items.map((item) => {
           return (
-            <DropdownMenuItem
-              textValue={item.id}
-              id={item.id}
-              onSelect={onSelect}
-              className="cursor-pointer text-foreground">
-              {item.label}
-            </DropdownMenuItem>
+            <>
+              <DropdownMenuItem
+                textValue={item.id}
+                id={item.id}
+                onSelect={onSelect}
+                className="cursor-pointer text-foreground  ">
+                {item.label}
+              </DropdownMenuItem>
+              <DropdownMenuSeparator className="last-of-type:hidden" />
+            </>
           );
         })}
       </DropdownMenuContent>

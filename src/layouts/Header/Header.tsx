@@ -48,13 +48,7 @@ const Header: React.FC<IHeaderProps> = () => {
   };
 
   return (
-    <div className="flex  gap-5 items-center justify-between px-2 w-full min-w-[400px] relative ">
-      <Link to={"/project/create"}>
-        <Button type="button" variant={"default"}>
-          <BiPlus />
-          {i18n.t(`component.button.create`)}
-        </Button>
-      </Link>
+    <div className="flex  gap-5 items-center justify-end px-2 w-full min-w-[400px] relative ml-auto ">
       <SearchInput
         id="global-search"
         name="global-search"
@@ -66,17 +60,24 @@ const Header: React.FC<IHeaderProps> = () => {
 
       <div className="flex gap-5 items-center px-2">
         <Dropdown
-          menu={{ label: i18n.t("component.button.theme", "Select Theme"), items: availableThemes }}
+          className=""
+          menu={{
+            label: i18n.t("component.button.theme", "Select Theme"),
+            items: availableThemes,
+          }}
           dropdownSize="sm"
-          dropdownVariant="secondary"
+          dropdownVariant="default"
           dropdownTriggerSize={"sm"}
           dropdownTriggerVariant={"outline"}
           onSelect={handleThemeSelect}
         />
         <Dropdown
-          menu={{ label: i18n.t("component.button.language", "Select Language"), items: availableLanguages }}
+          menu={{
+            label: i18n.t("component.button.language", "Select Language"),
+            items: availableLanguages,
+          }}
           dropdownSize="sm"
-          dropdownVariant="secondary"
+          dropdownVariant="default"
           dropdownTriggerSize={"sm"}
           dropdownTriggerVariant={"outline"}
           onSelect={handleLanguageSelect}
@@ -98,7 +99,7 @@ const Header: React.FC<IHeaderProps> = () => {
           menu={avatarDropdownMenu}
           name={user.name}
           dropdownSize="sm"
-          dropdownVariant="secondary"
+          dropdownVariant="default"
           avatarSize="sm"
           imgSrc={user.image}
         />

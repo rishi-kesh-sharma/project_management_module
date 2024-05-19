@@ -11,6 +11,7 @@ import WorkspaceDetailPage from "@/pages/WorkspaceDetailPage.tsx";
 import i18n from "@/intl/i18n.ts";
 
 import { BreadcrumbSeparator } from "@/components/ui/Breadcrumb/breadcrumb.tsx";
+import CreateProjectPage from "@/pages/CreateProjectPage.tsx";
 
 interface IROLE {
   ADMIN: TRole;
@@ -38,7 +39,11 @@ export function MainRoute() {
       path: "/",
       handle: {
         crumb: () => {
-          return <Link to={`/`}>{i18n.t("component.sidebar.menu.dashboard", "Dashboard")}</Link>;
+          return (
+            <Link to={`/`}>
+              {i18n.t("component.sidebar.menu.dashboard", "Dashboard")}
+            </Link>
+          );
         },
       },
       element: <PrivateRoute roles={[ROLE.ADMIN]} component={CommonLayout} />,
@@ -78,6 +83,17 @@ export function MainRoute() {
                     {workspaceId}
                   </Link>
                 </>
+              );
+            },
+          },
+        },
+        {
+          path: "/workspace/:workspaceId/project/create",
+          element: <CreateProjectPage />,
+          handle: {
+            crumb: ({ workspaceId }: { workspaceId: string }) => {
+              return (
+                <Link to={`/workspace/${workspaceId}`}>{workspaceId}</Link>
               );
             },
           },

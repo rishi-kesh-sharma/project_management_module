@@ -33,13 +33,13 @@ import {
 import { ClientSideRowModelModule } from "@ag-grid-community/client-side-row-model";
 
 // ag grid table custom css
-import "./AgGridTable.css";
 
 // css
 import "@ag-grid-community/styles/ag-grid.css";
 import "@ag-grid-community/styles/ag-theme-quartz.css";
 import "@ag-grid-community/styles/ag-theme-alpine.css";
 // import { Button } from "@/components/ui/Button/button";
+import "./AgGridTable.css";
 
 import { useTheme } from "@/components/Theme/ThemeProvider";
 
@@ -109,10 +109,10 @@ const AgGridTable: React.FC<IAgGridTableProps> = ({
   // default columns defination
   const defaultColDef = useMemo<ColDef>(() => {
     return {
-      headerClass(params) {
-        console.log(params);
-        if (appTheme !== "dark") return "bg-[#F1F1F1]";
-      },
+      // headerClass(params) {
+      //   console.log(params);
+      //   if (appTheme !== "dark") return "bg-[#F1F1F1]";
+      // },
       filter: false,
       editable: true,
       // floatingFilter: true,
@@ -237,6 +237,7 @@ const AgGridTable: React.FC<IAgGridTableProps> = ({
         )}
 
         <AgGridReact
+          className=""
           ref={gridRef}
           rowData={rowData}
           // suppressMenuHide={true}

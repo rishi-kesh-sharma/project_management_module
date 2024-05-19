@@ -1,5 +1,6 @@
 .ag-theme-quartz,
 .ag-theme-alpine {
+  /* --ag-foreground-color: rgb(126, 46, 132); */
   /* Changes the color of the grid text */
   /* Changes the color of the grid background */
   /* Changes the header color of the top row */
@@ -20,6 +21,15 @@
   --ag-header-cell-moving-background-color: rgb(80, 40, 140); */
 }
 
+.ag-theme-quartz {
+  /* --ag-foreground-color: rgb(126, 46, 132); */
+}
+.ag-theme-quartz-dark {
+  --ag-foreground-color: var(--primary-foreground);
+  --ag-header-foreground-color: var(--primary-foreground);
+  --ag-background-color: var(--background);
+}
+
 .ag-header-cell-filtered {
   background-color: hsla(208, 89%, 49%, 1) !important;
   color: #fff !important;
@@ -32,7 +42,7 @@
 /* width */
 ::-webkit-scrollbar {
   width: 7px;
-  height: 7pxa;
+  height: 7px;
 }
 
 /* Track */

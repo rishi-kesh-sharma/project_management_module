@@ -23,7 +23,7 @@ export const theme = {
       background: "hsl(var(--background))",
       foreground: "hsl(var(--foreground))",
       primary: {
-        DEFAULT: "hsl(208, 89%, 49%, 1)",
+        DEFAULT: "hsl(var(--primary))",
         foreground: "hsl(var(--primary-foreground))",
       },
       secondary: {

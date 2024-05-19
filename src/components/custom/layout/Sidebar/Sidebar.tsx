@@ -31,8 +31,16 @@ const settings = {
   label: i18n.t("component.sidebar.menu.settings", "Settings"),
   icon: <SettingIcon />,
   items: [
-    { label: i18n.t("component.sidebar.menu.account", "Account"), link: "/my-account", icon: <AccountIcon /> },
-    { label: i18n.t("component.sidebar.menu.profile", "profile"), link: "/profile", icon: <AccountIcon /> },
+    {
+      label: i18n.t("component.sidebar.menu.account", "Account"),
+      link: "/my-account",
+      icon: <AccountIcon />,
+    },
+    {
+      label: i18n.t("component.sidebar.menu.profile", "profile"),
+      link: "/profile",
+      icon: <AccountIcon />,
+    },
   ],
 };
 const Sidebar: React.FC<SidebarProps> = ({ path, items }) => {
@@ -53,7 +61,7 @@ const Sidebar: React.FC<SidebarProps> = ({ path, items }) => {
   //   path === link ? `font-medium text-sm ` : "font-medium text-sm";
   return (
     <aside
-      className={` ${isSidebarExpanded ? "w-[240px]" : "w-[70px]"}  bg-primary dark:bg-background text-[#FFFFFF] h-full   py-4 hidden md:flex md:flex-col gap-7  border-r-[1px] border-primary-100  cursor-pointer min-h-screen transition-all sticky top-0 `}>
+      className={` ${isSidebarExpanded ? "w-[240px]" : "w-[70px]"}  bg-primary dark:bg-background text-primary-foreground dark:text-foreground h-full   py-4 hidden md:flex md:flex-col gap-7  border-r-[1px]   cursor-pointer min-h-screen transition-all sticky top-0 `}>
       <div className="logo flex items-center justify-between text-2xl gap-3 w-full ">
         {isSidebarExpanded && (
           <Link to={`/`}>
@@ -88,7 +96,7 @@ const Sidebar: React.FC<SidebarProps> = ({ path, items }) => {
                         variant: "ghost",
                       }),
                       "justify-between",
-                      "border-b-1 border-white flex py-6  w-full rounded-none gap-0 no-underline hover:no-underline   ",
+                      "border-b-1 flex py-6  w-full rounded-none gap-0 no-underline hover:no-underline   ",
                       "hover:text-primary"
                     )}>
                     <div className="flex items-center justify-start w-full gap-1 ">
@@ -115,7 +123,7 @@ const Sidebar: React.FC<SidebarProps> = ({ path, items }) => {
                               "active::no-underline",
                               "flex",
                               "gap-2",
-                              "border-b-2 rounded-none  border-white  last-of-type:border-none p-6",
+                              "border-b rounded-none    last-of-type:border-none p-6",
                               "hover:text-primary"
 
                               //   child.disabled && "cursor-not-allowed opacity-80"
@@ -146,7 +154,7 @@ const Sidebar: React.FC<SidebarProps> = ({ path, items }) => {
                     "gap-1",
                     "rounded-none",
                     "py-6",
-                    "border-b-2",
+                    "border-b",
                     "hover:text-primary"
                   )}>
                   {item.icon && item.icon}
@@ -169,7 +177,7 @@ const Sidebar: React.FC<SidebarProps> = ({ path, items }) => {
                     variant: "ghost",
                   }),
                   "justify-between",
-                  "border-b-1 border-white flex py-7  w-full rounded-none gap-0 no-underline hover:no-underline   ",
+                  "flex border-t py-6  w-full rounded-none gap-0 no-underline hover:no-underline   ",
                   "hover:text-primary"
                 )}>
                 <div className="flex items-center justify-start w-full gap-1 ">
@@ -195,7 +203,7 @@ const Sidebar: React.FC<SidebarProps> = ({ path, items }) => {
                         "active::no-underline",
                         "flex",
                         "gap-2",
-                        "border-b-2 rounded-none  border-white  last-of-type:border-none p-6",
+                        "border-b rounded-none    last-of-type:border-none p-6",
                         "hover:text-primary"
 
                         //   child.disabled && "cursor-not-allowed opacity-80"
@@ -209,9 +217,10 @@ const Sidebar: React.FC<SidebarProps> = ({ path, items }) => {
             </AccordionItem>
           </Accordion>
 
-          <div className="flex items-center pl-4 gap-1 hover:text-primary hover:bg-white dark:hover:bg-primary/15 py-4 text-sm  ">
+          <div className="flex items-center p-3.5 gap-1 hover:text-primary hover:bg-white dark:hover:bg-primary/15  text-sm  border-b ">
             <LogoutIcon className="" />
-            {isSidebarExpanded && i18n.t("component.sidebar.menu.logout", "Log out")}
+            {isSidebarExpanded &&
+              i18n.t("component.sidebar.menu.logout", "Log out")}
           </div>
         </div>
       </div>
