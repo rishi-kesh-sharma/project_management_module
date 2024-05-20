@@ -18,6 +18,8 @@ import { MdOutlineAccountCircle } from "react-icons/md";
 import { FaPlus } from "react-icons/fa";
 import { FaRegStar } from "react-icons/fa";
 import { TbDotsCircleHorizontal } from "react-icons/tb";
+import { IoCalendarOutline } from "react-icons/io5";
+import { FaRegComment } from "react-icons/fa6";
 
 export {
   FaRegCircleDot as GoalsIcon,
@@ -41,4 +43,6 @@ export {
   FaPlus as PlusIcon,
   FaRegStar as StarIcon,
   TbDotsCircleHorizontal as ThreeHorizontalInsideCircle,
+  IoCalendarOutline as CalendarIcon,
+  FaRegComment as CommentIcon,
 };

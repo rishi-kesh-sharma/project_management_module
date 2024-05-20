@@ -1,17 +1,17 @@
+import { IBookmark } from "@/@types";
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
-import { IProject } from "./workspace";
 
 const BASE_URL = "http://localhost:4000/";
 
-type BookMarkResponse = IProject[];
+type BookMarkResponse = IBookmark[];
 
 export const bookmarkApi = createApi({
   reducerPath: "bookmark",
   baseQuery: fetchBaseQuery({ baseUrl: `${BASE_URL}` }),
   tagTypes: ["Bookmark"],
   endpoints: (build) => ({
-    getBookmarks: build.query<BookMarkResponse, IProject>({
-      query: () => "bookmarks",
+    getBookmarks: build.query<BookMarkResponse, IBookmark>({
+      query: () => "workspace",
       providesTags: (result) =>
         result
           ? [
@@ -20,7 +20,7 @@ export const bookmarkApi = createApi({
             ]
           : [{ type: "Bookmark", id: "LIST" }],
     }),
-    addBookmark: build.mutation<IProject, Partial<IProject>>({
+    addBookmark: build.mutation<IBookmark, Partial<IBookmark>>({
       query: (body) => ({
         url: `bookmarks`,
         method: "BOOKMARK",
@@ -28,13 +28,13 @@ export const bookmarkApi = createApi({
       }),
       invalidatesTags: [{ type: "Bookmark", id: "LIST" }],
     }),
-    getBookmark: build.query<IProject, string>({
+    getBookmark: build.query<IBookmark, string>({
       query: (id) => `bookmarks/${id}`,
       providesTags: (result, error, id) => [{ type: "Bookmark", id }],
     }),
     updateBookmark: build.mutation<
       void,
-      Pick<IProject, "id"> & Partial<IProject>
+      Pick<IBookmark, "id"> & Partial<IBookmark>
     >({
       query: ({ id, ...patch }) => ({
         url: `bookmarks/${id}`,

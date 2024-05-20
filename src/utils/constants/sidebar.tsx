@@ -22,7 +22,6 @@ export const sidebarItems = (injectables: ISidebarItemsProps) => [
     label: i18n.t("component.sidebar.menu.dashboard", "Dashboard"),
     link: `/`,
     icon: <OverviewIcon />,
-
   },
   (() => {
     const workspaces = injectables.workspaces;

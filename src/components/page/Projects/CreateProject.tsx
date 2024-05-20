@@ -1,9 +1,8 @@
-import { useParams } from "react-router";
+// import { useParams } from "react-router";
 
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
-import { Tag } from "emblor";
 import {
   FormControl,
   FormField,
@@ -37,20 +36,20 @@ const CreateProject: React.FC = () => {
   // const { workspaceId } = useParams();
 
   const formSchema = z.object({
-    projectName: z.string().min(2).max(50),
-    projectType: z.string().min(2).max(50),
+    projectName: z.string().min(2).max(100),
+    projectType: z.string(),
     workspace: z.string(),
     teamMembers: z.array(z.string()),
     priority: z.string(),
-    totalBudget: z.number(),
+    totalBudget: z.string(),
     inventories: z.array(z.string()),
     equipments: z.array(z.string()),
-    projectDescription: z.string().min(2).max(1000),
-    tags:z.array(
+    projectDescription: z.string().min(10).max(1000),
+    tags: z.array(
       z.object({
         id: z.string(),
         text: z.string(),
-      }),
+      })
     ),
   });
 
@@ -63,7 +62,7 @@ const CreateProject: React.FC = () => {
       workspace: "",
       teamMembers: [],
       priority: "",
-      totalBudget: 0,
+      totalBudget: "0",
       inventories: [],
       equipments: [],
       projectDescription: "",
@@ -109,7 +108,7 @@ const CreateProject: React.FC = () => {
             <FormItem>
               <FormLabel>Project Type</FormLabel>
               <FormControl>
-                <Select {...field}>
+                <Select {...field} onValueChange={field.onChange}>
                   <SelectTrigger>
                     <SelectValue placeholder={`Information Technology`} />
                   </SelectTrigger>
@@ -325,12 +324,12 @@ const CreateProject: React.FC = () => {
           name="tags"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Project Description</FormLabel>
+              <FormLabel>Project Tags</FormLabel>
               <FormControl>
                 <TagInput
                   {...field}
                   placeholder="Enter a topic"
-                  className="sm:min-w-[450px]"
+                  className=" py-[1.5rem]"
                   tags={field.value}
                   setTags={field.onChange} //   setTags={(newTags) => {
                   //     setTags(newTags);
