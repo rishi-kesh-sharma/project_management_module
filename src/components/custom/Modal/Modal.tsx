@@ -15,6 +15,7 @@ const Modal: React.FC<IModalProps> = ({
   description,
   body,
   footer,
+  children,
 }) => {
   return (
     <Dialog>
@@ -27,6 +28,7 @@ const Modal: React.FC<IModalProps> = ({
 
         {/* body goes here */}
         <div>{body}</div>
+        <div>{children}</div>
         <DialogFooter>{footer}</DialogFooter>
       </DialogContent>
     </Dialog>

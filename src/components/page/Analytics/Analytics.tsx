@@ -3,8 +3,7 @@ import AreaCharts from "@/components/custom/charts/AreaChart/AreaCharts";
 import BarChart from "@/components/custom/charts/BarChart/BarChart";
 import LineChart from "@/components/custom/charts/LineChart/LineChart";
 import PieChart from "@/components/custom/charts/PieChart/PieChart";
-import { PlusIcon, ThreeVerticalDots } from "@/components/icons/commonIcons";
-import { Button } from "@/components/ui/Button/button";
+import { ThreeVerticalDots } from "@/components/icons/commonIcons";
 import { Card } from "@/components/ui/Card/card";
 import i18n from "@/intl/i18n";
 import {
@@ -13,22 +12,13 @@ import {
   cardData,
   pieChartData,
 } from "@/utils/constants";
-import { Link } from "react-router-dom";
+import CreateWorkspaceForm from "./CreateWorkspaceForm";
 
 const Analytics = () => {
   return (
     <div className=" flex flex-col gap-[1rem]">
       <ThreeVerticalDots className="ml-auto" />
-      <Button type="button" className="flex gap-1 ml-auto" size={"sm"}>
-        <Link
-          to={"/workspace/create"}
-          className="flex gap-2 items-center justify-end">
-          <PlusIcon />
-          {/* {i18n.t(`component.button.create`)} */}
-          {` Workspace`}
-        </Link>
-      </Button>
-
+      <CreateWorkspaceForm />
       <div className="grid grid-cols-3 col-span-2 gap-[1.8rem] ">
         {cardData.map((cardDataItem, index) => {
           return (

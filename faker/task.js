@@ -1,5 +1,6 @@
 import { faker } from "@faker-js/faker";
 import { createNSubTasks } from "./subTasks.js";
+import { createNTimeTrackings } from "./timeTracking.js";
 
 function createRandomTasks(value) {
   return {
@@ -16,6 +17,7 @@ function createRandomTasks(value) {
     dueDate: faker.date.future(),
     subTasks: createNSubTasks(4),
     priority: faker.helpers.arrayElement(["Low", "Normal", "High"]),
+    timeTrackings: createNTimeTrackings(20),
   };
 }
 

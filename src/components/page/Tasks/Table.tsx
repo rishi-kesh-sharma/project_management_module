@@ -1,7 +1,7 @@
 import AgGridTable from "@/components/custom/Tables/AgGridTable/AgGridTable";
-import { colDefs } from "./colDefs";
+import { colDefs } from "../Tasks/colDefs";
 import TableToolbar from "@/components/custom/TableToolbar/TableToolbar";
-import { IHumanResourceRowData } from "@/@types";
+import { ITaskRowData } from "@/@types";
 
 const dropdownMenus = {
   items: [
@@ -11,31 +11,26 @@ const dropdownMenus = {
   ],
 };
 
-const HumanResourceTable = ({
-  humanResource,
-}: {
-  humanResource: IHumanResourceRowData[];
-}) => {
+const TaskTable = ({ task }: { task: ITaskRowData }) => {
   const handleSearch = (e: React.FormEvent) => {
     e.preventDefault();
   };
 
-  console.log(humanResource, "humanResource");
-  // if (!humanResource) return "loading...";
+  if (!task) return "loading...";
   return (
     <div className="mt-[2rem]">
       <AgGridTable
         tableToolbar={
           <TableToolbar
-            heading={"Human Resource"}t
+            heading={task.taskName}
             handleSearch={handleSearch}
             dropdownMenus={dropdownMenus}
-            createButtonText="Add"
-            createPagePath={`/humanResource/add`}
+            createButtonText="Task"
+            createPagePath="/workspace/:workspaceId/task/:taskId/task/create"
           />
         }
-        rowData={humanResource}
-        heading={"Human Resources"}
+        rowData={task.subTasks}
+        heading={task.taskName}
         dropdownMenus={dropdownMenus}
         colDefs={colDefs}
       />
@@ -43,4 +38,4 @@ const HumanResourceTable = ({
   );
 };
 
-export default HumanResourceTable;
+export default TaskTable;

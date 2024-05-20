@@ -15,7 +15,7 @@ const commonToast: ToastContainerProps & { progress: ToastProps["progress"] } =
 
 export const getSuccessToast = (
   msg: string,
-  theme: "light" | "dark" | "system"
+  theme?: "light" | "dark" | "system"
 ) =>
   toast.success(msg, {
     ...commonToast,

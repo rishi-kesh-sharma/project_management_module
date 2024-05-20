@@ -2,6 +2,7 @@ import { ButtonProps } from "@/components/ui/Button/button";
 import { AvatarProps } from "@radix-ui/react-avatar";
 import { ColDef } from "@ag-grid-community/core";
 import { ClassProp } from "class-variance-authority/dist/types";
+import React from "react";
 
 export interface IDropdownMenuItem {
   id: string;
@@ -160,17 +161,54 @@ export interface IWorkspaceRowData {
 
 export interface ISubTaskRowData {
   id: string;
-  projectName: string;
+  subTaskName: string;
+  createdBy: string;
+  startDate: string;
+  dueDate: string;
+  status: string;
+  priority: string;
+}
+
+export interface ISubTask {
+  id: string;
+  subTaskName: string;
+  createdBy: string;
+  startDate: string;
+  dueDate: string;
+  status: string;
+  priority: string;
+}
+
+export interface ITimeTracking {
+  trackingId: string;
+  startTime: string;
+  endTime: string;
+  createdBy: string;
+  date: Date;
+}
+
+export interface ITimeTrackingRowData {
+  trackingId: string;
+  startTime: string;
+  endTime: string;
+  createdBy: string;
+  date: Date;
+}
+export interface ITask {
+  id: string;
+  taskName: string;
   createdBy: string;
   startDate: string;
   dueDate: string;
   status: string;
   priority: string;
   assignee: string;
+  subTasks: ISubTask[];
+  timeTrackings: ITimeTracking[];
 }
 export interface ITaskRowData {
   id: string;
-  projectName: string;
+  taskName: string;
   createdBy: string;
   startDate: string;
   dueDate: string;
@@ -448,11 +486,12 @@ export interface RootLayoutProps {
 
 export interface IModalProps {
   trigger: React.ReactNode;
-  title: React.ReactNode;
-  description: React.ReactNode;
-  body: React.ReactNode;
-
-  footer: React.ReactNode;
+  title?: React.ReactNode;
+  description?: React.ReactNode;
+  body?: React.ReactNode | string;
+  children?: React.ReactNode;
+  footer?: React.ReactNode;
+  open?: boolean;
 }
 
 export interface IProgressBarProps {

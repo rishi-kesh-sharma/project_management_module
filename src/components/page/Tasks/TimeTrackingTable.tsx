@@ -1,7 +1,7 @@
 import AgGridTable from "@/components/custom/Tables/AgGridTable/AgGridTable";
-import { colDefs } from "./colDefs";
+import { colDefs } from "./timeTrackingColDefs";
 import TableToolbar from "@/components/custom/TableToolbar/TableToolbar";
-import { IHumanResourceRowData } from "@/@types";
+import { ITimeTrackingRowData } from "@/@types";
 
 const dropdownMenus = {
   items: [
@@ -11,31 +11,29 @@ const dropdownMenus = {
   ],
 };
 
-const HumanResourceTable = ({
-  humanResource,
+const TimeTrackingTable = ({
+  timeTrackings,
 }: {
-  humanResource: IHumanResourceRowData[];
+  timeTrackings: ITimeTrackingRowData[];
 }) => {
   const handleSearch = (e: React.FormEvent) => {
     e.preventDefault();
   };
 
-  console.log(humanResource, "humanResource");
-  // if (!humanResource) return "loading...";
   return (
     <div className="mt-[2rem]">
       <AgGridTable
         tableToolbar={
           <TableToolbar
-            heading={"Human Resource"}t
+            heading={`Time Tracking`}
             handleSearch={handleSearch}
             dropdownMenus={dropdownMenus}
-            createButtonText="Add"
-            createPagePath={`/humanResource/add`}
+            createButtonText="Start Timer"
+            createPagePath=""
           />
         }
-        rowData={humanResource}
-        heading={"Human Resources"}
+        rowData={timeTrackings}
+        heading={`Time Tracking`}
         dropdownMenus={dropdownMenus}
         colDefs={colDefs}
       />
@@ -43,4 +41,4 @@ const HumanResourceTable = ({
   );
 };
 
-export default HumanResourceTable;
+export default TimeTrackingTable;

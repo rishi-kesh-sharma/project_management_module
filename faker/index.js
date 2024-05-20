@@ -7,6 +7,8 @@ import { createNInventories } from "./inventories.js";
 import { createNEquipments } from "./equipments.js";
 import { createNHumanResources } from "./humanResource.js";
 import { createNBudgets } from "./budgets.js";
+import { createNSubTasks } from "./subTasks.js";
+import { createNTasks } from "./task.js";
 
 (() => {
   fs.writeFileSync(
@@ -20,6 +22,8 @@ import { createNBudgets } from "./budgets.js";
       equipments: createNEquipments(10),
       humanResources: createNHumanResources(20),
       budgets: createNBudgets(20),
+      subTasks: createNSubTasks(20),
+      tasks: createNTasks(10),
     })
   );
 })();

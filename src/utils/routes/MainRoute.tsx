@@ -13,6 +13,7 @@ import i18n from "@/intl/i18n.ts";
 import { BreadcrumbSeparator } from "@/components/ui/Breadcrumb/breadcrumb.tsx";
 import CreateProjectPage from "@/pages/CreateProjectPage.tsx";
 import BookmarkDetailPage from "@/pages/BookmarkDetail.tsx";
+import TaskDetailPage from "@/pages/TaskDetailPage.tsx";
 
 interface IROLE {
   ADMIN: TRole;
@@ -105,6 +106,33 @@ export function MainRoute() {
           handle: {
             crumb: ({ projectId }: { projectId: string }) => {
               return <Link to={`/project/${projectId}`}>{projectId}</Link>;
+            },
+          },
+        },
+        {
+          path: "/workspace/:workspaceId/project/:projectId/task/:taskId",
+          element: <TaskDetailPage />,
+          handle: {
+            crumb: ({
+              workspaceId,
+              projectId,
+              taskId,
+            }: {
+              workspaceId: string;
+              projectId: string;
+              taskId: string;
+            }) => {
+              return (
+                <>
+                  <Link to={`/workspace/${workspaceId}`}>{`Workspace`}</Link>
+                  <BreadcrumbSeparator/>
+                  <Link
+                    to={`/workspace/${workspaceId}/project/${projectId}/`}>{`Project`}</Link>
+                    <BreadcrumbSeparator/>
+                  <Link
+                    to={`/workspace/${workspaceId}/project/${projectId}/task/${taskId}`}>{`${taskId}`}</Link>
+                </>
+              );
             },
           },
         },
