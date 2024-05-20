@@ -49,11 +49,14 @@ const resourceTabTriggers = [
   },
 ];
 import { useGetWorkspaceQuery } from "@/api/workspace";
+import BudgetDetail from "@/components/custom/BudgetTable/BudgetDetail";
 import Tabs from "@/components/custom/common/Tabs/Tabs";
+import EquipmentsDetail from "@/components/custom/EquipmentsTable/EquipmentDetail";
+import HumanResourceDetail from "@/components/custom/HumanResourceTable/HumanResourceDetail";
 import InventoriesDetail from "@/components/custom/InventoriesTable/InventoriesDetail";
 import { KanbanBoard } from "@/components/custom/Kanban/KanbanBoard";
 import { useParams } from "react-router";
-const WorkspaceDetail = () => {
+const ProjectDetail = () => {
   const { workspaceId } = useParams();
   const { data, isLoading } = useGetWorkspaceQuery(workspaceId);
   if (!workspaceId) return "loading";
@@ -113,16 +116,28 @@ const WorkspaceDetail = () => {
                   },
                   {
                     id: "human-resources",
-                    element: <div>Human Resources</div>,
+                    element: (
+                      <div>
+                        <HumanResourceDetail />
+                      </div>
+                    ),
                   },
                   {
                     id: "equipments",
-                    element: <div>Equipments</div>,
+                    element: (
+                      <div>
+                        <EquipmentsDetail />
+                      </div>
+                    ),
                   },
 
                   {
                     id: "budgeting",
-                    element: <div>Budgeting</div>,
+                    element: (
+                      <div>
+                        <BudgetDetail />
+                      </div>
+                    ),
                   },
                 ]}
               />
@@ -138,4 +153,4 @@ const WorkspaceDetail = () => {
   );
 };
 
-export default WorkspaceDetail;
+export default ProjectDetail;

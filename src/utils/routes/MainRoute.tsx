@@ -12,6 +12,7 @@ import i18n from "@/intl/i18n.ts";
 
 import { BreadcrumbSeparator } from "@/components/ui/Breadcrumb/breadcrumb.tsx";
 import CreateProjectPage from "@/pages/CreateProjectPage.tsx";
+import BookmarkDetailPage from "@/pages/BookmarkDetail.tsx";
 
 interface IROLE {
   ADMIN: TRole;
@@ -95,6 +96,15 @@ export function MainRoute() {
               return (
                 <Link to={`/workspace/${workspaceId}`}>{workspaceId}</Link>
               );
+            },
+          },
+        },
+        {
+          path: "/bookmark/:projectId",
+          element: <BookmarkDetailPage />,
+          handle: {
+            crumb: ({ projectId }: { projectId: string }) => {
+              return <Link to={`/project/${projectId}`}>{projectId}</Link>;
             },
           },
         },

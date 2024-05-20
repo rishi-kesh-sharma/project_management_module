@@ -4,25 +4,25 @@ import { EditIcon, EyeIcon, TrashIcon } from "@/components/icons/commonIcons";
 import { Link, useParams } from "react-router-dom";
 export const colDefs = [
   {
-    field: "itemName",
+    field: "fullName",
     headerCheckboxSelection: true,
-    headerName: "Inventory Name",
+    headerName: "Full Name",
     checkboxSelection: true,
     cellRenderer: (p: { value: string; data: IProjectRowData }) => {
       // eslint-disable-next-line react-hooks/rules-of-hooks
-      const { workspaceId, projectId } = useParams();
+      const { humanResourceId } = useParams();
       return (
         <Link
           className="hover:underline"
-          to={`/workspace/${workspaceId}/project/${projectId}/task/${p.data.id}`}>
+          to={`/humanResource/${humanResourceId}`}>
           {p.value}
         </Link>
       );
     },
   },
   {
-    field: "category",
-    headerName: "Category",
+    field: "role",
+    headerName: "Role",
     cellRenderer: (p: { value: string }) => {
       return (
         <div>
@@ -31,25 +31,15 @@ export const colDefs = [
       );
     },
   },
-  // {
-  //   field: "subCategory",
-  //   headerName: "Sub Category",
-  //   cellRenderer: (p: { value: string }) => {
-  //     return (
-  //       <div>
-  //         <Badge label={p.value} variant={"outline"} />
-  //       </div>
-  //     );
-  //   },
-  // },
+
   {
-    field: "unitPrice",
+    field: "allocatedEffort",
   },
   {
-    field: "quantity",
+    field: "startDate",
   },
   {
-    field: "totalPrice",
+    field: "endDate",
   },
   {
     field: "Actions",

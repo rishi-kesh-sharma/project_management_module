@@ -1,14 +1,30 @@
 import {
   Table,
   TableBody,
-  TableCaption,
   TableCell,
   TableHead,
   TableHeader,
   TableRow,
 } from "@/components/ui/Table/table";
 
-export default function BasicTable({ tableCaption, columns, data }) {
+interface TableRow<T extends { id: string | number }> {
+  data: T;
+}
+interface TableColumn<T> {
+  label: string;
+  id: keyof T;
+}
+
+type TableProps<T extends { id: string | number }> = {
+  data: T[];
+  tableCaption: string;
+  columns: TableColumn<T>[];
+};
+const BasicTable = <T extends { id: string | number }>({
+  data,
+  tableCaption,
+  columns,
+}: TableProps<T>) => {
   return (
     <div className="flex flex-col items-center rounded-lg">
       <h2 className="font-semibold text-lg border w-full py-[1rem] px-[2rem] rounded-t-lg">
@@ -18,18 +34,20 @@ export default function BasicTable({ tableCaption, columns, data }) {
         {/* <TableCaption>{tableCaption}</TableCaption> */}
         <TableHeader className="">
           <TableRow className="">
-            {columns.map((column) => {
+            {columns.map((column: TableColumn<T>) => {
               return <TableHead className="border">{column.label}</TableHead>;
             })}
           </TableRow>
         </TableHeader>
         <TableBody className="">
-          {data.map((item) => {
+          {data.map((item: T) => {
             return (
               <TableRow className="">
                 {columns.map((column) => {
                   return (
-                    <TableCell className="border">{item[column.id]}</TableCell>
+                    <TableCell key={column.id as string} className="border">
+                      {item[column.id] as string}
+                    </TableCell>
                   );
                 })}
               </TableRow>
@@ -39,4 +57,6 @@ export default function BasicTable({ tableCaption, columns, data }) {
       </Table>
     </div>
   );
-}
+};
+
+export default BasicTable;

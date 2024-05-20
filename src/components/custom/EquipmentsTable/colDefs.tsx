@@ -4,9 +4,9 @@ import { EditIcon, EyeIcon, TrashIcon } from "@/components/icons/commonIcons";
 import { Link, useParams } from "react-router-dom";
 export const colDefs = [
   {
-    field: "itemName",
+    field: "equipmentName",
     headerCheckboxSelection: true,
-    headerName: "Inventory Name",
+    headerName: "Equipment Name",
     checkboxSelection: true,
     cellRenderer: (p: { value: string; data: IProjectRowData }) => {
       // eslint-disable-next-line react-hooks/rules-of-hooks
@@ -31,17 +31,17 @@ export const colDefs = [
       );
     },
   },
-  // {
-  //   field: "subCategory",
-  //   headerName: "Sub Category",
-  //   cellRenderer: (p: { value: string }) => {
-  //     return (
-  //       <div>
-  //         <Badge label={p.value} variant={"outline"} />
-  //       </div>
-  //     );
-  //   },
-  // },
+  {
+    field: "status",
+    headerName: "Status",
+    cellRenderer: (p: { value: string }) => {
+      return (
+        <div>
+          <Badge label={p.value} variant={"outline"} />
+        </div>
+      );
+    },
+  },
   {
     field: "unitPrice",
   },

@@ -1,55 +1,35 @@
 import { IProjectRowData } from "@/@types";
-import Badge from "@/components/custom/Badge/Badge";
 import { EditIcon, EyeIcon, TrashIcon } from "@/components/icons/commonIcons";
+import moment from "moment";
 import { Link, useParams } from "react-router-dom";
 export const colDefs = [
   {
-    field: "itemName",
+    field: "taskName",
     headerCheckboxSelection: true,
-    headerName: "Inventory Name",
+    headerName: "Task Name",
     checkboxSelection: true,
     cellRenderer: (p: { value: string; data: IProjectRowData }) => {
       // eslint-disable-next-line react-hooks/rules-of-hooks
-      const { workspaceId, projectId } = useParams();
+      const { budgetId } = useParams();
       return (
-        <Link
-          className="hover:underline"
-          to={`/workspace/${workspaceId}/project/${projectId}/task/${p.data.id}`}>
+        <Link className="hover:underline" to={`/budget/${budgetId}`}>
           {p.value}
         </Link>
       );
     },
   },
+
   {
-    field: "category",
-    headerName: "Category",
+    field: "totalBudget",
+  },
+  {
+    field: "lastUsed",
     cellRenderer: (p: { value: string }) => {
-      return (
-        <div>
-          <Badge label={p.value} variant={"outline"} />
-        </div>
-      );
+      return <>{moment(p.value).fromNow()}</>;
     },
   },
-  // {
-  //   field: "subCategory",
-  //   headerName: "Sub Category",
-  //   cellRenderer: (p: { value: string }) => {
-  //     return (
-  //       <div>
-  //         <Badge label={p.value} variant={"outline"} />
-  //       </div>
-  //     );
-  //   },
-  // },
   {
-    field: "unitPrice",
-  },
-  {
-    field: "quantity",
-  },
-  {
-    field: "totalPrice",
+    field: "budgetSpent",
   },
   {
     field: "Actions",

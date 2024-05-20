@@ -92,6 +92,47 @@ export interface IInventories {
   quantity: number;
   totalPrice: number;
 }
+export interface IEquipment {
+  id: string;
+  equipmentName: string;
+  category: string;
+  status: string;
+  unitPrice: number;
+  quantity: number;
+  totalPrice: number;
+}
+
+export interface IBudget {
+  id: string;
+  taskName: string;
+  totalBudget: number;
+  lastUsed: Date;
+  budgetSpent: number;
+}
+
+export interface IHumanResource {
+  id: string;
+  fullName: string;
+  username: string;
+  email: string;
+  lastName: string;
+  sex: "male" | "female" | "other";
+  role: "frontend" | "backend" | "QA" | "Project Manager";
+  allocatedEffort: number;
+  startDate: Date;
+  endDate: Date;
+}
+export interface IBookmark {
+  id: string;
+  projectName: string;
+  createdBy: string;
+  startDate: string;
+  dueDate: string;
+  status: string;
+  priority: string;
+  assignee: string;
+  tasks: ITaskRowData[];
+}
 
 export interface IAvatarProps extends AvatarProps {
   imgSrc?: string;
@@ -150,6 +191,17 @@ export interface IProjectRowData {
   assignee: string;
   tasks: ITaskRowData[];
 }
+export interface IBookmarkRowData {
+  id: string;
+  projectName: string;
+  createdBy: string;
+  startDate: string;
+  dueDate: string;
+  status: string;
+  priority: string;
+  assignee: string;
+  tasks: ITaskRowData[];
+}
 
 export interface IInventoriesRowData {
   id: string;
@@ -159,6 +211,35 @@ export interface IInventoriesRowData {
   unitPrice: number;
   quantity: number;
   totalPrice: number;
+}
+export interface IEquipmentRowData {
+  id: string;
+  equipmentName: string;
+  category: string;
+  status: string;
+  unitPrice: number;
+  quantity: number;
+  totalPrice: number;
+}
+
+export interface IBudgetRowData {
+  id: string;
+  taskName: string;
+  totalBudget: number;
+  lastUsed: Date;
+  budgetSpent: number;
+}
+export interface IHumanResourceRowData {
+  id: string;
+  fullName: string;
+  username: string;
+  email: string;
+  lastName: string;
+  sex: "male" | "female" | "other";
+  role: "frontend" | "backend" | "QA" | "Project Manager";
+  allocatedEffort: number;
+  startDate: Date;
+  endDate: Date;
 }
 
 export type RowModelType =
@@ -401,4 +482,50 @@ export interface IBarChartProps {
       pointStyle: string;
     }[];
   };
+}
+
+export interface CountryProps {
+  id: number;
+  name: string;
+  iso3: string;
+  iso2: string;
+  numeric_code: string;
+  phone_code: string;
+  capital: string;
+  currency: string;
+  currency_name: string;
+  currency_symbol: string;
+  tld: string;
+  native: string;
+  region: string;
+  region_id: string;
+  subregion: string;
+  subregion_id: string;
+  nationality: string;
+  timezones: Timezone[];
+  translations: Record<string, string>;
+  latitude: string;
+  longitude: string;
+  emoji: string;
+  emojiU: string;
+}
+
+interface Timezone {
+  zoneName: string;
+  gmtOffset: number;
+  gmtOffsetName: string;
+  abbreviation: string;
+  tzName: string;
+}
+
+export interface StateProps {
+  id: number;
+  name: string;
+  country_id: number;
+  country_code: string;
+  country_name: string;
+  state_code: string;
+  type: string | null;
+  latitude: string;
+  longitude: string;
 }

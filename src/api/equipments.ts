@@ -1,25 +1,16 @@
+import { IEquipment } from "@/@types";
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 
 const BASE_URL = "http://localhost:4000/";
 
-export interface IEquipments {
-  id: string;
-  itemName: string;
-  category: string;
-  subCategory: string;
-  unitPrice: number;
-  quantity: number;
-  totalPrice: number;
-}
-
-type EquipmentsResponse = IEquipments[];
+type EquipmentsResponse = IEquipment[];
 
 export const equipmentsApi = createApi({
   reducerPath: "equipments",
   baseQuery: fetchBaseQuery({ baseUrl: `${BASE_URL}` }),
   tagTypes: ["Equipments"],
   endpoints: (build) => ({
-    getEquipments: build.query<EquipmentsResponse, IEquipments>({
+    getEquipments: build.query<EquipmentsResponse, IEquipment>({
       query: () => "equipments",
       providesTags: (result) =>
         result
@@ -29,7 +20,7 @@ export const equipmentsApi = createApi({
             ]
           : [{ type: "Equipments", id: "LIST" }],
     }),
-    addEquipments: build.mutation<IEquipments, Partial<IEquipments>>({
+    addEquipments: build.mutation<IEquipment, Partial<IEquipment>>({
       query: (body) => ({
         url: `equipments`,
         method: "Equipments",
@@ -37,24 +28,35 @@ export const equipmentsApi = createApi({
       }),
       invalidatesTags: [{ type: "Equipments", id: "LIST" }],
     }),
-    getEquipment: build.query<IEquipments, string>({
+    getEquipment: build.query<IEquipment, string>({
       query: (id) => `equipments/${id}`,
       providesTags: (result, error, id) => [{ type: "Equipments", id }],
     }),
     updateEquipments: build.mutation<
       void,
-      Pick<IEquipments, "id"> & Partial<IEquipments>
+      Pick<IEquipment, "id"> & Partial<IEquipment>
     >({
       query: ({ id, ...patch }) => ({
         url: `equipments/${id}`,
         method: "PUT",
         body: patch,
       }),
-      async onQueryStarted({ id, ...patch }, { dispatch, queryFulfilled }) {
+      async onQueryStarted(
+        { id, ...patch }: Pick<IEquipment, "id"> & Partial<IEquipment>,
+        {
+          dispatch,
+          queryFulfilled,
+          // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        }: { dispatch: any; queryFulfilled: Promise<any> }
+      ) {
         const patchResult = dispatch(
-          equipmentsApi.util.updateQueryData("getEquipments", id, (draft) => {
-            Object.assign(draft, patch);
-          })
+          equipmentsApi.util.updateQueryData(
+            "getEquipments",
+            id,
+            (draft: IEquipment) => {
+              Object.assign(draft, patch);
+            }
+          )
         );
         try {
           await queryFulfilled;

@@ -23,7 +23,7 @@ export const inventoriesApi = createApi({
     addInventories: build.mutation<IInventories, Partial<IInventories>>({
       query: (body) => ({
         url: `inventories`,
-        method: "INVENTORIes",
+        method: "POST",
         body,
       }),
       invalidatesTags: [{ type: "Inventories", id: "LIST" }],
