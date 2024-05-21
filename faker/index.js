@@ -9,6 +9,7 @@ import { createNHumanResources } from "./humanResource.js";
 import { createNBudgets } from "./budgets.js";
 import { createNSubTasks } from "./subTasks.js";
 import { createNTasks } from "./task.js";
+import { createNProjects } from "./project.js";
 
 (() => {
   fs.writeFileSync(
@@ -24,6 +25,7 @@ import { createNTasks } from "./task.js";
       budgets: createNBudgets(20),
       subTasks: createNSubTasks(20),
       tasks: createNTasks(10),
+      projects: createNProjects(10),
     })
   );
 })();

@@ -1,31 +1,17 @@
+import { IProject } from "@/@types";
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 
 const BASE_URL = "http://localhost:4000/";
-export interface IProject {
-  id: string;
-  taskName: string;
-  createdBy: string;
-  startDate: Date;
-  status: "On Progress" | "Not Started" | "Completed" | "Pending";
-  dueDate: Date;
-  priority: "Low" | "Normal" | "High";
-}
 
-export interface IProject {
-  id: string;
-  projectName: string;
-  tasks: [];
-}
-
-type WorkspaceResponse = IProject[];
+type ProjectResponse = IProject[];
 
 export const projectApi = createApi({
   reducerPath: "project",
   baseQuery: fetchBaseQuery({ baseUrl: `${BASE_URL}` }),
   tagTypes: ["Project"],
   endpoints: (build) => ({
-    getProjects: build.query<WorkspaceResponse, IProject>({
-      query: () => "project",
+    getProjects: build.query<ProjectResponse, IProject>({
+      query: () => "projects",
       providesTags: (result) =>
         result
           ? [
@@ -51,7 +37,7 @@ export const projectApi = createApi({
       Pick<IProject, "id"> & Partial<IProject>
     >({
       query: ({ id, ...patch }) => ({
-        url: `workspaces/${id}`,
+        url: `project/${id}`,
         method: "PUT",
         body: patch,
       }),
@@ -76,7 +62,7 @@ export const projectApi = createApi({
           method: "DELETE",
         };
       },
-      invalidatesTags: (result, error, id) => [{ type: "Workspace", id }],
+      invalidatesTags: (result, error, id) => [{ type: "Project", id }],
     }),
   }),
 });

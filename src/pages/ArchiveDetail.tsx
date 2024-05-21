@@ -1,4 +1,4 @@
-import BookmarksDetail from "@/components/page/Bookmarks/BookmarksDetail";
+import ArchiveDetail from "@/components/page/Archives/ArchiveDetail";
 
 interface Props {}
 
@@ -6,7 +6,7 @@ const BookmarkDetailPage = (props: Props) => {
   console.log(props);
   return (
     <div>
-      <BookmarksDetail />
+      <ArchiveDetail />
     </div>
   );
 };

@@ -1,7 +1,6 @@
 import { ButtonProps } from "@/components/ui/Button/button";
 import { AvatarProps } from "@radix-ui/react-avatar";
 import { ColDef } from "@ag-grid-community/core";
-import { ClassProp } from "class-variance-authority/dist/types";
 import React from "react";
 
 export interface IDropdownMenuItem {
@@ -84,6 +83,16 @@ export interface IHeaderProps {
   // user: IUser;
 }
 
+export interface IProject {
+  id: string;
+  taskName: string;
+  createdBy: string;
+  startDate: Date;
+  status: "On Progress" | "Not Started" | "Completed" | "Pending";
+  dueDate: Date;
+  priority: "Low" | "Normal" | "High";
+  tasks?: [];
+}
 export interface IInventories {
   id: string;
   itemName: string;
@@ -287,7 +296,12 @@ export type RowModelType =
   | "serverSide";
 
 export type IsRowSelectable = unknown;
-export interface IAgGridTableProps {
+
+export type IAgGridTableRow<T> = {
+  data: T;
+};
+
+export type IAgGridTableProps<T> = {
   heading?: string;
   dropdownMenus?: {
     items?: IDropdownMenuProps["menu"]["items"];
@@ -300,7 +314,7 @@ export interface IAgGridTableProps {
   height?: number;
   tableToolbar: React.ReactNode;
   // rowData?: IRowData[];
-  rowData?: [] | undefined;
+  rowData?: IAgGridTableProps<T>[];
   colDefs?: ColDef[];
   rowSelection?: "multiple" | "single";
   sidebar?: string | boolean;
@@ -322,7 +336,7 @@ export interface IAgGridTableProps {
   onCellValueChanged?: () => void;
   onFilterOpened?: () => void;
   onRowSelected?: () => void;
-}
+};
 
 export interface IBadgeProps {
   label?: string;

@@ -16,8 +16,8 @@ export interface ITableToolbar {
   handleSearch: (e: React.FormEvent) => void;
   dropdownMenus: IIconDropdownMenuProps["menu"];
   heading: string;
-  createButtonText: string;
-  createPagePath: string;
+  createButtonText?: string;
+  createPagePath?: string;
 }
 const TableToolbar: React.FC<ITableToolbar> = ({
   handleSearch,
@@ -61,12 +61,14 @@ const TableToolbar: React.FC<ITableToolbar> = ({
               placeholder="Search here..."
               className=""
             />
-            <Button className="flex gap-2" asChild>
-              <Link to={`${createPagePath}`}>
-                <PlusIcon />
-                <span>{createButtonText}</span>
-              </Link>
-            </Button>
+            {createPagePath && createButtonText && (
+              <Button className="flex gap-2" asChild>
+                <Link to={`${createPagePath}`}>
+                  <PlusIcon />
+                  <span>{createButtonText}</span>
+                </Link>
+              </Button>
+            )}
           </div>
         </div>
       </div>

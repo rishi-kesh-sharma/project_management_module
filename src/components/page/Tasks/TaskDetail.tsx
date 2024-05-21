@@ -57,6 +57,7 @@ import HumanResourceDetail from "@/components/custom/HumanResourceTable/HumanRes
 import InventoriesDetail from "@/components/custom/InventoriesTable/InventoriesDetail";
 import { KanbanBoard } from "@/components/custom/Kanban/KanbanBoard";
 import TimeTrackingDetail from "./TimeTrackingDetail";
+import TabWithButtonedTrigger from "@/components/custom/common/TabsWithButtonedTrigger/TabsWithButtonedTrigger";
 // import { useParams } from "react-router";
 const TaskDetail = () => {
   // const { workspaceId, projectId, taskId } = useParams();
@@ -78,7 +79,7 @@ const TaskDetail = () => {
           {
             id: "planning",
             element: (
-              <Tabs
+              <TabWithButtonedTrigger
                 className={`mt-[1rem]`}
                 triggers={planningTabTriggers}
                 contents={[
@@ -105,7 +106,7 @@ const TaskDetail = () => {
           {
             id: "resources",
             element: (
-              <Tabs
+              <TabWithButtonedTrigger
                 className={`mt-[1rem]`}
                 triggers={resourceTabTriggers}
                 contents={[

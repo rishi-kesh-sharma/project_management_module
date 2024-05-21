@@ -1,6 +1,7 @@
-import ProjectDetailTable from "./Table";
+import { useGetProjectsQuery } from "@/api/project";
+import BookmarkTable from "./Table";
 
-const projectDetailTabTriggers = [
+const bookmarkDetailTabTriggers = [
   {
     id: "tasks",
     label: "Tasks",
@@ -48,28 +49,26 @@ const resourceTabTriggers = [
     label: "Budgeting",
   },
 ];
-import { useGetWorkspaceQuery } from "@/api/workspace";
 import BudgetDetail from "@/components/custom/BudgetTable/BudgetDetail";
 import Tabs from "@/components/custom/common/Tabs/Tabs";
-import TabWithButtonedTrigger from "@/components/custom/common/TabsWithButtonedTrigger/TabsWithButtonedTrigger";
 import EquipmentsDetail from "@/components/custom/EquipmentsTable/EquipmentDetail";
 import HumanResourceDetail from "@/components/custom/HumanResourceTable/HumanResourceDetail";
 import InventoriesDetail from "@/components/custom/InventoriesTable/InventoriesDetail";
 import { KanbanBoard } from "@/components/custom/Kanban/KanbanBoard";
-import { useParams } from "react-router";
-const ProjectDetail = () => {
-  const { workspaceId } = useParams();
-  const { data, isLoading } = useGetWorkspaceQuery(workspaceId);
-  if (!workspaceId) return "loading";
+import TabWithButtonedTrigger from "@/components/custom/common/TabsWithButtonedTrigger/TabsWithButtonedTrigger";
+const BookmarkDetail = () => {
+  const { data: projectsData, isLoading } = useGetProjectsQuery();
+  const data = projectsData?.[0];
+  console.log(data, "project data");
   if (isLoading || !data) return "Loading...";
   return (
-    <div className="mt-[1rem]">
+    <div className="my-[2rem]">
       <Tabs
-        triggers={projectDetailTabTriggers}
+        triggers={bookmarkDetailTabTriggers}
         contents={[
           {
             id: "tasks",
-            element: <ProjectDetailTable project={data.projects} />,
+            element: <BookmarkTable tasks={data.tasks} />,
           },
           {
             id: "planning",
@@ -101,47 +100,45 @@ const ProjectDetail = () => {
           {
             id: "resources",
             element: (
-              <div className="">
-                <TabWithButtonedTrigger
-                  className={`mb-0 mt-[0rem]`}
-                  triggers={resourceTabTriggers}
-                  contents={[
-                    {
-                      id: "inventories",
-                      element: (
-                        <div>
-                          <InventoriesDetail />
-                        </div>
-                      ),
-                    },
-                    {
-                      id: "human-resources",
-                      element: (
-                        <div>
-                          <HumanResourceDetail />
-                        </div>
-                      ),
-                    },
-                    {
-                      id: "equipments",
-                      element: (
-                        <div>
-                          <EquipmentsDetail />
-                        </div>
-                      ),
-                    },
+              <TabWithButtonedTrigger
+                className={`mt-[1rem]`}
+                triggers={resourceTabTriggers}
+                contents={[
+                  {
+                    id: "inventories",
+                    element: (
+                      <div>
+                        <InventoriesDetail />
+                      </div>
+                    ),
+                  },
+                  {
+                    id: "human-resources",
+                    element: (
+                      <div>
+                        <HumanResourceDetail />
+                      </div>
+                    ),
+                  },
+                  {
+                    id: "equipments",
+                    element: (
+                      <div>
+                        <EquipmentsDetail />
+                      </div>
+                    ),
+                  },
 
-                    {
-                      id: "budgeting",
-                      element: (
-                        <div>
-                          <BudgetDetail />
-                        </div>
-                      ),
-                    },
-                  ]}
-                />
-              </div>
+                  {
+                    id: "budgeting",
+                    element: (
+                      <div>
+                        <BudgetDetail />
+                      </div>
+                    ),
+                  },
+                ]}
+              />
             ),
           },
           {
@@ -154,4 +151,4 @@ const ProjectDetail = () => {
   );
 };
 
-export default ProjectDetail;
+export default BookmarkDetail;

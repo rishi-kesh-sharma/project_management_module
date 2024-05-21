@@ -41,7 +41,7 @@ const ProjectTable = ({
   if (projectId) getProject(projectId);
   if (!project) return "loading...";
   return (
-    <div className="mt-[2rem]">
+    <div className="mt-[1rem]">
       <AgGridTable
         tableToolbar={
           <TableToolbar

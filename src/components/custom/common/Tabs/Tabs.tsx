@@ -13,12 +13,12 @@ const Tabs = ({ triggers, contents, className, ...props }: TTabsProps) => {
     <ShadTabs
       defaultValue={triggers[0].id}
       {...props}
-      className={`${cn(className)}`}>
-      <TabsList className="w-full px-0 pb-0 flex border-b-[3px] border-b-gray-100 shadow-none items-center justify-between    py-[1rem] bg-white  gap-[1rem] dark:bg-background rounded-none dark:border-gray-700  ">
+      className={`${(cn(className), "!mt-[0rem]")}`}>
+      <TabsList className="w-full px-0 pb-0 flex border-b-[3px] border-b-gray-100 shadow-none items-center justify-between    py-[1rem] bg-white  gap-[1rem] dark:bg-background rounded-none dark:border-gray-700   ">
         {triggers.map((trigger: ITabTrigger) => {
           return (
             <TabsTrigger
-              className=" hover:bg-inherit  hover:border-b-[3px] hover:border-b-primary dark:hover:border-foreground data-[state=active]:border-b-[3px] rounded-none data-[state=active]:border-b-primary dark:data-[state=active]:border-b-foreground  w-full"
+              className=" hover:bg-inherit   hover:border-b-[3px] hover:border-b-primary dark:hover:border-foreground data-[state=active]:border-b-[3px] rounded-none data-[state=active]:border-b-primary dark:data-[state=active]:border-b-foreground  w-full"
               asChild
               value={trigger.id}
               id={trigger.id}>
@@ -31,7 +31,7 @@ const Tabs = ({ triggers, contents, className, ...props }: TTabsProps) => {
       </TabsList>
       {contents.map((content: ITabContent) => {
         return (
-          <TabsContent className="mt-[3rem]" value={content.id} id={content.id}>
+          <TabsContent className="" value={content.id} id={content.id}>
             {content.element}
           </TabsContent>
         );

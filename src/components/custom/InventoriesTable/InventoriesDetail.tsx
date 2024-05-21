@@ -4,8 +4,7 @@ import { useGetInventoriesQuery } from "@/api/inventories";
 const InventoriesDetail = () => {
   const { workspaceId } = useParams();
   const { data, isLoading } = useGetInventoriesQuery();
-  if (!workspaceId) return "loading";
-
+  // if (!workspaceId) return "loading";
   if (isLoading || !data) return "Loading...";
 
   return (

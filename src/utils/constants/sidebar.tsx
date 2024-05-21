@@ -15,6 +15,7 @@ import i18n from "@/intl/i18n";
 interface ISidebarItemsProps {
   workspaces: IWorkspace[];
   bookmarks: IProject[];
+  archives: IProject[];
 }
 export const sidebarItems = (injectables: ISidebarItemsProps) => [
   {
@@ -48,8 +49,22 @@ export const sidebarItems = (injectables: ISidebarItemsProps) => [
     });
 
     return {
-      label: i18n.t("component.sidebar.menu.bookmarks", "Marcadores"),
+      label: i18n.t("component.sidebar.menu.bookmarks", "Bookmarks"),
       link: `/bookmarks`,
+      icon: <BookmarkIcon />,
+      items,
+    };
+  })(),
+  (() => {
+    const archives = injectables?.archives;
+    const items = archives?.map((project: IProject) => {
+      const link = `/archive/${project.id}`;
+      return { link, label: project.projectName };
+    });
+
+    return {
+      label: i18n.t("component.sidebar.menu.archives", "Archives"),
+      link: `/archives`,
       icon: <BookmarkIcon />,
       items,
     };

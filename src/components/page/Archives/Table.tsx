@@ -1,7 +1,7 @@
 import AgGridTable from "@/components/custom/Tables/AgGridTable/AgGridTable";
 import { colDefs } from "./colDefs";
 import TableToolbar from "@/components/custom/TableToolbar/TableToolbar";
-import { IHumanResourceRowData } from "@/@types";
+import { IBookmarkRowData } from "@/@types";
 
 const dropdownMenus = {
   items: [
@@ -11,31 +11,22 @@ const dropdownMenus = {
   ],
 };
 
-const HumanResourceTable = ({
-  humanResource,
-}: {
-  humanResource: IHumanResourceRowData[];
-}) => {
-  const handleSearch = (e: React.FormEvent) => {
-    e.preventDefault();
-  };
-
-  console.log(humanResource, "humanResource");
-  // if (!humanResource) return "loading...";
+const BookmarkTable = ({ tasks }: { tasks: IBookmarkRowData[] }) => {
+  const handleSearch = () => {};
   return (
     <div className="mt-[2rem]">
       <AgGridTable
         tableToolbar={
           <TableToolbar
-            heading={"Human Resource"}
+            heading={`Tasks`}
             handleSearch={handleSearch}
             dropdownMenus={dropdownMenus}
-            createButtonText="Assign"
-            createPagePath={`/humanResource/add`}
+            // createButtonText={null}
+            // createPagePath="/workspace/:workspaceId/bookmark/:bookmarkId/task/create"
           />
         }
-        rowData={humanResource}
-        heading={"Human Resources"}
+        rowData={tasks}
+        heading={`Tasks`}
         dropdownMenus={dropdownMenus}
         colDefs={colDefs}
       />
@@ -43,4 +34,4 @@ const HumanResourceTable = ({
   );
 };
 
-export default HumanResourceTable;
+export default BookmarkTable;

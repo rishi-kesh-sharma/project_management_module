@@ -16,7 +16,7 @@ const CommonLayout = () => {
   return (
     <div className="relative w-full min-h-screen flex">
       <Sidebar
-        items={sidebarItems({ workspaces, bookmarks })}
+        items={sidebarItems({ workspaces, bookmarks, archives: bookmarks })}
         path={currentPath}
       />
 

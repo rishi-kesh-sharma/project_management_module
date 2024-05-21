@@ -60,7 +60,7 @@ export function MainRoute() {
           handle: {
             crumb: ({ workspaceId }: { workspaceId: string }) => {
               return (
-                <Link to={`/workspace/${workspaceId}`}>{workspaceId}</Link>
+                <Link to={`/workspace/${workspaceId}`}>{`Workspace`}</Link>
               );
             },
           },
@@ -79,10 +79,10 @@ export function MainRoute() {
               return (
                 <>
                   {" "}
-                  <Link to={`/workspace/${workspaceId}`}>{workspaceId}</Link>
+                  <Link to={`/workspace/${workspaceId}`}>{`Workspace`}</Link>
                   <BreadcrumbSeparator />
                   <Link to={`/workspace/${workspaceId}/project/${projectId}`}>
-                    {workspaceId}
+                    {`Project`}
                   </Link>
                 </>
               );
@@ -95,7 +95,7 @@ export function MainRoute() {
           handle: {
             crumb: ({ workspaceId }: { workspaceId: string }) => {
               return (
-                <Link to={`/workspace/${workspaceId}`}>{workspaceId}</Link>
+                <Link to={`/workspace/${workspaceId}`}>{`Workspace`}</Link>
               );
             },
           },
@@ -105,7 +105,16 @@ export function MainRoute() {
           element: <BookmarkDetailPage />,
           handle: {
             crumb: ({ projectId }: { projectId: string }) => {
-              return <Link to={`/project/${projectId}`}>{projectId}</Link>;
+              return <Link to={`/project/${projectId}`}>{`Project`}</Link>;
+            },
+          },
+        },
+        {
+          path: "/archive/:projectId",
+          element: <BookmarkDetailPage />,
+          handle: {
+            crumb: ({ projectId }: { projectId: string }) => {
+              return <Link to={`/project/${projectId}`}>{`Project`}</Link>;
             },
           },
         },
@@ -125,12 +134,12 @@ export function MainRoute() {
               return (
                 <>
                   <Link to={`/workspace/${workspaceId}`}>{`Workspace`}</Link>
-                  <BreadcrumbSeparator/>
+                  <BreadcrumbSeparator />
                   <Link
                     to={`/workspace/${workspaceId}/project/${projectId}/`}>{`Project`}</Link>
-                    <BreadcrumbSeparator/>
+                  <BreadcrumbSeparator />
                   <Link
-                    to={`/workspace/${workspaceId}/project/${projectId}/task/${taskId}`}>{`${taskId}`}</Link>
+                    to={`/workspace/${workspaceId}/project/${projectId}/task/${taskId}`}>{`${`Task`}`}</Link>
                 </>
               );
             },

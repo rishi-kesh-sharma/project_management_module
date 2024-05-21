@@ -80,7 +80,12 @@ export const ROLE = {
 };
 
 export const pieChartData = {
-  labels: [i18n.t("component.home.text.projectStatus.pending", "pending"), i18n.t("component.home.text.projectStatus.notStarted", "Not Started"), i18n.t("component.home.text.projectStatus.onProgress", "On Progress"), i18n.t("component.home.text.projectStatus.completed", "Completed"),],
+  labels: [
+    i18n.t("component.home.text.projectStatus.pending", "pending"),
+    i18n.t("component.home.text.projectStatus.notStarted", "Not Started"),
+    i18n.t("component.home.text.projectStatus.onProgress", "On Progress"),
+    i18n.t("component.home.text.projectStatus.completed", "Completed"),
+  ],
   datasets: [
     {
       data: [12, 10, 8, 12],
@@ -120,7 +125,10 @@ export const barChartData = {
       pointStyle: "square",
     },
     {
-      label: i18n.t("component.home.text.budgetEstimation.expected", "Esperado"),
+      label: i18n.t(
+        "component.home.text.budgetEstimation.expected",
+        "Esperado"
+      ),
       data: [8, 15, 10, 12, 10, 8, 12, 10, 8, 12, 10, 8],
       backgroundColor: "#99D045",
       borderRadius: 5,
@@ -131,12 +139,27 @@ export const barChartData = {
 
 export const basicTableData = {
   // tableCaption: "A list of your recent invoices",
-  tableCaption: i18n.t("component.home.analytics.overdueProject", "Overdue Projects"),
+  tableCaption: i18n.t(
+    "component.home.analytics.overdueProject",
+    "Overdue Projects"
+  ),
   columns: [
-    { label: i18n.t("component.home.text.overdueProject.overdue", "Overdue"), id: "overdue" },
-    { label: i18n.t("component.home.text.overdueProject.projectName", "Nombre del proyecto"), id: "projectName" },
     {
-      label: i18n.t("component.home.text.overdueProject.deadline", "Fecha límite"),
+      label: i18n.t("component.home.text.overdueProject.overdue", "Overdue"),
+      id: "overdue",
+    },
+    {
+      label: i18n.t(
+        "component.home.text.overdueProject.projectName",
+        "Nombre del proyecto"
+      ),
+      id: "projectName",
+    },
+    {
+      label: i18n.t(
+        "component.home.text.overdueProject.deadline",
+        "Fecha límite"
+      ),
       id: "deadline",
     },
   ],
