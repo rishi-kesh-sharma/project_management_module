@@ -1,7 +1,7 @@
 import { IBookmark } from "@/@types";
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 
-const BASE_URL = "http://localhost:4000/";
+const BASE_URL = "http://192.168.254.239:4000/";
 
 type BookMarkResponse = IBookmark[];
 
