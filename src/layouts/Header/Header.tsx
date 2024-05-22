@@ -1,8 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { IoMdNotificationsOutline } from "react-icons/io";
-import { BiPlus } from "react-icons/bi";
-import { Link } from "react-router-dom";
-import { Button } from "@/components/ui/Button/button";
+
 import { IHeaderProps } from "@/@types";
 import AvatarDropdown from "@/components/custom/common/AvatarDropdownMenu/AvatarDropdownMenu";
 import { avatarDropdownMenu } from "@/utils/constants";

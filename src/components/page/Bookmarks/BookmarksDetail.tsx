@@ -56,11 +56,12 @@ import HumanResourceDetail from "@/components/custom/HumanResourceTable/HumanRes
 import InventoriesDetail from "@/components/custom/InventoriesTable/InventoriesDetail";
 import { KanbanBoard } from "@/components/custom/Kanban/KanbanBoard";
 import TabWithButtonedTrigger from "@/components/custom/common/TabsWithButtonedTrigger/TabsWithButtonedTrigger";
+import Spinner from "@/components/custom/common/Spinner/Spinner";
 const BookmarkDetail = () => {
   const { data: projectsData, isLoading } = useGetProjectsQuery();
   const data = projectsData?.[0];
   console.log(data, "project data");
-  if (isLoading || !data) return "Loading...";
+  if (isLoading || !data) return <Spinner/>
   return (
     <div className="my-[2rem]">
       <Tabs

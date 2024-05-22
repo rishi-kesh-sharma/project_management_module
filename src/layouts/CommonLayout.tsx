@@ -6,13 +6,14 @@ import Sidebar from "@/components/custom/layout/Sidebar/Sidebar.tsx";
 import Breadcrumb from "@/components/custom/common/Breadcrumb/Breadcrumb.tsx";
 import { useGetWorkspaceQuery } from "@/api/workspace";
 import { useGetBookmarkQuery } from "@/api/bookmark.ts";
+import Spinner from "@/components/custom/common/Spinner/Spinner.tsx";
 
 const CommonLayout = () => {
   const { pathname: currentPath } = useLocation();
   const { data: workspaces, isLoading } = useGetWorkspaceQuery("");
   const { data: bookmarks } = useGetBookmarkQuery("");
 
-  if (isLoading) return "Loading...";
+  if (isLoading) return <Spinner />;
   return (
     <div className="relative w-full min-h-screen flex">
       <Sidebar

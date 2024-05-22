@@ -50,6 +50,7 @@ const resourceTabTriggers = [
 ];
 import { useGetWorkspaceQuery } from "@/api/workspace";
 import BudgetDetail from "@/components/custom/BudgetTable/BudgetDetail";
+import Spinner from "@/components/custom/common/Spinner/Spinner";
 import Tabs from "@/components/custom/common/Tabs/Tabs";
 import TabWithButtonedTrigger from "@/components/custom/common/TabsWithButtonedTrigger/TabsWithButtonedTrigger";
 import EquipmentsDetail from "@/components/custom/EquipmentsTable/EquipmentDetail";
@@ -61,7 +62,7 @@ const ProjectDetail = () => {
   const { workspaceId } = useParams();
   const { data, isLoading } = useGetWorkspaceQuery(workspaceId);
   if (!workspaceId) return "loading";
-  if (isLoading || !data) return "Loading...";
+  if (isLoading || !data) return <Spinner/>
   return (
     <div className="mt-[1rem]">
       <Tabs

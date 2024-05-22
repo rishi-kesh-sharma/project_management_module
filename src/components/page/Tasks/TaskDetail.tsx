@@ -58,12 +58,13 @@ import InventoriesDetail from "@/components/custom/InventoriesTable/InventoriesD
 import { KanbanBoard } from "@/components/custom/Kanban/KanbanBoard";
 import TimeTrackingDetail from "./TimeTrackingDetail";
 import TabWithButtonedTrigger from "@/components/custom/common/TabsWithButtonedTrigger/TabsWithButtonedTrigger";
+import Spinner from "@/components/custom/common/Spinner/Spinner";
 // import { useParams } from "react-router";
 const TaskDetail = () => {
   // const { workspaceId, projectId, taskId } = useParams();
   const { data, isLoading } = useGetTasksQuery();
 
-  if (isLoading || !data) return "Loading...";
+  if (isLoading || !data) return <Spinner/>
 
   const firstTask: ITask = data[0];
 
