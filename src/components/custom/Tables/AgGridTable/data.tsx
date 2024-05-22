@@ -1,7 +1,7 @@
 import { IRowData } from "@/@types";
 import Badge from "../../Badge/Badge";
 import { IGroupCellRendererParams } from "@ag-grid-community/core";
-import { EditIcon, EyeIcon, TrashIcon } from "@/components/icons/commonIcons";
+import { EditIcon, TrashIcon } from "@/components/icons/commonIcons";
 
 export const rowData: IRowData[] = [
   {
@@ -327,13 +327,11 @@ export const colDefs = [
         <div className="flex gap-4 items-center justify-start  h-full">
           <TrashIcon className="text-destructive cursor-pointer" />
           <EditIcon className="text-blue-900 cursor-pointer" />
-          <EyeIcon className="text-black-900 cursor-pointer" />
         </div>
       );
     },
   },
 ];
-
 
 export const projectData = [
   {
@@ -342,7 +340,7 @@ export const projectData = [
     startDate: "2024-05-01",
     status: "Pending",
     dueDate: "2024-06-15",
-    priority: "High"
+    priority: "High",
   },
   {
     projectName: "Project B",
@@ -350,7 +348,7 @@ export const projectData = [
     startDate: "2024-04-20",
     status: "Not Started",
     dueDate: "2024-07-10",
-    priority: "Medium"
+    priority: "Medium",
   },
   {
     projectName: "Project C",
@@ -358,7 +356,7 @@ export const projectData = [
     startDate: "2024-05-10",
     status: "Pending",
     dueDate: "2024-06-30",
-    priority: "Low"
+    priority: "Low",
   },
   {
     projectName: "Project D",
@@ -366,7 +364,7 @@ export const projectData = [
     startDate: "2024-05-05",
     status: "Not Started",
     dueDate: "2024-07-20",
-    priority: "High"
+    priority: "High",
   },
   {
     projectName: "Project E",
@@ -374,7 +372,7 @@ export const projectData = [
     startDate: "2024-04-25",
     status: "Pending",
     dueDate: "2024-07-05",
-    priority: "Medium"
+    priority: "Medium",
   },
   {
     projectName: "Project F",
@@ -382,7 +380,7 @@ export const projectData = [
     startDate: "2024-05-15",
     status: "Pending",
     dueDate: "2024-07-25",
-    priority: "Low"
+    priority: "Low",
   },
   {
     projectName: "Project G",
@@ -390,7 +388,7 @@ export const projectData = [
     startDate: "2024-05-02",
     status: "Pending",
     dueDate: "2024-06-20",
-    priority: "Medium"
+    priority: "Medium",
   },
   {
     projectName: "Project H",
@@ -398,7 +396,7 @@ export const projectData = [
     startDate: "2024-04-22",
     status: "Not Started",
     dueDate: "2024-07-15",
-    priority: "High"
+    priority: "High",
   },
   {
     projectName: "Project I",
@@ -406,7 +404,7 @@ export const projectData = [
     startDate: "2024-05-12",
     status: "Pending",
     dueDate: "2024-07-10",
-    priority: "Low"
+    priority: "Low",
   },
   {
     projectName: "Project J",
@@ -414,8 +412,8 @@ export const projectData = [
     startDate: "2024-05-07",
     status: "Pending",
     dueDate: "2024-07-30",
-    priority: "High"
-  }
+    priority: "High",
+  },
 ];
 
 export const taskData = [
@@ -426,7 +424,7 @@ export const taskData = [
     assignee: "Emma Johnson",
     startDate: "2024-05-02",
     dueDate: "2024-06-05",
-    status: "Pending"
+    status: "Pending",
   },
   {
     taskName: "Task 2",
@@ -435,7 +433,7 @@ export const taskData = [
     assignee: "Michael Brown",
     startDate: "2024-05-03",
     dueDate: "2024-06-10",
-    status: "Not Started"
+    status: "Not Started",
   },
   {
     taskName: "Task 3",
@@ -444,7 +442,7 @@ export const taskData = [
     assignee: "David Wilson",
     startDate: "2024-04-30",
     dueDate: "2024-07-01",
-    status: "Completed"
+    status: "Completed",
   },
   {
     taskName: "Task 4",
@@ -453,7 +451,7 @@ export const taskData = [
     assignee: "Olivia Garcia",
     startDate: "2024-05-01",
     dueDate: "2024-06-20",
-    status: "Not Started"
+    status: "Not Started",
   },
   {
     taskName: "Task 5",
@@ -462,7 +460,7 @@ export const taskData = [
     assignee: "Sophia Martinez",
     startDate: "2024-05-02",
     dueDate: "2024-06-25",
-    status: "Pending"
+    status: "Pending",
   },
   {
     taskName: "Task 6",
@@ -471,7 +469,7 @@ export const taskData = [
     assignee: "John Doe",
     startDate: "2024-05-03",
     dueDate: "2024-07-15",
-    status: "Pending"
+    status: "Pending",
   },
   {
     taskName: "Task 7",
@@ -480,7 +478,7 @@ export const taskData = [
     assignee: "Jane Smith",
     startDate: "2024-05-01",
     dueDate: "2024-07-05",
-    status: "Not Started"
+    status: "Not Started",
   },
   {
     taskName: "Task 8",
@@ -489,8 +487,8 @@ export const taskData = [
     assignee: "Alice Johnson",
     startDate: "2024-04-30",
     dueDate: "2024-07-20",
-    status: "Not Started"
-  }
+    status: "Not Started",
+  },
 ];
 
 export const WorkspaceData = [
@@ -498,36 +496,36 @@ export const WorkspaceData = [
     workspaceName: "Workspace 1",
     createdBy: "John Doe",
     createdOn: "2024-05-01",
-    lastUpdated: "2024-05-05"
+    lastUpdated: "2024-05-05",
   },
   {
     workspaceName: "Workspace 2",
     createdBy: "Jane Smith",
     createdOn: "2024-04-20",
-    lastUpdated: "2024-04-25"
+    lastUpdated: "2024-04-25",
   },
   {
     workspaceName: "Workspace 3",
     createdBy: "Alice Johnson",
     createdOn: "2024-05-10",
-    lastUpdated: "2024-05-15"
+    lastUpdated: "2024-05-15",
   },
   {
     workspaceName: "Workspace 4",
     createdBy: "Michael Brown",
     createdOn: "2024-05-05",
-    lastUpdated: "2024-05-10"
+    lastUpdated: "2024-05-10",
   },
   {
     workspaceName: "Workspace 5",
     createdBy: "Emily Davis",
     createdOn: "2024-04-25",
-    lastUpdated: "2024-05-01"
+    lastUpdated: "2024-05-01",
   },
   {
     workspaceName: "Workspace 6",
     createdBy: "David Wilson",
     createdOn: "2024-05-15",
-    lastUpdated: "2024-05-20"
-  }
+    lastUpdated: "2024-05-20",
+  },
 ];

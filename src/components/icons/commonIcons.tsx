@@ -20,6 +20,9 @@ import { FaRegStar } from "react-icons/fa";
 import { TbDotsCircleHorizontal } from "react-icons/tb";
 import { IoCalendarOutline } from "react-icons/io5";
 import { FaRegComment } from "react-icons/fa6";
+import { FaRegFileArchive } from "react-icons/fa";
+import { FaFileArchive } from "react-icons/fa";
+import { RxStarFilled } from "react-icons/rx";
 
 export {
   FaRegCircleDot as GoalsIcon,
@@ -35,14 +38,18 @@ export {
   MdLogout as LogoutIcon,
   FaRegTrashAlt as TrashIcon,
   CiEdit as EditIcon,
-  PiBookmarkSimpleLight as BookmarkIcon,
+  PiBookmarkSimpleLight as BookmarkIconOutlined,
   BiChevronRight as RightAngularArrowIcon,
   IoEyeOutline as EyeIcon,
   BsThreeDotsVertical as ThreeVerticalDots,
   MdOutlineAccountCircle as AccountIcon,
   FaPlus as PlusIcon,
-  FaRegStar as StarIcon,
+  FaRegStar as StarIconOutlined,
+  RxStarFilled as StarIconFilled,
   TbDotsCircleHorizontal as ThreeHorizontalInsideCircle,
   IoCalendarOutline as CalendarIcon,
   FaRegComment as CommentIcon,
+  FaRegFileArchive as ArchiveIconOutlined,
+  FaFileArchive as ArchiveIconFilled,
+  RxStarFilled as BookmarkIconFilled,
 };

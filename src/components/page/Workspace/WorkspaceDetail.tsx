@@ -8,7 +8,7 @@ const WorkspaceDetail = () => {
   const { data, isLoading } = useGetWorkspaceQuery(workspaceId);
   if (!workspaceId) return "loading";
 
-  if (isLoading || !data) return <Spinner/>;
+  if (isLoading || !data) return <Spinner />;
   return (
     <div className="mb-[2rem]">
       <div className="flex items-end w-full ml-auto"></div>

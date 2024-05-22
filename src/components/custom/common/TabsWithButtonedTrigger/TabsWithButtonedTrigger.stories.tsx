@@ -73,9 +73,9 @@ const meta: Meta<typeof TabsWithButtonedTrigger> = {
       },
     ],
   },
-  component: Tabs,
+  component: TabsWithButtonedTrigger,
   parameters: {
-    layout: "top",
+    layout: "centered",
   },
 };
 

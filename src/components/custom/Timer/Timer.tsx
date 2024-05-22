@@ -3,10 +3,9 @@ import { Button } from "@/components/ui/Button/button";
 import { getSuccessToast } from "@/utils/constants/toast";
 import { useEffect } from "react";
 import { useLocation } from "react-router";
-import { useStopwatch, useTimer } from "react-timer-hook";
+import { useStopwatch } from "react-timer-hook";
 
 function MyStopwatch() {
-  const expiryTimestamp = new Date(Date.now() + 86400000);
   const {
     totalSeconds,
     seconds,
@@ -17,12 +16,9 @@ function MyStopwatch() {
     start,
     pause,
     // reset,
-    restart,
-  } = useTimer({
-    expiryTimestamp,
-    onExpire: () => {
-      getSuccessToast("timer expired");
-    },
+    // restart,
+  } = useStopwatch({
+    autoStart: false,
   });
 
   const location = useLocation();
@@ -41,15 +37,15 @@ function MyStopwatch() {
       localStorage.setItem("timer-value", JSON.stringify(totalSeconds));
     });
 
-    const timerValue = localStorage.getItem("timer-value");
-    const hasTimerStarted = localStorage.getItem("has-task-started");
-    if (timerValue && hasTimerStarted) {
-      //   reset(Date.now() + JSON.parse(timerValue), true);
-      const time = new Date();
-      time.setSeconds(time.getSeconds() + JSON.parse(timerValue));
-      restart(time);
-    }
-    console.log(Date.now());
+    // const timerValue = localStorage.getItem("timer-value");
+    // const hasTimerStarted = localStorage.getItem("has-task-started");
+    // if (timerValue && hasTimerStarted) {
+    //   reset(Date.now() + JSON.parse(timerValue), true);
+    //   const time = new Date();
+    //   time.setSeconds(time.getSeconds() + JSON.parse(timerValue));
+    //   restart(time);
+    // }
+    // console.log(Date.now());
   }, [location]);
   return (
     <div className="flex justify-end flex-wrap items-center gap-[1rem] mt-[2rem]">

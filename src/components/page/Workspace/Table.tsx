@@ -27,6 +27,8 @@ const ProjectTable = ({ workspace }: { workspace: IWorkspace }) => {
           dropdownMenus={dropdownMenus}
           createPagePath={`/workspace/${workspaceId}/project/create`}
           createButtonText={"Project"}
+          hasArchive={true}
+          hasBookmark={true}
         />
       }
       rowData={workspace.projects}

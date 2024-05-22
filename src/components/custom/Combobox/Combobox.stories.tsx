@@ -1,7 +1,7 @@
 // Sidebar.stories.tsx
 
 import { StoryObj, Meta } from "@storybook/react";
-import Combobox, { IComboboxProps } from "./Combobox";
+import Combobox from "./Combobox";
 import {
   CalendarIcon,
   EnvelopeClosedIcon,
@@ -10,6 +10,7 @@ import {
   PersonIcon,
   RocketIcon,
 } from "@radix-ui/react-icons";
+import { IComboboxProps } from "@/@types";
 
 const comboboxData: IComboboxProps = {
   defaultText: "Search items here...",
@@ -67,7 +68,7 @@ const meta: Meta<typeof Combobox> = {
   },
   component: Combobox,
   parameters: {
-    layout: "centered",
+    layout: "top",
   },
 };
 

@@ -1,5 +1,5 @@
 import { ISubTaskRowData } from "@/@types";
-import { EditIcon, EyeIcon, TrashIcon } from "@/components/icons/commonIcons";
+import { EditIcon, TrashIcon } from "@/components/icons/commonIcons";
 import moment from "moment";
 import { Link, useParams } from "react-router-dom";
 export const colDefs = [
@@ -61,7 +61,6 @@ export const colDefs = [
             className="text-destructive cursor-pointer"
           />
           <EditIcon id={p.data.id} className="text-blue-900 cursor-pointer" />
-          <EyeIcon id={p.data.id} className="text-black-900 cursor-pointer" />
         </div>
       );
     },

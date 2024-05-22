@@ -9,7 +9,7 @@ const meta: Meta<typeof CountryState> = {
   args: {},
   component: CountryState,
   parameters: {
-    layout: "top",
+    layout: "centered",
   },
 };
 

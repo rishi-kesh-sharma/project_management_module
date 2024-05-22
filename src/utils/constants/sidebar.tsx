@@ -1,7 +1,7 @@
 import { IWorkspace, IProject } from "@/api/workspace";
 import {
   AnalysticIcon,
-  BookmarkIcon,
+  BookmarkIconOutlined,
   OverviewIcon,
   // GoalsIcon,
   // HomeIcon,
@@ -51,7 +51,7 @@ export const sidebarItems = (injectables: ISidebarItemsProps) => [
     return {
       label: i18n.t("component.sidebar.menu.bookmarks", "Bookmarks"),
       link: `/bookmarks`,
-      icon: <BookmarkIcon />,
+      icon: <BookmarkIconOutlined />,
       items,
     };
   })(),
@@ -65,7 +65,7 @@ export const sidebarItems = (injectables: ISidebarItemsProps) => [
     return {
       label: i18n.t("component.sidebar.menu.archives", "Archives"),
       link: `/archives`,
-      icon: <BookmarkIcon />,
+      icon: <BookmarkIconOutlined />,
       items,
     };
   })(),

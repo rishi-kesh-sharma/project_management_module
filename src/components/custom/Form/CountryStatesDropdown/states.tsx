@@ -44,7 +44,7 @@ const StateDropdown = () => {
           variant="outline"
           role="combobox"
           aria-expanded={openStateDropdown}
-          className="w-[300px] cursor-pointer justify-between rounded-[6px] border !border-[#27272a] !bg-[#0f0f11] hover:!bg-[#0f0f11] focus:!bg-[#0f0f11] focus:!outline-none focus:!ring-2 focus:!ring-[#0f0f11] focus:!ring-offset-2 focus:!ring-offset-[#0f0f11] disabled:!cursor-not-allowed disabled:!opacity-50"
+          className="w-[300px] cursor-pointer justify-between  border disabled:!cursor-not-allowed disabled:!opacity-50"
           disabled={!countryValue || S.length === 0}>
           {stateValue ? (
             <div className="flex items-end gap-2">
@@ -58,7 +58,7 @@ const StateDropdown = () => {
           <LuChevronsUpDown className="ml-2 h-4 w-4 shrink-0 opacity-50" />
         </Button>
       </PopoverTrigger>
-      <PopoverContent className="w-[300px] rounded-[6px] border border-[#27272a] p-0">
+      <PopoverContent className=" rounded-[6px] border  p-0">
         <Command>
           <CommandInput placeholder="Search state..." />
           <CommandEmpty>No state found.</CommandEmpty>
@@ -74,7 +74,7 @@ const StateDropdown = () => {
                     );
                     setOpenStateDropdown(false);
                   }}
-                  className="flex cursor-pointer items-center justify-between text-xs hover:!bg-[#27272a] hover:!text-white">
+                  className="flex cursor-pointer items-center justify-between text-xs ">
                   <div className="flex items-end gap-2">
                     <span className="">{state.name}</span>
                   </div>

@@ -1,7 +1,9 @@
 import {
+  ArchiveIconFilled,
+  ArchiveIconOutlined,
   PlusIcon,
-  StarIcon,
-  ThreeHorizontalInsideCircle,
+  StarIconFilled,
+  StarIconOutlined,
   ThreeVerticalDots,
 } from "@/components/icons/commonIcons";
 import IconDropdown from "../common/IconDropdown/IconDropdown";
@@ -11,6 +13,7 @@ import { IIconDropdownMenuProps } from "@/@types";
 import { getSuccessToast } from "@/utils/constants/toast";
 import { useTheme } from "@/components/Theme/ThemeProvider";
 import { Link } from "react-router-dom";
+import { useState } from "react";
 
 export interface ITableToolbar {
   handleSearch: (e: React.FormEvent) => void;
@@ -18,6 +21,8 @@ export interface ITableToolbar {
   heading: string;
   createButtonText?: string;
   createPagePath?: string;
+  hasBookmark: boolean;
+  hasArchive: boolean;
 }
 const TableToolbar: React.FC<ITableToolbar> = ({
   handleSearch,
@@ -25,23 +30,71 @@ const TableToolbar: React.FC<ITableToolbar> = ({
   heading,
   createButtonText,
   createPagePath,
+  hasBookmark,
+  hasArchive,
 }) => {
+  const [isBookmarked, setIsBookmarked] = useState(false);
+  const [isArchived, setIsArchived] = useState(false);
   const { theme } = useTheme();
-  const handleBookmarkClick = () => {
-    getSuccessToast("Workspace bookmarked", theme);
+  const toggleBookmark = () => {
+    if (isBookmarked) {
+      getSuccessToast("Bookmarked", theme);
+    } else {
+      getSuccessToast("Removed from bookmarks", theme);
+    }
+
+    setIsBookmarked((prev) => !prev);
+  };
+
+  const toggleArchive = () => {
+    if (isArchived) {
+      getSuccessToast("Archived", theme);
+    } else {
+      getSuccessToast("Removed from archived", theme);
+    }
+
+    setIsArchived((prev) => !prev);
   };
   return (
     <div>
       <div className="flex items-end w-full justify-between mb-[1rem]">
         <div className="flex items-center gap-5 ">
           <h2 className="text-nowrap text-xl font-semibold">{heading}</h2>
-          <div className="flex gap-2  ">
-            <StarIcon
-              onClick={handleBookmarkClick}
-              className="text-orange-400 text-lg cursor-pointer"
-            />
-            <ThreeHorizontalInsideCircle className="text-primary text-lg cursor-pointer" />
-          </div>
+          {hasBookmark && (
+            <div className="flex gap-2  ">
+              {isBookmarked ? (
+                <StarIconFilled
+                  onClick={toggleBookmark}
+                  className="text-orange-400 text-lg cursor-pointer"
+                />
+              ) : (
+                <StarIconOutlined
+                  onClick={toggleBookmark}
+                  className="text-orange-400 text-lg cursor-pointer"
+                />
+              )}
+
+              {/* <ThreeHorizontalInsideCircle className="text-primary text-lg cursor-pointer" /> */}
+            </div>
+          )}
+
+          {hasArchive && (
+            <div className="flex gap-2  ">
+              {isArchived ? (
+                <ArchiveIconFilled
+                  onClick={toggleArchive}
+                  className="text-orange-400 text-lg cursor-pointer"
+                />
+              ) : (
+                <ArchiveIconOutlined
+                  onClick={toggleArchive}
+                  className="text-orange-400 text-lg cursor-pointer"
+                />
+              )}
+
+              {/* <ThreeHorizontalInsideCircle className="text-primary text-lg cursor-pointer" /> */}
+            </div>
+          )}
         </div>
 
         <div className="w-full flex flex-col gap-[1rem]  items-end">
