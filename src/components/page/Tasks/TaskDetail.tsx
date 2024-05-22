@@ -64,7 +64,7 @@ const TaskDetail = () => {
   // const { workspaceId, projectId, taskId } = useParams();
   const { data, isLoading } = useGetTasksQuery();
 
-  if (isLoading || !data) return <Spinner/>
+  if (isLoading || !data) return <Spinner />;
 
   const firstTask: ITask = data[0];
 
