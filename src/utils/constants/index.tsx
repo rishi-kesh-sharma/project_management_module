@@ -138,7 +138,6 @@ export const barChartData = {
 };
 
 export const basicTableData = {
-  // tableCaption: "A list of your recent invoices",
   tableCaption: i18n.t(
     "component.home.analytics.overdueProject",
     "Overdue Projects"

@@ -12,7 +12,7 @@ i18n
   .init({
     resources,
     // lng: "en",
-    lng: JSON.parse(lang),
+    lng: lang ? JSON.parse(lang) : "en",
     interpolation: {
       escapeValue: false, // react already safes from xss
     },
