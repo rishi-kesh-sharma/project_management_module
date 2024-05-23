@@ -6,6 +6,20 @@ function createRandomWorkspaces(value) {
     id: faker.string.uuid(),
     workspaceName: `My Workspace ${value}`,
     projects: createNProjects(4),
+    description: faker.lorem.lines({ max: 5, min: 1 }),
+    tags: faker.helpers.arrayElements([
+      "marketing",
+      "design",
+      "2024Q2",
+      "priority",
+      "sales",
+      "development",
+      "testing",
+    ]),
+    created_at: new Date(Date.now()),
+    updated_at: new Date(Date.now()),
+    no_of_members: faker.number.int({ max: 20, min: 8 }),
+    no_of_project: faker.number.int({ max: 20, min: 8 }),
   };
 }
 

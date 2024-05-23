@@ -12,15 +12,16 @@ export interface IProject {
 }
 
 export interface IWorkspace {
-  id: string;
-  workspaceName: string;
+  id?: string;
+  workspaceName?: string;
+
   projects: [];
 }
 
 type WorkspaceResponse = IWorkspace[];
 
 export const workspaceApi = createApi({
-  reducerPath: "workspace",
+  reducerPath: "workspaces",
   baseQuery: fetchBaseQuery({ baseUrl: `${BASE_URL}` }),
   tagTypes: ["Workspace"],
   endpoints: (build) => ({

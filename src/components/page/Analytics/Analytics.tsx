@@ -3,34 +3,27 @@ import AreaCharts from "@/components/custom/charts/AreaChart/AreaCharts";
 import BarChart from "@/components/custom/charts/BarChart/BarChart";
 import LineChart from "@/components/custom/charts/LineChart/LineChart";
 import PieChart from "@/components/custom/charts/PieChart/PieChart";
-import { ThreeVerticalDots } from "@/components/icons/commonIcons";
 import { Card } from "@/components/ui/Card/card";
 import i18n from "@/intl/i18n";
 import {
   barChartData,
-  basicTableData,
+  overdueProjectData,
   cardData,
   pieChartData,
+  upcomingDeadlineData,
 } from "@/utils/constants";
 import CreateWorkspaceForm from "./CreateWorkspaceForm";
+import {
+  IOverdueProjectColumn,
+  IOverdueProjectData,
+  IOverdueProjectTableProps,
+} from "@/@types";
+import {
+  IUpcomingDeadlineColumn,
+  IUpcomingDeadlineData,
+  IUpcomingDeadlineTableProps,
+} from "@/@types";
 
-export interface IData {
-  id: string | number;
-  overdue: string;
-  projectName: string;
-  deadline: string;
-}
-
-export interface IColumn {
-  label: string;
-  id: string;
-}
-
-export interface IBasicTableProps {
-  tableCaption: string;
-  data: IData[];
-  columns: IColumn[];
-}
 const Analytics = () => {
   return (
     <div className=" flex flex-col gap-[1rem]">
@@ -50,7 +43,7 @@ const Analytics = () => {
       </div>
 
       <div className="grid grid-cols-2 py-[2rem] gap-[2rem] overflow-hidden ">
-        <div className="w-full  p-[2rem] border rounded-lg ">
+        <div className="w-full    p-[2rem] border rounded-lg ">
           <PieChart
             data={pieChartData}
             title={i18n.t(
@@ -59,8 +52,22 @@ const Analytics = () => {
             )}
           />
         </div>
-        <BasicTable<IBasicTableProps["tableCaption"], IColumn, IData>
-          {...basicTableData}
+        <div className="w-full p-[2rem] border rounded-lg ">
+          <AreaCharts />
+        </div>
+        <BasicTable<
+          IUpcomingDeadlineTableProps["tableCaption"],
+          IUpcomingDeadlineColumn,
+          IUpcomingDeadlineData
+        >
+          {...upcomingDeadlineData}
+        />
+        <BasicTable<
+          IOverdueProjectTableProps["tableCaption"],
+          IOverdueProjectColumn,
+          IOverdueProjectData
+        >
+          {...overdueProjectData}
         />
 
         <div className="w-full col-span-2  p-[2rem] border rounded-lg ">
@@ -72,11 +79,9 @@ const Analytics = () => {
             data={barChartData}
           />
         </div>
+
         <div className="w-full col-span-2  p-[2rem] border rounded-lg ">
           <LineChart />
-        </div>
-        <div className="w-full  col-span-2 p-[2rem] border rounded-lg ">
-          <AreaCharts />
         </div>
       </div>
     </div>

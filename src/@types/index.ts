@@ -672,3 +672,41 @@ export type {
   StepProps,
   StepSharedProps,
 };
+
+export interface IOverdueProjectData {
+  id: string | number;
+  overdue: string;
+  projectName: string;
+  deadline: string;
+}
+
+export interface IOverdueProjectColumn {
+  label: string;
+  id: string;
+}
+
+export interface IOverdueProjectTableProps {
+  tableCaption: string;
+  data: IOverdueProjectData[];
+  columns: IOverdueProjectColumn[];
+}
+
+export interface IUpcomingDeadlineData {
+  id: string;
+  name: string;
+  due_date: string;
+  status: "On Progress" | "Not Started" | "Completed" | "Pending";
+  priority: "Low" | "Normal" | "High";
+  progress: number;
+}
+
+export interface IUpcomingDeadlineColumn {
+  label: string;
+  id: string;
+}
+
+export interface IUpcomingDeadlineTableProps {
+  tableCaption: string;
+  columns: IUpcomingDeadlineColumn[];
+  data: IUpcomingDeadlineData[];
+}

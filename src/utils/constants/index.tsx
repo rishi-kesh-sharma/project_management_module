@@ -1,4 +1,7 @@
+import { IUpcomingDeadlineData } from "@/@types";
 import i18n from "@/intl/i18n";
+import { faker } from "@faker-js/faker";
+import moment from "moment";
 
 export const avatarDropdownMenu = {
   label: "",
@@ -137,7 +140,7 @@ export const barChartData = {
   ],
 };
 
-export const basicTableData = {
+export const overdueProjectData = {
   tableCaption: i18n.t(
     "component.home.analytics.overdueProject",
     "Overdue Projects"
@@ -148,62 +151,198 @@ export const basicTableData = {
       id: "overdue",
     },
     {
-      label: i18n.t(
-        "component.home.text.overdueProject.projectName",
-        "Nombre del proyecto"
-      ),
-      id: "projectName",
+      id: "name",
+      label: "Project Name",
     },
     {
-      label: i18n.t(
-        "component.home.text.overdueProject.deadline",
-        "Fecha límite"
-      ),
-      id: "deadline",
+      id: "status",
+      label: "Status",
     },
   ],
   data: [
     {
-      id: 1,
-      overdue: "3 days",
-      projectName: "Community Outreach Initiative",
-      deadline: "12/23/2024",
+      id: faker.string.uuid(),
+      status: faker.helpers.arrayElement([
+        "Pending",
+        "Not Started",
+        "On Progress",
+        "Completed",
+      ]),
+      name: "Community Outreach Initiative",
+      overdue: moment(faker.date.recent()).fromNow(),
     },
     {
-      id: 2,
-      overdue: "3 days",
-      projectName: "Community Outreach Initiative",
-      deadline: "12/23/2024",
+      id: faker.string.uuid(),
+      status: faker.helpers.arrayElement([
+        "Pending",
+        "Not Started",
+        "On Progress",
+        "Completed",
+      ]),
+      name: "Community Outreach Initiative",
+      overdue: moment(faker.date.recent()).fromNow(),
     },
     {
-      id: 3,
-      overdue: "7 days",
-      projectName: "Acme Product Launch",
-      deadline: "12/23/2024",
+      id: faker.string.uuid(),
+      status: faker.helpers.arrayElement([
+        "Pending",
+        "Not Started",
+        "On Progress",
+        "Completed",
+      ]),
+      name: "Acme Product Launch",
+      overdue: moment(faker.date.recent()).fromNow(),
     },
     {
-      id: 4,
-      overdue: "9 days",
-      projectName: "City Park Renovation",
-      deadline: "12/23/2024",
+      id: faker.string.uuid(),
+      status: faker.helpers.arrayElement([
+        "Pending",
+        "Not Started",
+        "On Progress",
+        "Completed",
+      ]),
+      name: "City Park Renovation",
+      overdue: moment(faker.date.recent()).fromNow(),
     },
     {
-      id: 5,
-      overdue: "10 days",
-      projectName: "Office Relocation Project",
-      deadline: "12/23/2024",
+      id: faker.string.uuid(),
+      status: faker.helpers.arrayElement([
+        "Pending",
+        "Not Started",
+        "On Progress",
+        "Completed",
+      ]),
+      name: "Office Relocation Project",
+      overdue: moment(faker.date.recent()).fromNow(),
+    },
+  ],
+};
+
+export const upcomingDeadlineData = {
+  tableCaption: "Upcoming Deadlines",
+  columns: [
+    {
+      id: "name",
+      label: "Project Name",
     },
     {
-      id: 6,
-      overdue: "12 days",
-      projectName: "E-commerce Platform Upgrade",
-      deadline: "12/23/2024",
+      id: "due_date",
+      label: "Due Date",
+    },
+
+    {
+      id: "progress",
+      label: "Progress",
     },
     {
-      id: 7,
-      overdue: "14 days",
-      projectName: "Office Relocation Project",
-      deadline: "12/23/2024",
+      id: "status",
+      label: "status",
+    },
+    // {
+    //   id: "priority",
+    //   label: "Priority",
+    // },
+  ],
+  data: [
+    {
+      id: faker.string.uuid(),
+      name: faker.helpers.arrayElement(["Project"]),
+      due_date: moment(faker.date.soon()).fromNow(),
+      progress: faker.number.int({
+        max: 100,
+        min: 30,
+      }),
+      status: faker.helpers.arrayElement([
+        "On Progress",
+        "Not Started",
+        "Completed",
+        "Pending",
+      ]) as IUpcomingDeadlineData["status"],
+      // priority: faker.helpers.arrayElement([
+      //   "low",
+      //   "medium",
+      //   "high",
+      // ]) as IUpcomingDeadlineData["priority"],
+    },
+    {
+      id: faker.string.uuid(),
+      name: faker.helpers.arrayElement(["Project"]),
+      due_date: moment(faker.date.soon()).fromNow(),
+      progress: faker.number.int({
+        max: 100,
+        min: 30,
+      }),
+      status: faker.helpers.arrayElement([
+        "On Progress",
+        "Not Started",
+        "Completed",
+        "Pending",
+      ]) as IUpcomingDeadlineData["status"],
+      // priority: faker.helpers.arrayElement([
+      //   "low",
+      //   "medium",
+      //   "high",
+      // ]) as IUpcomingDeadlineData["priority"],
+    },
+    {
+      id: faker.string.uuid(),
+      name: faker.helpers.arrayElement(["Project"]),
+      due_date: moment(faker.date.soon()).fromNow(),
+      progress: faker.number.int({
+        max: 100,
+        min: 30,
+      }),
+      status: faker.helpers.arrayElement([
+        "On Progress",
+        "Not Started",
+        "Completed",
+        "Pending",
+      ]) as IUpcomingDeadlineData["status"],
+      // priority: faker.helpers.arrayElement([
+      //   "low",
+      //   "medium",
+      //   "high",
+      // ]) as IUpcomingDeadlineData["priority"],
+    },
+    {
+      id: faker.string.uuid(),
+      name: faker.helpers.arrayElement(["Project"]),
+      due_date: moment(faker.date.soon()).fromNow(),
+      progress: faker.number.int({
+        max: 100,
+        min: 30,
+      }),
+      status: faker.helpers.arrayElement([
+        "On Progress",
+        "Not Started",
+        "Completed",
+        "Pending",
+      ]) as IUpcomingDeadlineData["status"],
+      // priority: faker.helpers.arrayElement([
+      //   "low",
+      //   "medium",
+      //   "high",
+      // ]) as IUpcomingDeadlineData["priority"],
+    },
+    {
+      id: faker.string.uuid(),
+      name: faker.helpers.arrayElement(["Project"]),
+      due_date: moment(faker.date.soon()).fromNow(),
+      progress: faker.number.int({
+        max: 100,
+        min: 30,
+      }),
+      status: faker.helpers.arrayElement([
+        "On Progress",
+        "Not Started",
+        "Completed",
+        "Pending",
+      ]) as IUpcomingDeadlineData["status"],
+      // priority: faker.helpers.arrayElement([
+      //   "low",
+      //   "medium",
+      //   "high",
+      // ]) as IUpcomingDeadlineData["priority"],
     },
   ],
 };

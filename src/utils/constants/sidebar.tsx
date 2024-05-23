@@ -26,24 +26,31 @@ export const sidebarItems = (injectables: ISidebarItemsProps) => [
   },
   (() => {
     const workspaces = injectables.workspaces;
-    const items = workspaces?.map((workspace: IWorkspace) => {
+    const items = workspaces?.slice(0, 3).map((workspace: IWorkspace) => {
       const link = `/workspace/${workspace?.id}`;
       const items = workspace?.projects?.map((project: IProject) => {
-        return { label: project.projectName, link: `/project/${project?.id}` };
+        return {
+          label: project.projectName,
+          link: `/project/${project?.id}`,
+        };
       });
+
       return { link, label: workspace.workspaceName, items };
     });
+
+    console.log(items, "items");
+
     return {
       label: i18n.t("component.sidebar.menu.workspaces", "Workspaces"),
       link: `/workspaces`,
       icon: <AnalysticIcon />,
-      items,
+      items: items && [...items, { label: "View all", link: `/workspaces` }],
     };
   })(),
 
   (() => {
     const bookmarks = injectables?.bookmarks;
-    const items = bookmarks?.map((project: IProject) => {
+    const items = bookmarks?.slice(0, 3)?.map((project: IProject) => {
       const link = `/bookmark/${project.id}`;
       return { link, label: project.projectName };
     });
@@ -52,12 +59,12 @@ export const sidebarItems = (injectables: ISidebarItemsProps) => [
       label: i18n.t("component.sidebar.menu.bookmarks", "Bookmarks"),
       link: `/bookmarks`,
       icon: <BookmarkIconOutlined />,
-      items,
+      items: items && [...items, { label: "View All", link: `/bookmarks` }],
     };
   })(),
   (() => {
     const archives = injectables?.archives;
-    const items = archives?.map((project: IProject) => {
+    const items = archives?.slice(0, 3)?.map((project: IProject) => {
       const link = `/archive/${project.id}`;
       return { link, label: project.projectName };
     });
@@ -66,7 +73,7 @@ export const sidebarItems = (injectables: ISidebarItemsProps) => [
       label: i18n.t("component.sidebar.menu.archives", "Archives"),
       link: `/archives`,
       icon: <BookmarkIconOutlined />,
-      items,
+      items: items && [...items, { label: "View All", link: `/archives` }],
     };
   })(),
 ];

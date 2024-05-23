@@ -23,7 +23,8 @@ import { FaRegComment } from "react-icons/fa6";
 import { FaRegFileArchive } from "react-icons/fa";
 import { FaFileArchive } from "react-icons/fa";
 import { RxStarFilled } from "react-icons/rx";
-
+import { IoIosPeople } from "react-icons/io";
+import { FaTasks } from "react-icons/fa";
 export {
   FaRegCircleDot as GoalsIcon,
   HiOutlineChartBar as PlanningIcon,
@@ -52,4 +53,6 @@ export {
   FaRegFileArchive as ArchiveIconOutlined,
   FaFileArchive as ArchiveIconFilled,
   RxStarFilled as BookmarkIconFilled,
+  IoIosPeople as PeopleIcon,
+  FaTasks as ProjectIcon,
 };
