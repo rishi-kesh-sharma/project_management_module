@@ -38,9 +38,9 @@ const TableToolbar: React.FC<ITableToolbar> = ({
   const { theme } = useTheme();
   const toggleBookmark = () => {
     if (isBookmarked) {
-      getSuccessToast("Bookmarked", theme);
-    } else {
       getSuccessToast("Removed from bookmarks", theme);
+    } else {
+      getSuccessToast("Bookmarked", theme);
     }
 
     setIsBookmarked((prev) => !prev);
@@ -48,9 +48,9 @@ const TableToolbar: React.FC<ITableToolbar> = ({
 
   const toggleArchive = () => {
     if (isArchived) {
-      getSuccessToast("Archived", theme);
-    } else {
       getSuccessToast("Removed from archived", theme);
+    } else {
+      getSuccessToast("Archived", theme);
     }
 
     setIsArchived((prev) => !prev);

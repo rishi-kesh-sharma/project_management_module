@@ -14,10 +14,27 @@ import {
 } from "@/utils/constants";
 import CreateWorkspaceForm from "./CreateWorkspaceForm";
 
+export interface IData {
+  id: string | number;
+  overdue: string;
+  projectName: string;
+  deadline: string;
+}
+
+export interface IColumn {
+  label: string;
+  id: string;
+}
+
+export interface IBasicTableProps {
+  tableCaption: string;
+  data: IData[];
+  columns: IColumn[];
+}
 const Analytics = () => {
   return (
     <div className=" flex flex-col gap-[1rem]">
-      <ThreeVerticalDots className="ml-auto" />
+      {/* <ThreeVerticalDots className="ml-auto" /> */}
       <CreateWorkspaceForm />
       <div className="grid grid-cols-3 col-span-2 gap-[1.8rem] ">
         {cardData.map((cardDataItem, index) => {
@@ -42,7 +59,9 @@ const Analytics = () => {
             )}
           />
         </div>
-        <BasicTable {...basicTableData} />
+        <BasicTable<IBasicTableProps["tableCaption"], IColumn, IData>
+          {...basicTableData}
+        />
 
         <div className="w-full col-span-2  p-[2rem] border rounded-lg ">
           <BarChart
