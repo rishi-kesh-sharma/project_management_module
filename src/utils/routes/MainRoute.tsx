@@ -14,6 +14,7 @@ import { BreadcrumbSeparator } from "@/components/ui/Breadcrumb/breadcrumb.tsx";
 import CreateProjectPage from "@/pages/CreateProjectPage.tsx";
 import BookmarkDetailPage from "@/pages/BookmarkDetail.tsx";
 import TaskDetailPage from "@/pages/TaskDetailPage.tsx";
+import WorkspacesPage from "@/pages/WorkspacesPage.tsx";
 
 interface IROLE {
   ADMIN: TRole;
@@ -48,11 +49,21 @@ export function MainRoute() {
           );
         },
       },
+
       element: <PrivateRoute roles={[ROLE.ADMIN]} component={CommonLayout} />,
       children: [
         {
           path: "/",
           element: <AnalyticsPage />,
+        },
+        {
+          path: "/workspaces",
+          element: <WorkspacesPage />,
+          handle: {
+            crumb: () => {
+              return <Link to={`/workspaces}`}>{`Workspaces`}</Link>;
+            },
+          },
         },
         {
           path: "/workspace/:workspaceId",

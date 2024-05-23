@@ -1,6 +1,6 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { Button } from "@/components/ui/Button/button";
-import { getSuccessToast } from "@/utils/constants/toast";
+// import { getSuccessToast } from "@/utils/constants/toast";
 import { useEffect } from "react";
 import { useLocation } from "react-router";
 import { useStopwatch } from "react-timer-hook";
@@ -15,7 +15,7 @@ function MyStopwatch() {
     isRunning,
     start,
     pause,
-    // reset,
+    reset,
     // restart,
   } = useStopwatch({
     autoStart: false,
@@ -30,6 +30,7 @@ function MyStopwatch() {
 
   const handleEndTask = () => {
     localStorage.removeItem("has-task-started");
+    reset();
   };
 
   useEffect(() => {

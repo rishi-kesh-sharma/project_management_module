@@ -29,5 +29,5 @@ export const en = {
   "component.home.text.overdueProject": "Overdue Projects",
   "component.home.text.overdueProject.overdue": "Overdue",
   "component.home.text.overdueProject.projectName": "Project Name",
-  "component.home.text.overdueProject.deadline": "Deadline",
+  "component.home.text.overdueProject.deadline": "Overdue",
 };
