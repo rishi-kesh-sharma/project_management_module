@@ -1,6 +1,14 @@
-import { IUpcomingDeadlineData } from "@/@types";
+import { ICommandProps, IUpcomingDeadlineData } from "@/@types";
 import i18n from "@/intl/i18n";
 import { faker } from "@faker-js/faker";
+import {
+  CalendarIcon,
+  EnvelopeClosedIcon,
+  FaceIcon,
+  GearIcon,
+  PersonIcon,
+  RocketIcon,
+} from "@radix-ui/react-icons";
 import moment from "moment";
 
 export const avatarDropdownMenu = {
@@ -350,14 +358,180 @@ export const upcomingDeadlineData = {
 export const cardData = [
   {
     count: 10,
-    label: i18n.t("component.home.analytics.workspaceNum", "No. of workspace"),
+    label: i18n.t("component.home.analytics.workspaceNum", " Workspaces"),
   },
   {
     count: 40,
-    label: i18n.t("component.home.analytics.projectNum", "No. of Projects"),
+    label: i18n.t("component.home.analytics.projectNum", " Projects"),
   },
   {
     count: 80,
-    label: i18n.t("component.home.analytics.memberNum", "No. of Members"),
+    label: i18n.t("component.home.analytics.memberNum", "Members"),
   },
 ];
+
+export const users = [
+  {
+    name: faker.person.fullName(),
+    profile_pic: faker.image.urlPicsumPhotos(),
+  },
+  {
+    name: faker.person.fullName(),
+    profile_pic: faker.image.urlPicsumPhotos(),
+  },
+  {
+    name: faker.person.fullName(),
+    profile_pic: faker.image.urlPicsumPhotos(),
+  },
+  {
+    name: faker.person.fullName(),
+    profile_pic: faker.image.urlPicsumPhotos(),
+  },
+];
+
+export const commandData: ICommandProps = {
+  shortcut: "⌘j",
+  placeholder: "Press ⌘j to open command palette",
+  emptyText: "No results found",
+  commandGroups: [
+    {
+      heading: "Navigation",
+      commandItems: [
+        {
+          icon: <CalendarIcon className="mr-2 h-4 w-4" />,
+          text: "Go to settings",
+        },
+        {
+          icon: <FaceIcon className="mr-2 h-4 w-4" />,
+          text: "Go to archives",
+        },
+        {
+          icon: <RocketIcon className="mr-2 h-4 w-4" />,
+          text: "Go to Edit Profile ",
+        },
+        {
+          icon: <RocketIcon className="mr-2 h-4 w-4" />,
+          text: "Go to Archives ",
+        },
+
+        {
+          icon: <RocketIcon className="mr-2 h-4 w-4" />,
+          text: "Go to Bookmarks ",
+        },
+        {
+          icon: <RocketIcon className="mr-2 h-4 w-4" />,
+          text: "Go to Notifications ",
+        },
+        {
+          icon: <RocketIcon className="mr-2 h-4 w-4" />,
+          text: "Go to Profile Detail",
+        },
+        {
+          icon: <RocketIcon className="mr-2 h-4 w-4" />,
+          text: "Go to Create Project ",
+        },
+
+        {
+          icon: <RocketIcon className="mr-2 h-4 w-4" />,
+          text: "Go to Update Project",
+        },
+        {
+          icon: <RocketIcon className="mr-2 h-4 w-4" />,
+          text: "Go to Create Task ",
+        },
+        {
+          icon: <RocketIcon className="mr-2 h-4 w-4" />,
+          text: "Go to Update  task",
+        },
+        {
+          icon: <RocketIcon className="mr-2 h-4 w-4" />,
+          text: "Go to Create Sub Task  ",
+        },
+        {
+          icon: <RocketIcon className="mr-2 h-4 w-4" />,
+          text: "Go to Update Sub Task ",
+        },
+        {
+          icon: <RocketIcon className="mr-2 h-4 w-4" />,
+          text: "Go to Create Task ",
+        },
+      ],
+    },
+
+    {
+      heading: " My Account",
+      commandItems: [
+        {
+          icon: <PersonIcon className="mr-2 h-4 w-4" />,
+          text: "Profile",
+          shortcut: "⌘P",
+        },
+        {
+          icon: <EnvelopeClosedIcon className="mr-2 h-4 w-4" />,
+          text: "Mail",
+          shortcut: "⌘B",
+        },
+        {
+          icon: <GearIcon className="mr-2 h-4 w-4" />,
+          text: "Settings",
+          shortcut: "⌘S",
+        },
+      ],
+    },
+    {
+      heading: "Search",
+      commandItems: [
+        {
+          icon: <CalendarIcon className="mr-2 h-4 w-4" />,
+          text: "Search Workspace by name",
+        },
+        {
+          icon: <FaceIcon className="mr-2 h-4 w-4" />,
+          text: "Search Project by name",
+        },
+        {
+          icon: <RocketIcon className="mr-2 h-4 w-4" />,
+          text: "Search by name ",
+        },
+        {
+          icon: <RocketIcon className="mr-2 h-4 w-4" />,
+          text: "Search Archive by name ",
+        },
+
+        {
+          icon: <RocketIcon className="mr-2 h-4 w-4" />,
+          text: "Search Bookmark by name ",
+        },
+        {
+          icon: <RocketIcon className="mr-2 h-4 w-4" />,
+          text: "Search Task by name",
+        },
+        {
+          icon: <RocketIcon className="mr-2 h-4 w-4" />,
+          text: "Search sub Task by name",
+        },
+        {
+          icon: <RocketIcon className="mr-2 h-4 w-4" />,
+          text: "Search Project templates by name",
+        },
+      ],
+    },
+    {
+      heading: "General",
+      commandItems: [
+        {
+          icon: <CalendarIcon className="mr-2 h-4 w-4" />,
+          text: "Create Workspace",
+        },
+        {
+          icon: <FaceIcon className="mr-2 h-4 w-4" />,
+          text: "Clear all Notifications",
+        },
+        {
+          icon: <FaceIcon className="mr-2 h-4 w-4" />,
+          text: "Mark all Notifications as read",
+        },
+      ],
+    },
+  ],
+};

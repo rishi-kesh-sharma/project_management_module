@@ -15,7 +15,7 @@ const projectDetailTabTriggers = [
   },
   {
     id: "time-tracking",
-    label: "Time Tracking",
+    label: "Time Tracking Analysis",
   },
 ];
 
@@ -62,7 +62,7 @@ const ProjectDetail = () => {
   const { workspaceId } = useParams();
   const { data, isLoading } = useGetWorkspaceQuery(workspaceId);
   if (!workspaceId) return "loading";
-  if (isLoading || !data) return <Spinner/>
+  if (isLoading || !data) return <Spinner />;
   return (
     <div className="mt-[1rem]">
       <Tabs
@@ -147,7 +147,7 @@ const ProjectDetail = () => {
           },
           {
             id: "time-tracking",
-            element: <div>Time Tracking tab</div>,
+            element: <div>Time Tracking Analysis</div>,
           },
         ]}
       />

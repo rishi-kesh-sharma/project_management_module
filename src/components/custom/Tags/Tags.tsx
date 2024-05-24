@@ -7,7 +7,7 @@ const tagsVariants = cva(
   {
     variants: {
       variant: {
-        default: "",
+        default: "border",
         primary:
           "text-primary dark:bg-primary dark:bg-primary-foreground border border-primary",
         dark: " bg-gray-100 text-gray-800  dark:bg-gray-700 dark:text-gray-400 border border-gray-500 ",
@@ -29,7 +29,7 @@ const tagsVariants = cva(
   }
 );
 
-interface ITagsProps {
+export interface ITagsProps {
   variant?:
     | "primary"
     | "dark"

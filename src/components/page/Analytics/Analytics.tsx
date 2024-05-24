@@ -34,9 +34,13 @@ const Analytics = () => {
           return (
             <Card
               key={index}
-              className="h-[120px]  flex flex-col gap-[0.2rem] items-center justify-center shadow-md">
-              <p className="font-semibold text-lg">{cardDataItem.count}</p>
-              <p className="text-foreground/70">{cardDataItem.label}</p>
+              className=" grid px-[2rem] grid-cols-2  py-[3rem] gap-[0.2rem] place-items-center justify-center shadow-md">
+              <p className="text-foreground text-xl font-semibold">
+                {cardDataItem.label}
+              </p>
+              <p className="font-semibold text-2xl bg-primary h-16 w-16 text-white rounded-full flex items-center justify-center p-auto">
+                {cardDataItem.count}
+              </p>
             </Card>
           );
         })}

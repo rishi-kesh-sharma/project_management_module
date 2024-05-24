@@ -8,6 +8,8 @@ import { Card, CardContent, CardHeader } from "@/components/ui/Card/card";
 import { Button } from "@/components/ui/Button/button";
 import { GripVertical } from "lucide-react";
 import { ScrollArea, ScrollBar } from "@/components/ui/ScrollArea/scroll-area";
+import Tags from "../Tags/Tags";
+import { getTagVariantForValues } from "@/lib/utils";
 
 export interface Column {
   id: UniqueIdentifier;
@@ -85,7 +87,14 @@ export function BoardColumn({ column, tasks, isOverlay }: BoardColumnProps) {
           <span className="sr-only">{`Move column: ${column.title}`}</span>
           <GripVertical />
         </Button>
-        <span className="ml-auto"> {column.title}</span>
+        <span className="ml-auto">
+          {" "}
+          <Tags
+            value={column.title}
+            variant={getTagVariantForValues(column.title)}
+            className="py-1.5 px-3 text-lg"
+          />
+        </span>
       </CardHeader>
       <ScrollArea>
         <CardContent className="flex flex-grow flex-col gap-2 p-2">

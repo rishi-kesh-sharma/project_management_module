@@ -3,6 +3,7 @@ import { IWorkspace } from "@/api/workspace";
 import TableToolbar from "@/components/custom/TableToolbar/TableToolbar";
 import { colDefs } from "./colDefs";
 import { useParams } from "react-router";
+import Spinner from "@/components/custom/common/Spinner/Spinner";
 
 const dropdownMenus = {
   items: [
@@ -17,18 +18,16 @@ const ProjectTable = ({ workspace }: { workspace: IWorkspace }) => {
   const handleSearch = (e: React.FormEvent) => {
     e.preventDefault();
   };
-  if (!workspace) return "loading...";
+  if (!workspace) return <Spinner />;
   return (
     <AgGridTable
       tableToolbar={
         <TableToolbar
-          heading={workspace.workspaceName}
+          heading={workspace.workspaceName || "Workspace"}
           handleSearch={handleSearch}
           dropdownMenus={dropdownMenus}
           createPagePath={`/workspace/${workspaceId}/project/create`}
           createButtonText={"Project"}
-          hasArchive={true}
-          hasBookmark={true}
         />
       }
       rowData={workspace.projects}
