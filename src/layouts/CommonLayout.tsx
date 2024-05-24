@@ -5,13 +5,13 @@ import { sidebarItems } from "@/utils/constants/sidebar.tsx";
 import Sidebar from "@/components/custom/layout/Sidebar/Sidebar.tsx";
 import Breadcrumb from "@/components/custom/common/Breadcrumb/Breadcrumb.tsx";
 import { useGetWorkspaceQuery } from "@/api/workspace";
-import { useGetBookmarkQuery } from "@/api/bookmark.ts";
+import { useGetBookmarksQuery } from "@/api/bookmark.ts";
 import Spinner from "@/components/custom/common/Spinner/Spinner.tsx";
 
 const CommonLayout = () => {
   const { pathname: currentPath } = useLocation();
   const { data: workspaces, isLoading } = useGetWorkspaceQuery("");
-  const { data: bookmarks } = useGetBookmarkQuery("");
+  const { data: bookmarks } = useGetBookmarksQuery();
 
   if (isLoading) return <Spinner />;
   return (

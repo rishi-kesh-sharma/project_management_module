@@ -1,7 +1,6 @@
 import { IBookmark } from "@/@types";
+import { BASE_URL } from "@/utils/constants";
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
-
-const BASE_URL = "http://localhost:4000/";
 
 type BookMarkResponse = IBookmark[];
 
@@ -11,7 +10,7 @@ export const bookmarkApi = createApi({
   tagTypes: ["Bookmark"],
   endpoints: (build) => ({
     getBookmarks: build.query<BookMarkResponse, IBookmark>({
-      query: () => "workspace",
+      query: () => "bookmarks",
       providesTags: (result) =>
         result
           ? [

@@ -15,6 +15,11 @@ import CreateProjectPage from "@/pages/CreateProjectPage.tsx";
 import BookmarkDetailPage from "@/pages/BookmarkDetail.tsx";
 import TaskDetailPage from "@/pages/TaskDetailPage.tsx";
 import WorkspacesPage from "@/pages/WorkspacesPage.tsx";
+import { Title } from "chart.js";
+import { pageTitles } from "../constants/pageTitles.tsx";
+import BookmarksPage from "@/pages/BookmarksPage.tsx";
+import ArchivesPage from "@/pages/ArchivesPage.tsx";
+import ArchiveDetailPage from "@/pages/ArchiveDetail.tsx";
 
 interface IROLE {
   ADMIN: TRole;
@@ -32,11 +37,11 @@ export function MainRoute() {
   const router = createBrowserRouter([
     {
       path: "/login",
-      element: <LoginPage />,
+      element: <LoginPage title={pageTitles.loginPage} />,
     },
     {
       path: "/signup",
-      element: <RegisterPage />,
+      element: <RegisterPage title={pageTitles.signupPage} />,
     },
     {
       path: "/",
@@ -54,11 +59,11 @@ export function MainRoute() {
       children: [
         {
           path: "/",
-          element: <AnalyticsPage />,
+          element: <AnalyticsPage title={pageTitles.analyticsPage} />,
         },
         {
           path: "/workspaces",
-          element: <WorkspacesPage />,
+          element: <WorkspacesPage title={pageTitles.workspacesPage} />,
           handle: {
             crumb: () => {
               return <Link to={`/workspaces}`}>{`Workspaces`}</Link>;
@@ -66,8 +71,28 @@ export function MainRoute() {
           },
         },
         {
+          path: "/bookmarks",
+          element: <BookmarksPage title={pageTitles.bookmarksPage} />,
+          handle: {
+            crumb: () => {
+              return <Link to={`/bookmarks}`}>{`Bookmarks`}</Link>;
+            },
+          },
+        },
+        {
+          path: "/archives",
+          element: <ArchivesPage title={pageTitles.archivesPage} />,
+          handle: {
+            crumb: () => {
+              return <Link to={`/archives}`}>{`Archives`}</Link>;
+            },
+          },
+        },
+        {
           path: "/workspace/:workspaceId",
-          element: <WorkspaceDetailPage />,
+          element: (
+            <WorkspaceDetailPage title={pageTitles.workspaceDetailPage} />
+          ),
           handle: {
             crumb: ({ workspaceId }: { workspaceId: string }) => {
               return (
@@ -78,7 +103,7 @@ export function MainRoute() {
         },
         {
           path: "/workspace/:workspaceId/project/:projectId",
-          element: <ProjectDetailPage />,
+          element: <ProjectDetailPage title={pageTitles.projectDetailPage} />,
           handle: {
             crumb: ({
               workspaceId,
@@ -102,7 +127,7 @@ export function MainRoute() {
         },
         {
           path: "/workspace/:workspaceId/project/create",
-          element: <CreateProjectPage />,
+          element: <CreateProjectPage title={pageTitles.createProjectPage} />,
           handle: {
             crumb: ({ workspaceId }: { workspaceId: string }) => {
               return (
@@ -113,25 +138,26 @@ export function MainRoute() {
         },
         {
           path: "/bookmark/:projectId",
-          element: <BookmarkDetailPage />,
+          element: <BookmarkDetailPage title={pageTitles.bookmarkDetailPage} />,
           handle: {
             crumb: ({ projectId }: { projectId: string }) => {
-              return <Link to={`/project/${projectId}`}>{`Project`}</Link>;
+              return <Link to={`/project/${projectId}`}>{`Bookmark`}</Link>;
             },
           },
         },
         {
           path: "/archive/:projectId",
-          element: <BookmarkDetailPage />,
+          element: <ArchiveDetailPage title={pageTitles.archiveDetailPage} />,
           handle: {
             crumb: ({ projectId }: { projectId: string }) => {
-              return <Link to={`/project/${projectId}`}>{`Project`}</Link>;
+              return <Link to={`/project/${projectId}`}>{`Archive`}</Link>;
             },
           },
         },
+
         {
           path: "/workspace/:workspaceId/project/:projectId/task/:taskId",
-          element: <TaskDetailPage />,
+          element: <TaskDetailPage title={pageTitles.taskDetailPage} />,
           handle: {
             crumb: ({
               workspaceId,

@@ -1,6 +1,6 @@
+import { BASE_URL } from "@/utils/constants";
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 
-const BASE_URL = "http://localhost:4000/";
 export interface IProject {
   id: string;
   projectName: string;

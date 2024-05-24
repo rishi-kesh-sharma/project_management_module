@@ -17,7 +17,7 @@ function createRandomInventories() {
       "Design File",
     ]),
     unitPrice: faker.commerce.price(),
-    quantity: faker.number.int(),
+    quantity: faker.number.int({ min: 1, max: 100 }),
     totalPrice: faker.commerce.price(),
   };
 }

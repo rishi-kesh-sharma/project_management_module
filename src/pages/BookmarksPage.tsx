@@ -1,20 +1,19 @@
-import Workspaces from "@/components/page/Workspaces/Workspaces";
+import Bookmarks from "@/components/page/Bookmarks/Bookmarks";
 import { useEffect } from "react";
 import { Helmet } from "react-helmet";
 interface Props {
   title: string;
 }
-const WorkspacesPage = ({ title }: Props) => {
+const BookmarksPage = ({ title }: Props) => {
   useEffect(() => {
     document.title = `${title}`;
   }, [title]);
   return (
     <div>
       <Helmet>{`${title}`}</Helmet>
-
-      <Workspaces />
+      <Bookmarks />
     </div>
   );
 };
 
-export default WorkspacesPage;
+export default BookmarksPage;

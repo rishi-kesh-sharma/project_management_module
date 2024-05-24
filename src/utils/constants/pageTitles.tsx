@@ -1,0 +1,16 @@
+export const pageTitles = {
+  signupPage: `PMS | Signup`,
+  loginPage: `PMS | Login`,
+  analyticsPage: `PMS | Dashboard`,
+  accessDeniedPage: `PMS | Access Denied`,
+  archivesPage: `PMS | Archives`,
+  bookmarksPage: `PMS | Bookmarks`,
+  workspacesPage: `PMS | workspaces`,
+  archiveDetailPage: `PMS | Archive Detail`,
+  bookmarkDetailPage: `PMS | Bookmark Detail`,
+  workspaceDetailPage: `PMS | Workspace Detail`,
+  projectDetailPage: `PMS | Project Detail`,
+  taskDetailPage: `PMS | Task Detail`,
+  subTaskDetailPage: `PMS | SubTask Detail`,
+  createProjectPage: `PMS | Create Project`,
+};

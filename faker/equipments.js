@@ -17,7 +17,10 @@ function createRandomEquipments(value) {
     //   "Design File",
     // ]),
     unitPrice: faker.commerce.price(),
-    quantity: faker.number.int(),
+    quantity: faker.number.int({
+      min: 0,
+      max: 100,
+    }),
     totalPrice: faker.commerce.price(),
     status: faker.helpers.arrayElement(["Spare", "In-use", "Maintenance"]),
   };

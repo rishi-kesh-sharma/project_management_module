@@ -1,11 +1,18 @@
-import BookmarksDetail from "@/components/page/Bookmarks/BookmarksDetail";
+import BookmarksDetail from "@/components/page/Bookmark/BookmarksDetail";
+import { useEffect } from "react";
+import { Helmet } from "react-helmet";
 
-interface Props {}
+interface Props {
+  title: string;
+}
 
-const BookmarkDetailPage = (props: Props) => {
-  console.log(props);
+const BookmarkDetailPage = ({ title }: Props) => {
+  useEffect(() => {
+    document.title = `${title}`;
+  }, [title]);
   return (
     <div>
+      <Helmet>{`${title}`}</Helmet>
       <BookmarksDetail />
     </div>
   );
