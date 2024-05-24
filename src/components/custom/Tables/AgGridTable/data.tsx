@@ -322,11 +322,17 @@ export const colDefs = [
     enablePivot: false,
     headerCheckboxSelection: false,
 
-    cellRenderer: (p: { value: string }) => {
+    cellRenderer: (p: { value: string; data: IRowData }) => {
       return (
         <div className="flex gap-4 items-center justify-start  h-full">
-          <TrashIcon className="text-destructive cursor-pointer" />
-          <EditIcon className="text-blue-900 cursor-pointer" />
+          <TrashIcon
+            id={p.data.id}
+            className="text-destructive cursor-pointer"
+          />
+          <EditIcon
+            id={p.data.id}
+            className="text-primary text-lg cursor-pointer"
+          />
         </div>
       );
     },

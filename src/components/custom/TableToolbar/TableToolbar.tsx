@@ -21,8 +21,8 @@ export interface ITableToolbar {
   heading: string;
   createButtonText?: string;
   createPagePath?: string;
-  hasBookmark: boolean;
-  hasArchive: boolean;
+  hasBookmark?: boolean;
+  hasArchive?: boolean;
 }
 const TableToolbar: React.FC<ITableToolbar> = ({
   handleSearch,

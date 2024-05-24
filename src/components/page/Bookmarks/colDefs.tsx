@@ -75,7 +75,10 @@ export const colDefs = [
             id={p.data.id}
             className="text-destructive cursor-pointer"
           />
-          <EditIcon id={p.data.id} className="text-blue-900 cursor-pointer" />
+          <EditIcon
+            id={p.data.id}
+            className="text-primary text-lg cursor-pointer"
+          />
         </div>
       );
     },

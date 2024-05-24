@@ -30,3 +30,27 @@ export const titleCase = (str: string): string => {
     .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
     .join(" ");
 };
+
+export const getTagVariantForValues = (value: string) => {
+  value = value.toLowerCase();
+  switch (value) {
+    case "pending":
+      return "red";
+    case "not started":
+      return "yellow";
+    case "on progress":
+      return "default";
+    case "completed":
+      return "green";
+    case "low":
+      return "green";
+    case "medium":
+      return "yellow";
+    case "normal":
+      return "yellow";
+    case "high":
+      return "red";
+    default:
+      return "purple";
+  }
+};

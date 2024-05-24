@@ -1,6 +1,9 @@
 import { IProjectRowData } from "@/@types";
 import Badge from "@/components/custom/Badge/Badge";
+import Tags from "@/components/custom/Tags/Tags";
 import { EditIcon, TrashIcon } from "@/components/icons/commonIcons";
+import { Progress } from "@/components/ui/Progress/progress";
+import { getTagVariantForValues } from "@/lib/utils";
 import moment from "moment";
 import { Link, useParams } from "react-router-dom";
 export const colDefs = [
@@ -21,7 +24,7 @@ export const colDefs = [
       );
     },
   },
-  { field: "createdBy", headerName: "Created By" },
+  // { field: "createdBy", headerName: "Created By" },
   {
     field: "startDate",
     headerName: "Start Date",
@@ -38,12 +41,22 @@ export const colDefs = [
     },
   },
   {
+    field: "progress",
+    cellRenderer: (p: { value: number }) => {
+      return (
+        <div className="flex items-center h-full">
+          <Progress className="h-3 w-[120px] " value={p.value || 50} />
+        </div>
+      );
+    },
+  },
+  {
     field: "status",
     headerName: "Status",
     cellRenderer: (p: { value: string }) => {
       return (
         <div>
-          <Badge label={p.value} variant={"outline"} />
+          <Tags value={p.value} variant={getTagVariantForValues(p.value)} />
         </div>
       );
     },
@@ -55,7 +68,7 @@ export const colDefs = [
     cellRenderer: (p: { value: string }) => {
       return (
         <div>
-          <Badge label={p.value} variant={"outline"} />
+          <Tags value={p.value} variant={getTagVariantForValues(p.value)} />
         </div>
       );
     },
@@ -75,7 +88,10 @@ export const colDefs = [
             id={p.data.id}
             className="text-destructive cursor-pointer"
           />
-          <EditIcon id={p.data.id} className="text-blue-900 cursor-pointer" />
+            <EditIcon
+            id={p.data.id}
+            className="text-primary text-lg cursor-pointer"
+          />
         </div>
       );
     },

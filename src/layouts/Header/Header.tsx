@@ -3,7 +3,7 @@ import { IoMdNotificationsOutline } from "react-icons/io";
 
 import { IHeaderProps } from "@/@types";
 import AvatarDropdown from "@/components/custom/common/AvatarDropdownMenu/AvatarDropdownMenu";
-import { avatarDropdownMenu } from "@/utils/constants";
+import { avatarDropdownMenu, commandData } from "@/utils/constants";
 import { useState } from "react";
 import NotificationCard from "@/components/custom/common/NotificationCard/NotificationCard";
 import { useAppDispatch, useAppSelector } from "@/hooks";
@@ -18,6 +18,8 @@ import { availableLanguages } from "@/utils/constants/intl";
 import { availableThemes } from "@/utils/constants/theme";
 import { useTheme } from "@/components/Theme/ThemeProvider";
 import i18n from "@/intl/i18n";
+
+import CommandDialog from "@/components/custom/common/Command/Command";
 
 const Header: React.FC<IHeaderProps> = () => {
   const [showNotifications, setShowNotifications] = useState(false);
@@ -55,7 +57,7 @@ const Header: React.FC<IHeaderProps> = () => {
         className=""
         onSubmit={handleGlobalSearch}
       />
-
+      <CommandDialog commandData={commandData} />
       <div className="flex gap-5 items-center px-2">
         <Dropdown
           className=""

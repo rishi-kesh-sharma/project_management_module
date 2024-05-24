@@ -4,6 +4,7 @@ import TableToolbar from "@/components/custom/TableToolbar/TableToolbar";
 import { IProjectRowData } from "@/@types";
 import { useParams } from "react-router";
 import { useCallback, useEffect, useState } from "react";
+import Spinner from "@/components/custom/common/Spinner/Spinner";
 
 const dropdownMenus = {
   items: [
@@ -39,7 +40,7 @@ const ProjectTable = ({
   }, [project, projectId, getProject]);
 
   if (projectId) getProject(projectId);
-  if (!project) return "loading...";
+  if (!project) return <Spinner />;
   return (
     <div className="mt-[1rem]">
       <AgGridTable
@@ -50,6 +51,8 @@ const ProjectTable = ({
             dropdownMenus={dropdownMenus}
             createButtonText="Task"
             createPagePath="/workspace/:workspaceId/project/:projectId/task/create"
+            hasArchive={true}
+            hasBookmark={true}
           />
         }
         rowData={project.tasks}

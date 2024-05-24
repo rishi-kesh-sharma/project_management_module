@@ -2,7 +2,7 @@ export const en = {
   "Welcome to React": "Welcome to React and react-i18next",
   "component.sidebar.menu.dashboard": "Dashboard",
   "component.button.create": "Create",
-  "component.header.search": "Search here...",
+  "component.header.search": "Search here... or press ⌘j",
   "component.button.theme": "Select theme",
   "component.button.language": "Select language",
   "component.sidebar.menu.settings": "Settings",

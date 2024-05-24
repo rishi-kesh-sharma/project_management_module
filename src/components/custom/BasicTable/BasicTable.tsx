@@ -9,6 +9,7 @@ import {
   TableRow,
 } from "@/components/ui/Table/table";
 import Tags from "../Tags/Tags";
+import { getTagVariantForValues } from "@/lib/utils";
 
 const BasicTable = <
   ICaption extends string,
@@ -42,26 +43,6 @@ const BasicTable = <
             return (
               <TableRow className="">
                 {columns.map((column: IColumn) => {
-                  const getTagVariantForValues = (value) => {
-                    switch (value) {
-                      case "Pending":
-                        return "red";
-                      case "Not Started":
-                        return "yellow";
-                      case "on Progress":
-                        return "default";
-                      case "Completed":
-                        return "green";
-                      case "low":
-                        return "green";
-                      case "medium":
-                        return "yellow";
-                      case "high":
-                        return "red";
-                      default:
-                        return "purple";
-                    }
-                  };
                   return (
                     <TableCell
                       key={column.id as string}
