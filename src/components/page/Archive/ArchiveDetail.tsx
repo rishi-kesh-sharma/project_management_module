@@ -1,7 +1,7 @@
 import { useGetProjectsQuery } from "@/api/project";
-import BookmarkTable from "./Table";
+import ArchiveTable from "./Table";
 
-const bookmarkDetailTabTriggers = [
+const archiveDetailTabTriggers = [
   {
     id: "tasks",
     label: "Tasks",
@@ -57,19 +57,19 @@ import InventoriesDetail from "@/components/custom/InventoriesTable/InventoriesD
 import { KanbanBoard } from "@/components/custom/Kanban/KanbanBoard";
 import TabWithButtonedTrigger from "@/components/custom/common/TabsWithButtonedTrigger/TabsWithButtonedTrigger";
 import Spinner from "@/components/custom/common/Spinner/Spinner";
-const BookmarkDetail = () => {
+const ArchiveDetail = () => {
   const { data: projectsData, isLoading } = useGetProjectsQuery();
   const data = projectsData?.[0];
   console.log(data, "project data");
-  if (isLoading || !data) return <Spinner/>;
+  if (isLoading || !data) return <Spinner />;
   return (
     <div className="my-[2rem]">
       <Tabs
-        triggers={bookmarkDetailTabTriggers}
+        triggers={archiveDetailTabTriggers}
         contents={[
           {
             id: "tasks",
-            element: <BookmarkTable tasks={data.tasks} />,
+            element: <ArchiveTable tasks={data.tasks} />,
           },
           {
             id: "planning",
@@ -152,4 +152,4 @@ const BookmarkDetail = () => {
   );
 };
 
-export default BookmarkDetail;
+export default ArchiveDetail;

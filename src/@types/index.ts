@@ -142,6 +142,7 @@ export interface IBookmark {
   priority: string;
   assignee: string;
   tasks: ITaskRowData[];
+  description: string;
 }
 
 export interface IAvatarProps extends AvatarProps {

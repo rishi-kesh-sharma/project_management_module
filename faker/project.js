@@ -16,6 +16,7 @@ function createRandomProjects(value) {
     dueDate: faker.date.future(),
     priority: faker.helpers.arrayElement(["Low", "Normal", "High"]),
     tasks: createNTasks(4),
+    description: faker.lorem.words({ min: 20, max: 500 }),
   };
 }
 

@@ -11,6 +11,7 @@ import {
 } from "@radix-ui/react-icons";
 import moment from "moment";
 
+export const BASE_URL = `http://192.168.254.239:4000`;
 export const avatarDropdownMenu = {
   label: "",
   items: [

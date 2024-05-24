@@ -89,7 +89,7 @@ const Header: React.FC<IHeaderProps> = () => {
           />
           {showNotifications && (
             <NotificationCard
-              className="absolute top-[70px] right-[2rem]"
+              className="absolute top-[70px]  z-50 right-[2rem]"
               notifications={notifications}
             />
           )}

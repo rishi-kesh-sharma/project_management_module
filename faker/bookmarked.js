@@ -14,6 +14,7 @@ function createRandomBookmarkedProjects(value) {
     ]),
     dueDate: faker.date.future(),
     priority: faker.helpers.arrayElement(["Low", "Normal", "High"]),
+    description: faker.lorem.words({ min: 20, max: 500 }),
   };
 }
 
