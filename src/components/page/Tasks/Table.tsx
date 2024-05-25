@@ -2,6 +2,7 @@ import AgGridTable from "@/components/custom/common/Tables/AgGridTable/AgGridTab
 import { colDefs } from "../Tasks/colDefs";
 import TableToolbar from "@/components/custom/common/TableElements/TableToolbar/TableToolbar";
 import { ITaskRowData } from "@/@types";
+import { ProjectsTableFilters } from "@/utils/constants";
 
 const dropdownMenus = {
   items: [
@@ -27,6 +28,8 @@ const TaskTable = ({ task }: { task: ITaskRowData }) => {
             dropdownMenus={dropdownMenus}
             createButtonText="Task"
             createPagePath="/workspace/:workspaceId/task/:taskId/task/create"
+            hasFilters={true}
+            filters={<ProjectsTableFilters />}
           />
         }
         rowData={task.subTasks}

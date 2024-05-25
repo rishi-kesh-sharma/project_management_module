@@ -4,8 +4,12 @@ import LogoEnter from "../../../assets/images/LogoEnter.png";
 import { useState } from "react";
 import PasswordInput from "@/components/custom/common/FormElements/Input/PasswordInput/PasswordInput";
 import { Label } from "@/components/ui/Label/label";
+import { Helmet } from "react-helmet";
 
-const Login: React.FC = () => {
+export interface ILoginProps {
+  title: string;
+}
+const Login: React.FC<ILoginProps> = ({ title }) => {
   const [loginData, setLoginData] = useState({ email: "", password: "" });
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const key = e.target.id;
@@ -14,6 +18,9 @@ const Login: React.FC = () => {
   };
   return (
     <div className="flex h-screen">
+      <Helmet>
+        <title>{`${title}`}</title>
+      </Helmet>
       <div className="w-4/12 lg:w-5/12 xl:w-6/12 bg-gradient-to-r from-primary/80 via-primary/90 dark:bg-background to-primary/100 md:p-4 lg:p-16">
         <div className="text-primary-foreground absolute top-12">
           <div style={{ width: "195px", height: "86px", marginTop: "62px" }}>

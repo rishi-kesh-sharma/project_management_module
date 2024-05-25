@@ -2,7 +2,7 @@
 
 import { StoryObj, Meta } from "@storybook/react";
 import PlateEditor from "./PlateEditor.js";
-import RootLayout from "../../layout/RootLayout/RootLayout";
+import RootLayout from "@/components/custom/layout/RootLayout/RootLayout.js";
 
 const meta: Meta<typeof PlateEditor> = {
   title: "Editor/PlateEditor",

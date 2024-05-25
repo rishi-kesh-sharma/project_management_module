@@ -389,6 +389,8 @@ export interface ICommandItem {
   icon?: React.ReactNode;
   text?: string;
   shortcut?: string;
+  hasLink?: boolean;
+  link?: string;
 }
 
 export interface ICommandGroup {
@@ -398,9 +400,9 @@ export interface ICommandGroup {
 export interface ICommandProps {
   shortcut: string;
 
-  placeholder: string;
-  emptyText: string;
-  commandGroups: ICommandGroup[];
+  placeholder?: string;
+  emptyText?: string;
+  commandGroups?: ICommandGroup[];
 }
 
 export interface InputProps {

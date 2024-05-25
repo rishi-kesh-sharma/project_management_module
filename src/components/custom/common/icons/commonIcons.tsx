@@ -25,6 +25,13 @@ import { FaFileArchive } from "react-icons/fa";
 import { RxStarFilled } from "react-icons/rx";
 import { IoIosPeople } from "react-icons/io";
 import { FaTasks } from "react-icons/fa";
+import { MdOutlineWorkspaces } from "react-icons/md";
+import { GrProjects } from "react-icons/gr";
+import { FaRegUserCircle } from "react-icons/fa";
+import { IoIosNotificationsOutline } from "react-icons/io";
+import { MdOutlineMarkEmailRead } from "react-icons/md";
+import { BsFilterRight } from "react-icons/bs";
+import { GoDotFill } from "react-icons/go";
 export {
   FaRegCircleDot as GoalsIcon,
   HiOutlineChartBar as PlanningIcon,
@@ -55,4 +62,11 @@ export {
   RxStarFilled as BookmarkIconFilled,
   IoIosPeople as PeopleIcon,
   FaTasks as ProjectIcon,
+  MdOutlineWorkspaces as WorkspaceIcon,
+  GrProjects as ProjectsIcon,
+  FaRegUserCircle as UserIconCircleOutlined,
+  IoIosNotificationsOutline as NotificationIconOutlined,
+  MdOutlineMarkEmailRead as EmailIconReadOutlined,
+  BsFilterRight as FilterIcon,
+  GoDotFill as DotIconFilled,
 };

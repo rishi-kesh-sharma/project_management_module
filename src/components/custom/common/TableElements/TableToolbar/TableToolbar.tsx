@@ -14,6 +14,7 @@ import { Link } from "react-router-dom";
 import { useState } from "react";
 import IconDropdown from "../../Dropdowns/IconDropdown/IconDropdown";
 import SearchInput from "../../SearchInput/SearchInput";
+import { ProjectsTableFilters } from "@/utils/constants";
 
 export interface ITableToolbar {
   handleSearch: (e: React.FormEvent) => void;
@@ -23,6 +24,8 @@ export interface ITableToolbar {
   createPagePath?: string;
   hasBookmark?: boolean;
   hasArchive?: boolean;
+  hasFilters?: boolean;
+  filters?: React.ReactNode;
 }
 const TableToolbar: React.FC<ITableToolbar> = ({
   handleSearch,
@@ -32,6 +35,8 @@ const TableToolbar: React.FC<ITableToolbar> = ({
   createPagePath,
   hasBookmark,
   hasArchive,
+  hasFilters=true,
+  filters=ProjectsTableFilters,
 }) => {
   const [isBookmarked, setIsBookmarked] = useState(false);
   const [isArchived, setIsArchived] = useState(false);
@@ -106,6 +111,7 @@ const TableToolbar: React.FC<ITableToolbar> = ({
           />
 
           <div className="flex items-center  gap-[1rem]">
+            {hasFilters && filters && filters}
             <SearchInput
               onSubmit={handleSearch}
               id="workspace-search"

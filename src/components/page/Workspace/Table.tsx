@@ -4,6 +4,7 @@ import TableToolbar from "@/components/custom/common/TableElements/TableToolbar/
 import { colDefs } from "./colDefs";
 import { useParams } from "react-router";
 import Spinner from "@/components/custom/common/Loaders/Spinner/Spinner";
+import { ProjectsTableFilters } from "@/utils/constants";
 
 const dropdownMenus = {
   items: [
@@ -23,6 +24,8 @@ const ProjectTable = ({ workspace }: { workspace: IWorkspace }) => {
     <AgGridTable
       tableToolbar={
         <TableToolbar
+          hasFilters={true}
+          filters={<ProjectsTableFilters />}
           heading={workspace.workspaceName || "Workspace"}
           handleSearch={handleSearch}
           dropdownMenus={dropdownMenus}
