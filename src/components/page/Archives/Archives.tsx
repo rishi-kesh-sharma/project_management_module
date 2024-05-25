@@ -1,5 +1,5 @@
 import { useGetBookmarksQuery } from "@/api/bookmark";
-import Spinner from "@/components/custom/common/Spinner/Spinner";
+import Spinner from "@/components/custom/common/Loaders/Spinner/Spinner";
 import Cards from "@/components/page/Archives/Cards";
 const Archives = () => {
   const { data, isLoading } = useGetBookmarksQuery();

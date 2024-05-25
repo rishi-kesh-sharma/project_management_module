@@ -1,7 +1,10 @@
 import { IProjectRowData } from "@/@types";
-import Badge from "@/components/custom/Badge/Badge";
-import Tags from "@/components/custom/Tags/Tags";
-import { EditIcon, TrashIcon } from "@/components/icons/commonIcons";
+import Badge from "@/components/custom/common/Badge/Badge";
+import Tags from "@/components/custom/common/Tags/Tags";
+import {
+  EditIcon,
+  TrashIcon,
+} from "@/components/custom/common/icons/commonIcons";
 import { Progress } from "@/components/ui/Progress/progress";
 import { getTagVariantForValues } from "@/lib/utils";
 import moment from "moment";
@@ -88,7 +91,7 @@ export const colDefs = [
             id={p.data.id}
             className="text-destructive cursor-pointer"
           />
-            <EditIcon
+          <EditIcon
             id={p.data.id}
             className="text-primary text-lg cursor-pointer"
           />

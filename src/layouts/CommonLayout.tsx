@@ -6,14 +6,19 @@ import Sidebar from "@/components/custom/layout/Sidebar/Sidebar.tsx";
 import Breadcrumb from "@/components/custom/common/Breadcrumb/Breadcrumb.tsx";
 import { useGetWorkspaceQuery } from "@/api/workspace";
 import { useGetBookmarksQuery } from "@/api/bookmark.ts";
-import Spinner from "@/components/custom/common/Spinner/Spinner.tsx";
+import Spinner from "@/components/custom/common/Loaders/Spinner/Spinner.tsx";
 
 const CommonLayout = () => {
   const { pathname: currentPath } = useLocation();
   const { data: workspaces, isLoading } = useGetWorkspaceQuery("");
   const { data: bookmarks } = useGetBookmarksQuery();
 
-  if (isLoading) return <Spinner />;
+  if (isLoading)
+    return (
+      <div className="min-h-[100vh] flex items-center justify-center">
+        <Spinner size={"large"} />
+      </div>
+    );
   return (
     <div className="relative w-full min-h-screen flex">
       <Sidebar

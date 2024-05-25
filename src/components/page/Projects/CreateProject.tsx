@@ -12,7 +12,6 @@ import {
   Form as ShadForm,
 } from "@/components/ui/Form/form";
 import { Button } from "@/components/ui/Button/button";
-import TextInput from "@/components/custom/Form/Input/TextInput/TextInput";
 import {
   Select,
   SelectContent,
@@ -20,7 +19,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/Select/select";
-import NumberInput from "@/components/custom/Form/Input/NumberInput/NumberInput";
+import NumberInput from "@/components/custom/common/FormElements/Input/NumberInput/NumberInput";
 import {
   MultiSelector,
   MultiSelectorContent,
@@ -28,9 +27,10 @@ import {
   MultiSelectorItem,
   MultiSelectorTrigger,
   MultiSelectorList,
-} from "@/components/custom/common/MultiSelect/MultiSelect";
-import { AutosizeTextarea } from "@/components/custom/Form/AutosizeTextArea/AutosizeTextArea";
-import TagInput from "@/components/custom/Form/Input/TagInput/TagInput";
+} from "@/components/custom/common/FormElements/Select/MultiSelect/MultiSelect";
+import { AutosizeTextarea } from "@/components/custom/common/FormElements/AutosizeTextArea/AutosizeTextArea";
+import TagInput from "@/components/custom/common/FormElements/Input/TagInput/TagInput";
+import TextInput from "@/components/custom/common/FormElements/Input/TextInput/TextInput";
 
 const CreateProject: React.FC = () => {
   // const { workspaceId } = useParams();

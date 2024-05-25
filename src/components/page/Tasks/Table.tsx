@@ -1,6 +1,6 @@
-import AgGridTable from "@/components/custom/Tables/AgGridTable/AgGridTable";
+import AgGridTable from "@/components/custom/common/Tables/AgGridTable/AgGridTable";
 import { colDefs } from "../Tasks/colDefs";
-import TableToolbar from "@/components/custom/TableToolbar/TableToolbar";
+import TableToolbar from "@/components/custom/common/TableElements/TableToolbar/TableToolbar";
 import { ITaskRowData } from "@/@types";
 
 const dropdownMenus = {

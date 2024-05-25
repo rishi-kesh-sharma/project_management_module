@@ -1,8 +1,11 @@
 import { IProjectRowData } from "@/@types";
-import Badge from "@/components/custom/Badge/Badge";
-import { EditIcon, TrashIcon } from "@/components/icons/commonIcons";
+import Badge from "@/components/custom/common/Badge/Badge";
+import {
+  EditIcon,
+  TrashIcon,
+} from "@/components/custom/common/icons/commonIcons";
 import { Link, useParams } from "react-router-dom";
-import Tags from "../Tags/Tags";
+import Tags from "../common/Tags/Tags";
 import { faker } from "@faker-js/faker";
 import { getTagVariantForValues } from "@/lib/utils";
 export const colDefs = [

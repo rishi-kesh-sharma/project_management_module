@@ -1,6 +1,6 @@
-import AgGridTable from "@/components/custom/Tables/AgGridTable/AgGridTable";
+import AgGridTable from "@/components/custom/common/Tables/AgGridTable/AgGridTable";
 import { colDefs } from "./colDefs";
-import TableToolbar from "@/components/custom/TableToolbar/TableToolbar";
+import TableToolbar from "@/components/custom/common/TableElements/TableToolbar/TableToolbar";
 import { IEquipmentRowData } from "@/@types";
 
 const dropdownMenus = {
@@ -11,7 +11,11 @@ const dropdownMenus = {
   ],
 };
 
-const EquipmentTable = ({ equipments }: { equipments: IEquipmentRowData[] }) => {
+const EquipmentTable = ({
+  equipments,
+}: {
+  equipments: IEquipmentRowData[];
+}) => {
   const handleSearch = (e: React.FormEvent) => {
     e.preventDefault();
   };

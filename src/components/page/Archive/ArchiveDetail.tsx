@@ -50,13 +50,13 @@ const resourceTabTriggers = [
   },
 ];
 import BudgetDetail from "@/components/custom/BudgetTable/BudgetDetail";
-import Tabs from "@/components/custom/common/Tabs/Tabs";
+import Tabs from "@/components/custom/common/Tabs/TabsWithBottomBorder/Tabs";
 import EquipmentsDetail from "@/components/custom/EquipmentsTable/EquipmentDetail";
 import HumanResourceDetail from "@/components/custom/HumanResourceTable/HumanResourceDetail";
 import InventoriesDetail from "@/components/custom/InventoriesTable/InventoriesDetail";
-import { KanbanBoard } from "@/components/custom/Kanban/KanbanBoard";
-import TabWithButtonedTrigger from "@/components/custom/common/TabsWithButtonedTrigger/TabsWithButtonedTrigger";
-import Spinner from "@/components/custom/common/Spinner/Spinner";
+import { KanbanBoard } from "@/components/custom/common/Kanban/KanbanBoard";
+import TabWithButtonedTrigger from "@/components/custom/common/Tabs/TabsWithButtonedTrigger/TabsWithButtonedTrigger";
+import Spinner from "@/components/custom/common/Loaders/Spinner/Spinner";
 const ArchiveDetail = () => {
   const { data: projectsData, isLoading } = useGetProjectsQuery();
   const data = projectsData?.[0];

@@ -1,8 +1,8 @@
-import BasicTable from "@/components/custom/BasicTable/BasicTable";
-import AreaCharts from "@/components/custom/charts/AreaChart/AreaCharts";
-import BarChart from "@/components/custom/charts/BarChart/BarChart";
-import LineChart from "@/components/custom/charts/LineChart/LineChart";
-import PieChart from "@/components/custom/charts/PieChart/PieChart";
+import BasicTable from "@/components/custom/common/Tables/BasicTable/BasicTable";
+import AreaCharts from "@/components/custom/common/charts/AreaChart/AreaCharts";
+import BarChart from "@/components/custom/common/charts/BarChart/BarChart";
+import LineChart from "@/components/custom/common/charts/LineChart/LineChart";
+import PieChart from "@/components/custom/common/charts/PieChart/PieChart";
 import { Card } from "@/components/ui/Card/card";
 import i18n from "@/intl/i18n";
 import {

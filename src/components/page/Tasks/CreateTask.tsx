@@ -28,7 +28,7 @@ import {
   MultiSelectorItem,
   MultiSelectorTrigger,
   MultiSelectorList,
-} from "@/components/custom/common/MultiSelect/MultiSelect";
+} from "@/components/custom/common/FormElements/Select/MultiSelect/MultiSelect";
 import { AutosizeTextarea } from "@/components/custom/Form/AutosizeTextArea/AutosizeTextArea";
 import TagInput from "@/components/custom/Form/Input/TagInput/TagInput";
 

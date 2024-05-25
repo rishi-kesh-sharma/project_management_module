@@ -1,4 +1,4 @@
-import AgGridTable from "@/components/custom/Tables/AgGridTable/AgGridTable";
+import AgGridTable from "@/components/custom/common/Tables/AgGridTable/AgGridTable";
 import { colDefs, rowData } from "@/components/custom/Tables/AgGridTable/data";
 
 const Home = () => {

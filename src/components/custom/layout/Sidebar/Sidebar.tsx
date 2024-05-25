@@ -7,7 +7,7 @@ import {
   RightAngularArrowIcon,
   SettingIcon,
   // SettingIcon,
-} from "@/components/icons/commonIcons";
+} from "@/components/custom/common/icons/commonIcons";
 import { SidebarItemProps, SidebarProps } from "@/@types";
 import * as React from "react";
 import { useAppDispatch, useAppSelector } from "@/hooks";

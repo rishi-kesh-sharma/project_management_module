@@ -1,35 +1,35 @@
-import React from 'react';
+import React from "react";
 import {
   MARK_BOLD,
   MARK_CODE,
   MARK_ITALIC,
   MARK_STRIKETHROUGH,
   MARK_UNDERLINE,
-} from '@udecode/plate-basic-marks';
-import { useEditorReadOnly } from '@udecode/plate-common';
-import { MARK_BG_COLOR, MARK_COLOR } from '@udecode/plate-font';
-import { ListStyleType } from '@udecode/plate-indent-list';
-import { ELEMENT_IMAGE } from '@udecode/plate-media';
+} from "@udecode/plate-basic-marks";
+import { useEditorReadOnly } from "@udecode/plate-common";
+import { MARK_BG_COLOR, MARK_COLOR } from "@udecode/plate-font";
+import { ListStyleType } from "@udecode/plate-indent-list";
+import { ELEMENT_IMAGE } from "@udecode/plate-media";
 
-import { Icons, iconVariants } from '@/components/icons';
-import { AlignDropdownMenu } from '@/components/plate-ui/align-dropdown-menu';
-import { ColorDropdownMenu } from '@/components/plate-ui/color-dropdown-menu';
-import { CommentToolbarButton } from '@/components/plate-ui/comment-toolbar-button';
-import { EmojiDropdownMenu } from '@/components/plate-ui/emoji-dropdown-menu';
-import { IndentListToolbarButton } from '@/components/plate-ui/indent-list-toolbar-button';
-import { IndentToolbarButton } from '@/components/plate-ui/indent-toolbar-button';
-import { LineHeightDropdownMenu } from '@/components/plate-ui/line-height-dropdown-menu';
-import { LinkToolbarButton } from '@/components/plate-ui/link-toolbar-button';
-import { MediaToolbarButton } from '@/components/plate-ui/media-toolbar-button';
-import { MoreDropdownMenu } from '@/components/plate-ui/more-dropdown-menu';
-import { OutdentToolbarButton } from '@/components/plate-ui/outdent-toolbar-button';
-import { TableDropdownMenu } from '@/components/plate-ui/table-dropdown-menu';
+import { Icons, iconVariants } from "@/components/custom/common/icons";
+import { AlignDropdownMenu } from "@/components/plate-ui/align-dropdown-menu";
+import { ColorDropdownMenu } from "@/components/plate-ui/color-dropdown-menu";
+import { CommentToolbarButton } from "@/components/plate-ui/comment-toolbar-button";
+import { EmojiDropdownMenu } from "@/components/plate-ui/emoji-dropdown-menu";
+import { IndentListToolbarButton } from "@/components/plate-ui/indent-list-toolbar-button";
+import { IndentToolbarButton } from "@/components/plate-ui/indent-toolbar-button";
+import { LineHeightDropdownMenu } from "@/components/plate-ui/line-height-dropdown-menu";
+import { LinkToolbarButton } from "@/components/plate-ui/link-toolbar-button";
+import { MediaToolbarButton } from "@/components/plate-ui/media-toolbar-button";
+import { MoreDropdownMenu } from "@/components/plate-ui/more-dropdown-menu";
+import { OutdentToolbarButton } from "@/components/plate-ui/outdent-toolbar-button";
+import { TableDropdownMenu } from "@/components/plate-ui/table-dropdown-menu";
 
-import { InsertDropdownMenu } from './insert-dropdown-menu';
-import { MarkToolbarButton } from './mark-toolbar-button';
-import { ModeDropdownMenu } from './mode-dropdown-menu';
-import { ToolbarGroup } from './toolbar';
-import { TurnIntoDropdownMenu } from './turn-into-dropdown-menu';
+import { InsertDropdownMenu } from "./insert-dropdown-menu";
+import { MarkToolbarButton } from "./mark-toolbar-button";
+import { ModeDropdownMenu } from "./mode-dropdown-menu";
+import { ToolbarGroup } from "./toolbar";
+import { TurnIntoDropdownMenu } from "./turn-into-dropdown-menu";
 
 export function FixedToolbarButtons() {
   const readOnly = useEditorReadOnly();
@@ -39,9 +39,8 @@ export function FixedToolbarButtons() {
       <div
         className="flex flex-wrap"
         style={{
-          transform: 'translateX(calc(-1px))',
-        }}
-      >
+          transform: "translateX(calc(-1px))",
+        }}>
         {!readOnly && (
           <>
             <ToolbarGroup noSeparator>
@@ -58,15 +57,13 @@ export function FixedToolbarButtons() {
               </MarkToolbarButton>
               <MarkToolbarButton
                 tooltip="Underline (⌘+U)"
-                nodeType={MARK_UNDERLINE}
-              >
+                nodeType={MARK_UNDERLINE}>
                 <Icons.underline />
               </MarkToolbarButton>
 
               <MarkToolbarButton
                 tooltip="Strikethrough (⌘+⇧+M)"
-                nodeType={MARK_STRIKETHROUGH}
-              >
+                nodeType={MARK_STRIKETHROUGH}>
                 <Icons.strikethrough />
               </MarkToolbarButton>
               <MarkToolbarButton tooltip="Code (⌘+E)" nodeType={MARK_CODE}>
@@ -76,13 +73,12 @@ export function FixedToolbarButtons() {
 
             <ToolbarGroup>
               <ColorDropdownMenu nodeType={MARK_COLOR} tooltip="Text Color">
-                <Icons.color className={iconVariants({ variant: 'toolbar' })} />
+                <Icons.color className={iconVariants({ variant: "toolbar" })} />
               </ColorDropdownMenu>
               <ColorDropdownMenu
                 nodeType={MARK_BG_COLOR}
-                tooltip="Highlight Color"
-              >
-                <Icons.bg className={iconVariants({ variant: 'toolbar' })} />
+                tooltip="Highlight Color">
+                <Icons.bg className={iconVariants({ variant: "toolbar" })} />
               </ColorDropdownMenu>
             </ToolbarGroup>
 

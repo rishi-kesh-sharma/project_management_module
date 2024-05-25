@@ -1,7 +1,7 @@
 import { useParams } from "react-router";
 import InventoriesTable from "./InventoriesTable";
 import { useGetInventoriesQuery } from "@/api/inventories";
-import Spinner from "../common/Spinner/Spinner";
+import Spinner from "../common/Loaders/Spinner/Spinner";
 const InventoriesDetail = () => {
   const { workspaceId } = useParams();
   const { data, isLoading } = useGetInventoriesQuery();

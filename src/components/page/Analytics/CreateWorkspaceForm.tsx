@@ -1,6 +1,6 @@
 import { z } from "zod";
 import { Button } from "@/components/ui/Button/button";
-import { PlusIcon } from "@/components/icons/commonIcons";
+import { PlusIcon } from "@/components/custom/common/icons/commonIcons";
 import {
   Form,
   FormControl,
@@ -9,9 +9,9 @@ import {
   FormLabel,
   FormMessage,
 } from "@/components/ui/Form/form";
-import TextInput from "@/components/custom/Form/Input/TextInput/TextInput";
+import TextInput from "@/components/custom/common/FormElements/Input/TextInput/TextInput";
 import { useForm } from "react-hook-form";
-import Modal from "@/components/custom/Modal/Modal";
+import Modal from "@/components/custom/common/Modal/Modal";
 import { DialogFooter } from "@/components/plate-ui/dialog";
 import { DialogClose } from "@/components/ui/Dialog/dialog";
 import { useAddWorkspaceMutation } from "@/api/workspace";

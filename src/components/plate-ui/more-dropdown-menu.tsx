@@ -1,9 +1,9 @@
-import React from 'react';
-import { DropdownMenuProps } from '@radix-ui/react-dropdown-menu';
-import { MARK_SUBSCRIPT, MARK_SUPERSCRIPT } from '@udecode/plate-basic-marks';
-import { focusEditor, toggleMark, useEditorRef } from '@udecode/plate-common';
+import React from "react";
+import { DropdownMenuProps } from "@radix-ui/react-dropdown-menu";
+import { MARK_SUBSCRIPT, MARK_SUPERSCRIPT } from "@udecode/plate-basic-marks";
+import { focusEditor, toggleMark, useEditorRef } from "@udecode/plate-common";
 
-import { Icons } from '@/components/icons';
+import { Icons } from "@/components/custom/common/icons";
 
 import {
   DropdownMenu,
@@ -11,8 +11,8 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
   useOpenState,
-} from './dropdown-menu';
-import { ToolbarButton } from './toolbar';
+} from "./dropdown-menu";
+import { ToolbarButton } from "./toolbar";
 
 export function MoreDropdownMenu(props: DropdownMenuProps) {
   const editor = useEditorRef();
@@ -28,8 +28,7 @@ export function MoreDropdownMenu(props: DropdownMenuProps) {
 
       <DropdownMenuContent
         align="start"
-        className="flex max-h-[500px] min-w-[180px] flex-col gap-0.5 overflow-y-auto"
-      >
+        className="flex max-h-[500px] min-w-[180px] flex-col gap-0.5 overflow-y-auto">
         <DropdownMenuItem
           onSelect={() => {
             toggleMark(editor, {
@@ -37,8 +36,7 @@ export function MoreDropdownMenu(props: DropdownMenuProps) {
               clear: MARK_SUPERSCRIPT,
             });
             focusEditor(editor);
-          }}
-        >
+          }}>
           <Icons.superscript className="mr-2 size-5" />
           Superscript
           {/* (⌘+,) */}
@@ -50,8 +48,7 @@ export function MoreDropdownMenu(props: DropdownMenuProps) {
               clear: MARK_SUBSCRIPT,
             });
             focusEditor(editor);
-          }}
-        >
+          }}>
           <Icons.subscript className="mr-2 size-5" />
           Subscript
           {/* (⌘+.) */}

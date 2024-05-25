@@ -1,7 +1,7 @@
 import WorkspaceDetailTable from "./Table";
 
 import { useGetWorkspaceQuery } from "@/api/workspace";
-import Spinner from "@/components/custom/common/Spinner/Spinner";
+import Spinner from "@/components/custom/common/Loaders/Spinner/Spinner";
 import { useParams } from "react-router";
 const WorkspaceDetail = () => {
   const { workspaceId } = useParams();
