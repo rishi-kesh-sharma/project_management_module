@@ -42,9 +42,9 @@ export default function Spinner({
   className,
 }: SpinnerContentProps) {
   return (
-    <span className={spinnerVariants({ show })}>
+    <div className={cn(spinnerVariants({ show }))}>
       <Loader2 className={cn(loaderVariants({ size }), className)} />
       {children}
-    </span>
+    </div>
   );
 }

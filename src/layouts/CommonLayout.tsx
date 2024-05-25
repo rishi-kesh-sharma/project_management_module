@@ -13,7 +13,12 @@ const CommonLayout = () => {
   const { data: workspaces, isLoading } = useGetWorkspaceQuery("");
   const { data: bookmarks } = useGetBookmarksQuery();
 
-  if (isLoading) return <Spinner />;
+  if (isLoading)
+    return (
+      <div className="min-h-[100vh] flex items-center justify-center">
+        <Spinner size={"large"} />
+      </div>
+    );
   return (
     <div className="relative w-full min-h-screen flex">
       <Sidebar
