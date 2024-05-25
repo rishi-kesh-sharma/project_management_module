@@ -11,7 +11,7 @@ import {
 } from "@syncfusion/ej2-react-gantt";
 import { taskModeData } from "./data.js";
 
-const TaskMode = () => {
+const GanttChart = () => {
   const taskFields: any = {
     id: "TaskID",
     name: "TaskName",
@@ -81,4 +81,4 @@ const TaskMode = () => {
     </div>
   );
 };
-export default TaskMode;
+export default GanttChart;

@@ -2,14 +2,14 @@
 
 import { StoryObj, Meta } from "@storybook/react";
 import BasicTable from "./BasicTable";
-import { basicTableData } from "@/utils/constants";
+import { basicTableData, upcomingDeadlineData } from "@/utils/constants";
 
 const meta: Meta<typeof BasicTable> = {
   title: "BasicTable",
 
   args: {
     // user: userInfo,
-    ...basicTableData,
+    ...upcomingDeadlineData,
   },
   component: BasicTable,
   parameters: {

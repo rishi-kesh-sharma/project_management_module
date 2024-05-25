@@ -2,7 +2,7 @@
 
 import { StoryObj, Meta } from "@storybook/react";
 import AvatarDropdown from "./AvatarDropdownMenu";
-import { avatarDropdownMenu } from "./../../../../utils/constants/index";
+import { avatarDropdownMenu } from "@/utils/constants";
 
 const meta: Meta<typeof AvatarDropdown> = {
   title: "AvatarDropdown",

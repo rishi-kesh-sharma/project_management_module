@@ -58,6 +58,7 @@ import HumanResourceDetail from "@/components/custom/HumanResourceTable/HumanRes
 import InventoriesDetail from "@/components/custom/InventoriesTable/InventoriesDetail";
 import { KanbanBoard } from "@/components/custom/common/Kanban/KanbanBoard";
 import { useParams } from "react-router";
+import GanttChart from "@/components/custom/common/charts/GanttChart/GanttChart";
 const ProjectDetail = () => {
   const { workspaceId } = useParams();
   const { data, isLoading } = useGetWorkspaceQuery(workspaceId);
@@ -81,7 +82,12 @@ const ProjectDetail = () => {
                 contents={[
                   {
                     id: "gantt-chart",
-                    element: <div>Gantt Chart</div>,
+                    element: (
+                      <div>
+                        Gantt Chart
+                        <GanttChart />
+                      </div>
+                    ),
                   },
                   {
                     id: "kanban-board",

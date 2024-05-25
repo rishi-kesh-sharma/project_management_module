@@ -2,7 +2,7 @@
 
 import { StoryObj, Meta } from "@storybook/react";
 import Dropdown from "./DropdownMenu";
-import { dropdownMenus } from "./../../../../utils/constants/index";
+import { dropdownMenus } from "@/utils/constants";
 
 const meta: Meta<typeof Dropdown> = {
   title: "Dropdown",

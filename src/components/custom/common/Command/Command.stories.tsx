@@ -14,7 +14,7 @@ const meta: Meta<typeof Command> = {
   },
   component: Command,
   parameters: {
-    layout: "centered",
+    layout: "top",
   },
 };
 
