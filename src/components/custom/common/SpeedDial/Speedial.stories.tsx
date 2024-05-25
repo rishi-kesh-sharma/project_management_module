@@ -23,6 +23,7 @@ const meta: Meta<typeof SpeedDial> = {
   args: {
     direction: "left",
     children: items,
+    itemWidth: 200,
   },
   component: SpeedDial,
   parameters: {

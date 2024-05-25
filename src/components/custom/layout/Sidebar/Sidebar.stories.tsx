@@ -27,8 +27,7 @@ type Story = StoryObj<typeof meta>;
 
 export const Large: Story = {
   args: {
-    items: sidebarItems(),
-
+    items: sidebarItems({ workspaces: [], bookmarks: [], archives: [] }),
     path: "/",
   },
 };

@@ -7,9 +7,10 @@ const meta: Meta<typeof PhoneInput> = {
   title: "PhoneInput",
 
   args: {
-    value: {
-      __tag: "9876543210",
-    },
+    // value: {
+    //   __tag: "9876543210",
+    // },
+    value: "9876543210",
     onChange: () => {},
     onCountryChange: () => {},
     placeholder: "Enter a phone number",

@@ -12,7 +12,7 @@ const meta: Meta<typeof Combobox> = {
   },
   component: Combobox,
   parameters: {
-    layout: "top",
+    layout: "centered",
   },
 };
 

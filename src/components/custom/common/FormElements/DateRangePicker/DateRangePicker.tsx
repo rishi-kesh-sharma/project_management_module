@@ -9,7 +9,6 @@ import {
   PopoverTrigger,
 } from "@/components/ui/Popover/popover";
 import { Calendar } from "@/components/ui/Calendar/calendar";
-import { DateInput } from "@/components/custom/Form/DateInput/DateInput";
 import { Label } from "@/components/ui/Label/label";
 import {
   Select,
@@ -25,6 +24,7 @@ import {
   CheckIcon,
 } from "@radix-ui/react-icons";
 import { cn } from "@/lib/utils";
+import { DateInput } from "../Input/DateInput/DateInput";
 
 export interface DateRangePickerProps {
   /** Click handler for applying the updates from DateRangePicker. */
