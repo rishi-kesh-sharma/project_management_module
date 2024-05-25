@@ -1,11 +1,12 @@
 import { IBookmark } from "@/@types";
-import Tags, { ITagsProps } from "@/components/custom/Tags/Tags";
+
 import {
   EditIcon,
   EyeIcon,
   PeopleIcon,
   TaskIcon,
-} from "@/components/icons/commonIcons";
+} from "@/components/custom/common/icons/commonIcons";
+import Tags, { ITagsProps } from "@/components/custom/common/Tags/Tags";
 import {
   Card,
   CardContent,

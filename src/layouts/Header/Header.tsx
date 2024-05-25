@@ -2,7 +2,6 @@
 import { IoMdNotificationsOutline } from "react-icons/io";
 
 import { IHeaderProps } from "@/@types";
-import AvatarDropdown from "@/components/custom/common/AvatarDropdownMenu/AvatarDropdownMenu";
 import { avatarDropdownMenu, commandData } from "@/utils/constants";
 import { useState } from "react";
 import NotificationCard from "@/components/custom/common/NotificationCard/NotificationCard";
@@ -13,13 +12,14 @@ import {
   setLanguage,
 } from "@/redux/features/app/appSlice";
 import SearchInput from "@/components/custom/common/SearchInput/SearchInput";
-import Dropdown from "@/components/custom/common/DropdownMenu/DropdownMenu";
 import { availableLanguages } from "@/utils/constants/intl";
 import { availableThemes } from "@/utils/constants/theme";
-import { useTheme } from "@/components/Theme/ThemeProvider";
+import { useTheme } from "@/components/Providers/Theme/ThemeProvider";
 import i18n from "@/intl/i18n";
 
 import CommandDialog from "@/components/custom/common/Command/Command";
+import Dropdown from "@/components/custom/common/Dropdowns/DropdownMenu/DropdownMenu";
+import AvatarDropdown from "@/components/custom/common/Dropdowns/AvatarDropdownMenu/AvatarDropdownMenu";
 
 const Header: React.FC<IHeaderProps> = () => {
   const [showNotifications, setShowNotifications] = useState(false);

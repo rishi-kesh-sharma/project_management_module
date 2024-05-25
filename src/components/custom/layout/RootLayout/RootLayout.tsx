@@ -1,7 +1,7 @@
 import { cn } from "@udecode/cn";
 
 import { TooltipProvider } from "@/components/plate-ui/tooltip";
-import { ThemeProvider } from "@/components/Theme/ThemeProvider";
+import { ThemeProvider } from "@/components/Providers/Theme/ThemeProvider";
 import { RootLayoutProps } from "@/@types";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";

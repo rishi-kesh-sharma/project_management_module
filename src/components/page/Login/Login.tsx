@@ -1,8 +1,8 @@
-import TextInput from "@/components/custom/Form/Input/TextInput/TextInput";
+import TextInput from "@/components/custom/common/FormElements/Input/TextInput/TextInput";
 import { Button } from "@/components/ui/Button/button";
 import LogoEnter from "../../../assets/images/LogoEnter.png";
 import { useState } from "react";
-import PasswordInput from "@/components/custom/Form/Input/PasswordInput/PasswordInput";
+import PasswordInput from "@/components/custom/common/FormElements/Input/PasswordInput/PasswordInput";
 import { Label } from "@/components/ui/Label/label";
 
 const Login: React.FC = () => {

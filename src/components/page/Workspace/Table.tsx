@@ -1,9 +1,9 @@
-import AgGridTable from "@/components/custom/Tables/AgGridTable/AgGridTable";
+import AgGridTable from "@/components/custom/common/Tables/AgGridTable/AgGridTable";
 import { IWorkspace } from "@/api/workspace";
-import TableToolbar from "@/components/custom/TableToolbar/TableToolbar";
+import TableToolbar from "@/components/custom/common/TableElements/TableToolbar/TableToolbar";
 import { colDefs } from "./colDefs";
 import { useParams } from "react-router";
-import Spinner from "@/components/custom/common/Spinner/Spinner";
+import Spinner from "@/components/custom/common/Loaders/Spinner/Spinner";
 
 const dropdownMenus = {
   items: [

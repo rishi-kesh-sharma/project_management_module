@@ -1,7 +1,7 @@
 import React from "react";
 import TimeTrackingTable from "./TimeTrackingTable";
 import { ITask } from "@/@types";
-import Timer from "@/components/custom/Timer/Timer";
+import Timer from "@/components/custom/common/Timer/Timer";
 
 interface ITimeTrackingDetailProps {
   task: ITask;

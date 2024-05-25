@@ -6,7 +6,7 @@ import Sidebar from "@/components/custom/layout/Sidebar/Sidebar.tsx";
 import Breadcrumb from "@/components/custom/common/Breadcrumb/Breadcrumb.tsx";
 import { useGetWorkspaceQuery } from "@/api/workspace";
 import { useGetBookmarksQuery } from "@/api/bookmark.ts";
-import Spinner from "@/components/custom/common/Spinner/Spinner.tsx";
+import Spinner from "@/components/custom/common/Loaders/Spinner/Spinner.tsx";
 
 const CommonLayout = () => {
   const { pathname: currentPath } = useLocation();

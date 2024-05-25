@@ -1,5 +1,8 @@
 import { ISubTaskRowData } from "@/@types";
-import { EditIcon, TrashIcon } from "@/components/icons/commonIcons";
+import {
+  EditIcon,
+  TrashIcon,
+} from "@/components/custom/common/icons/commonIcons";
 import moment from "moment";
 import { Link, useParams } from "react-router-dom";
 export const colDefs = [

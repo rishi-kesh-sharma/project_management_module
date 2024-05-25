@@ -9,7 +9,7 @@ import {
   // ProgressIcon,
   // TaskIcon,
   // SettingIcon,
-} from "@/components/icons/commonIcons";
+} from "@/components/custom/common/icons/commonIcons";
 import i18n from "@/intl/i18n";
 
 interface ISidebarItemsProps {

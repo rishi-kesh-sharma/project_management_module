@@ -1,28 +1,28 @@
-'use client';
+"use client";
 
-import React, { useState } from 'react';
-import { cn } from '@udecode/cn';
+import React, { useState } from "react";
+import { cn } from "@udecode/cn";
 import {
   CODE_BLOCK_LANGUAGES,
   CODE_BLOCK_LANGUAGES_POPULAR,
   useCodeBlockCombobox,
   useCodeBlockComboboxState,
-} from '@udecode/plate-code-block';
+} from "@udecode/plate-code-block";
 
-import { Icons } from '@/components/icons';
+import { Icons } from "@/components/custom/common/icons";
 
-import { Button } from './button';
+import { Button } from "./button";
 import {
   Command,
   CommandEmpty,
   CommandInput,
   CommandItem,
   CommandList,
-} from './command';
-import { Popover, PopoverContent, PopoverTrigger } from './popover';
+} from "./command";
+import { Popover, PopoverContent, PopoverTrigger } from "./popover";
 
 const languages: { value: string; label: string }[] = [
-  { value: 'text', label: 'Plain Text' },
+  { value: "text", label: "Plain Text" },
   ...Object.entries({
     ...CODE_BLOCK_LANGUAGES_POPULAR,
     ...CODE_BLOCK_LANGUAGES,
@@ -48,12 +48,11 @@ export function CodeBlockCombobox() {
           role="combobox"
           aria-expanded={open}
           className="h-5 justify-between px-1 text-xs"
-          size="xs"
-        >
+          size="xs">
           {state.value
             ? languages.find((language) => language.value === state.value)
                 ?.label
-            : 'Plain Text'}
+            : "Plain Text"}
           <Icons.chevronsUpDown className="ml-2 size-4 shrink-0 opacity-50" />
         </Button>
       </PopoverTrigger>
@@ -71,12 +70,11 @@ export function CodeBlockCombobox() {
                 onSelect={(_value) => {
                   commandItemProps.onSelect(_value);
                   setOpen(false);
-                }}
-              >
+                }}>
                 <Icons.check
                   className={cn(
-                    'mr-2 size-4',
-                    state.value === language.value ? 'opacity-100' : 'opacity-0'
+                    "mr-2 size-4",
+                    state.value === language.value ? "opacity-100" : "opacity-0"
                   )}
                 />
                 {language.label}

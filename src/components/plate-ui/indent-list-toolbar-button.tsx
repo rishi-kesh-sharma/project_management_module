@@ -1,14 +1,14 @@
-import React from 'react';
-import { withRef } from '@udecode/cn';
+import React from "react";
+import { withRef } from "@udecode/cn";
 import {
   ListStyleType,
   useIndentListToolbarButton,
   useIndentListToolbarButtonState,
-} from '@udecode/plate-indent-list';
+} from "@udecode/plate-indent-list";
 
-import { Icons } from '@/components/icons';
+import { Icons } from "@/components/custom/common/icons";
 
-import { ToolbarButton } from './toolbar';
+import { ToolbarButton } from "./toolbar";
 
 export const IndentListToolbarButton = withRef<
   typeof ToolbarButton,
@@ -23,10 +23,9 @@ export const IndentListToolbarButton = withRef<
     <ToolbarButton
       ref={ref}
       tooltip={
-        nodeType === ListStyleType.Disc ? 'Bulleted List' : 'Numbered List'
+        nodeType === ListStyleType.Disc ? "Bulleted List" : "Numbered List"
       }
-      {...props}
-    >
+      {...props}>
       {nodeType === ListStyleType.Disc ? <Icons.ul /> : <Icons.ol />}
     </ToolbarButton>
   );

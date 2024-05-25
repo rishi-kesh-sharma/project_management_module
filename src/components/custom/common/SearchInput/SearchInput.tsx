@@ -1,5 +1,5 @@
 import { cn } from "@/lib/utils";
-import Input from "../Input/Input";
+import Input from "../FormElements/Input/Input/Input";
 import { ISearchInput } from "@/@types";
 
 const SearchInput: React.FC<ISearchInput> = ({

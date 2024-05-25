@@ -1,7 +1,10 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { ISubTaskRowData } from "@/@types";
-import Tags from "@/components/custom/Tags/Tags";
-import { EditIcon, TrashIcon } from "@/components/icons/commonIcons";
+import Tags from "@/components/custom/common/Tags/Tags";
+import {
+  EditIcon,
+  TrashIcon,
+} from "@/components/custom/common/icons/commonIcons";
 import { Avatar, AvatarImage } from "@/components/ui/Avatar/avatar";
 import { Progress } from "@/components/ui/Progress/progress";
 import { getTagVariantForValues } from "@/lib/utils";

@@ -1,10 +1,10 @@
-import Spinner from "../common/Spinner/Spinner";
+import Spinner from "../common/Loaders/Spinner/Spinner";
 import EquipmentsTable from "./EquipmentTable";
 import { useGetEquipmentsQuery } from "@/api/equipments";
 const EquipmentsDetail = () => {
   const { data, isLoading } = useGetEquipmentsQuery();
 
-  if (isLoading || !data) return <Spinner/> ;
+  if (isLoading || !data) return <Spinner />;
 
   return (
     <div className="my-[2rem]">

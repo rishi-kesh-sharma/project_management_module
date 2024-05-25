@@ -1,6 +1,6 @@
-import AgGridTable from "@/components/custom/Tables/AgGridTable/AgGridTable";
+import AgGridTable from "@/components/custom/common/Tables/AgGridTable/AgGridTable";
 import { colDefs } from "./timeTrackingColDefs";
-import TableToolbar from "@/components/custom/TableToolbar/TableToolbar";
+import TableToolbar from "@/components/custom/common/TableElements/TableToolbar/TableToolbar";
 import { ITimeTrackingRowData } from "@/@types";
 
 const dropdownMenus = {
