@@ -3,7 +3,7 @@ import { faker } from "@faker-js/faker";
 function createRandomBudgets(value) {
   return {
     id: faker.string.uuid(),
-    taskName: ` Task ${value}`,
+    budgetName: ` Budget ${value}`,
     totalBudget: faker.number.int(),
     lastUsed: faker.date.past(),
     budgetSpent: faker.number.int(),

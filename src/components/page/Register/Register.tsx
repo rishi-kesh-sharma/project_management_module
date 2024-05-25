@@ -3,14 +3,18 @@ import { Button } from "@/components/ui/Button/button";
 import LogoEnter from "../../../assets/images/LogoEnter.png";
 import { Label } from "@/components/ui/Label/label";
 import PasswordInput from "@/components/custom/common/FormElements/Input/PasswordInput/PasswordInput";
-
-const RegisterPage = () => {
+import { Helmet } from "react-helmet";
+export interface IRegisterProps {
+  title: string;
+}
+const RegisterPage: React.FC<IRegisterProps> = ({ title }) => {
   const handleChange = (e: React.ChangeEvent) => {
     console.log(e);
   };
 
   return (
     <div className="flex h-screen">
+      <Helmet>{`${title}`}</Helmet>
       <div className="w-7/12 bg-gradient-to-r from-blue-400 via-blue-500 to-blue-600 p-16">
         <div className="text-white absolute top-60 left-25">
           <div style={{ width: "195px", height: "86px", marginTop: "62px" }}>

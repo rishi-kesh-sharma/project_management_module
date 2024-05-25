@@ -1,10 +1,10 @@
 import { IRowData } from "@/@types";
-import Badge from "../../common/Badge/Badge";
 import { IGroupCellRendererParams } from "@ag-grid-community/core";
 import {
   EditIcon,
   TrashIcon,
 } from "@/components/custom/common/icons/commonIcons";
+import Badge from "../../Badge/Badge";
 
 export const rowData: IRowData[] = [
   {

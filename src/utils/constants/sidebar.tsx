@@ -11,6 +11,7 @@ import {
   // SettingIcon,
 } from "@/components/custom/common/icons/commonIcons";
 import i18n from "@/intl/i18n";
+import { Ellipsis } from "lucide-react";
 
 interface ISidebarItemsProps {
   workspaces: IWorkspace[];
@@ -44,7 +45,18 @@ export const sidebarItems = (injectables: ISidebarItemsProps) => [
       label: i18n.t("component.sidebar.menu.workspaces", "Workspaces"),
       link: `/workspaces`,
       icon: <AnalysticIcon />,
-      items: items && [...items, { label: "View all", link: `/workspaces` }],
+      items: items && [
+        ...items,
+        {
+          label: (
+            <>
+              <span>View all</span>
+              <Ellipsis />
+            </>
+          ),
+          link: `/workspaces`,
+        },
+      ],
     };
   })(),
 
@@ -59,7 +71,18 @@ export const sidebarItems = (injectables: ISidebarItemsProps) => [
       label: i18n.t("component.sidebar.menu.bookmarks", "Bookmarks"),
       link: `/bookmarks`,
       icon: <BookmarkIconOutlined />,
-      items: items && [...items, { label: "View All", link: `/bookmarks` }],
+      items: items && [
+        ...items,
+        {
+          label: (
+            <>
+              <span>View All</span>
+              <Ellipsis />
+            </>
+          ),
+          link: `/bookmarks`,
+        },
+      ],
     };
   })(),
   (() => {
@@ -73,7 +96,18 @@ export const sidebarItems = (injectables: ISidebarItemsProps) => [
       label: i18n.t("component.sidebar.menu.archives", "Archives"),
       link: `/archives`,
       icon: <BookmarkIconOutlined />,
-      items: items && [...items, { label: "View All", link: `/archives` }],
+      items: items && [
+        ...items,
+        {
+          label: (
+            <>
+              <span>View All</span>
+              <Ellipsis />
+            </>
+          ),
+          link: `/archives`,
+        },
+      ],
     };
   })(),
 ];

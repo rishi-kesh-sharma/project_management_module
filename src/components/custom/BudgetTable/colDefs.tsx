@@ -7,9 +7,9 @@ import moment from "moment";
 import { Link, useParams } from "react-router-dom";
 export const colDefs = [
   {
-    field: "taskName",
+    field: "budgetName",
     headerCheckboxSelection: true,
-    headerName: "Task Name",
+    headerName: "Budget Name",
     checkboxSelection: true,
     cellRenderer: (p: { value: string; data: IProjectRowData }) => {
       // eslint-disable-next-line react-hooks/rules-of-hooks

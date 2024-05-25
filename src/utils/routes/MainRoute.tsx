@@ -15,7 +15,6 @@ import CreateProjectPage from "@/pages/CreateProjectPage.tsx";
 import BookmarkDetailPage from "@/pages/BookmarkDetail.tsx";
 import TaskDetailPage from "@/pages/TaskDetailPage.tsx";
 import WorkspacesPage from "@/pages/WorkspacesPage.tsx";
-import { Title } from "chart.js";
 import { pageTitles } from "../constants/pageTitles.tsx";
 import BookmarksPage from "@/pages/BookmarksPage.tsx";
 import ArchivesPage from "@/pages/ArchivesPage.tsx";

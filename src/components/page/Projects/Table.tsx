@@ -5,6 +5,7 @@ import { IProjectRowData } from "@/@types";
 import { useParams } from "react-router";
 import { useCallback, useEffect, useState } from "react";
 import Spinner from "@/components/custom/common/Loaders/Spinner/Spinner";
+import { ProjectsTableFilters } from "@/utils/constants";
 
 const dropdownMenus = {
   items: [
@@ -41,11 +42,14 @@ const ProjectTable = ({
 
   if (projectId) getProject(projectId);
   if (!project) return <Spinner />;
+
   return (
     <div className="mt-[1rem]">
       <AgGridTable
         tableToolbar={
           <TableToolbar
+            hasFilters={true}
+            filters={<ProjectsTableFilters />}
             heading={project.projectName}
             handleSearch={handleSearch}
             dropdownMenus={dropdownMenus}
