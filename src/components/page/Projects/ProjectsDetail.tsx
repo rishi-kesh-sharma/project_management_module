@@ -28,6 +28,10 @@ const planningTabTriggers = [
     id: "gantt-chart",
     label: "Gantt chart",
   },
+  {
+    id: "files",
+    label: "Files",
+  },
 ];
 
 const resourceTabTriggers = [
@@ -61,6 +65,7 @@ import { useParams } from "react-router";
 import GanttChart from "@/components/custom/common/charts/GanttChart/GanttChart";
 import { Helmet } from "react-helmet";
 import { useTheme } from "@/components/Providers/Theme/ThemeProvider";
+import Files from "@/components/custom/common/Files/Files";
 const ProjectDetail = () => {
   const { workspaceId } = useParams();
   const { theme } = useTheme();
@@ -117,6 +122,18 @@ const ProjectDetail = () => {
                         </h1>
 
                         <KanbanBoard />
+                      </div>
+                    ),
+                  },
+                  {
+                    id: "files",
+                    element: (
+                      <div>
+                        <h1 className="text-xl font-semibold my-[1.5rem]">
+                          Files
+                        </h1>
+
+                        <Files />
                       </div>
                     ),
                   },
