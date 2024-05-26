@@ -19,6 +19,9 @@ import { pageTitles } from "../constants/pageTitles.tsx";
 import BookmarksPage from "@/pages/BookmarksPage.tsx";
 import ArchivesPage from "@/pages/ArchivesPage.tsx";
 import ArchiveDetailPage from "@/pages/ArchiveDetail.tsx";
+import UpdateTaskPage from "@/pages/UpdateTaskPage.tsx";
+import CreateTaskPage from "@/pages/CreateTaskPage.tsx";
+import UpdateProjectPage from "@/pages/UpdateProjectPage.tsx";
 
 interface IROLE {
   ADMIN: TRole;
@@ -130,7 +133,89 @@ export function MainRoute() {
           handle: {
             crumb: ({ workspaceId }: { workspaceId: string }) => {
               return (
-                <Link to={`/workspace/${workspaceId}`}>{`Workspace`}</Link>
+                <>
+                  <Link to={`/workspace/${workspaceId}`}>{`Workspace`}</Link>
+                  <BreadcrumbSeparator />
+                  <Link
+                    to={`/workspace/${workspaceId}`}>{`Create Project`}</Link>
+                </>
+              );
+            },
+          },
+        },
+        {
+          path: "/workspace/:workspaceId/project/:projectId/update",
+          element: <UpdateProjectPage title={pageTitles.updateProjectPage} />,
+          handle: {
+            crumb: ({
+              workspaceId,
+              projectId,
+            }: {
+              workspaceId: string;
+              projectId: string;
+            }) => {
+              return (
+                <>
+                  <Link to={`/workspace/${workspaceId}`}>{`Workspace`}</Link>
+                  <BreadcrumbSeparator />
+                  <Link to={`/workspace/${projectId}`}>{` Project`}</Link>
+                </>
+              );
+            },
+          },
+        },
+
+        {
+          path: "/workspace/:workspaceId/project/:projectId/task/create",
+          element: <CreateTaskPage title={pageTitles.createTaskPage} />,
+          handle: {
+            crumb: ({
+              workspaceId,
+              projectId,
+            }: {
+              workspaceId: string;
+              projectId: string;
+            }) => {
+              return (
+                <>
+                  <Link to={`/workspace/${workspaceId}`}>{`Workspace`}</Link>
+                  <BreadcrumbSeparator />
+                  <Link
+                    to={`/workspace/${workspaceId}/project/${projectId}`}>{`Project`}</Link>
+                  <BreadcrumbSeparator />
+                  <Link
+                    to={`/workspace/${workspaceId}/project/${projectId}`}>{`Create Task`}</Link>
+                </>
+              );
+            },
+          },
+        },
+        {
+          path: "/workspace/:workspaceId/project/:projectId/task/:taskId/update/",
+          element: <UpdateTaskPage title={pageTitles.updateTaskPage} />,
+          handle: {
+            crumb: ({
+              workspaceId,
+              projectId,
+              taskId,
+            }: {
+              workspaceId: string;
+              projectId: string;
+              taskId: string;
+            }) => {
+              return (
+                <>
+                  <Link to={`/workspace/${workspaceId}`}>{`Workspace`}</Link>
+                  <BreadcrumbSeparator />
+                  <Link
+                    to={`/workspace/${workspaceId}/project/${projectId}`}>{`Project`}</Link>
+                  <BreadcrumbSeparator />
+                  <Link
+                    to={`/workspace/${workspaceId}/project/${projectId}/task/${taskId}`}>{`Task`}</Link>
+                  <BreadcrumbSeparator />
+                  <Link
+                    to={`/workspace/${workspaceId}/project/${projectId}/task/${taskId}`}>{`Update `}</Link>
+                </>
               );
             },
           },

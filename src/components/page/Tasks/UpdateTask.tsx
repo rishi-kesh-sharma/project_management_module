@@ -34,7 +34,7 @@ import TextInput from "@/components/custom/common/FormElements/Input/TextInput/T
 import PlateEditor from "@/components/custom/common/Editors/PlateEditor/PlateEditor";
 import { ELEMENT_PARAGRAPH } from "@udecode/plate-paragraph";
 
-const CreateTask: React.FC = () => {
+const UpdateTask: React.FC = () => {
   // const { workspaceId } = useParams();
 
   const plateEditorInitialValue = [
@@ -143,7 +143,7 @@ const CreateTask: React.FC = () => {
   return (
     <ShadForm {...form}>
       <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
-        <h1 className="text-bold text-xl mt-[2rem]">Create Task</h1>
+        <h1 className="text-bold text-xl mt-[2rem]">Update Task</h1>
         <FormField
           control={form.control}
           name="name"
@@ -434,4 +434,4 @@ const CreateTask: React.FC = () => {
   );
 };
 
-export default CreateTask;
+export default UpdateTask;

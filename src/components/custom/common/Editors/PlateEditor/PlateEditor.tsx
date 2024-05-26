@@ -4,7 +4,6 @@ import { useRef } from "react";
 import { cn } from "@udecode/cn";
 import { CommentsProvider } from "@udecode/plate-comments";
 import { Plate } from "@udecode/plate-common";
-import { ELEMENT_PARAGRAPH } from "@udecode/plate-paragraph";
 import { DndProvider } from "react-dnd";
 import { HTML5Backend } from "react-dnd-html5-backend";
 
@@ -20,16 +19,21 @@ import { FloatingToolbar } from "@/components/plate-ui/floating-toolbar";
 import { FloatingToolbarButtons } from "@/components/plate-ui/floating-toolbar-buttons";
 import { MentionCombobox } from "@/components/plate-ui/mention-combobox";
 
-export default function PlateEditor() {
-  const containerRef = useRef(null);
-
-  const initialValue = [
+export interface IPlateEditorProps {
+  initialValue: [
     {
-      id: "1",
-      type: ELEMENT_PARAGRAPH,
-      children: [{ text: "Hello, World!" }],
+      id: string;
+      type: string;
+      children: [
+        {
+          text: string;
+        },
+      ];
     },
   ];
+}
+export default function PlateEditor({ initialValue }: IPlateEditorProps) {
+  const containerRef = useRef(null);
 
   return (
     <DndProvider backend={HTML5Backend}>
