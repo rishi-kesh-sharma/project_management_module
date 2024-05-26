@@ -34,7 +34,7 @@ import TextInput from "@/components/custom/common/FormElements/Input/TextInput/T
 import PlateEditor from "@/components/custom/common/Editors/PlateEditor/PlateEditor";
 import { ELEMENT_PARAGRAPH } from "@udecode/plate-paragraph";
 
-const CreateTask: React.FC = () => {
+const UpdateProject: React.FC = () => {
   // const { workspaceId } = useParams();
 
   const plateEditorInitialValue = [
@@ -143,16 +143,16 @@ const CreateTask: React.FC = () => {
   return (
     <ShadForm {...form}>
       <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
-        <h1 className="text-bold text-xl mt-[2rem]">Create Task</h1>
+        <h1 className="text-bold text-xl mt-[2rem]">Update Project</h1>
         <FormField
           control={form.control}
           name="name"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Task Name</FormLabel>
+              <FormLabel>Project Name</FormLabel>
               <FormControl>
                 <TextInput
-                  placeholder="Eg. Task 1"
+                  placeholder="Eg. Project 1"
                   {...field}
                   id="name"
                   // name="name"
@@ -169,7 +169,7 @@ const CreateTask: React.FC = () => {
           name="type"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Task Type</FormLabel>
+              <FormLabel>Project Type</FormLabel>
               <FormControl>
                 <Select {...field} onValueChange={field.onChange}>
                   <SelectTrigger>
@@ -281,7 +281,7 @@ const CreateTask: React.FC = () => {
           name="budget"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Task Budget</FormLabel>
+              <FormLabel>Project Budget</FormLabel>
               <FormControl>
                 <NumberInput placeholder="Eg.$100000" {...field} />
               </FormControl>
@@ -367,10 +367,10 @@ const CreateTask: React.FC = () => {
           name="description"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Task Description</FormLabel>
+              <FormLabel>Project Description</FormLabel>
               <FormControl>
                 <AutosizeTextarea
-                  placeholder="Enter task description..."
+                  placeholder="Enter project description..."
                   {...field}
                   id="description"
                   maxHeight={300}
@@ -389,7 +389,7 @@ const CreateTask: React.FC = () => {
           name="tags"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Task Tags</FormLabel>
+              <FormLabel>Project Tags</FormLabel>
               <FormControl>
                 <TagInput
                   {...field}
@@ -413,10 +413,10 @@ const CreateTask: React.FC = () => {
           name="notes"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Task Notes</FormLabel>
+              <FormLabel>Project Notes</FormLabel>
               <FormControl>
                 {/* <AutosizeTextarea
-                  placeholder="Enter task notes..."
+                  placeholder="Enter project notes..."
                   {...field}
                   id="description"
                   maxHeight={300}
@@ -434,4 +434,4 @@ const CreateTask: React.FC = () => {
   );
 };
 
-export default CreateTask;
+export default UpdateProject;

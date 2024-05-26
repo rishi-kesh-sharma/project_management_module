@@ -85,16 +85,21 @@ export const colDefs = [
     headerCheckboxSelection: false,
 
     cellRenderer: (p: { value: string; data: IProjectRowData }) => {
+      // eslint-disable-next-line react-hooks/rules-of-hooks
+      const { workspaceId, projectId } = useParams();
       return (
         <div className="flex gap-4 items-center justify-start  h-full">
           <TrashIcon
             id={p.data.id}
             className="text-destructive cursor-pointer"
           />
-          <EditIcon
-            id={p.data.id}
-            className="text-primary text-lg cursor-pointer"
-          />
+          <Link
+            to={`/workspace/${workspaceId}/project/${projectId}/task/${p.data.id}/update`}>
+            <EditIcon
+              id={p.data.id}
+              className="text-primary text-lg cursor-pointer"
+            />
+          </Link>
         </div>
       );
     },

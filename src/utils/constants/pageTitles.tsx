@@ -13,4 +13,9 @@ export const pageTitles = {
   taskDetailPage: `PMS | Task Detail`,
   subTaskDetailPage: `PMS | SubTask Detail`,
   createProjectPage: `PMS | Create Project`,
+  updateProjectPage: `PMS | Update Project`,
+  createTaskPage: `PMS | Create Task`,
+  updateTaskPage: `PMS | Update Task`,
+  createSubTaskPage: `PMS | Create Sub Task`,
+  updateSubTaskPage: `PMS | Update Sub Task`,
 };
