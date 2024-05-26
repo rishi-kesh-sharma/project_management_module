@@ -27,7 +27,7 @@ const GanttChart = () => {
     leftLabel: "TaskName",
   };
   const splitterSettings: any = {
-    position: "35%",
+    position: "25%",
   };
   const editSettings: any = {
     allowAdding: true,
@@ -49,8 +49,8 @@ const GanttChart = () => {
   const projectEndDate: Date = new Date("03/30/2017");
 
   return (
-    <div className="control-pane">
-      <div className="control-section">
+    <div className="control-pane mb-[2rem] max-w-[1200px] overflow-auto rounded-lg !dark:bg-background !dark:text-foreground ">
+      <div className="control-section rounded-lg">
         <GanttComponent
           id="TaskMode"
           dataSource={taskModeData}
@@ -60,11 +60,12 @@ const GanttChart = () => {
           toolbar={toolbar}
           editSettings={editSettings}
           splitterSettings={splitterSettings}
-          height="450px"
+          height="490px"
           taskMode="Custom"
           taskFields={taskFields}
           labelSettings={labelSettings}
           projectStartDate={projectStartDate}
+          className="rounded-lg"
           projectEndDate={projectEndDate}>
           <ColumnsDirective>
             <ColumnDirective field="TaskID" visible={false}></ColumnDirective>

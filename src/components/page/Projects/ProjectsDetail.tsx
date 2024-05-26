@@ -59,13 +59,29 @@ import InventoriesDetail from "@/components/custom/InventoriesTable/InventoriesD
 import { KanbanBoard } from "@/components/custom/common/Kanban/KanbanBoard";
 import { useParams } from "react-router";
 import GanttChart from "@/components/custom/common/charts/GanttChart/GanttChart";
+import { Helmet } from "react-helmet";
+import { useTheme } from "@/components/Providers/Theme/ThemeProvider";
 const ProjectDetail = () => {
   const { workspaceId } = useParams();
+  const { theme } = useTheme();
   const { data, isLoading } = useGetWorkspaceQuery(workspaceId);
   if (!workspaceId) return "loading";
   if (isLoading || !data) return <Spinner />;
   return (
     <div className="mt-[1rem]">
+      <Helmet>
+        {theme === "dark" ? (
+          <link
+            href="https://cdn.syncfusion.com/ej2/material-dark.css"
+            rel="stylesheet"
+          />
+        ) : (
+          <link
+            href="https://cdn.syncfusion.com/ej2/25.2.3/material.css"
+            rel="stylesheet"
+          />
+        )}
+      </Helmet>
       <Tabs
         triggers={projectDetailTabTriggers}
         contents={[
@@ -84,7 +100,10 @@ const ProjectDetail = () => {
                     id: "gantt-chart",
                     element: (
                       <div>
-                        Gantt Chart
+                        <h1 className="text-xl font-semibold my-[1.5rem]">
+                          {" "}
+                          Gantt Chart
+                        </h1>
                         <GanttChart />
                       </div>
                     ),
@@ -93,7 +112,7 @@ const ProjectDetail = () => {
                     id: "kanban-board",
                     element: (
                       <div>
-                        <h1 className="text-xl font-semibold mb-[1.5rem]">
+                        <h1 className="text-xl font-semibold my-[1.5rem]">
                           Kanban Board
                         </h1>
 
