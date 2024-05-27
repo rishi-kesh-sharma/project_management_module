@@ -5,7 +5,7 @@ import {
   MdOutlineDashboard,
   MdOutlineSettings,
   MdOutlineTask,
-  MdLogout,
+  MdLogout
 } from "react-icons/md";
 import { TiHomeOutline } from "react-icons/ti";
 import { BiChevronLeft, BiChevronDown, BiChevronRight } from "react-icons/bi";
@@ -32,6 +32,10 @@ import { IoIosNotificationsOutline } from "react-icons/io";
 import { MdOutlineMarkEmailRead } from "react-icons/md";
 import { BsFilterRight } from "react-icons/bs";
 import { GoDotFill } from "react-icons/go";
+import { AiOutlineLike } from "react-icons/ai";
+import { AiFillLike } from "react-icons/ai";
+import { BsReply } from "react-icons/bs";
+import { MdAddComment } from "react-icons/md";
 export {
   FaRegCircleDot as GoalsIcon,
   HiOutlineChartBar as PlanningIcon,
@@ -69,4 +73,8 @@ export {
   MdOutlineMarkEmailRead as EmailIconReadOutlined,
   BsFilterRight as FilterIcon,
   GoDotFill as DotIconFilled,
+  AiOutlineLike as LikeIconOutlined,
+  AiFillLike as LikeIconFilled,
+  BsReply as ReplyIconOutlined,
+  MdAddComment as AddComment
 };
