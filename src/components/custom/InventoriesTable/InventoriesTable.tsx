@@ -2,6 +2,10 @@ import AgGridTable from "@/components/custom/common/Tables/AgGridTable/AgGridTab
 import { colDefs } from "./colDefs";
 import TableToolbar from "@/components/custom/common/TableElements/TableToolbar/TableToolbar";
 import { IInventoriesRowData } from "@/@types";
+import { Button } from "@/components/plate-ui/button";
+import { PlusIcon } from "../common/icons/commonIcons";
+import StepperDemo from "../common/Forms/StepperForm/examples/stepper-demo";
+import AssignInventoryStepperForm from "./AssignInventoryStepperForm";
 
 const dropdownMenus = {
   items: [
@@ -31,7 +35,25 @@ const InventoriesTable = ({
             handleSearch={handleSearch}
             dropdownMenus={dropdownMenus}
             createButtonText="Inventory"
-            createPagePath={`/inventory/create`}
+            // createPagePath={`/inventory/create`}
+            type="modal"
+            modal={{
+              title: "Assign Inventory",
+              description:
+                "You can assign the inventories from here to your project",
+              trigger: (
+                <Button className="flex gap-2">
+                  <PlusIcon />
+                  <span>Inventory</span>
+                </Button>
+              ),
+              body: (
+                <div className="flex flex-col gap-4">
+                  <p className="font-semibold">Default</p>
+                  <AssignInventoryStepperForm />
+                </div>
+              ),
+            }}
           />
         }
         rowData={inventories}

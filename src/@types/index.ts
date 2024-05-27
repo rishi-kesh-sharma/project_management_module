@@ -502,7 +502,7 @@ export interface RootLayoutProps {
 }
 
 export interface IModalProps {
-  trigger: React.ReactNode;
+  trigger?: React.ReactNode;
   title?: React.ReactNode;
   description?: React.ReactNode;
   body?: React.ReactNode | string;

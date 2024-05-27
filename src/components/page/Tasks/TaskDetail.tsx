@@ -25,9 +25,13 @@ const planningTabTriggers = [
     id: "kanban-board",
     label: "Kanban",
   },
+  // {
+  //   id: "gantt-chart",
+  //   label: "Gantt chart",
+  // },
   {
-    id: "gantt-chart",
-    label: "Gantt chart",
+    id: "files",
+    label: "Files",
   },
 ];
 
@@ -59,6 +63,7 @@ import { KanbanBoard } from "@/components/custom/common/Kanban/KanbanBoard";
 import TimeTrackingDetail from "./TimeTrackingDetail";
 import TabWithButtonedTrigger from "@/components/custom/common/Tabs/TabsWithButtonedTrigger/TabsWithButtonedTrigger";
 import Spinner from "@/components/custom/common/Loaders/Spinner/Spinner";
+import Files from "@/components/custom/common/Files/Files";
 // import { useParams } from "react-router";
 const TaskDetail = () => {
   // const { workspaceId, projectId, taskId } = useParams();
@@ -84,10 +89,11 @@ const TaskDetail = () => {
                 className={`mt-[1rem]`}
                 triggers={planningTabTriggers}
                 contents={[
-                  {
-                    id: "gantt-chart",
-                    element: <div>Gantt Chart</div>,
-                  },
+                  // {
+                  //   id: "gantt-chart",
+                  //   element: <div>Gantt Chart</div>,
+                  // },
+
                   {
                     id: "kanban-board",
                     element: (
@@ -97,6 +103,17 @@ const TaskDetail = () => {
                         </h1>
 
                         <KanbanBoard />
+                      </div>
+                    ),
+                  },
+                  {
+                    id: "files",
+                    element: (
+                      <div>
+                        <h1 className="text-xl font-semibold my-[1.5rem]">
+                          Files
+                        </h1>
+                        <Files />
                       </div>
                     ),
                   },
