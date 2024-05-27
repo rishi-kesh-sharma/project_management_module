@@ -18,6 +18,8 @@ import { useAddWorkspaceMutation } from "@/api/workspace";
 import { ReloadIcon } from "@radix-ui/react-icons";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { getSuccessToast } from "@/utils/constants/toast";
+import { AutosizeTextarea } from "@/components/custom/common/FormElements/AutosizeTextArea/AutosizeTextArea";
+import TagInput from "@/components/custom/common/FormElements/Input/TagInput/TagInput";
 
 const CreateWorkspaceForm = () => {
   const [createWorkspace, { data, isLoading, error, isSuccess }] =
@@ -25,6 +27,13 @@ const CreateWorkspaceForm = () => {
 
   const formSchema = z.object({
     workspaceName: z.string().min(2).max(50),
+    tags: z.array(
+      z.object({
+        id: z.string(),
+        text: z.string(),
+      })
+    ),
+    description: z.string().min(10).max(1000),
   });
 
   // 2. Define a submit handler.
@@ -41,6 +50,8 @@ const CreateWorkspaceForm = () => {
     resolver: zodResolver(formSchema),
     defaultValues: {
       workspaceName: "",
+      tags: [],
+      description: "",
     },
   });
   return (
@@ -69,13 +80,55 @@ const CreateWorkspaceForm = () => {
               name="workspaceName"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Project Name</FormLabel>
+                  <FormLabel> Name</FormLabel>
                   <FormControl>
                     <TextInput
                       placeholder="Eg. Workspace 1"
                       {...field}
                       id="workspaceName"
                       name="workspaceName"
+                    />
+                  </FormControl>
+
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+            <FormField
+              control={form.control}
+              name="tags"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel> Tags</FormLabel>
+                  <FormControl>
+                    <TagInput
+                      {...field}
+                      placeholder="Enter a topic"
+                      className=" py-[1.5rem]"
+                      tags={field.value}
+                      setTags={field.onChange} //   setTags={(newTags) => {
+                      //     setTags(newTags);
+                      //     setValue("topics", newTags as [Tag, ...Tag[]]);
+                      //   }}
+                    />
+                  </FormControl>
+
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+            <FormField
+              control={form.control}
+              name="description"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel> Description</FormLabel>
+                  <FormControl>
+                    <AutosizeTextarea
+                      placeholder="Enter workspace description..."
+                      {...field}
+                      id="description"
+                      maxHeight={300}
                     />
                   </FormControl>
 
