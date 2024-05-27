@@ -38,7 +38,7 @@ function Files(
     console.log("File Manager has been created successfully");
   }
   return (
-    <div className="control-section">
+    <div className="control-section mb-[2rem] overflow-auto">
       <FileManagerComponent
         id="file"
         view="LargeIcons"
