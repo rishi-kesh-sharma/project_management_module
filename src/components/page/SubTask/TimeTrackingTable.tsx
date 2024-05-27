@@ -1,8 +1,7 @@
 import AgGridTable from "@/components/custom/common/Tables/AgGridTable/AgGridTable";
-import { colDefs } from "./colDefs";
+import { colDefs } from "./timeTrackingColDefs";
 import TableToolbar from "@/components/custom/common/TableElements/TableToolbar/TableToolbar";
-import { ITaskRowData } from "@/@types";
-import { ProjectsTableFilters } from "@/utils/constants";
+import { ITimeTrackingRowData } from "@/@types";
 
 const dropdownMenus = {
   items: [
@@ -12,28 +11,29 @@ const dropdownMenus = {
   ],
 };
 
-const TaskTable = ({ task }: { task: ITaskRowData }) => {
+const TimeTrackingTable = ({
+  timeTrackings,
+}: {
+  timeTrackings: ITimeTrackingRowData[];
+}) => {
   const handleSearch = (e: React.FormEvent) => {
     e.preventDefault();
   };
 
-  if (!task) return "loading...";
   return (
     <div className="mt-[2rem]">
       <AgGridTable
         tableToolbar={
           <TableToolbar
-            heading={task.taskName}
+            heading={`Time Tracking`}
             handleSearch={handleSearch}
             dropdownMenus={dropdownMenus}
-            createButtonText="Task"
-            createPagePath="/workspace/:workspaceId/task/:taskId/task/create"
-            hasFilters={true}
-            filters={<ProjectsTableFilters />}
+            createButtonText="Start Timer"
+            createPagePath=""
           />
         }
-        rowData={task.subTasks}
-        heading={task.taskName}
+        rowData={timeTrackings}
+        heading={`Time Tracking`}
         dropdownMenus={dropdownMenus}
         colDefs={colDefs}
       />
@@ -41,4 +41,4 @@ const TaskTable = ({ task }: { task: ITaskRowData }) => {
   );
 };
 
-export default TaskTable;
+export default TimeTrackingTable;

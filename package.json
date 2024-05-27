@@ -72,13 +72,19 @@
     "@syncfusion/ej2-navigations": "25.2.4",
     "@syncfusion/ej2-notifications": "25.2.3",
     "@syncfusion/ej2-popups": "25.2.4",
+
+    "@syncfusion/ej2-react-filemanager": "^25.2.3",
+
     "@syncfusion/ej2-react-gantt": "^25.2.5",
     "@syncfusion/ej2-richtexteditor": "25.2.5",
     "@syncfusion/ej2-svg-base": "25.2.5",
     "@syncfusion/ej2-treegrid": "25.2.5",
     "@table-library/react-table-library": "^4.1.7",
     "@tailwindcss/typography": "^0.5.13",
+
     "@tanstack/react-virtual": "^3.5.0",
+
+
     "@types/codemirror": "0.0.56",
     "@types/crossroads": "0.0.28",
     "@types/es6-promise": "0.0.28",

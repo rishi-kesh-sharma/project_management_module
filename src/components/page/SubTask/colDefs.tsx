@@ -1,33 +1,37 @@
-import { IWorkspaceRowData } from "@/@types";
+/* eslint-disable @typescript-eslint/no-explicit-any */
+import { ISubTaskRowData } from "@/@types";
 import Tags from "@/components/custom/common/Tags/Tags";
 import {
   EditIcon,
   TrashIcon,
 } from "@/components/custom/common/icons/commonIcons";
+import { Avatar, AvatarImage } from "@/components/ui/Avatar/avatar";
 import { Progress } from "@/components/ui/Progress/progress";
 import { getTagVariantForValues } from "@/lib/utils";
+import { users } from "@/utils/constants";
+import { AvatarFallback } from "@radix-ui/react-avatar";
 import moment from "moment";
 import { Link, useParams } from "react-router-dom";
+
 export const colDefs = [
   {
-    field: "projectName",
+    field: "subTaskName",
     headerCheckboxSelection: true,
-    headerName: "Project Name",
+    headerName: "Name",
     checkboxSelection: true,
-    cellRenderer: (p: { value: string; data: IWorkspaceRowData }) => {
+    cellRenderer: (p: { value: string; data: ISubTaskRowData }) => {
       // eslint-disable-next-line react-hooks/rules-of-hooks
-      const { workspaceId } = useParams();
+      const { workspaceId, projectId, taskId } = useParams();
       return (
         <Link
           className="hover:underline"
-          to={`/workspace/${workspaceId}/project/${p.data.id}`}>
+          to={`/workspace/${workspaceId}/project/${projectId}/task/${taskId}/subTask/${p.data.id}`}>
           {p.value}
         </Link>
       );
     },
   },
 
-  // { field: "createdBy", headerName: "Created By" },
   {
     field: "startDate",
     headerName: "Start Date",
@@ -43,6 +47,26 @@ export const colDefs = [
       return <>{moment(p.value).fromNow()}</>;
     },
   },
+  // { field: "createdBy", headerName: "Created By" },
+  {
+    field: "members",
+    headerName: "Members",
+    cellRenderer: () => {
+      return (
+        <div className="flex -space-x-2 items-center h-full ">
+          {users.map((user: any) => {
+            return (
+              <Avatar className="h-6 w-6 cursor-pointer ">
+                <AvatarImage src={user.profile_pic} />
+                <AvatarFallback>{user.name.slice(0, 1)}</AvatarFallback>
+              </Avatar>
+            );
+          })}
+        </div>
+      );
+    },
+  },
+
   {
     field: "progress",
     cellRenderer: (p: { value: number }) => {
@@ -84,21 +108,17 @@ export const colDefs = [
     enablePivot: false,
     headerCheckboxSelection: false,
 
-    cellRenderer: (p: { value: string; data: IWorkspaceRowData }) => {
-      // eslint-disable-next-line react-hooks/rules-of-hooks
-      const { workspaceId } = useParams();
+    cellRenderer: (p: { value: string; data: ISubTaskRowData }) => {
       return (
         <div className="flex gap-4 items-center justify-start  h-full">
           <TrashIcon
             id={p.data.id}
             className="text-destructive cursor-pointer"
           />
-          <Link to={`/workspace/${workspaceId}/project/${p.data.id}/update`}>
-            <EditIcon
-              id={p.data.id}
-              className="text-primary font-bold text-lg cursor-pointer"
-            />
-          </Link>
+          <EditIcon
+            id={p.data.id}
+            className="text-primary text-lg cursor-pointer"
+          />
         </div>
       );
     },

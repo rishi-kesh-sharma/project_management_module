@@ -7,7 +7,7 @@ import {
   ThreeVerticalDots,
 } from "@/components/custom/common/icons/commonIcons";
 import { Button } from "@/components/plate-ui/button";
-import { IIconDropdownMenuProps } from "@/@types";
+import { IIconDropdownMenuProps, IModalProps } from "@/@types";
 import { getSuccessToast } from "@/utils/constants/toast";
 import { useTheme } from "@/components/Providers/Theme/ThemeProvider";
 import { Link } from "react-router-dom";
@@ -15,6 +15,7 @@ import { useState } from "react";
 import IconDropdown from "../../Dropdowns/IconDropdown/IconDropdown";
 import SearchInput from "../../SearchInput/SearchInput";
 import { ProjectsTableFilters } from "@/utils/constants";
+import Modal from "../../Modal/Modal";
 
 export interface ITableToolbar {
   handleSearch: (e: React.FormEvent) => void;
@@ -26,6 +27,8 @@ export interface ITableToolbar {
   hasArchive?: boolean;
   hasFilters?: boolean;
   filters?: React.ReactNode;
+  type?: "page" | "modal";
+  modal?: IModalProps;
 }
 const TableToolbar: React.FC<ITableToolbar> = ({
   handleSearch,
@@ -35,8 +38,10 @@ const TableToolbar: React.FC<ITableToolbar> = ({
   createPagePath,
   hasBookmark,
   hasArchive,
-  hasFilters=true,
-  filters=ProjectsTableFilters,
+  hasFilters = true,
+  filters = ProjectsTableFilters,
+  type = "page",
+  modal,
 }) => {
   const [isBookmarked, setIsBookmarked] = useState(false);
   const [isArchived, setIsArchived] = useState(false);
@@ -111,7 +116,7 @@ const TableToolbar: React.FC<ITableToolbar> = ({
           />
 
           <div className="flex items-center  gap-[1rem]">
-            {hasFilters && filters && filters}
+            {hasFilters && filters && filters && ""}
             <SearchInput
               onSubmit={handleSearch}
               id="workspace-search"
@@ -120,14 +125,15 @@ const TableToolbar: React.FC<ITableToolbar> = ({
               placeholder="Search here..."
               className=""
             />
-            {createPagePath && createButtonText && (
+            {type === "page" && (
               <Button className="flex gap-2" asChild>
                 <Link to={`${createPagePath}`}>
                   <PlusIcon />
-                  <span>{createButtonText}</span>
+                  <span>{createButtonText && createButtonText}</span>
                 </Link>
               </Button>
             )}
+            {type == "modal" && <Modal {...modal} />}
           </div>
         </div>
       </div>
