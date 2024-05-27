@@ -132,7 +132,6 @@ const ProjectDetail = () => {
                         <h1 className="text-xl font-semibold my-[1.5rem]">
                           Files
                         </h1>
-
                         <Files />
                       </div>
                     ),
