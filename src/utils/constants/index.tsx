@@ -573,7 +573,6 @@ import { CalendarIcon } from "@radix-ui/react-icons";
 import { IComboboxProps } from "@/@types";
 import Combobox from "@/components/custom/common/Combobox/Combobox";
 import SpeedDial from "@/components/custom/common/SpeedDial/SpeedDial";
-import React from "react";
 
 export const comboboxData: IComboboxProps = {
   defaultText: "Search items here...",
@@ -688,6 +687,57 @@ export const projectsTableFilterItems = [
 ];
 
 export const ProjectsTableFilters = () => {
+  return (
+    <SpeedDial
+      children={projectsTableFilterItems}
+      direction="left"
+      itemWidth={180}
+    />
+  );
+};
+
+export const inventoryCategoryFilter: IComboboxProps = {
+  defaultText: "Filter by priorities",
+  emptyText: "No results found",
+  placeholder: "Search priorities ..",
+  comboboxGroups: [
+    {
+      heading: "Priorities",
+      comboboxItems: [
+        {
+          icon: <DotIconFilled className="mr-2 h-4 w-4" />,
+          label: "High",
+          value: "high",
+        },
+        {
+          icon: <DotIconFilled className="mr-2 h-4 w-4" />,
+          label: "Medium",
+          value: "medium",
+        },
+        {
+          icon: <DotIconFilled className="mr-2 h-4 w-4" />,
+          label: "Low",
+          value: "low",
+        },
+      ],
+    },
+  ],
+};
+export const inventoryTableFilterItems = [
+  <Combobox comboboxData={priorityFilterComboboxData} />,
+  <Combobox comboboxData={statusFilterComboboxData} />,
+];
+export const InventoryTableFilters = () => {
+  return (
+    <SpeedDial
+      children={projectsTableFilterItems}
+      direction="left"
+      itemWidth={180}
+    />
+  );
+};
+
+export const EquipmentTableFilters = () => {
   return (
     <SpeedDial
       children={projectsTableFilterItems}

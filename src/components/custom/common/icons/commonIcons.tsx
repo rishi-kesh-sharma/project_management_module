@@ -32,6 +32,7 @@ import { IoIosNotificationsOutline } from "react-icons/io";
 import { MdOutlineMarkEmailRead } from "react-icons/md";
 import { BsFilterRight } from "react-icons/bs";
 import { GoDotFill } from "react-icons/go";
+import { FaMinus } from "react-icons/fa";
 export {
   FaRegCircleDot as GoalsIcon,
   HiOutlineChartBar as PlanningIcon,
@@ -69,4 +70,5 @@ export {
   MdOutlineMarkEmailRead as EmailIconReadOutlined,
   BsFilterRight as FilterIcon,
   GoDotFill as DotIconFilled,
+  FaMinus as MinusIcon,
 };

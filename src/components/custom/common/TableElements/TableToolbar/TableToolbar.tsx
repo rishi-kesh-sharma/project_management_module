@@ -14,7 +14,6 @@ import { Link } from "react-router-dom";
 import { useState } from "react";
 import IconDropdown from "../../Dropdowns/IconDropdown/IconDropdown";
 import SearchInput from "../../SearchInput/SearchInput";
-import { ProjectsTableFilters } from "@/utils/constants";
 import Modal from "../../Modal/Modal";
 
 export interface ITableToolbar {
@@ -39,7 +38,7 @@ const TableToolbar: React.FC<ITableToolbar> = ({
   hasBookmark,
   hasArchive,
   hasFilters = true,
-  filters = ProjectsTableFilters,
+  filters,
   type = "page",
   modal,
 }) => {
@@ -116,7 +115,7 @@ const TableToolbar: React.FC<ITableToolbar> = ({
           />
 
           <div className="flex items-center  gap-[1rem]">
-            {hasFilters && filters && filters && ""}
+            {hasFilters && filters && filters}
             <SearchInput
               onSubmit={handleSearch}
               id="workspace-search"

@@ -103,7 +103,7 @@ const CreateWorkspaceForm = () => {
                   <FormControl>
                     <TagInput
                       {...field}
-                      placeholder="Enter a topic"
+                      placeholder="Enter tags"
                       className=" py-[1.5rem]"
                       tags={field.value}
                       setTags={field.onChange} //   setTags={(newTags) => {

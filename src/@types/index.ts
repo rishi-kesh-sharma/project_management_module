@@ -596,7 +596,9 @@ type StepItem = {
   label?: string;
   description?: string;
   icon?: IconType;
+  content?: React.ReactNode;
   optional?: boolean;
+  key?: string;
 };
 
 interface StepOptions {

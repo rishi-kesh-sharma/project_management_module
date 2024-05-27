@@ -4,8 +4,8 @@ import TableToolbar from "@/components/custom/common/TableElements/TableToolbar/
 import { IInventoriesRowData } from "@/@types";
 import { Button } from "@/components/plate-ui/button";
 import { PlusIcon } from "../common/icons/commonIcons";
-import StepperDemo from "../common/Forms/StepperForm/examples/stepper-demo";
 import AssignInventoryStepperForm from "./AssignInventoryStepperForm";
+import { InventoryTableFilters } from "@/utils/constants";
 
 const dropdownMenus = {
   items: [
@@ -31,6 +31,8 @@ const InventoriesTable = ({
       <AgGridTable
         tableToolbar={
           <TableToolbar
+            hasFilters={true}
+            filters={<InventoryTableFilters />}
             heading={"Inventories"}
             handleSearch={handleSearch}
             dropdownMenus={dropdownMenus}
@@ -49,7 +51,6 @@ const InventoriesTable = ({
               ),
               body: (
                 <div className="flex flex-col gap-4">
-                  <p className="font-semibold">Default</p>
                   <AssignInventoryStepperForm />
                 </div>
               ),
