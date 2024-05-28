@@ -1,22 +1,21 @@
 // Sidebar.stories.tsx
 
 import { StoryObj, Meta } from "@storybook/react";
-import DatePicker from "./DatePicker";
+import AddCommentNew from "./AddCommentNew";
 
-
-const meta: Meta<typeof DatePicker> = {
-  title: "Form/DatePicker",
+const meta: Meta<typeof AddCommentNew> = {
+  title: "AddCommentNew",
 
   args: {},
-  component: DatePicker,
+  component: AddCommentNew,
   parameters: {
-    layout: "centered",
-  },
+    layout: "centered"
+  }
 };
 
 export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
-  args: {},
+  args: {}
 };

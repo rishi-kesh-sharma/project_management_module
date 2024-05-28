@@ -1,14 +1,13 @@
 // Sidebar.stories.tsx
 
 import { StoryObj, Meta } from "@storybook/react";
-import DatePicker from "./DatePicker";
+import Sheet from "./Sheet";
 
-
-const meta: Meta<typeof DatePicker> = {
-  title: "Form/DatePicker",
+const meta: Meta<typeof Sheet> = {
+  title: "Sheet",
 
   args: {},
-  component: DatePicker,
+  component: Sheet,
   parameters: {
     layout: "centered",
   },

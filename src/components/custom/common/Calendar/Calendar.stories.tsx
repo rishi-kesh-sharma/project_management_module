@@ -1,16 +1,15 @@
 // Sidebar.stories.tsx
 
 import { StoryObj, Meta } from "@storybook/react";
-import DatePicker from "./DatePicker";
+import Calendar from "./Calendar";
 
-
-const meta: Meta<typeof DatePicker> = {
-  title: "Form/DatePicker",
+const meta: Meta<typeof Calendar> = {
+  title: "Calendar",
 
   args: {},
-  component: DatePicker,
+  component: Calendar,
   parameters: {
-    layout: "centered",
+    layout: "top",
   },
 };
 
