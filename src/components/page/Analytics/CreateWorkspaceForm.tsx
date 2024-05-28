@@ -22,8 +22,7 @@ import { AutosizeTextarea } from "@/components/custom/common/FormElements/Autosi
 import TagInput from "@/components/custom/common/FormElements/Input/TagInput/TagInput";
 
 const CreateWorkspaceForm = () => {
-  const [createWorkspace, { data, isLoading, error, isSuccess }] =
-    useAddWorkspaceMutation();
+  const [createWorkspace, { isLoading }] = useAddWorkspaceMutation();
 
   const formSchema = z.object({
     workspaceName: z.string().min(2).max(50),
@@ -103,7 +102,7 @@ const CreateWorkspaceForm = () => {
                   <FormControl>
                     <TagInput
                       {...field}
-                      placeholder="Enter a topic"
+                      placeholder="Enter tags"
                       className=" py-[1.5rem]"
                       tags={field.value}
                       setTags={field.onChange} //   setTags={(newTags) => {
