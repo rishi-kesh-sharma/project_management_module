@@ -23,6 +23,7 @@ import {
   IUpcomingDeadlineData,
   IUpcomingDeadlineTableProps,
 } from "@/@types";
+import WidgetWrapper from "@/components/custom/common/WidgetWrapper/WidgetWrapper";
 
 const Analytics = () => {
   return (
@@ -32,22 +33,21 @@ const Analytics = () => {
       <div className="grid grid-cols-3 col-span-2 gap-[1.8rem] ">
         {cardData.map((cardDataItem, index) => {
           return (
-            <Card
-              key={index}
-              className=" grid px-[2rem] grid-cols-2  py-[2rem] gap-[0.2rem] place-items-center justify-center shadow-md">
-              <div className="flex flex-col gap-3">
-                <div className="text-4xl bg-primary/10 text-primary h-20 w-20 rounded-full text-center flex items-center justify-center">
+            <WidgetWrapper>
+              <Card
+                key={index}
+                className=" grid px-[2rem] grid-cols-2  py-[2rem] gap-[0.2rem] place-items-center justify-center shadow-md">
+                <div className="flex flex-col gap-3">
+                  <p className="font-semibold text-3xl  h-16 w-16 text-foreground rounded-full flex items-center justify-center p-auto">
+                    {cardDataItem.count}
+                  </p>
+                  <p className=" text-foreground/60 ">{cardDataItem.label}</p>
+                </div>
+                <div className="text-5xl  text-primary h-20 w-20 rounded-full text-center flex items-center justify-center">
                   {cardDataItem.icon}
                 </div>
-                <p className="text-foreground text-xl font-semibold">
-                  {cardDataItem.label}
-                </p>
-              </div>
-
-              <p className="font-semibold text-2xl bg-primary h-16 w-16 text-white rounded-full flex items-center justify-center p-auto">
-                {cardDataItem.count}
-              </p>
-            </Card>
+              </Card>
+            </WidgetWrapper>
           );
         })}
       </div>
@@ -58,7 +58,7 @@ const Analytics = () => {
             data={pieChartData}
             title={i18n.t(
               "component.home.text.projectStatus",
-              "Project Sta   tus"
+              "Project Status"
             )}
           />
         </div>

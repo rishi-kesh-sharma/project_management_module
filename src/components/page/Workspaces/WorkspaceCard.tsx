@@ -1,7 +1,5 @@
 import { IProject } from "@/@types";
-import Tags, {
-  ITagsProps,
-} from "@/components/custom/common/Tags/Tags";
+import Tags, { ITagsProps } from "@/components/custom/common/Tags/Tags";
 import {
   EditIcon,
   EyeIcon,

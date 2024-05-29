@@ -26,8 +26,8 @@ import {
 } from "@radix-ui/react-icons";
 import moment from "moment";
 
-// export const BASE_URL = `http://192.168.254.239:4000`;
-export const BASE_URL = `http://localhost:4000`;
+export const BASE_URL = `http://192.168.254.239:4000`;
+// export const BASE_URL = `http://localhost:4000`;
 export const avatarDropdownMenu = {
   label: "",
   items: [
@@ -375,17 +375,17 @@ export const upcomingDeadlineData = {
 export const cardData = [
   {
     count: 10,
-    label: i18n.t("component.home.analytics.workspaceNum", " Workspaces"),
+    label: i18n.t("component.home.analytics.workspaceNum", "No. of Workspaces"),
     icon: <WorkspaceIcon />,
   },
   {
     count: 40,
-    label: i18n.t("component.home.analytics.projectNum", " Projects"),
+    label: i18n.t("component.home.analytics.projectNum", "No. of Projects"),
     icon: <ProjectsIcon />,
   },
   {
     count: 80,
-    label: i18n.t("component.home.analytics.memberNum", "Members"),
+    label: i18n.t("component.home.analytics.memberNum", " No. of Members"),
     icon: <PeopleIcon />,
   },
 ];

@@ -43,6 +43,8 @@ import { PiFolderSimpleBold } from "react-icons/pi";
 import { MdOutlineInventory2 } from "react-icons/md";
 import { GiMoneyStack } from "react-icons/gi";
 import { PiUsersThree } from "react-icons/pi";
+import { IoExpand } from "react-icons/io5";
+import { RxCross1 } from "react-icons/rx";
 export {
   FaRegCircleDot as GoalsIcon,
   HiOutlineChartBar as PlanningIcon,
@@ -91,4 +93,6 @@ export {
   MdOutlineInventory2 as InventoryIconOutlined,
   GiMoneyStack as MoneyIconOutlined,
   PiUsersThree as PeopleIconOutlined,
+  IoExpand as ExpandIcon,
+  RxCross1 as CrossIcon,
 };
