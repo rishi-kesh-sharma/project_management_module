@@ -1,5 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { ISubTaskRowData } from "@/@types";
+import ProgressBar from "@/components/custom/common/ProgressBar/ProgressBar";
 import Tags from "@/components/custom/common/Tags/Tags";
 import {
   EditIcon,
@@ -72,7 +73,11 @@ export const colDefs = [
     cellRenderer: (p: { value: number }) => {
       return (
         <div className="flex items-center h-full">
-          <Progress className="h-3 w-[120px] " value={p.value || 50} />
+          <ProgressBar
+            className="w-full"
+            value={p.value || 50}
+            showValue={true}
+          />
         </div>
       );
     },

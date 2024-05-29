@@ -28,16 +28,19 @@ const progressBarVariants = cva("", {
 });
 
 export default function ProgressBar({
-  progress,
+  value,
   size,
   variant,
   className,
+  showValue,
 }: IProgressBarProps): React.ReactNode {
   return (
     <Progress
-      value={progress}
-      className={cn(progressBarVariants({ variant, size, className }))}
-    />
+      // asChild
+      value={value}
+      className={cn(progressBarVariants({ variant, size, className }))}>
+      {showValue && value}
+    </Progress>
   );
 }
 

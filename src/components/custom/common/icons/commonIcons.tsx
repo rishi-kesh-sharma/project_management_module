@@ -38,6 +38,15 @@ import { AiFillLike } from "react-icons/ai";
 import { BsReply } from "react-icons/bs";
 import { MdAddComment } from "react-icons/md";
 import { FaMinus } from "react-icons/fa";
+// import { GoPlus } from "react-icons/go";
+// import { LuKanban } from "react-icons/lu";
+// import { LuGanttChart } from "react-icons/lu";
+// import { PiFolderSimpleBold } from "react-icons/pi";
+// import { MdOutlineInventory2 } from "react-icons/md";
+// import { GiMoneyStack } from "react-icons/gi";
+// import { PiUsersThree } from "react-icons/pi";
+// import { IoExpand } from "react-icons/io5";
+// import { RxCross1 } from "react-icons/rx";
 export {
   FaRegCircleDot as GoalsIcon,
   HiOutlineChartBar as PlanningIcon,

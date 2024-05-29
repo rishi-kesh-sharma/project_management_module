@@ -28,7 +28,10 @@ const TabWithButtonedTrigger = ({
                 asChild
                 value={trigger.id}
                 id={trigger.id}>
-                <Button variant={"outline"} className="bg-inherit">
+                <Button
+                  variant={"outline"}
+                  className="bg-inherit flex gap-2 items-center">
+                  {trigger.icon}
                   {trigger.label}
                 </Button>
               </TabsTrigger>

@@ -375,17 +375,17 @@ export const upcomingDeadlineData = {
 export const cardData = [
   {
     count: 10,
-    label: i18n.t("component.home.analytics.workspaceNum", " Workspaces"),
+    label: i18n.t("component.home.analytics.workspaceNum", "No. of Workspaces"),
     icon: <WorkspaceIcon />,
   },
   {
     count: 40,
-    label: i18n.t("component.home.analytics.projectNum", " Projects"),
+    label: i18n.t("component.home.analytics.projectNum", "No. of Projects"),
     icon: <ProjectsIcon />,
   },
   {
     count: 80,
-    label: i18n.t("component.home.analytics.memberNum", "Members"),
+    label: i18n.t("component.home.analytics.memberNum", " No. of Members"),
     icon: <PeopleIcon />,
   },
 ];
