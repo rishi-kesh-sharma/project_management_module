@@ -23,14 +23,17 @@ const planningTabTriggers = [
   {
     id: "kanban-board",
     label: "Kanban",
+    icon: <KanbanIconOutlined className="text-xl" />,
   },
   {
     id: "gantt-chart",
     label: "Gantt chart",
+    icon: <GanttChartIconOutlined className="text-xl" />,
   },
   {
     id: "files",
     label: "Files",
+    icon: <FolderIconOutlined className="text-xl" />,
   },
 ];
 
@@ -38,18 +41,22 @@ const resourceTabTriggers = [
   {
     id: "inventories",
     label: "Inventories",
+    icon: <InventoryIconOutlined className="text-xl" />,
   },
   {
     id: "human-resources",
     label: "Human Resources",
+    icon: <PeopleIconOutlined className="text-xl" />,
   },
   {
     id: "equipments",
     label: "Equipments",
+    icon: <InventoryIconOutlined className="text-xl" />,
   },
   {
-    id: "budgeting",
-    label: "Budgeting",
+    id: "budgets",
+    label: "Budgets",
+    icon: <MoneyIconOutlined className="text-xl" />,
   },
 ];
 import { useGetWorkspaceQuery } from "@/api/workspace";
@@ -66,6 +73,14 @@ import GanttChart from "@/components/custom/common/charts/GanttChart/GanttChart"
 import { Helmet } from "react-helmet";
 import { useTheme } from "@/components/Providers/Theme/ThemeProvider";
 import Files from "@/components/custom/common/Files/Files";
+import {
+  FolderIconOutlined,
+  GanttChartIconOutlined,
+  InventoryIconOutlined,
+  KanbanIconOutlined,
+  MoneyIconOutlined,
+  PeopleIconOutlined,
+} from "@/components/custom/common/icons/commonIcons";
 const ProjectDetail = () => {
   const { workspaceId } = useParams();
   const { theme } = useTheme();
@@ -87,6 +102,7 @@ const ProjectDetail = () => {
           />
         )}
       </Helmet>
+
       <Tabs
         triggers={projectDetailTabTriggers}
         contents={[
@@ -174,7 +190,7 @@ const ProjectDetail = () => {
                     },
 
                     {
-                      id: "budgeting",
+                      id: "budgets",
                       element: (
                         <div>
                           <BudgetDetail />

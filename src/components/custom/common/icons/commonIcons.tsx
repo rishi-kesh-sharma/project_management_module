@@ -5,7 +5,7 @@ import {
   MdOutlineDashboard,
   MdOutlineSettings,
   MdOutlineTask,
-  MdLogout
+  MdLogout,
 } from "react-icons/md";
 import { TiHomeOutline } from "react-icons/ti";
 import { BiChevronLeft, BiChevronDown, BiChevronRight } from "react-icons/bi";
@@ -36,6 +36,13 @@ import { AiOutlineLike } from "react-icons/ai";
 import { AiFillLike } from "react-icons/ai";
 import { BsReply } from "react-icons/bs";
 import { MdAddComment } from "react-icons/md";
+import { GoPlus } from "react-icons/go";
+import { LuKanban } from "react-icons/lu";
+import { LuGanttChart } from "react-icons/lu";
+import { PiFolderSimpleBold } from "react-icons/pi";
+import { MdOutlineInventory2 } from "react-icons/md";
+import { GiMoneyStack } from "react-icons/gi";
+import { PiUsersThree } from "react-icons/pi";
 export {
   FaRegCircleDot as GoalsIcon,
   HiOutlineChartBar as PlanningIcon,
@@ -76,5 +83,12 @@ export {
   AiOutlineLike as LikeIconOutlined,
   AiFillLike as LikeIconFilled,
   BsReply as ReplyIconOutlined,
-  MdAddComment as AddComment
+  MdAddComment as AddComment,
+  GoPlus as PlusIconSlim,
+  LuKanban as KanbanIconOutlined,
+  LuGanttChart as GanttChartIconOutlined,
+  PiFolderSimpleBold as FolderIconOutlined,
+  MdOutlineInventory2 as InventoryIconOutlined,
+  GiMoneyStack as MoneyIconOutlined,
+  PiUsersThree as PeopleIconOutlined,
 };

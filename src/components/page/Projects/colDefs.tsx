@@ -1,11 +1,10 @@
 import { IProjectRowData } from "@/@types";
-import Badge from "@/components/custom/common/Badge/Badge";
+import ProgressBar from "@/components/custom/common/ProgressBar/ProgressBar";
 import Tags from "@/components/custom/common/Tags/Tags";
 import {
   EditIcon,
   TrashIcon,
 } from "@/components/custom/common/icons/commonIcons";
-import { Progress } from "@/components/ui/Progress/progress";
 import { getTagVariantForValues } from "@/lib/utils";
 import moment from "moment";
 import { Link, useParams } from "react-router-dom";
@@ -48,7 +47,11 @@ export const colDefs = [
     cellRenderer: (p: { value: number }) => {
       return (
         <div className="flex items-center h-full">
-          <Progress className="h-3 w-[120px] " value={p.value || 50} />
+          <ProgressBar
+            className="w-full"
+            value={p.value || 50}
+            showValue={true}
+          />
         </div>
       );
     },

@@ -429,6 +429,7 @@ export interface ISearchInput {
 export interface ITabTrigger {
   id: string;
   label: string;
+  icon?: React.ReactNode;
 }
 export interface ITabContent {
   id: string;
@@ -512,10 +513,11 @@ export interface IModalProps {
 }
 
 export interface IProgressBarProps {
-  progress: number;
-  size: "lg" | "md" | "sm" | "full";
-  variant: "primary" | "secondary";
-  className: string;
+  value: number;
+  size?: "lg" | "md" | "sm" | "full";
+  variant?: "primary" | "secondary";
+  className?: string;
+  showValue?: boolean;
 }
 
 export interface IPieChartProps {

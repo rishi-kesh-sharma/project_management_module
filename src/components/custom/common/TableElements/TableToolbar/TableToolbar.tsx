@@ -1,6 +1,7 @@
 import {
   ArchiveIconFilled,
   ArchiveIconOutlined,
+  NotificationIconOutlined,
   PlusIcon,
   StarIconFilled,
   StarIconOutlined,
@@ -28,6 +29,8 @@ export interface ITableToolbar {
   hasFilters?: boolean;
   filters?: React.ReactNode;
   type?: "page" | "modal";
+  hasNotification?: boolean;
+
   modal?: IModalProps;
 }
 const TableToolbar: React.FC<ITableToolbar> = ({
@@ -42,6 +45,7 @@ const TableToolbar: React.FC<ITableToolbar> = ({
   filters = ProjectsTableFilters,
   type = "page",
   modal,
+  hasNotification = false,
 }) => {
   const [isBookmarked, setIsBookmarked] = useState(false);
   const [isArchived, setIsArchived] = useState(false);
@@ -68,8 +72,10 @@ const TableToolbar: React.FC<ITableToolbar> = ({
   return (
     <div>
       <div className="flex items-end w-full justify-between mb-[1rem]">
-        <div className="flex items-center gap-5 ">
-          <h2 className="text-nowrap text-xl font-semibold">{heading}</h2>
+        <div className="flex items-center gap-4 ">
+          <h2 className="text-nowrap text-xl font-semibold text-primary">
+            {heading}
+          </h2>
           {hasBookmark && (
             <div className="flex gap-2  ">
               {isBookmarked ? (
@@ -80,7 +86,7 @@ const TableToolbar: React.FC<ITableToolbar> = ({
               ) : (
                 <StarIconOutlined
                   onClick={toggleBookmark}
-                  className="text-orange-400 text-lg cursor-pointer"
+                  className="text-gray-500 text-lg cursor-pointer"
                 />
               )}
 
@@ -93,17 +99,20 @@ const TableToolbar: React.FC<ITableToolbar> = ({
               {isArchived ? (
                 <ArchiveIconFilled
                   onClick={toggleArchive}
-                  className="text-orange-400 text-lg cursor-pointer"
+                  className="text-primary text-lg cursor-pointer"
                 />
               ) : (
                 <ArchiveIconOutlined
                   onClick={toggleArchive}
-                  className="text-orange-400 text-lg cursor-pointer"
+                  className="text-gray-500 text-lg cursor-pointer"
                 />
               )}
 
               {/* <ThreeHorizontalInsideCircle className="text-primary text-lg cursor-pointer" /> */}
             </div>
+          )}
+          {hasNotification && (
+            <NotificationIconOutlined className="text-2xl  text-gray-500" />
           )}
         </div>
 
@@ -116,7 +125,7 @@ const TableToolbar: React.FC<ITableToolbar> = ({
           />
 
           <div className="flex items-center  gap-[1rem]">
-            {hasFilters && filters && filters && ""}
+            {hasFilters && filters && filters}
             <SearchInput
               onSubmit={handleSearch}
               id="workspace-search"

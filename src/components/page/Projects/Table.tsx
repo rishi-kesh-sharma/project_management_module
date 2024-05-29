@@ -57,6 +57,7 @@ const ProjectTable = ({
             createPagePath={`/workspace/${workspaceId}/project/${projectId}/task/create`}
             hasArchive={true}
             hasBookmark={true}
+            hasNotification={true}
           />
         }
         rowData={project.tasks}
