@@ -14,12 +14,12 @@ import { useTheme } from "@/components/Providers/Theme/ThemeProvider";
 import { Link } from "react-router-dom";
 import { useState } from "react";
 import IconDropdown from "../../Dropdowns/IconDropdown/IconDropdown";
-import SearchInput from "../../SearchInput/SearchInput";
-import { ProjectsTableFilters } from "@/utils/constants";
+// import { ProjectsTableFilters } from "@/utils/constants";
 import Modal from "../../Modal/Modal";
+import { ProjectsTableSearch } from "@/utils/constants";
 
 export interface ITableToolbar {
-  handleSearch: (e: React.FormEvent) => void;
+  handleSearch?: (e: React.FormEvent) => void;
   dropdownMenus: IIconDropdownMenuProps["menu"];
   heading: string;
   createButtonText?: string;
@@ -30,22 +30,25 @@ export interface ITableToolbar {
   filters?: React.ReactNode;
   type?: "page" | "modal";
   hasNotification?: boolean;
-
+  hasSearch?: boolean;
+  search?: React.ReactNode;
   modal?: IModalProps;
 }
 const TableToolbar: React.FC<ITableToolbar> = ({
-  handleSearch,
+  // handleSearch,
+  hasSearch = true,
   dropdownMenus,
   heading,
   createButtonText,
   createPagePath,
   hasBookmark,
   hasArchive,
-  hasFilters = true,
-  filters = ProjectsTableFilters,
+  hasFilters = false,
+  filters,
   type = "page",
   modal,
   hasNotification = false,
+  search = ProjectsTableSearch,
 }) => {
   const [isBookmarked, setIsBookmarked] = useState(false);
   const [isArchived, setIsArchived] = useState(false);
@@ -71,11 +74,12 @@ const TableToolbar: React.FC<ITableToolbar> = ({
   };
   return (
     <div>
-      <div className="flex items-end w-full justify-between mb-[1rem]">
-        <div className="flex items-center gap-4 ">
+      <div className="flex items-end w-full justify-between my-[1rem]">
+        <div className="flex items-center gap-[1.5rem] ">
           <h2 className="text-nowrap text-xl font-semibold text-primary">
             {heading}
           </h2>
+
           {hasBookmark && (
             <div className="flex gap-2  ">
               {isBookmarked ? (
@@ -112,33 +116,28 @@ const TableToolbar: React.FC<ITableToolbar> = ({
             </div>
           )}
           {hasNotification && (
-            <NotificationIconOutlined className="text-2xl  text-gray-500" />
+            <NotificationIconOutlined className="text-2xl  text-gray-500 cursor-pointer" />
           )}
-        </div>
-
-        <div className="w-full flex flex-col gap-[1rem]  items-end">
           <IconDropdown
             menu={dropdownMenus}
             dropdownSize="sm"
             dropdownVariant="default"
             icon={<ThreeVerticalDots />}
           />
+        </div>
 
+        <div className="w-full flex flex-col gap-[1rem]  items-end">
           <div className="flex items-center  gap-[1rem]">
             {hasFilters && filters && filters}
-            <SearchInput
-              onSubmit={handleSearch}
-              id="workspace-search"
-              name="workspace-search"
-              inputSize="lg"
-              placeholder="Search here..."
-              className=""
-            />
+            {hasSearch && search && search}
             {type === "page" && (
-              <Button className="flex gap-2" asChild>
+              <Button
+                size={"icon"}
+                className="flex gap-2 rounded-full h-[2.4rem] w-[2.4rem]"
+                asChild>
                 <Link to={`${createPagePath}`}>
-                  <PlusIcon />
-                  <span>{createButtonText && createButtonText}</span>
+                  <PlusIcon className="" />
+                  {/* <span>{createButtonText && createButtonText}</span> */}
                 </Link>
               </Button>
             )}

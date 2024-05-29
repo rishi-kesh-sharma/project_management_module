@@ -9,7 +9,6 @@ interface ITimeTrackingDetailProps {
 const TimeTrackingDetail: React.FC<ITimeTrackingDetailProps> = ({ task }) => {
   return (
     <div>
-      <Timer />
       <TimeTrackingTable timeTrackings={task.timeTrackings} />
     </div>
   );

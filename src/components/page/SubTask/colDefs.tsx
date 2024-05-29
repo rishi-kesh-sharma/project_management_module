@@ -7,7 +7,6 @@ import {
   TrashIcon,
 } from "@/components/custom/common/icons/commonIcons";
 import { Avatar, AvatarImage } from "@/components/ui/Avatar/avatar";
-import { Progress } from "@/components/ui/Progress/progress";
 import { getTagVariantForValues } from "@/lib/utils";
 import { users } from "@/utils/constants";
 import { AvatarFallback } from "@radix-ui/react-avatar";
@@ -20,6 +19,9 @@ export const colDefs = [
     headerCheckboxSelection: true,
     headerName: "Name",
     checkboxSelection: true,
+    editable: true,
+    pinned: "left",
+    filter: false,
     cellRenderer: (p: { value: string; data: ISubTaskRowData }) => {
       // eslint-disable-next-line react-hooks/rules-of-hooks
       const { workspaceId, projectId, taskId } = useParams();
@@ -36,22 +38,58 @@ export const colDefs = [
   {
     field: "startDate",
     headerName: "Start Date",
-
-    cellRenderer: (p: { value: string }) => {
-      return <>{moment(p.value).fromNow()}</>;
+    editable: true,
+    cellEditor: "agDateCellEditor",
+    valueFormatter: function (params: { value: Date }) {
+      return moment(params.value).fromNow();
     },
+    cellFormatter: (params: { value: Date }) => {
+      return moment(params.value).fromNow();
+    },
+    filter: "agDateColumnFilter",
+    // cellRenderer: (p: { value: string }) => {
+    //   return <>{moment(p.value).fromNow()}</>;
+    // },
   },
   {
     field: "dueDate",
     headerName: "Due Date",
-    cellRenderer: (p: { value: string }) => {
-      return <>{moment(p.value).fromNow()}</>;
+    filter: "agDateColumnFilter",
+    cellEditor: "agDateCellEditor",
+    editable: true,
+    valueFormatter: function (params: { value: Date }) {
+      return moment(params.value).fromNow();
     },
+    cellFormatter: (params: { value: Date }) => {
+      return moment(params.value).fromNow();
+    },
+    // cellRenderer: (p: { value: string }) => {
+    //   return <>{moment(p.value).fromNow()}</>;
+    // },
   },
   // { field: "createdBy", headerName: "Created By" },
   {
     field: "members",
     headerName: "Members",
+    editable: true,
+    cellEditor: "agSelectCellEditor",
+    filter: "agSelectColumnFilter",
+    cellEditorParams: {
+      allowTyping: true,
+      highlightMatch: true,
+      searchType: "match",
+      filterList: true,
+      valueListMaxHeight: 220,
+      values: ["Member1", "Member2", "Member3", "Member4"],
+    },
+    filterParams: {
+      allowTyping: true,
+      highlightMatch: true,
+      searchType: "match",
+      filterList: true,
+      valueListMaxHeight: 220,
+      values: ["Member1", "Member2", "Member3", "Member4"],
+    },
     cellRenderer: () => {
       return (
         <div className="flex -space-x-2 items-center h-full ">
@@ -70,6 +108,8 @@ export const colDefs = [
 
   {
     field: "progress",
+    editable: true,
+    filter: "agNumberColumnFilter",
     cellRenderer: (p: { value: number }) => {
       return (
         <div className="flex items-center h-full">
@@ -84,6 +124,25 @@ export const colDefs = [
   },
   {
     field: "status",
+    editable: true,
+    cellEditor: "agSelectCellEditor",
+    filter: "agSelectColumnFilter",
+    cellEditorParams: {
+      allowTyping: true,
+      highlightMatch: true,
+      searchType: "match",
+      filterList: true,
+      valueListMaxHeight: 220,
+      values: ["Not Started", "Pending", "On Progress", "Completed"],
+    },
+    filterParams: {
+      allowTyping: true,
+      highlightMatch: true,
+      searchType: "match",
+      filterList: true,
+      valueListMaxHeight: 220,
+      values: ["Not Started", "Pending", "On Progress", "Completed"],
+    },
     headerName: "Status",
     cellRenderer: (p: { value: string }) => {
       return (
@@ -96,7 +155,25 @@ export const colDefs = [
   {
     field: "priority",
     headerName: "Priority",
-
+    filter: "agSelectColumnFilter",
+    editable: true,
+    cellEditor: "agSelectCellEditor",
+    cellEditorParams: {
+      allowTyping: true,
+      highlightMatch: true,
+      searchType: "match",
+      filterList: true,
+      valueListMaxHeight: 220,
+      values: ["High", "Medium", "Normal", "Low"],
+    },
+    filterParams: {
+      allowTyping: true,
+      highlightMatch: true,
+      searchType: "match",
+      filterList: true,
+      valueListMaxHeight: 220,
+      values: ["High", "Medium", "Normal", "Low"],
+    },
     cellRenderer: (p: { value: string }) => {
       return (
         <div>

@@ -18,6 +18,7 @@ function createRandomTasks(value) {
     subTasks: createNSubTasks(4),
     priority: faker.helpers.arrayElement(["Low", "Normal", "High"]),
     timeTrackings: createNTimeTrackings(20),
+    progress: faker.number.int({ max: 100, min: 0 }),
   };
 }
 

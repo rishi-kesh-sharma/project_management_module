@@ -32,7 +32,7 @@ export const titleCase = (str: string): string => {
 };
 
 export const getTagVariantForValues = (value: string) => {
-  value = value.toLowerCase();
+  value = value?.toLowerCase();
   switch (value) {
     case "pending":
       return "red";

@@ -6,6 +6,7 @@ import { Button } from "@/components/plate-ui/button";
 import { PlusIcon } from "../common/icons/commonIcons";
 import StepperDemo from "../common/Forms/StepperForm/examples/stepper-demo";
 import AssignInventoryStepperForm from "./AssignInventoryStepperForm";
+import { ProjectsTableSearch } from "@/utils/constants";
 
 const dropdownMenus = {
   items: [
@@ -27,7 +28,7 @@ const InventoriesTable = ({
   console.log(inventories, "inventories");
   // if (!inventories) return "loading...";
   return (
-    <div className="mt-[2rem]">
+    <div className="">
       <AgGridTable
         tableToolbar={
           <TableToolbar
@@ -54,6 +55,8 @@ const InventoriesTable = ({
                 </div>
               ),
             }}
+            hasSearch={true}
+            search={<ProjectsTableSearch handleSearch={handleSearch} />}
           />
         }
         rowData={inventories}

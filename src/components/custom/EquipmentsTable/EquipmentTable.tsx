@@ -2,6 +2,7 @@ import AgGridTable from "@/components/custom/common/Tables/AgGridTable/AgGridTab
 import { colDefs } from "./colDefs";
 import TableToolbar from "@/components/custom/common/TableElements/TableToolbar/TableToolbar";
 import { IEquipmentRowData } from "@/@types";
+import { ProjectsTableSearch } from "@/utils/constants";
 
 const dropdownMenus = {
   items: [
@@ -22,7 +23,7 @@ const EquipmentTable = ({
 
   // if (!equipment) return "loading...";
   return (
-    <div className="mt-[2rem]">
+    <div className="">
       <AgGridTable
         tableToolbar={
           <TableToolbar
@@ -31,6 +32,8 @@ const EquipmentTable = ({
             dropdownMenus={dropdownMenus}
             createButtonText="Equipment"
             createPagePath={`/equipment/create`}
+            hasSearch={true}
+            search={<ProjectsTableSearch handleSearch={handleSearch} />}
           />
         }
         rowData={equipments}

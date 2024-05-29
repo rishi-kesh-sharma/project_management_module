@@ -2,6 +2,8 @@ import AgGridTable from "@/components/custom/common/Tables/AgGridTable/AgGridTab
 import { colDefs } from "./timeTrackingColDefs";
 import TableToolbar from "@/components/custom/common/TableElements/TableToolbar/TableToolbar";
 import { ITimeTrackingRowData } from "@/@types";
+import { ProjectsTableSearch } from "@/utils/constants";
+// import Timer from "@/components/custom/common/Timer/Timer";
 
 const dropdownMenus = {
   items: [
@@ -22,6 +24,8 @@ const TimeTrackingTable = ({
 
   return (
     <div className="mt-[2rem]">
+      {/* <Timer /> */}
+
       <AgGridTable
         tableToolbar={
           <TableToolbar
@@ -29,7 +33,9 @@ const TimeTrackingTable = ({
             handleSearch={handleSearch}
             dropdownMenus={dropdownMenus}
             createButtonText="Start Timer"
-            createPagePath=""
+            // createPagePath=""
+            hasSearch={true}
+            search={<ProjectsTableSearch handleSearch={handleSearch} />}
           />
         }
         rowData={timeTrackings}

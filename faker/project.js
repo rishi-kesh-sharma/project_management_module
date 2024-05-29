@@ -17,6 +17,7 @@ function createRandomProjects(value) {
     priority: faker.helpers.arrayElement(["Low", "Normal", "High"]),
     tasks: createNTasks(4),
     description: faker.lorem.words({ min: 20, max: 500 }),
+    progress: faker.number.int({ max: 100, min: 0 }),
   };
 }
 

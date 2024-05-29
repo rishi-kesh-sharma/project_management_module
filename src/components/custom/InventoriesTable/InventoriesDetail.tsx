@@ -9,7 +9,7 @@ const InventoriesDetail = () => {
   if (isLoading || !data) return <Spinner />;
 
   return (
-    <div className="my-[2rem]">
+    <div className="my-[1.3rem]">
       <InventoriesTable inventories={data} />
     </div>
   );

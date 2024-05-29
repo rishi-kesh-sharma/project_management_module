@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { FilterIcon } from "../icons/commonIcons";
+import { Button } from "@/components/ui/Button/button";
 export interface ISpeedDialProps {
   children: React.ReactNode[];
   direction: "up" | "down" | "left" | "right";
@@ -34,13 +35,13 @@ const SpeedDial: React.FC<ISpeedDialProps> = ({
   return (
     <>
       <div className="inline-block relative w-fit h-fit">
-        <span
+        <Button
           onClick={() => setShow((show) => !show)}
-          className={`rounded-full bg-primary/10 text-foreground w-10 h-10 flex justify-center items-center cursor-pointer transition hover:bg-primary/20 ${
-            show ? "rotate-90" : ""
-          }`}>
+          variant={"outline"}
+          size={"icon"}
+          className={`rounded-full ${show ? "rotate-90" : ""} transition-all`}>
           <FilterIcon />
-        </span>
+        </Button>
 
         <ul
         //  className={!show ? "pointer-events-none" : ""}

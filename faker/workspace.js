@@ -20,6 +20,7 @@ function createRandomWorkspaces(value) {
     updated_at: new Date(Date.now()),
     no_of_members: faker.number.int({ max: 20, min: 8 }),
     no_of_project: faker.number.int({ max: 20, min: 8 }),
+    progress: faker.number.int({ max: 100, min: 0 }),
   };
 }
 

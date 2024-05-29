@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 "use strict";
 import React, { useEffect, useMemo, useRef, useState } from "react";
 import { Helmet } from "react-helmet";
@@ -7,8 +8,8 @@ import { AgGridReact } from "@ag-grid-community/react";
 // import { RowGroupingModule } from "@ag-grid-enterprise/row-grouping";
 // import { RangeSelectionModule } from "@ag-grid-enterprise/range-selection";
 // import { ColumnsToolPanelModule } from "@ag-grid-enterprise/column-tool-panel";
-// import { FiltersToolPanelModule } from "@ag-grid-enterprise/filter-tool-panel";
-// import { SetFilterModule } from "@ag-grid-enterprise/set-filter";
+import { FiltersToolPanelModule } from "@ag-grid-enterprise/filter-tool-panel";
+import { SetFilterModule } from "@ag-grid-enterprise/set-filter";
 import { CsvExportModule } from "@ag-grid-community/csv-export";
 import { ExcelExportModule } from "@ag-grid-enterprise/excel-export";
 import { IAgGridTableProps } from "@/@types";
@@ -42,6 +43,7 @@ import "@ag-grid-community/styles/ag-theme-alpine.css";
 import "./AgGridTable.css";
 
 import { useTheme } from "@/components/Providers/Theme/ThemeProvider";
+import DatePicker from "../../FormElements/DatePicker/DatePicker";
 
 // module registration
 ModuleRegistry.registerModules([
@@ -50,9 +52,9 @@ ModuleRegistry.registerModules([
   // MenuModule,
   // RangeSelectionModule,
   // RowGroupingModule,
-  // FiltersToolPanelModule,
+  FiltersToolPanelModule,
   // ColumnsToolPanelModule,
-  // SetFilterModule,
+  SetFilterModule,
   CsvExportModule,
   ExcelExportModule,
 ]);
@@ -61,7 +63,7 @@ ModuleRegistry.registerModules([
 const AgGridTable: React.FC<IAgGridTableProps> = ({
   theme = "ag-theme-quartz",
   tableToolbar,
-  height = 500,
+  height = 10,
   variant,
   colDefs: columnDefinations,
   rowData: tableData,
@@ -113,17 +115,18 @@ const AgGridTable: React.FC<IAgGridTableProps> = ({
       //   console.log(params);
       //   if (appTheme !== "dark") return "bg-[#F1F1F1]";
       // },
+      // pinned: "right",
       filter: false,
-      editable: true,
-      // floatingFilter: true,
+      editable: false,
+      floatingFilter: false,
       resizable: false,
       headerCheckboxSelection: false,
       showDisabledCheckboxes: true,
       headerCheckboxSelectionFilteredOnly: false,
       // cellRenderer: "agGroupCellRenderer",
+      suppressHeaderMenuButton: true,
       flex: 1,
       minWidth: 150,
-
       // cellRendererParams: {
       //   checkbox: true,
       // } as IGroupCellRendererParams,
@@ -228,8 +231,8 @@ const AgGridTable: React.FC<IAgGridTableProps> = ({
     <div style={containerStyle}>
       {tableToolbar}
       <div
-        className={`${appTheme == "dark" ? "ag-theme-quartz-dark" : theme}`}
-        style={{ ...gridStyle, height: height }}>
+        className={`${appTheme == "dark" ? "ag-theme-quartz-dark" : theme}  `}
+        style={{ ...gridStyle }}>
         {variant === "primary" && (
           <Helmet>
             <link rel="stylesheet" href="/src/AgGridPrimaryTable.css" />
@@ -237,6 +240,7 @@ const AgGridTable: React.FC<IAgGridTableProps> = ({
         )}
 
         <AgGridReact
+          domLayout="autoHeight"
           className=""
           ref={gridRef}
           rowData={rowData}
@@ -265,6 +269,7 @@ const AgGridTable: React.FC<IAgGridTableProps> = ({
           groupSelectsFiltered={true}
           onRowSelected={onRowSelected}
           suppressCopyRowsToClipboard={true}
+          components={{ agDateInput: DatePicker }}
 
           // rowDragEntireRow={true}
 

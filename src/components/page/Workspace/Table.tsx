@@ -4,7 +4,7 @@ import TableToolbar from "@/components/custom/common/TableElements/TableToolbar/
 import { colDefs } from "./colDefs";
 import { useParams } from "react-router";
 import Spinner from "@/components/custom/common/Loaders/Spinner/Spinner";
-import { ProjectsTableFilters } from "@/utils/constants";
+import { ProjectsTableSearch } from "@/utils/constants";
 
 const dropdownMenus = {
   items: [
@@ -24,19 +24,24 @@ const ProjectTable = ({ workspace }: { workspace: IWorkspace }) => {
     <AgGridTable
       tableToolbar={
         <TableToolbar
-          hasFilters={true}
-          filters={<ProjectsTableFilters />}
+          hasSearch={true}
+          search={<ProjectsTableSearch handleSearch={handleSearch} />}
           heading={workspace.workspaceName || "Workspace"}
           handleSearch={handleSearch}
+          hasFilters={false}
           dropdownMenus={dropdownMenus}
           createPagePath={`/workspace/${workspaceId}/project/create`}
           createButtonText={"Project"}
+          hasArchive={true}
+          hasBookmark={true}
+          hasNotification={true}
         />
       }
       rowData={workspace.projects}
       heading={workspace.workspaceName}
       dropdownMenus={dropdownMenus}
       colDefs={colDefs}
+      sidebar={true}
     />
   );
 };

@@ -14,6 +14,7 @@ function createRandomSubTasks(value) {
     ]),
     dueDate: faker.date.future(),
     priority: faker.helpers.arrayElement(["Low", "Normal", "High"]),
+    progress: faker.number.int({ max: 100, min: 0 }),
   };
 }
 

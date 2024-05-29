@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable react-refresh/only-export-components */
 import { ICommandProps, IUpcomingDeadlineData } from "@/@types";
 import {
@@ -26,8 +27,8 @@ import {
 } from "@radix-ui/react-icons";
 import moment from "moment";
 
-export const BASE_URL = `http://192.168.254.239:4000`;
-// export const BASE_URL = `http://localhost:4000`;
+// export const BASE_URL = `http://192.168.254.239:4000`;
+export const BASE_URL = `http://localhost:4000`;
 export const avatarDropdownMenu = {
   label: "",
   items: [
@@ -573,7 +574,7 @@ import { CalendarIcon } from "@radix-ui/react-icons";
 import { IComboboxProps } from "@/@types";
 import Combobox from "@/components/custom/common/Combobox/Combobox";
 import SpeedDial from "@/components/custom/common/SpeedDial/SpeedDial";
-import React from "react";
+import SearchInput from "@/components/custom/common/SearchInput/SearchInput";
 
 export const comboboxData: IComboboxProps = {
   defaultText: "Search items here...",
@@ -693,6 +694,29 @@ export const ProjectsTableFilters = () => {
       children={projectsTableFilterItems}
       direction="left"
       itemWidth={180}
+    />
+  );
+};
+
+export const ProjectsTableSearch = ({
+  handleSearch,
+}: {
+  handleSearch: any;
+}) => {
+  return (
+    <SpeedDial
+      children={[
+        <SearchInput
+          onSubmit={handleSearch}
+          id="workspace-search"
+          name="workspace-search"
+          inputSize="md"
+          placeholder="Search here..."
+          className=""
+        />,
+      ]}
+      direction="left"
+      itemWidth={250}
     />
   );
 };
