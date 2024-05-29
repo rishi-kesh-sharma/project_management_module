@@ -43,9 +43,11 @@ const InventoriesTable = ({
               description:
                 "You can assign the inventories from here to your project",
               trigger: (
-                <Button className="flex gap-2">
+                <Button
+                  size={"icon"}
+                  className="flex gap-2 rounded-full h-[2.4rem] w-[2.4rem]">
                   <PlusIcon />
-                  <span>Inventory</span>
+                  {/* <span>Inventory</span> */}
                 </Button>
               ),
               body: (
