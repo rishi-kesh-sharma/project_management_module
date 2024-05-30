@@ -20,8 +20,18 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { getSuccessToast } from "@/utils/constants/toast";
 import { AutosizeTextarea } from "@/components/custom/common/FormElements/AutosizeTextArea/AutosizeTextArea";
 import TagInput from "@/components/custom/common/FormElements/Input/TagInput/TagInput";
+import React from "react";
 
-const CreateWorkspaceForm = () => {
+const CreateWorkspaceModalForm = ({
+  trigger = (
+    <Button type="button" className="flex gap-1 ml-auto" size={"sm"}>
+      <PlusIcon />
+      {` Workspace`}
+    </Button>
+  ),
+}: {
+  trigger?: React.ReactNode | "string";
+}) => {
   const [createWorkspace, { isLoading }] = useAddWorkspaceMutation();
 
   const formSchema = z.object({
@@ -56,17 +66,7 @@ const CreateWorkspaceForm = () => {
   return (
     <div>
       <Modal
-        trigger={
-          <Button type="button" className="flex gap-1 ml-auto" size={"sm"}>
-            {/* <Link
-            to={"/workspace/create"}
-            className="flex gap-2 items-center justify-end">
-            {i18n.t(`component.button.create`)}
-          </Link> */}
-            <PlusIcon />
-            {` Workspace`}
-          </Button>
-        }
+        trigger={trigger}
         title={`Create workspace`}
         // description={`This form creates a new workspace`}
       >
@@ -157,4 +157,4 @@ const CreateWorkspaceForm = () => {
   );
 };
 
-export default CreateWorkspaceForm;
+export default CreateWorkspaceModalForm;
