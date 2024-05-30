@@ -3,6 +3,7 @@ import { colDefs } from "./colDefs";
 import TableToolbar from "@/components/custom/common/TableElements/TableToolbar/TableToolbar";
 import { IBudgetRowData } from "@/@types";
 import { ProjectsTableSearch } from "@/utils/constants";
+import { useParams } from "react-router";
 
 const dropdownMenus = {
   items: [
@@ -13,6 +14,7 @@ const dropdownMenus = {
 };
 
 const BudgetTable = ({ budgets }: { budgets: IBudgetRowData[] }) => {
+  const { workspaceId, projectId } = useParams();
   const handleSearch = (e: React.FormEvent) => {
     e.preventDefault();
   };
@@ -27,7 +29,7 @@ const BudgetTable = ({ budgets }: { budgets: IBudgetRowData[] }) => {
             handleSearch={handleSearch}
             dropdownMenus={dropdownMenus}
             createButtonText="Budget"
-            createPagePath={`/budget/create`}
+            createPagePath={`/workspace/${workspaceId}/project/${projectId}/budget/create`}
             hasSearch={true}
             search={<ProjectsTableSearch handleSearch={handleSearch} />}
           />

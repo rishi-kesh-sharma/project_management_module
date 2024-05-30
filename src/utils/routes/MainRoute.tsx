@@ -22,6 +22,7 @@ import ArchiveDetailPage from "@/pages/ArchiveDetail.tsx";
 import UpdateTaskPage from "@/pages/UpdateTaskPage.tsx";
 import CreateTaskPage from "@/pages/CreateTaskPage.tsx";
 import UpdateProjectPage from "@/pages/UpdateProjectPage.tsx";
+import CreateBudgetPage from "@/pages/CreateBudgetPage.tsx";
 
 interface IROLE {
   ADMIN: TRole;
@@ -261,6 +262,32 @@ export function MainRoute() {
                   <BreadcrumbSeparator />
                   <Link
                     to={`/workspace/${workspaceId}/project/${projectId}/task/${taskId}`}>{`${`Task`}`}</Link>
+                </>
+              );
+            },
+          },
+        },
+
+        {
+          path: "/workspace/:workspaceId/project/:projectId/budget/create",
+          element: <CreateBudgetPage title={pageTitles.createBudgetPage} />,
+          handle: {
+            crumb: ({
+              workspaceId,
+              projectId,
+            }: {
+              workspaceId: string;
+              projectId: string;
+            }) => {
+              return (
+                <>
+                  <Link to={`/workspace/${workspaceId}`}>{`Workspace`}</Link>
+                  <BreadcrumbSeparator />
+                  <Link
+                    to={`/workspace/${workspaceId}/project/${projectId}`}>{`Project`}</Link>
+                  <BreadcrumbSeparator />
+                  <Link
+                    to={`/workspace/${workspaceId}/project/${projectId}`}>{`Create Budget`}</Link>
                 </>
               );
             },

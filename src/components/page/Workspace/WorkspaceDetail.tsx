@@ -1,3 +1,4 @@
+/* eslint-disable react-refresh/only-export-components */
 import WorkspaceDetailTable from "./Table";
 
 import { useGetWorkspaceQuery } from "@/api/workspace";
@@ -142,7 +143,7 @@ const WorkspaceDetail = () => {
           {data.workspaceName}
         </h2>
 
-        <div className="flex items-center gap-[1rem]  group-hover:flex">
+        <div className=" flex items-center gap-[1rem] ">
           {quickAccessOptions?.primaryOptions?.find(
             (item) => item.id === "bookmark"
           ) && (
@@ -199,6 +200,7 @@ const WorkspaceDetail = () => {
             .map((item) => item.icon)}
 
           <IconDropdown
+            className={` `}
             menu={{ items: secondaryOptions }}
             icon={<EllipsisIconHorizontal className="relative" />}
           />

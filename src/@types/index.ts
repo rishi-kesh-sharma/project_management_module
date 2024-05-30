@@ -44,6 +44,7 @@ export interface IIconDropdownMenuProps {
   dropdownSize?: "lg" | "md" | "sm" | "default";
   dropdownVariant?: "primary" | "secondary" | "default";
   icon: React.ReactNode;
+  className?: string;
 }
 
 export interface IAvatarDropdownProps {
