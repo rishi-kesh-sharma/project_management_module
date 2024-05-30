@@ -17,6 +17,7 @@ export const modalVariants = cva("", {
       md: "max-w-xl",
       lg: "max-w-2xl",
       xl: "max-w-3xl",
+      full: "w-[calc(100vw-5rem)] w-[calc(100vh-5rem)]",
     },
   },
   defaultVariants: {

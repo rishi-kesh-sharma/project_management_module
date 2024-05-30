@@ -4,7 +4,6 @@ import WorkspacesCard from "./WorkspaceCard";
 import AddCard from "@/components/custom/common/AddCard/AddCard";
 import CreateWorkspaceModalForm from "../Analytics/CreateWorkspaceForm";
 import { Button } from "@/components/ui/Button/button";
-import { PlusIcon } from "@/components/custom/common/icons/commonIcons";
 
 const Cards: React.FC = ({ data }) => {
   const handleAdd = () => {};
@@ -18,9 +17,8 @@ const Cards: React.FC = ({ data }) => {
                 <Button
                   variant={"outline"}
                   type="button"
-                  className="flex gap-1 ml-auto w-full h-full"
+                  className="flex gap-1  w-full h-full p-0 border-none"
                   size={"sm"}>
-                
                   <AddCard />
                 </Button>
               }

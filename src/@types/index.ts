@@ -512,7 +512,7 @@ export interface IModalProps {
   children?: React.ReactNode;
   footer?: React.ReactNode;
   open?: boolean;
-  size?: "sm" | "md" | "lg" | "xl";
+  size?: "sm" | "md" | "lg" | "xl" | "full";
 }
 
 export interface IProgressBarProps {
