@@ -1,5 +1,26 @@
 import ProjectDetailTable from "./Table";
 
+import {
+  ArchiveIconFilled,
+  ArchiveIconOutlined,
+  BookmarkIconOutlined,
+  CalendarIcon,
+  CopyIconOutlined,
+  DropIconOutlined,
+  EditIcon,
+  EllipsisIconHorizontal,
+  FlagIconOutlined,
+  LinkIconOutlined,
+  MagicIconOutlined,
+  NotificationIconOutlined,
+  SettingIcon,
+  StarIconFilled,
+  StarIconOutlined,
+  UserIconOutlined,
+} from "@/components/custom/common/icons/commonIcons";
+import IconDropdown from "@/components/custom/common/Dropdowns/IconDropdown/IconDropdown";
+
+// tab triggers
 const projectDetailTabTriggers = [
   {
     id: "tasks",
@@ -59,6 +80,84 @@ const resourceTabTriggers = [
     icon: <MoneyIconOutlined className="text-xl" />,
   },
 ];
+
+export const secondaryOptions = [
+  {
+    label: "Rename",
+    id: "rename",
+    icon: <EditIcon />,
+    isLink: false,
+  },
+  {
+    label: "Copy Link",
+    id: "copy-link",
+    icon: <LinkIconOutlined />,
+    isLink: false,
+  },
+  {
+    label: "Duplicate",
+    id: "duplicate",
+    icon: <CopyIconOutlined />,
+    isLink: false,
+  },
+  {
+    label: "Settings",
+    id: "settings",
+    icon: <SettingIcon />,
+    isLink: false,
+  },
+  {
+    label: "Templates",
+    id: "templates",
+    icon: <MagicIconOutlined />,
+    isLink: false,
+  },
+];
+export const primaryOptions = [
+  {
+    label: "Color",
+    id: "color",
+    icon: <DropIconOutlined className="cursor-pointer text-foreground/80" />,
+    isLink: false,
+  },
+  {
+    label: "Members",
+    id: "members",
+    icon: <UserIconOutlined className="cursor-pointer text-foreground/80" />,
+    isLink: false,
+  },
+  {
+    label: "Calendar",
+    id: "calendar",
+    icon: <CalendarIcon className="cursor-pointer text-foreground/80" />,
+    isLink: false,
+  },
+  {
+    label: "Priority",
+    id: "priority",
+    icon: <FlagIconOutlined className="cursor-pointer text-foreground/80" />,
+    isLink: false,
+  },
+  {
+    label: "Archive",
+    id: "archive",
+    icon: <ArchiveIconOutlined className="cursor-pointer text-foreground/80" />,
+    isLink: false,
+  },
+  {
+    label: "Bookmark",
+    id: "bookmark",
+    icon: (
+      <BookmarkIconOutlined className="cursor-pointer text-foreground/80" />
+    ),
+    isLink: false,
+  },
+];
+
+const quickAccessOptions = {
+  primaryOptions,
+  secondaryOptions,
+};
 import { useGetWorkspaceQuery } from "@/api/workspace";
 import BudgetDetail from "@/components/custom/BudgetTable/BudgetDetail";
 import Spinner from "@/components/custom/common/Loaders/Spinner/Spinner";
@@ -81,10 +180,54 @@ import {
   MoneyIconOutlined,
   PeopleIconOutlined,
 } from "@/components/custom/common/icons/commonIcons";
+import { useCallback, useEffect, useState } from "react";
+import { getSuccessToast } from "@/utils/constants/toast";
+import { IProjectRowData } from "@/@types";
 const ProjectDetail = () => {
-  const { workspaceId } = useParams();
-  const { theme } = useTheme();
+  const [isBookmarked, setIsBookmarked] = useState(false);
+  const { workspaceId, projectId } = useParams();
+  const [isArchived, setIsArchived] = useState(false);
   const { data, isLoading } = useGetWorkspaceQuery(workspaceId);
+
+  const { theme } = useTheme();
+
+  const [project, setProject] = useState<IProjectRowData>();
+
+  const getProject = useCallback(
+    (id: string) => {
+      return data?.projects?.find((item: { id: string }) => {
+        return item.id === id;
+      });
+    },
+    [data]
+  );
+
+  useEffect(() => {
+    if (projectId) setProject(getProject(projectId));
+  }, [project, projectId, getProject]);
+
+  if (projectId) getProject(projectId);
+  if (!project) return <Spinner />;
+
+  const toggleBookmark = () => {
+    if (isBookmarked) {
+      getSuccessToast("Removed from bookmarks", theme);
+    } else {
+      getSuccessToast("Bookmarked", theme);
+    }
+
+    setIsBookmarked((prev) => !prev);
+  };
+
+  const toggleArchive = () => {
+    if (isArchived) {
+      getSuccessToast("Removed from archived", theme);
+    } else {
+      getSuccessToast("Archived", theme);
+    }
+
+    setIsArchived((prev) => !prev);
+  };
   if (!workspaceId) return "loading";
   if (isLoading || !data) return <Spinner />;
   return (
@@ -103,12 +246,80 @@ const ProjectDetail = () => {
         )}
       </Helmet>
 
+      <div className="flex items-center gap-[2rem] mb-[1rem] mt-[1.5rem] bg-primary/10 p-[1rem] rounded-lg group">
+        <h2 className="text-nowrap text-xl font-semibold text-primary">
+          {project.projectName}
+        </h2>
+
+        <div className="flex items-center gap-[1rem]  group-hover:flex">
+          {quickAccessOptions?.primaryOptions?.find(
+            (item) => item.id === "bookmark"
+          ) && (
+            <div className="flex gap-2  ">
+              {isBookmarked ? (
+                <StarIconFilled
+                  onClick={toggleBookmark}
+                  className="text-orange-400 text-lg cursor-pointer"
+                />
+              ) : (
+                <StarIconOutlined
+                  onClick={toggleBookmark}
+                  className="text-gray-500 text-lg cursor-pointer"
+                />
+              )}
+
+              {/* <ThreeHorizontalInsideCircle className="text-primary text-lg cursor-pointer" /> */}
+            </div>
+          )}
+
+          {quickAccessOptions &&
+            quickAccessOptions?.primaryOptions?.find(
+              (item) => item.id === "archive"
+            ) && (
+              <div className="flex gap-2  ">
+                {isArchived ? (
+                  <ArchiveIconFilled
+                    onClick={toggleArchive}
+                    className="text-primary text-lg cursor-pointer"
+                  />
+                ) : (
+                  <ArchiveIconOutlined
+                    onClick={toggleArchive}
+                    className="text-gray-500 text-lg cursor-pointer"
+                  />
+                )}
+
+                {/* <ThreeHorizontalInsideCircle className="text-primary text-lg cursor-pointer" /> */}
+              </div>
+            )}
+          {quickAccessOptions?.primaryOptions?.find(
+            (item) => item.id === "notification"
+          ) && (
+            <NotificationIconOutlined className="text-2xl  text-gray-500 cursor-pointer" />
+          )}
+
+          {quickAccessOptions?.primaryOptions
+            ?.filter(
+              (item) =>
+                item.id !== "bookmark" &&
+                item.id !== "archive" &&
+                item.id !== "notification"
+            )
+            .map((item) => item.icon)}
+
+          <IconDropdown
+            menu={{ items: secondaryOptions }}
+            icon={<EllipsisIconHorizontal className="relative" />}
+          />
+        </div>
+      </div>
+
       <Tabs
         triggers={projectDetailTabTriggers}
         contents={[
           {
             id: "tasks",
-            element: <ProjectDetailTable project={data.projects} />,
+            element: <ProjectDetailTable tasks={project.tasks} />,
           },
           {
             id: "planning",

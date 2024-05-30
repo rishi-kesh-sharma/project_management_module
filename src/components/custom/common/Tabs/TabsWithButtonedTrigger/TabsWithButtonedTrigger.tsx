@@ -19,7 +19,7 @@ const TabWithButtonedTrigger = ({
       defaultValue={triggers[0].id}
       {...props}
       className={`${(cn(className), "mt-0")}`}>
-      <TabsList className=" h-auto  flex justify-start  border-b   shadow-none items-start bg-background gap-[1rem]  rounded-none  pb-[1rem] ">
+      <TabsList className=" h-auto  flex justify-start  border-b   shadow-none items-start bg-background gap-[1rem]  rounded-none  py-[1rem] ">
         {triggers.map((trigger: ITabTrigger) => {
           return (
             <div className="flex items-center gap-1 ">

@@ -1,10 +1,8 @@
 import AgGridTable from "@/components/custom/common/Tables/AgGridTable/AgGridTable";
 import { colDefs } from "../Projects/colDefs";
 import TableToolbar from "@/components/custom/common/TableElements/TableToolbar/TableToolbar";
-import { IProjectRowData } from "@/@types";
+import { IProjectRowData, ITaskRowData } from "@/@types";
 import { useParams } from "react-router";
-import { useCallback, useEffect, useState } from "react";
-import Spinner from "@/components/custom/common/Loaders/Spinner/Spinner";
 import { ProjectsTableFilters, ProjectsTableSearch } from "@/utils/constants";
 
 const dropdownMenus = {
@@ -15,33 +13,12 @@ const dropdownMenus = {
   ],
 };
 
-const ProjectTable = ({
-  project: projects,
-}: {
-  project: IProjectRowData[];
-}) => {
-  const [project, setProject] = useState<IProjectRowData>();
+const ProjectTable = ({ tasks }: { tasks: ITaskRowData[] }) => {
+  const { workspaceId, projectId } = useParams();
+
   const handleSearch = (e: React.FormEvent) => {
     e.preventDefault();
   };
-
-  const { workspaceId, projectId } = useParams();
-
-  const getProject = useCallback(
-    (id: string) => {
-      return projects.find((item) => {
-        return item.id === id;
-      });
-    },
-    [projects]
-  );
-
-  useEffect(() => {
-    if (projectId) setProject(getProject(projectId));
-  }, [project, projectId, getProject]);
-
-  if (projectId) getProject(projectId);
-  if (!project) return <Spinner />;
 
   return (
     <div className="mt-[1rem]">
@@ -52,7 +29,7 @@ const ProjectTable = ({
             filters={<ProjectsTableFilters />}
             hasSearch={true}
             search={<ProjectsTableSearch handleSearch={handleSearch} />}
-            heading={project.projectName}
+            heading={"Tasks"}
             handleSearch={handleSearch}
             dropdownMenus={dropdownMenus}
             createButtonText="Task"
@@ -62,8 +39,8 @@ const ProjectTable = ({
             hasNotification={true}
           />
         }
-        rowData={project.tasks}
-        heading={project.projectName}
+        rowData={tasks}
+        heading={"Tasks"}
         dropdownMenus={dropdownMenus}
         colDefs={colDefs}
         sidebar={true}

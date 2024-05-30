@@ -8,6 +8,7 @@ export interface IDropdownMenuItem {
   isLink: boolean;
   label: string;
   link?: string;
+  icon?: React.ReactNode;
 }
 
 export interface IDropdownMenuProps {
@@ -714,4 +715,20 @@ export interface IUpcomingDeadlineTableProps {
   tableCaption: string;
   columns: IUpcomingDeadlineColumn[];
   data: IUpcomingDeadlineData[];
+}
+
+export interface ISecondaryOption {
+  label: string;
+  id: string;
+  icon: React.ReactNode;
+}
+export interface IPrimaryOption {
+  label?: string;
+  id: string;
+  icon: React.ReactNode;
+}
+
+export interface IQuickAccessOptions {
+  primaryOptions?: IPrimaryOption[];
+  secondaryOptions?: ISecondaryOption[];
 }

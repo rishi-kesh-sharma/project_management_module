@@ -228,7 +228,7 @@ const AgGridTable: React.FC<IAgGridTableProps> = ({
   }
 
   return (
-    <div style={containerStyle}>
+    <div style={containerStyle} className="flex flex-col gap-[1rem]">
       {tableToolbar}
       <div
         className={`${appTheme == "dark" ? "ag-theme-quartz-dark" : theme}  `}

@@ -45,6 +45,14 @@ import { GiMoneyStack } from "react-icons/gi";
 import { PiUsersThree } from "react-icons/pi";
 import { IoExpand } from "react-icons/io5";
 import { RxCross1 } from "react-icons/rx";
+import { MdOutlineWaterDrop } from "react-icons/md";
+import { LuUser2 } from "react-icons/lu";
+import { IoFlagOutline } from "react-icons/io5";
+import { IoIosLink } from "react-icons/io";
+import { MdContentCopy } from "react-icons/md";
+import { PiMagicWandLight } from "react-icons/pi";
+import { IoEllipsisHorizontal } from "react-icons/io5";
+import { CiSearch } from "react-icons/ci";
 export {
   FaRegCircleDot as GoalsIcon,
   HiOutlineChartBar as PlanningIcon,
@@ -95,4 +103,12 @@ export {
   PiUsersThree as PeopleIconOutlined,
   IoExpand as ExpandIcon,
   RxCross1 as CrossIcon,
+  MdOutlineWaterDrop as DropIconOutlined,
+  LuUser2 as UserIconOutlined,
+  IoFlagOutline as FlagIconOutlined,
+  IoIosLink as LinkIconOutlined,
+  MdContentCopy as CopyIconOutlined,
+  PiMagicWandLight as MagicIconOutlined,
+  IoEllipsisHorizontal as EllipsisIconHorizontal,
+  CiSearch as SearchIcon
 };

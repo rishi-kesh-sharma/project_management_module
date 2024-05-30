@@ -1,16 +1,19 @@
 import React, { useState } from "react";
-import { FilterIcon } from "../icons/commonIcons";
+import { SearchIcon } from "../icons/commonIcons";
 import { Button } from "@/components/ui/Button/button";
+import { Toggle } from "@/components/ui/Toggle/toggle";
 export interface ISpeedDialProps {
   children: React.ReactNode[];
   direction: "up" | "down" | "left" | "right";
   itemWidth?: number;
+  icon?: React.ReactNode;
 }
 
 const SpeedDial: React.FC<ISpeedDialProps> = ({
   children,
   direction = "up",
   itemWidth = 40,
+  icon = <SearchIcon className="text-xl" />,
 }) => {
   const [show, setShow] = useState(false);
 
@@ -35,13 +38,18 @@ const SpeedDial: React.FC<ISpeedDialProps> = ({
   return (
     <>
       <div className="inline-block relative w-fit h-fit">
-        <Button
-          onClick={() => setShow((show) => !show)}
-          variant={"outline"}
-          size={"icon"}
-          className={`rounded-full ${show ? "rotate-90" : ""} transition-all`}>
-          <FilterIcon />
-        </Button>
+        <Toggle
+          asChild
+          aria-label="Toggle bold"
+          className="rounded-full h-[2.5rem] w-[2.5rem] p-0">
+          <Button
+            onClick={() => setShow((show) => !show)}
+            variant={"outline"}
+            size={"icon"}
+            className={`rounded-full ${show ? "rotate-90" : ""} transition-all`}>
+            {icon}
+          </Button>
+        </Toggle>
 
         <ul
         //  className={!show ? "pointer-events-none" : ""}

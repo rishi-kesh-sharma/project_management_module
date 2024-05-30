@@ -24,9 +24,10 @@ const ProjectTable = ({ workspace }: { workspace: IWorkspace }) => {
     <AgGridTable
       tableToolbar={
         <TableToolbar
+          // quickAccessOptions={{ primaryOptions, secondaryOptions }}
           hasSearch={true}
           search={<ProjectsTableSearch handleSearch={handleSearch} />}
-          heading={workspace.workspaceName || "Workspace"}
+          heading={"Projects"}
           handleSearch={handleSearch}
           hasFilters={false}
           dropdownMenus={dropdownMenus}

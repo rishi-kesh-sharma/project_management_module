@@ -8,7 +8,7 @@ import {
 } from "@/components/ui//Dropdown/dropdown-menu";
 import { cva } from "class-variance-authority";
 
-const iconDropdownVariants = cva("", {
+const iconDropdownVariants = cva("text-foreground", {
   variants: {
     dropdownSize: {
       sm: "w-[5rem]",
@@ -42,7 +42,8 @@ const IconDropdown: React.FC<IIconDropdownMenuProps> = ({
         {menu.items.map((item) => {
           return (
             <>
-              <DropdownMenuItem className="cursor-pointer">
+              <DropdownMenuItem className="cursor-pointer flex gap-3 items-center text-foreground">
+                {item.icon && item.icon}
                 {item.label}
               </DropdownMenuItem>
               <DropdownMenuSeparator className="last-of-type:hidden" />
