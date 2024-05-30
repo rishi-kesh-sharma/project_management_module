@@ -53,6 +53,7 @@ import { MdContentCopy } from "react-icons/md";
 import { PiMagicWandLight } from "react-icons/pi";
 import { IoEllipsisHorizontal } from "react-icons/io5";
 import { CiSearch } from "react-icons/ci";
+import { FaMinus } from "react-icons/fa";
 export {
   FaRegCircleDot as GoalsIcon,
   HiOutlineChartBar as PlanningIcon,
@@ -110,5 +111,6 @@ export {
   MdContentCopy as CopyIconOutlined,
   PiMagicWandLight as MagicIconOutlined,
   IoEllipsisHorizontal as EllipsisIconHorizontal,
-  CiSearch as SearchIcon
+  CiSearch as SearchIcon,
+  FaMinus as MinusIcon,
 };

@@ -511,6 +511,7 @@ export interface IModalProps {
   children?: React.ReactNode;
   footer?: React.ReactNode;
   open?: boolean;
+  size?: "sm" | "md" | "lg" | "xl";
 }
 
 export interface IProgressBarProps {
@@ -600,6 +601,8 @@ type StepItem = {
   description?: string;
   icon?: IconType;
   optional?: boolean;
+  key: string;
+  content: React.ReactNode;
 };
 
 interface StepOptions {

@@ -8,6 +8,21 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/Dialog/dialog";
+import { cn } from "@/lib/utils";
+import { cva } from "class-variance-authority";
+export const modalVariants = cva("", {
+  variants: {
+    size: {
+      sm: "max-w-lg",
+      md: "max-w-xl",
+      lg: "max-w-2xl",
+      xl: "max-w-3xl",
+    },
+  },
+  defaultVariants: {
+    size: "md",
+  },
+});
 
 const Modal: React.FC<IModalProps> = ({
   trigger,
@@ -16,11 +31,12 @@ const Modal: React.FC<IModalProps> = ({
   body,
   footer,
   children,
+  size,
 }) => {
   return (
     <Dialog>
       <DialogTrigger asChild>{trigger}</DialogTrigger>
-      <DialogContent>
+      <DialogContent className={cn(modalVariants({ size: size }))}>
         <DialogHeader>
           <DialogTitle>{title}</DialogTitle>
           <DialogDescription>{description}</DialogDescription>

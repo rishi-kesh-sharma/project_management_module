@@ -50,10 +50,10 @@ const categoriesComboboxData: IComboboxProps = {
   ],
 };
 
-const inventoriesComboboxData: IComboboxProps = {
-  defaultText: "Search inventories here...",
+const equipmentsComboboxData: IComboboxProps = {
+  defaultText: "Search equipments here...",
   emptyText: "No results found",
-  placeholder: "Search inventories here...",
+  placeholder: "Search equipments here...",
   comboboxGroups: [
     {
       heading: "Categories",
@@ -88,18 +88,18 @@ const steps = [
     key: "category",
     content: (
       <div className="flex flex-col my-[3rem] p-[1rem] gap-[1rem] border rounded-md">
-        <Label className="">Select Inventory Category</Label>
+        <Label className="">Select Equipment Category</Label>
         <Combobox comboboxData={categoriesComboboxData} />
       </div>
     ),
   },
   {
-    label: " Inventories",
-    key: "inventories",
+    label: " Equipments",
+    key: "equipments",
     content: (
       <div className="flex flex-col my-[3rem] p-[1rem] gap-[1rem] border rounded-md">
-        <Label className="">Select Inventories for Raw Materials</Label>
-        <Combobox comboboxData={inventoriesComboboxData} />
+        <Label className="">Select Equipments for Raw Materials</Label>
+        <Combobox comboboxData={equipmentsComboboxData} />
       </div>
     ),
   },
@@ -125,7 +125,7 @@ const steps = [
 
               <TableBody className="">
                 <TableRow>
-                  <TableCell>Inventory1</TableCell>
+                  <TableCell>Equipment1</TableCell>
                   <TableCell>Raw Materials</TableCell>
                   <TableCell>50</TableCell>
                   <TableCell>
@@ -168,7 +168,7 @@ const Footer = () => {
     <>
       {hasCompletedAllSteps && (
         <div className="h-40 flex items-center justify-center my-2 border bg-secondary text-primary rounded-md">
-          <h1 className="text-xl">Your Selected Inventory is Assigned 🎉</h1>
+          <h1 className="text-xl">Your Selected Equipment is Assigned 🎉</h1>
         </div>
       )}
       <div className="w-full flex justify-end gap-2">
@@ -195,7 +195,7 @@ const Footer = () => {
   );
 };
 
-export default function AssignInventoryStepperForm() {
+export default function AssignEquipmentStepperForm() {
   return (
     <div className="flex w-full flex-col gap-4">
       <Stepper initialStep={0} steps={steps}>

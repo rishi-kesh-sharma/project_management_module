@@ -39,6 +39,7 @@ const InventoriesTable = ({
             // createPagePath={`/inventory/create`}
             type="modal"
             modal={{
+              size: "lg",
               title: "Assign Inventory",
               description:
                 "You can assign the inventories from here to your project",
@@ -52,7 +53,6 @@ const InventoriesTable = ({
               ),
               body: (
                 <div className="flex flex-col gap-4">
-                  <p className="font-semibold">Default</p>
                   <AssignInventoryStepperForm />
                 </div>
               ),
