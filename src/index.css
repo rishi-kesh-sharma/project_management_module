@@ -57,6 +57,9 @@
   body {
     @apply bg-background text-foreground;
   }
+  e-tbar-btn e-tbtn-txt e-control e-btn e-lib {
+    @apply !bg-gray-800;
+  }
 }
 
 * {

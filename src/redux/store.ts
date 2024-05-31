@@ -9,6 +9,7 @@ import { equipmentsApi } from "@/api/equipments";
 import { budgetsApi } from "@/api/budgets";
 import { taskApi } from "@/api/task";
 import { projectApi } from "@/api/project";
+import { subTaskApi } from "@/api/subTask";
 const store = configureStore({
   reducer: {
     app: appReducer,
@@ -20,6 +21,7 @@ const store = configureStore({
     [projectApi.reducerPath]: projectApi.reducer,
     [budgetsApi.reducerPath]: budgetsApi.reducer,
     [taskApi.reducerPath]: taskApi.reducer,
+    [subTaskApi.reducerPath]: subTaskApi.reducer,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware().concat(
@@ -30,7 +32,8 @@ const store = configureStore({
       equipmentsApi.middleware,
       budgetsApi.middleware,
       taskApi.middleware,
-      projectApi.middleware
+      projectApi.middleware,
+      subTaskApi.middleware
     ),
 });
 

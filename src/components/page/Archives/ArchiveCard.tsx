@@ -22,10 +22,10 @@ import { Link } from "react-router-dom";
 
 const BookmarkCard: React.FC<IBookmark> = ({
   id,
-  projectName,
+  name,
   // createdBy,
-  // startDate,
-  // dueDate,
+  // start_date,
+  // due_date,
   // status,
   // priority,
   // assignee,
@@ -46,7 +46,7 @@ const BookmarkCard: React.FC<IBookmark> = ({
       </div>
       <div className=""></div>
       <CardHeader>
-        <CardTitle className="text-xl">{projectName}</CardTitle>
+        <CardTitle className="text-xl">{name}</CardTitle>
         <CardDescription className="">
           {description && description?.length > 50 ? (
             <>

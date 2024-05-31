@@ -3,17 +3,17 @@ import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 
 export interface IProject {
   id: string;
-  projectName: string;
+  name: string;
   createdBy: string;
-  startDate: Date;
+  start_date: Date;
   status: "On Progress" | "Not Started" | "Completed" | "Pending";
-  dueDate: Date;
+  due_date: Date;
   priority: "Low" | "Normal" | "High";
 }
 
 export interface IWorkspace {
   id?: string;
-  workspaceName?: string;
+  name?: string;
 
   projects: [];
 }

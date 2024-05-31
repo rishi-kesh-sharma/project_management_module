@@ -6,11 +6,15 @@ function createRandomUser() {
     avatar: faker.image.avatar(),
     birthday: faker.date.birthdate(),
     email: faker.internet.email(),
-    firstName: faker.person.firstName(),
-    lastName: faker.person.lastName(),
+    first_name: faker.person.firstName(),
+    last_name: faker.person.lastName(),
     sex: faker.person.sexType(),
     role: faker.helpers.arrayElement(["employee", "admin", "manager"]),
-    subscriptionTier: faker.helpers.arrayElement(["free", "basic", "business"]),
+    subscription_tier: faker.helpers.arrayElement([
+      "free",
+      "basic",
+      "business",
+    ]),
   };
 }
 

@@ -12,16 +12,11 @@ const dropdownMenus = {
   ],
 };
 
-const HumanResourceTable = ({
-  humanResource,
-}: {
-  humanResource: IHumanResourceRowData[];
-}) => {
+const HumanResourceTable = ({ data }: { data: IHumanResourceRowData[] }) => {
   const handleSearch = (e: React.FormEvent) => {
     e.preventDefault();
   };
 
-  console.log(humanResource, "humanResource");
   // if (!humanResource) return "loading...";
   return (
     <div className="">
@@ -37,7 +32,7 @@ const HumanResourceTable = ({
             search={<ProjectsTableSearch handleSearch={handleSearch} />}
           />
         }
-        rowData={humanResource}
+        rowData={data}
         heading={"Human Resources"}
         dropdownMenus={dropdownMenus}
         colDefs={colDefs}

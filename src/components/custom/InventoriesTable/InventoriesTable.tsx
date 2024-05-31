@@ -4,7 +4,6 @@ import TableToolbar from "@/components/custom/common/TableElements/TableToolbar/
 import { IInventoriesRowData } from "@/@types";
 import { Button } from "@/components/plate-ui/button";
 import { PlusIcon } from "../common/icons/commonIcons";
-import StepperDemo from "../common/Forms/StepperForm/examples/stepper-demo";
 import AssignInventoryStepperForm from "./AssignInventoryStepperForm";
 import { ProjectsTableSearch } from "@/utils/constants";
 

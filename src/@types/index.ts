@@ -87,11 +87,11 @@ export interface IHeaderProps {
 
 export interface IProject {
   id: string;
-  taskName: string;
+  name: string;
   createdBy: string;
-  startDate: Date;
+  start_date: Date;
   status: "On Progress" | "Not Started" | "Completed" | "Pending";
-  dueDate: Date;
+  due_date: Date;
   priority: "Low" | "Normal" | "High";
   tasks?: [];
 }
@@ -106,7 +106,7 @@ export interface IInventories {
 }
 export interface IEquipment {
   id: string;
-  equipmentName: string;
+  name: string;
   category: string;
   status: string;
   unitPrice: number;
@@ -116,7 +116,7 @@ export interface IEquipment {
 
 export interface IBudget {
   id: string;
-  taskName: string;
+  name: string;
   totalBudget: number;
   lastUsed: Date;
   budgetSpent: number;
@@ -131,15 +131,15 @@ export interface IHumanResource {
   sex: "male" | "female" | "other";
   role: "frontend" | "backend" | "QA" | "Project Manager";
   allocatedEffort: number;
-  startDate: Date;
-  endDate: Date;
+  start_date: Date;
+  due_date: Date;
 }
 export interface IBookmark {
   id: string;
-  projectName: string;
+  name: string;
   createdBy: string;
-  startDate: string;
-  dueDate: string;
+  start_date: string;
+  due_date: string;
   status: string;
   priority: string;
   assignee: string;
@@ -163,10 +163,10 @@ export interface IRowData {
 
 export interface IWorkspaceRowData {
   id: string;
-  projectName: string;
+  name: string;
   createdBy: string;
-  startDate: string;
-  dueDate: string;
+  start_date: string;
+  due_date: string;
   status: string;
   priority: string;
 }
@@ -175,8 +175,8 @@ export interface ISubTaskRowData {
   id: string;
   subTaskName: string;
   createdBy: string;
-  startDate: string;
-  dueDate: string;
+  start_date: string;
+  due_date: string;
   status: string;
   priority: string;
 }
@@ -185,8 +185,8 @@ export interface ISubTask {
   id: string;
   subTaskName: string;
   createdBy: string;
-  startDate: string;
-  dueDate: string;
+  start_date: string;
+  due_date: string;
   status: string;
   priority: string;
 }
@@ -208,10 +208,10 @@ export interface ITimeTrackingRowData {
 }
 export interface ITask {
   id: string;
-  taskName: string;
+  name: string;
   createdBy: string;
-  startDate: string;
-  dueDate: string;
+  start_date: string;
+  due_date: string;
   status: string;
   priority: string;
   assignee: string;
@@ -220,10 +220,10 @@ export interface ITask {
 }
 export interface ITaskRowData {
   id: string;
-  taskName: string;
+  name: string;
   createdBy: string;
-  startDate: string;
-  dueDate: string;
+  start_date: string;
+  due_date: string;
   status: string;
   priority: string;
   assignee: string;
@@ -232,10 +232,10 @@ export interface ITaskRowData {
 
 export interface IProjectRowData {
   id: string;
-  projectName: string;
+  name: string;
   createdBy: string;
-  startDate: string;
-  dueDate: string;
+  start_date: string;
+  due_date: string;
   status: string;
   priority: string;
   assignee: string;
@@ -243,10 +243,10 @@ export interface IProjectRowData {
 }
 export interface IBookmarkRowData {
   id: string;
-  projectName: string;
+  name: string;
   createdBy: string;
-  startDate: string;
-  dueDate: string;
+  start_date: string;
+  due_date: string;
   status: string;
   priority: string;
   assignee: string;
@@ -264,7 +264,7 @@ export interface IInventoriesRowData {
 }
 export interface IEquipmentRowData {
   id: string;
-  equipmentName: string;
+  name: string;
   category: string;
   status: string;
   unitPrice: number;
@@ -274,7 +274,7 @@ export interface IEquipmentRowData {
 
 export interface IBudgetRowData {
   id: string;
-  taskName: string;
+  name: string;
   totalBudget: number;
   lastUsed: Date;
   budgetSpent: number;
@@ -288,8 +288,8 @@ export interface IHumanResourceRowData {
   sex: "male" | "female" | "other";
   role: "frontend" | "backend" | "QA" | "Project Manager";
   allocatedEffort: number;
-  startDate: Date;
-  endDate: Date;
+  start_date: Date;
+  due_date: Date;
 }
 
 export type RowModelType =
@@ -686,7 +686,7 @@ export type {
 export interface IOverdueProjectData {
   id: string | number;
   overdue: string;
-  projectName: string;
+  name: string;
   deadline: string;
 }
 

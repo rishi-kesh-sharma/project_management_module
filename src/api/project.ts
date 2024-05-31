@@ -28,7 +28,7 @@ export const projectApi = createApi({
       invalidatesTags: [{ type: "Project", id: "LIST" }],
     }),
     getProject: build.query<IProject, string | undefined>({
-      query: (id) => `project/${id}`,
+      query: (id) => `projects/${id}`,
       providesTags: (result, error, id) => [{ type: "Project", id }],
     }),
     updateProject: build.mutation<
@@ -36,7 +36,7 @@ export const projectApi = createApi({
       Pick<IProject, "id"> & Partial<IProject>
     >({
       query: ({ id, ...patch }) => ({
-        url: `project/${id}`,
+        url: `projects/${id}`,
         method: "PUT",
         body: patch,
       }),
@@ -57,7 +57,7 @@ export const projectApi = createApi({
     deleteProject: build.mutation<{ success: boolean; id: number }, number>({
       query(id) {
         return {
-          url: `project/${id}`,
+          url: `projects/${id}`,
           method: "DELETE",
         };
       },

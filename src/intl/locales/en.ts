@@ -28,6 +28,6 @@ export const en = {
   "component.home.text.memberNum": "No. of Members",
   "component.home.text.overdueProject": "Overdue Projects",
   "component.home.text.overdueProject.overdue": "Overdue",
-  "component.home.text.overdueProject.projectName": "Project Name",
+  "component.home.text.overdueProject.name": "Project Name",
   "component.home.text.overdueProject.deadline": "Overdue",
 };

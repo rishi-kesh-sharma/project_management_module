@@ -12,7 +12,7 @@ import {
 import { taskModeData } from "./data.js";
 
 const GanttChart = () => {
-  const taskFields: any = {
+  const taskFields = {
     id: "TaskID",
     name: "TaskName",
     startDate: "StartDate",
@@ -23,20 +23,20 @@ const GanttChart = () => {
     child: "Children",
     manual: "isManual",
   };
-  const labelSettings: any = {
+  const labelSettings = {
     leftLabel: "TaskName",
   };
-  const splitterSettings: any = {
-    position: "25%",
+  const splitterSettings = {
+    position: "35%",
   };
-  const editSettings: any = {
+  const editSettings = {
     allowAdding: true,
     allowEditing: true,
     allowDeleting: true,
     allowTaskbarEditing: true,
     showDeleteConfirmDialog: true,
   };
-  const toolbar: any = [
+  const toolbar = [
     "Add",
     "Edit",
     "Update",
@@ -45,12 +45,11 @@ const GanttChart = () => {
     "ExpandAll",
     "CollapseAll",
   ];
-  const projectStartDate: Date = new Date("02/20/2017");
-  const projectEndDate: Date = new Date("03/30/2017");
-
+  const projectStartDate = new Date("02/20/2017");
+  const projectEndDate = new Date("03/30/2017");
   return (
-    <div className="control-pane mb-[2rem] max-w-[1200px] overflow-auto rounded-lg !dark:bg-background !dark:text-foreground ">
-      <div className="control-section rounded-lg">
+    <div className="control-pane">
+      <div className="control-section">
         <GanttComponent
           id="TaskMode"
           dataSource={taskModeData}
@@ -60,12 +59,11 @@ const GanttChart = () => {
           toolbar={toolbar}
           editSettings={editSettings}
           splitterSettings={splitterSettings}
-          height="490px"
+          height="450px"
           taskMode="Custom"
           taskFields={taskFields}
           labelSettings={labelSettings}
           projectStartDate={projectStartDate}
-          className="rounded-lg"
           projectEndDate={projectEndDate}>
           <ColumnsDirective>
             <ColumnDirective field="TaskID" visible={false}></ColumnDirective>

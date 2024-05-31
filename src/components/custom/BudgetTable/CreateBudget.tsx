@@ -96,7 +96,7 @@ const CreateBudget: React.FC = () => {
                   placeholder="Eg. My Budget"
                   {...field}
                   id="name"
-                  // name="projectName"
+                  // name="name"
                 />
               </FormControl>
 

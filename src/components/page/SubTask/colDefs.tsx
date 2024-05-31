@@ -36,7 +36,7 @@ export const colDefs = [
   },
 
   {
-    field: "startDate",
+    field: "start_date",
     headerName: "Start Date",
     editable: true,
     cellEditor: "agDateCellEditor",
@@ -52,7 +52,7 @@ export const colDefs = [
     // },
   },
   {
-    field: "dueDate",
+    field: "due_date",
     headerName: "Due Date",
     filter: "agDateColumnFilter",
     cellEditor: "agDateCellEditor",

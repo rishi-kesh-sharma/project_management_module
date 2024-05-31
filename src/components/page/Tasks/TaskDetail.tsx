@@ -157,7 +157,6 @@ const quickAccessOptions = {
   primaryOptions,
   secondaryOptions,
 };
-import { useGetTasksQuery } from "@/api/task";
 import BudgetDetail from "@/components/custom/BudgetTable/BudgetDetail";
 import Tabs from "@/components/custom/common/Tabs/TabsWithBottomBorder/Tabs";
 import EquipmentsDetail from "@/components/custom/EquipmentsTable/EquipmentDetail";
@@ -173,11 +172,12 @@ import { useState } from "react";
 import { getSuccessToast } from "@/utils/constants/toast";
 import { useTheme } from "@/components/Providers/Theme/ThemeProvider";
 import IconDropdown from "@/components/custom/common/Dropdowns/IconDropdown/IconDropdown";
+import { useGetTaskQuery } from "@/api/task";
 // import { useParams } from "react-router";
 const TaskDetail = () => {
   // const { workspaceId, projectId, taskId } = useParams();
-  const { data, isLoading } = useGetTasksQuery();
-  const { workspaceId } = useParams();
+  const { taskId } = useParams();
+  const { data, isLoading, isError } = useGetTaskQuery(taskId);
 
   const [isBookmarked, setIsBookmarked] = useState(false);
   const [isArchived, setIsArchived] = useState(false);
@@ -202,17 +202,16 @@ const TaskDetail = () => {
 
     setIsArchived((prev) => !prev);
   };
-  if (!workspaceId) return "loading";
-  if (isLoading || !data) return <Spinner />;
+
   if (isLoading || !data) return <Spinner />;
 
-  const firstTask: ITask = data[0];
+  if (isError) return <div>Error Occurred</div>;
 
   return (
     <div className="my-[2rem]">
       <div className="flex items-center gap-[2rem] mb-[1rem] mt-[1.5rem] bg-primary/10 p-[1rem] rounded-lg group">
         <h2 className="text-nowrap text-xl font-semibold text-primary">
-          {firstTask.taskName}
+          {data && data.name}
         </h2>
 
         <div className="flex items-center gap-[1rem]  group-hover:flex">
@@ -282,7 +281,7 @@ const TaskDetail = () => {
         contents={[
           {
             id: "sub-tasks",
-            element: <TaskDetailTable task={firstTask} />,
+            element: <TaskDetailTable task={data} />,
           },
           {
             id: "planning",
@@ -371,7 +370,7 @@ const TaskDetail = () => {
             id: "time-tracking",
             element: (
               <div>
-                <TimeTrackingDetail task={firstTask} />
+                <TimeTrackingDetail task={data} />
               </div>
             ),
           },

@@ -86,6 +86,14 @@ export const primaryOptions = [
     isLink: false,
   },
   {
+    label: "Notification",
+    id: "notification",
+    icon: (
+      <NotificationIconOutlined className="cursor-pointer text-foreground/80 text-lg" />
+    ),
+    isLink: false,
+  },
+  {
     label: "Archive",
     id: "archive",
     icon: <ArchiveIconOutlined className="cursor-pointer text-foreground/80" />,
@@ -140,7 +148,7 @@ const WorkspaceDetail = () => {
     <div className="mb-[2rem]">
       <div className="flex items-center gap-[2rem] mb-[1rem] mt-[1.5rem] bg-primary/10 p-[1rem] rounded-lg group">
         <h2 className="text-nowrap text-xl font-semibold text-primary">
-          {data.workspaceName}
+          {data.name}
         </h2>
 
         <div className=" flex items-center gap-[1rem] ">
@@ -184,25 +192,23 @@ const WorkspaceDetail = () => {
                 {/* <ThreeHorizontalInsideCircle className="text-primary text-lg cursor-pointer" /> */}
               </div>
             )}
-          {quickAccessOptions?.primaryOptions?.find(
+          {/* {quickAccessOptions?.primaryOptions?.find(
             (item) => item.id === "notification"
           ) && (
             <NotificationIconOutlined className="text-2xl  text-gray-500 cursor-pointer" />
-          )}
+          )} */}
 
           {quickAccessOptions?.primaryOptions
             ?.filter(
-              (item) =>
-                item.id !== "bookmark" &&
-                item.id !== "archive" &&
-                item.id !== "notification"
+              (item) => item.id !== "bookmark" && item.id !== "archive"
+              //  && item.id !== "notification"
             )
             .map((item) => item.icon)}
 
           <IconDropdown
             className={` `}
             menu={{ items: secondaryOptions }}
-            icon={<EllipsisIconHorizontal className="relative" />}
+            icon={<EllipsisIconHorizontal className="relative " />}
           />
         </div>
       </div>

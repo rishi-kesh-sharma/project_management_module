@@ -9,7 +9,7 @@ import Tags from "../common/Tags/Tags";
 import { faker } from "@faker-js/faker";
 export const colDefs = [
   {
-    field: "equipmentName",
+    field: "name",
     headerCheckboxSelection: true,
     headerName: "Equipment Name",
     checkboxSelection: true,

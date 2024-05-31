@@ -1,13 +1,10 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { IProjectRowData } from "@/@types";
-import Badge from "@/components/custom/common/Badge/Badge";
 import {
   EditIcon,
   TrashIcon,
 } from "@/components/custom/common/icons/commonIcons";
-import { Link, useParams } from "react-router-dom";
 import Tags from "../common/Tags/Tags";
-import { getTagVariantForValues } from "@/lib/utils";
 import { faker } from "@faker-js/faker";
 import moment from "moment";
 import { users } from "@/utils/constants";
@@ -18,20 +15,21 @@ import {
 } from "@/components/ui/Avatar/avatar";
 export const colDefs = [
   {
-    field: "fullName",
+    field: "name",
     headerCheckboxSelection: true,
     headerName: "Full Name",
     minWidth: 220,
     checkboxSelection: true,
     cellRenderer: (p: { value: string; data: IProjectRowData }) => {
       // eslint-disable-next-line react-hooks/rules-of-hooks
-      const { humanResourceId } = useParams();
+      // const { humanResourceId } = useParams();
       return (
-        <Link
-          className="hover:underline"
-          to={`/humanResource/${humanResourceId}`}>
-          {p.value}
-        </Link>
+        // <Link
+        //   className="hover:underline"
+        //   to={`/humanResource/${humanResourceId}`}>
+        //   {p.value}
+        // </Link>
+        p.value
       );
     },
   },
@@ -55,7 +53,7 @@ export const colDefs = [
     },
   },
   {
-    field: "role",
+    field: "job_title",
     headerName: "Job Title",
     cellRenderer: (p: { value: string }) => {
       return (
@@ -114,13 +112,15 @@ export const colDefs = [
     },
   },
   {
-    field: "startDate",
+    headerName: "Start Date",
+    field: "start_date",
     cellRenderer: (p: { value: Date }) => {
       return moment(p.value).fromNow();
     },
   },
   {
-    field: "endDate",
+    headerName: "Due Date",
+    field: "due_date",
     cellRenderer: (p: { value: Date }) => {
       return moment(p.value).fromNow();
     },

@@ -4,25 +4,23 @@ import {
   EditIcon,
   TrashIcon,
 } from "@/components/custom/common/icons/commonIcons";
-import { Link, useParams } from "react-router-dom";
 import Tags from "../common/Tags/Tags";
 import { faker } from "@faker-js/faker";
-import { getTagVariantForValues } from "@/lib/utils";
 export const colDefs = [
   {
-    field: "itemName",
+    field: "name",
     headerCheckboxSelection: true,
     headerName: "Inventory Name",
     checkboxSelection: true,
     cellRenderer: (p: { value: string; data: IProjectRowData }) => {
       // eslint-disable-next-line react-hooks/rules-of-hooks
-      const { workspaceId, projectId } = useParams();
+      // const { workspaceId, projectId } = useParams();
       return (
-        <Link
-          className="hover:underline"
-          to={`/workspace/${workspaceId}/project/${projectId}/task/${p.data.id}`}>
-          {p.value}
-        </Link>
+        // <Link
+        //   className="hover:underline"
+        //   to={`/workspace/${workspaceId}/project/${projectId}/task/${p.data.id}`}>
+        // </Link>
+        p.value
       );
     },
   },

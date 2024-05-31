@@ -3,22 +3,24 @@ import { faker } from "@faker-js/faker";
 function createRandomInventories() {
   return {
     id: faker.string.uuid(),
-    itemName: faker.commerce.product(),
+    name: faker.commerce.product(),
     category: faker.helpers.arrayElement([
       "Software Licenses",
       "Cloud Services",
       "Subscriptions",
       "Digital Assets",
     ]),
-    subCategory: faker.helpers.arrayElement([
+    sub_category: faker.helpers.arrayElement([
       "Operating Systems",
       "Cloud Storage",
       "Technical Support Services",
       "Design File",
     ]),
-    unitPrice: faker.commerce.price(),
+    purchase_price: faker.commerce.price({ min: 100, max: 1000000 }),
     quantity: faker.number.int({ min: 1, max: 100 }),
-    totalPrice: faker.commerce.price(),
+    total_price: faker.commerce.price(),
+    status: faker.helpers.arrayElement(["In Use", "Spare", "Maintenance"]),
+    description: faker.lorem.words({ min: 20, max: 300 }),
   };
 }
 

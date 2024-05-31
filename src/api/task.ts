@@ -21,14 +21,14 @@ export const taskApi = createApi({
     }),
     addTask: build.mutation<ITask, Partial<ITask>>({
       query: (body) => ({
-        url: `task`,
+        url: `tasks`,
         method: "POST",
         body,
       }),
       invalidatesTags: [{ type: "Task", id: "LIST" }],
     }),
     getTask: build.query<ITask, string | undefined>({
-      query: (id) => `task/${id}`,
+      query: (id) => `tasks/${id}`,
       providesTags: (result, error, id) => [{ type: "Task", id }],
     }),
     updateTask: build.mutation<void, Pick<ITask, "id"> & Partial<ITask>>({
@@ -54,7 +54,7 @@ export const taskApi = createApi({
     deleteTask: build.mutation<{ success: boolean; id: number }, number>({
       query(id) {
         return {
-          url: `task/${id}`,
+          url: `tasks/${id}`,
           method: "DELETE",
         };
       },

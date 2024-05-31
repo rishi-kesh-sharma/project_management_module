@@ -3,6 +3,8 @@ import { colDefs } from "./colDefs";
 import TableToolbar from "@/components/custom/common/TableElements/TableToolbar/TableToolbar";
 import { ITaskRowData } from "@/@types";
 import { ProjectsTableFilters, ProjectsTableSearch } from "@/utils/constants";
+import Spinner from "@/components/custom/common/Loaders/Spinner/Spinner";
+import { useGetSubTasksQuery } from "@/api/subTask";
 
 const dropdownMenus = {
   items: [
@@ -13,17 +15,20 @@ const dropdownMenus = {
 };
 
 const TaskTable = ({ task }: { task: ITaskRowData }) => {
+  const { data, isLoading, isError } = useGetSubTasksQuery();
+
   const handleSearch = (e: React.FormEvent) => {
     e.preventDefault();
   };
 
-  if (!task) return "loading...";
+  if (isLoading) return <Spinner />;
+  if (isError) return <div>Error Occurred</div>;
   return (
     <div className="mt-[2rem]">
       <AgGridTable
         tableToolbar={
           <TableToolbar
-            heading={task.taskName}
+            heading={task.name}
             hasSearch={true}
             search={<ProjectsTableSearch handleSearch={handleSearch} />}
             dropdownMenus={dropdownMenus}
@@ -36,8 +41,8 @@ const TaskTable = ({ task }: { task: ITaskRowData }) => {
             hasNotification={true}
           />
         }
-        rowData={task.subTasks}
-        heading={task.taskName}
+        rowData={data}
+        heading={task.name}
         dropdownMenus={dropdownMenus}
         colDefs={colDefs}
         sidebar={true}

@@ -23,7 +23,7 @@ const TaskTable = ({ task }: { task: ITaskRowData }) => {
       <AgGridTable
         tableToolbar={
           <TableToolbar
-            heading={task.taskName}
+            heading={task.name}
             handleSearch={handleSearch}
             dropdownMenus={dropdownMenus}
             createButtonText="Task"
@@ -35,7 +35,7 @@ const TaskTable = ({ task }: { task: ITaskRowData }) => {
           />
         }
         rowData={task.subTasks}
-        heading={task.taskName}
+        heading={task.name}
         dropdownMenus={dropdownMenus}
         colDefs={colDefs}
       />

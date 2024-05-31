@@ -5,6 +5,7 @@ import { colDefs } from "./colDefs";
 import { useParams } from "react-router";
 import Spinner from "@/components/custom/common/Loaders/Spinner/Spinner";
 import { ProjectsTableSearch } from "@/utils/constants";
+import { useGetProjectsQuery } from "@/api/project";
 
 const dropdownMenus = {
   items: [
@@ -15,11 +16,13 @@ const dropdownMenus = {
 };
 
 const ProjectTable = ({ workspace }: { workspace: IWorkspace }) => {
+  const { data, isLoading, isError } = useGetProjectsQuery();
   const { workspaceId } = useParams();
   const handleSearch = (e: React.FormEvent) => {
     e.preventDefault();
   };
-  if (!workspace) return <Spinner />;
+  if (isLoading) return <Spinner />;
+  if (isError) return <div>Error Occurred</div>;
   return (
     <AgGridTable
       tableToolbar={
@@ -38,8 +41,8 @@ const ProjectTable = ({ workspace }: { workspace: IWorkspace }) => {
           hasNotification={true}
         />
       }
-      rowData={workspace.projects}
-      heading={workspace.workspaceName}
+      rowData={data}
+      heading={workspace.name}
       dropdownMenus={dropdownMenus}
       colDefs={colDefs}
       sidebar={true}

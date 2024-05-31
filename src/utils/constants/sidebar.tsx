@@ -31,12 +31,12 @@ export const sidebarItems = (injectables: ISidebarItemsProps) => [
       const link = `/workspace/${workspace?.id}`;
       const items = workspace?.projects?.map((project: IProject) => {
         return {
-          label: project.projectName,
+          label: project.name,
           link: `/project/${project?.id}`,
         };
       });
 
-      return { link, label: workspace.workspaceName, items };
+      return { link, label: workspace.name, items };
     });
 
     console.log(items, "items");
@@ -64,7 +64,7 @@ export const sidebarItems = (injectables: ISidebarItemsProps) => [
     const bookmarks = injectables?.bookmarks;
     const items = bookmarks?.slice(0, 3)?.map((project: IProject) => {
       const link = `/bookmark/${project.id}`;
-      return { link, label: project.projectName };
+      return { link, label: project.name };
     });
 
     return {
@@ -89,7 +89,7 @@ export const sidebarItems = (injectables: ISidebarItemsProps) => [
     const archives = injectables?.archives;
     const items = archives?.slice(0, 3)?.map((project: IProject) => {
       const link = `/archive/${project.id}`;
-      return { link, label: project.projectName };
+      return { link, label: project.name };
     });
 
     return {

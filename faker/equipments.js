@@ -3,25 +3,25 @@ import { faker } from "@faker-js/faker";
 function createRandomEquipments(value) {
   return {
     id: faker.string.uuid(),
-    equipmentName: `Equipment ${value}`,
+    name: `Equipment ${value}`,
     category: faker.helpers.arrayElement([
       "Software Licenses",
       "Cloud Services",
       "Subscriptions",
       "Digital Assets",
     ]),
-    // subCategory: faker.helpers.arrayElement([
-    //   "Operating Systems",
-    //   "Cloud Storage",
-    //   "Technical Support Services",
-    //   "Design File",
-    // ]),
-    unitPrice: faker.commerce.price(),
+    subCategory: faker.helpers.arrayElement([
+      "Operating Systems",
+      "Cloud Storage",
+      "Technical Support Services",
+      "Design File",
+    ]),
+    unit_price: faker.commerce.price(),
     quantity: faker.number.int({
       min: 0,
       max: 100,
     }),
-    totalPrice: faker.commerce.price(),
+    total_price: faker.commerce.price({ min: 100, max: 1000000 }),
     status: faker.helpers.arrayElement(["Spare", "In-use", "Maintenance"]),
   };
 }

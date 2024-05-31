@@ -158,7 +158,6 @@ const quickAccessOptions = {
   primaryOptions,
   secondaryOptions,
 };
-import { useGetWorkspaceQuery } from "@/api/workspace";
 import BudgetDetail from "@/components/custom/BudgetTable/BudgetDetail";
 import Spinner from "@/components/custom/common/Loaders/Spinner/Spinner";
 import Tabs from "@/components/custom/common/Tabs/TabsWithBottomBorder/Tabs";
@@ -180,34 +179,17 @@ import {
   MoneyIconOutlined,
   PeopleIconOutlined,
 } from "@/components/custom/common/icons/commonIcons";
-import { useCallback, useEffect, useState } from "react";
+import { useState } from "react";
 import { getSuccessToast } from "@/utils/constants/toast";
-import { IProjectRowData } from "@/@types";
+import { useGetProjectQuery } from "@/api/project";
 const ProjectDetail = () => {
   const [isBookmarked, setIsBookmarked] = useState(false);
   const { workspaceId, projectId } = useParams();
   const [isArchived, setIsArchived] = useState(false);
-  const { data, isLoading } = useGetWorkspaceQuery(workspaceId);
-
+  const { data, isLoading, isError } = useGetProjectQuery(projectId);
   const { theme } = useTheme();
-
-  const [project, setProject] = useState<IProjectRowData>();
-
-  const getProject = useCallback(
-    (id: string) => {
-      return data?.projects?.find((item: { id: string }) => {
-        return item.id === id;
-      });
-    },
-    [data]
-  );
-
-  useEffect(() => {
-    if (projectId) setProject(getProject(projectId));
-  }, [project, projectId, getProject]);
-
-  if (projectId) getProject(projectId);
-  if (!project) return <Spinner />;
+  if (isLoading) return <Spinner />;
+  if (isError) return <div>Error Occurred</div>;
 
   const toggleBookmark = () => {
     if (isBookmarked) {
@@ -248,7 +230,7 @@ const ProjectDetail = () => {
 
       <div className="flex items-center gap-[2rem] mb-[1rem] mt-[1.5rem] bg-primary/10 p-[1rem] rounded-lg group">
         <h2 className="text-nowrap text-xl font-semibold text-primary">
-          {project.projectName}
+          {data.name}
         </h2>
 
         <div className="flex items-center gap-[1rem]  group-hover:flex">
@@ -319,7 +301,7 @@ const ProjectDetail = () => {
         contents={[
           {
             id: "tasks",
-            element: <ProjectDetailTable tasks={project.tasks} />,
+            element: <ProjectDetailTable />,
           },
           {
             id: "planning",

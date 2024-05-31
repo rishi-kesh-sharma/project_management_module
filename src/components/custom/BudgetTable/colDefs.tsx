@@ -7,7 +7,7 @@ import moment from "moment";
 import { Link, useParams } from "react-router-dom";
 export const colDefs = [
   {
-    field: "budgetName",
+    field: "name",
     headerCheckboxSelection: true,
     headerName: "Budget Name",
     checkboxSelection: true,
@@ -23,16 +23,16 @@ export const colDefs = [
   },
 
   {
-    field: "totalBudget",
+    field: "allocated_amount",
   },
   {
-    field: "lastUsed",
+    field: "last_used",
     cellRenderer: (p: { value: string }) => {
       return <>{moment(p.value).fromNow()}</>;
     },
   },
   {
-    field: "budgetSpent",
+    field: "spent_amount",
   },
   {
     field: "Actions",

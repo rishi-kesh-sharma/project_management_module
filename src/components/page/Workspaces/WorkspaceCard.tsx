@@ -18,10 +18,12 @@ import { faker } from "@faker-js/faker";
 import { Ellipsis } from "lucide-react";
 import React from "react";
 import { Link } from "react-router-dom";
+import UpdateWorkspaceModalForm from "../Analytics/UpdateWorkspaceModalForm";
+import { Button } from "@/components/ui/Button/button";
 
 export interface IWorkspaceCardProps {
   id: string;
-  workspaceName: string;
+  name: string;
   projects: IProject[];
   description: string;
   tags: string[];
@@ -33,7 +35,7 @@ export interface IWorkspaceCardProps {
 
 const WorkspaceCard: React.FC<IWorkspaceCardProps> = ({
   id,
-  workspaceName,
+  name,
   // projects,
   description,
   tags,
@@ -54,7 +56,7 @@ const WorkspaceCard: React.FC<IWorkspaceCardProps> = ({
       </div>
       <div className=""></div>
       <CardHeader>
-        <CardTitle className="text-xl">{workspaceName}</CardTitle>
+        <CardTitle className="text-xl">{name}</CardTitle>
         <CardDescription className="">
           {description.length > 50 ? (
             <>
@@ -87,11 +89,30 @@ const WorkspaceCard: React.FC<IWorkspaceCardProps> = ({
         </div>
       </CardContent>
       <CardFooter className="hidden  group-hover:flex gap-[1rem] absolute z-10 text-white text-2xl  left-[50%] top-[50%] translate-x-[-50%] translate-y-[-50%] ">
-        <EditIcon />
-        <Link to={`/workspace/${id}`}>
-          {" "}
-          <EyeIcon />
-        </Link>
+        <Button
+          asChild
+          variant={"link"}
+          className="flex gap-1   p-0 border-none  focus:bg-none"
+          size={"xl"}>
+          <Link
+            className="text-xl text-primary-foreground"
+            to={`/workspace/${id}`}>
+            {" "}
+            <EyeIcon />
+          </Link>
+        </Button>
+        <UpdateWorkspaceModalForm
+          trigger={
+            <Button
+              asChild
+              variant={"link"}
+              // type="button"
+              className="flex gap-1  w-full h-full p-0 border-none  focus:bg-none"
+              size={"xl"}>
+              <EditIcon className="text-[1.6rem] hover:bg-none text-primary-foreground " />
+            </Button>
+          }
+        />
       </CardFooter>
     </Card>
   );

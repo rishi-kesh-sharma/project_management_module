@@ -35,7 +35,7 @@ const CreateWorkspaceModalForm = ({
   const [createWorkspace, { isLoading }] = useAddWorkspaceMutation();
 
   const formSchema = z.object({
-    workspaceName: z.string().min(2).max(50),
+    name: z.string().min(2).max(50),
     tags: z.array(
       z.object({
         id: z.string(),
@@ -58,7 +58,7 @@ const CreateWorkspaceModalForm = ({
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      workspaceName: "",
+      name: "",
       tags: [],
       description: "",
     },
@@ -76,7 +76,7 @@ const CreateWorkspaceModalForm = ({
             className="flex gap-[2rem] flex-col">
             <FormField
               control={form.control}
-              name="workspaceName"
+              name="name"
               render={({ field }) => (
                 <FormItem>
                   <FormLabel> Name</FormLabel>
@@ -84,8 +84,8 @@ const CreateWorkspaceModalForm = ({
                     <TextInput
                       placeholder="Eg. Workspace 1"
                       {...field}
-                      id="workspaceName"
-                      name="workspaceName"
+                      id="name"
+                      name="name"
                     />
                   </FormControl>
 

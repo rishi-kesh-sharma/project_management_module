@@ -1,9 +1,10 @@
 import AgGridTable from "@/components/custom/common/Tables/AgGridTable/AgGridTable";
 import { colDefs } from "../Projects/colDefs";
 import TableToolbar from "@/components/custom/common/TableElements/TableToolbar/TableToolbar";
-import { IProjectRowData, ITaskRowData } from "@/@types";
 import { useParams } from "react-router";
 import { ProjectsTableFilters, ProjectsTableSearch } from "@/utils/constants";
+import { useGetTasksQuery } from "@/api/task";
+import Spinner from "@/components/custom/common/Loaders/Spinner/Spinner";
 
 const dropdownMenus = {
   items: [
@@ -13,13 +14,15 @@ const dropdownMenus = {
   ],
 };
 
-const ProjectTable = ({ tasks }: { tasks: ITaskRowData[] }) => {
+const ProjectTable = () => {
   const { workspaceId, projectId } = useParams();
+  const { data, isLoading, isError } = useGetTasksQuery();
 
   const handleSearch = (e: React.FormEvent) => {
     e.preventDefault();
   };
-
+  // if (isLoading) return <Spinner />;
+  if (isError) return <div>Error Occurred</div>;
   return (
     <div className="mt-[1rem]">
       <AgGridTable
@@ -39,7 +42,7 @@ const ProjectTable = ({ tasks }: { tasks: ITaskRowData[] }) => {
             hasNotification={true}
           />
         }
-        rowData={tasks}
+        rowData={data}
         heading={"Tasks"}
         dropdownMenus={dropdownMenus}
         colDefs={colDefs}

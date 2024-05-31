@@ -8,7 +8,7 @@ import moment from "moment";
 import { Link, useParams } from "react-router-dom";
 export const colDefs = [
   {
-    field: "taskName",
+    field: "name",
     headerCheckboxSelection: true,
     headerName: "Task Name",
     checkboxSelection: true,
@@ -26,7 +26,7 @@ export const colDefs = [
   },
   { field: "createdBy", headerName: "Created By" },
   {
-    field: "startDate",
+    field: "start_date",
     headerName: "Start Date",
 
     cellRenderer: (p: { value: string }) => {
@@ -34,7 +34,7 @@ export const colDefs = [
     },
   },
   {
-    field: "dueDate",
+    field: "due_date",
     headerName: "Due Date",
     cellRenderer: (p: { value: string }) => {
       return <>{moment(p.value).fromNow()}</>;

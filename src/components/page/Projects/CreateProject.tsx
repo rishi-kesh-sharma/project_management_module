@@ -36,7 +36,7 @@ const CreateProject: React.FC = () => {
   // const { workspaceId } = useParams();
 
   const formSchema = z.object({
-    projectName: z.string().min(2).max(100),
+    name: z.string().min(2).max(100),
     projectType: z.string(),
     workspace: z.string(),
     teamMembers: z.array(z.string()),
@@ -57,7 +57,7 @@ const CreateProject: React.FC = () => {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      projectName: "",
+      name: "",
       projectType: "",
       workspace: "",
       teamMembers: [],
@@ -83,7 +83,7 @@ const CreateProject: React.FC = () => {
         <h1 className="text-bold text-xl mt-[2rem]">Create a Project</h1>
         <FormField
           control={form.control}
-          name="projectName"
+          name="name"
           render={({ field }) => (
             <FormItem>
               <FormLabel>Project Name</FormLabel>
@@ -91,8 +91,8 @@ const CreateProject: React.FC = () => {
                 <TextInput
                   placeholder="Eg. Project 1"
                   {...field}
-                  id="projectName"
-                  // name="projectName"
+                  id="name"
+                  // name="name"
                 />
               </FormControl>
 

@@ -17,7 +17,7 @@ import moment from "moment";
 import { Link, useParams } from "react-router-dom";
 export const colDefs = [
   {
-    field: "taskName",
+    field: "name",
     headerCheckboxSelection: true,
     headerName: "Task Name",
     checkboxSelection: true,
@@ -38,7 +38,7 @@ export const colDefs = [
   },
   // { field: "createdBy", headerName: "Created By" },
   {
-    field: "startDate",
+    field: "start_date",
     headerName: "Start Date",
     editable: true,
     cellEditor: "agDateCellEditor",
@@ -54,7 +54,7 @@ export const colDefs = [
     // },
   },
   {
-    field: "dueDate",
+    field: "due_date",
     headerName: "Due Date",
     filter: "agDateColumnFilter",
     cellEditor: "agDateCellEditor",

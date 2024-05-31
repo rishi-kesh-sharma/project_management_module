@@ -16,16 +16,16 @@ import { createNProjects } from "./project.js";
     "./db.json",
     JSON.stringify({
       users: createNUsers(20),
-      workspaces: createNWorkspaces(4),
-      bookmarks: createNBookmarkedProjects(5),
-      archives: createNArchivedProjects(5),
-      inventories: createNInventories(10),
-      equipments: createNEquipments(10),
-      humanResources: createNHumanResources(20),
-      budgets: createNBudgets(20),
-      subTasks: createNSubTasks(20),
-      tasks: createNTasks(10),
-      projects: createNProjects(10),
+      workspaces: createNWorkspaces(5),
+      bookmarks: createNBookmarkedProjects(20),
+      archives: createNArchivedProjects(22),
+      inventories: createNInventories(22),
+      equipments: createNEquipments(22),
+      humanResources: createNHumanResources(22),
+      budgets: createNBudgets(22),
+      subTasks: createNSubTasks(22),
+      tasks: createNTasks(22),
+      projects: createNProjects(22),
     })
   );
 })();
