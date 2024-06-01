@@ -2,27 +2,27 @@ import CommonLayout from "../../layouts/CommonLayout.tsx";
 import { createBrowserRouter, Link, RouterProvider } from "react-router-dom";
 import LoginPage from "@/components/page/Login/Login.tsx";
 import RegisterPage from "@/components/page/Register/Register.tsx";
-import AnalyticsPage from "@/pages/AnalyticsPage.tsx";
-import ProjectDetailPage from "@/pages/ProjectDetailPage.tsx";
+import AnalyticsPage from "@/pages/Dashboard/AnalyticsPage.tsx";
+import ProjectDetailPage from "@/pages/Project/ProjectDetailPage.tsx";
 import { PrivateRoute } from "@/layouts/PrivateRoute.tsx";
 import { TRole } from "@/@types";
-import WorkspaceDetailPage from "@/pages/WorkspaceDetailPage.tsx";
+import WorkspaceDetailPage from "@/pages/Workspace/WorkspaceDetailPage.tsx";
 
 import i18n from "@/intl/i18n.ts";
 
 import { BreadcrumbSeparator } from "@/components/ui/Breadcrumb/breadcrumb.tsx";
-import CreateProjectPage from "@/pages/CreateProjectPage.tsx";
-import BookmarkDetailPage from "@/pages/BookmarkDetail.tsx";
-import TaskDetailPage from "@/pages/TaskDetailPage.tsx";
-import WorkspacesPage from "@/pages/WorkspacesPage.tsx";
+import CreateProjectPage from "@/pages/Project/CreateProjectPage.tsx";
+import BookmarkDetailPage from "@/pages/Bookmark/BookmarkDetail.tsx";
+import TaskDetailPage from "@/pages/Task/TaskDetailPage.tsx";
+import WorkspacesPage from "@/pages/Workspace/WorkspacesPage.tsx";
 import { pageTitles } from "../constants/pageTitles.tsx";
-import BookmarksPage from "@/pages/BookmarksPage.tsx";
-import ArchivesPage from "@/pages/ArchivesPage.tsx";
-import ArchiveDetailPage from "@/pages/ArchiveDetail.tsx";
-import UpdateTaskPage from "@/pages/UpdateTaskPage.tsx";
-import CreateTaskPage from "@/pages/CreateTaskPage.tsx";
-import UpdateProjectPage from "@/pages/UpdateProjectPage.tsx";
-import CreateBudgetPage from "@/pages/CreateBudgetPage.tsx";
+import BookmarksPage from "@/pages/Bookmark/BookmarksPage.tsx";
+import ArchivesPage from "@/pages/Archive/ArchivesPage.tsx";
+import ArchiveDetailPage from "@/pages/Archive/ArchiveDetail.tsx";
+import UpdateTaskPage from "@/pages/Task/UpdateTaskPage.tsx";
+import CreateTaskPage from "@/pages/Task/CreateTaskPage.tsx";
+import UpdateProjectPage from "@/pages/Project/UpdateProjectPage.tsx";
+import CreateBudgetPage from "@/pages/Budget/CreateBudgetPage.tsx";
 
 interface IROLE {
   ADMIN: TRole;

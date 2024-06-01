@@ -123,16 +123,16 @@ export interface IBudget {
 }
 
 export interface IHumanResource {
-  id: string;
-  fullName: string;
-  username: string;
-  email: string;
-  lastName: string;
-  sex: "male" | "female" | "other";
-  role: "frontend" | "backend" | "QA" | "Project Manager";
-  allocatedEffort: number;
-  start_date: Date;
-  due_date: Date;
+  id?: string;
+  name?: string;
+  username?: string;
+  email?: string;
+  last_name?: string;
+  sex?: "male" | "female" | "other";
+  role?: "frontend" | "backend" | "QA" | "Project Manager";
+  allocated_effort?: number;
+  start_date?: Date;
+  due_date?: Date;
 }
 export interface IBookmark {
   id: string;

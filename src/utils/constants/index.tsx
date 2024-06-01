@@ -1,21 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable react-refresh/only-export-components */
-import { ICommandProps, IUpcomingDeadlineData } from "@/@types";
-import {
-  ArchiveIconOutlined,
-  BookmarkIconOutlined,
-  DotIconFilled,
-  EmailIconReadOutlined,
-  NotificationIconOutlined,
-  PeopleIcon,
-  ProjectsIcon,
-  SettingIcon,
-  TaskIcon,
-  UserIconCircleOutlined,
-  WorkspaceIcon,
-} from "@/components/custom/common/icons/commonIcons";
-import i18n from "@/intl/i18n";
-import { faker } from "@faker-js/faker";
+
 import {
   // CalendarIcon,
   EnvelopeClosedIcon,
@@ -25,7 +10,6 @@ import {
   PersonIcon,
   RocketIcon,
 } from "@radix-ui/react-icons";
-import moment from "moment";
 
 // export const BASE_URL = `http://192.168.254.239:4000`;
 export const BASE_URL = `http://localhost:4000`;
@@ -108,307 +92,168 @@ export const ROLE = {
   USER: "user",
 };
 
-export const pieChartData = {
-  labels: [
-    i18n.t("component.home.text.projectStatus.pending", "pending"),
-    i18n.t("component.home.text.projectStatus.notStarted", "Not Started"),
-    i18n.t("component.home.text.projectStatus.onProgress", "On Progress"),
-    i18n.t("component.home.text.projectStatus.completed", "Completed"),
-  ],
-  datasets: [
+import { CalendarIcon } from "@radix-ui/react-icons";
+import { IComboboxProps, ICommandProps } from "@/@types";
+import Combobox from "@/components/custom/common/Combobox/Combobox";
+import SpeedDial from "@/components/custom/common/SpeedDial/SpeedDial";
+import SearchInput from "@/components/custom/common/SearchInput/SearchInput";
+import {
+  ArchiveIconOutlined,
+  BookmarkIconOutlined,
+  DotIconFilled,
+  EmailIconReadOutlined,
+  NotificationIconOutlined,
+  ProjectsIcon,
+  SettingIcon,
+  TaskIcon,
+  UserIconCircleOutlined,
+  WorkspaceIcon,
+} from "@/components/custom/common/icons/commonIcons";
+
+export const comboboxData: IComboboxProps = {
+  defaultText: "Search items here...",
+  emptyText: "No results found",
+  placeholder: "Search here...",
+  comboboxGroups: [
     {
-      data: [12, 10, 8, 12],
-      backgroundColor: [
-        "#FF3A29",
-        "#02A0FC",
-        "#5541D8",
-        "#34B53A",
-        // "#FFB200",
-        // "#FFE5D3",
+      heading: "Suggestions",
+      comboboxItems: [
+        {
+          icon: <CalendarIcon className="mr-2 h-4 w-4" />,
+          label: "Calendar",
+          value: "calendar",
+        },
+        {
+          icon: <FaceIcon className="mr-2 h-4 w-4" />,
+          label: "Search Emoji",
+          value: "search-emoji",
+        },
+        {
+          icon: <RocketIcon className="mr-2 h-4 w-4" />,
+          label: "Launch",
+          value: "launch",
+        },
+      ],
+    },
+    {
+      heading: "Settings",
+      comboboxItems: [
+        {
+          icon: <PersonIcon className="mr-2 h-4 w-4" />,
+          label: "Profile",
+          value: "profile",
+        },
+        {
+          icon: <EnvelopeClosedIcon className="mr-2 h-4 w-4" />,
+          label: "Mail",
+          value: "mail",
+        },
+        {
+          icon: <GearIcon className="mr-2 h-4 w-4" />,
+          label: "Settings",
+          value: "settings",
+        },
       ],
     },
   ],
 };
 
-export const barChartData = {
-  labels: [
-    "Jan",
-    "Feb",
-    "Mar",
-    "Apr",
-    "May",
-    "Jun",
-    "Jul",
-    "Aug",
-    "Sept",
-    "Oct",
-    "Nov",
-    "Dec",
-  ],
-  datasets: [
+export const priorityFilterComboboxData: IComboboxProps = {
+  defaultText: "Filter by priorities",
+  emptyText: "No results found",
+  placeholder: "Search priorities ..",
+  comboboxGroups: [
     {
-      label: i18n.t("component.home.text.budgetEstimation.actual", "Actual"),
-      data: [12, 10, 8, 12, 10, 8, 12, 10, 8, 12, 10, 8],
-      backgroundColor: "#0E84ED",
-      borderRadius: 5,
-      pointStyle: "square",
-    },
-    {
-      label: i18n.t(
-        "component.home.text.budgetEstimation.expected",
-        "Esperado"
-      ),
-      data: [8, 15, 10, 12, 10, 8, 12, 10, 8, 12, 10, 8],
-      backgroundColor: "#99D045",
-      borderRadius: 5,
-      pointStyle: "square",
+      heading: "Priorities",
+      comboboxItems: [
+        {
+          icon: <DotIconFilled className="mr-2 h-4 w-4" />,
+          label: "High",
+          value: "high",
+        },
+        {
+          icon: <DotIconFilled className="mr-2 h-4 w-4" />,
+          label: "Medium",
+          value: "medium",
+        },
+        {
+          icon: <DotIconFilled className="mr-2 h-4 w-4" />,
+          label: "Low",
+          value: "low",
+        },
+      ],
     },
   ],
 };
-
-export const overdueProjectData = {
-  tableCaption: i18n.t(
-    "component.home.analytics.overdueProject",
-    "Overdue Projects"
-  ),
-  columns: [
+export const statusFilterComboboxData: IComboboxProps = {
+  defaultText: "Filter by  statuses",
+  emptyText: "No results found",
+  placeholder: "Search statuses ..",
+  comboboxGroups: [
     {
-      label: i18n.t("component.home.text.overdueProject.overdue", "Overdue"),
-      id: "overdue",
-    },
-    {
-      id: "name",
-      label: "Project Name",
-    },
-    {
-      id: "status",
-      label: "Status",
-    },
-  ],
-  data: [
-    {
-      id: faker.string.uuid(),
-      status: faker.helpers.arrayElement([
-        "Pending",
-        "Not Started",
-        "On Progress",
-        "Completed",
-      ]),
-      name: "Community Outreach Initiative",
-      overdue: moment(faker.date.recent()).fromNow(),
-    },
-    {
-      id: faker.string.uuid(),
-      status: faker.helpers.arrayElement([
-        "Pending",
-        "Not Started",
-        "On Progress",
-        "Completed",
-      ]),
-      name: "Community Outreach Initiative",
-      overdue: moment(faker.date.recent()).fromNow(),
-    },
-    {
-      id: faker.string.uuid(),
-      status: faker.helpers.arrayElement([
-        "Pending",
-        "Not Started",
-        "On Progress",
-        "Completed",
-      ]),
-      name: "Acme Product Launch",
-      overdue: moment(faker.date.recent()).fromNow(),
-    },
-    {
-      id: faker.string.uuid(),
-      status: faker.helpers.arrayElement([
-        "Pending",
-        "Not Started",
-        "On Progress",
-        "Completed",
-      ]),
-      name: "City Park Renovation",
-      overdue: moment(faker.date.recent()).fromNow(),
-    },
-    {
-      id: faker.string.uuid(),
-      status: faker.helpers.arrayElement([
-        "Pending",
-        "Not Started",
-        "On Progress",
-        "Completed",
-      ]),
-      name: "Office Relocation Project",
-      overdue: moment(faker.date.recent()).fromNow(),
+      heading: "Statuses",
+      comboboxItems: [
+        {
+          icon: <DotIconFilled className="mr-2 h-4 w-4" />,
+          label: "Pending",
+          value: "pending",
+        },
+        {
+          icon: <DotIconFilled className="mr-2 h-4 w-4" />,
+          label: "Not Started",
+          value: "not-started",
+        },
+        {
+          icon: <DotIconFilled className="mr-2 h-4 w-4" />,
+          label: "On Progress",
+          value: "on-progress",
+        },
+        {
+          icon: <DotIconFilled className="mr-2 h-4 w-4" />,
+          label: "Completed",
+          value: "completed",
+        },
+      ],
     },
   ],
 };
-
-export const upcomingDeadlineData = {
-  tableCaption: "Upcoming Deadlines",
-  columns: [
-    {
-      id: "name",
-      label: "Project Name",
-    },
-    {
-      id: "due_date",
-      label: "Due Date",
-    },
-
-    {
-      id: "progress",
-      label: "Progress",
-    },
-    {
-      id: "status",
-      label: "status",
-    },
-    // {
-    //   id: "priority",
-    //   label: "Priority",
-    // },
-  ],
-  data: [
-    {
-      id: faker.string.uuid(),
-      name: faker.helpers.arrayElement(["Project"]),
-      due_date: moment(faker.date.soon()).fromNow(),
-      progress: faker.number.int({
-        max: 100,
-        min: 30,
-      }),
-      status: faker.helpers.arrayElement([
-        "On Progress",
-        "Not Started",
-        "Completed",
-        "Pending",
-      ]) as IUpcomingDeadlineData["status"],
-      // priority: faker.helpers.arrayElement([
-      //   "low",
-      //   "medium",
-      //   "high",
-      // ]) as IUpcomingDeadlineData["priority"],
-    },
-    {
-      id: faker.string.uuid(),
-      name: faker.helpers.arrayElement(["Project"]),
-      due_date: moment(faker.date.soon()).fromNow(),
-      progress: faker.number.int({
-        max: 100,
-        min: 30,
-      }),
-      status: faker.helpers.arrayElement([
-        "On Progress",
-        "Not Started",
-        "Completed",
-        "Pending",
-      ]) as IUpcomingDeadlineData["status"],
-      // priority: faker.helpers.arrayElement([
-      //   "low",
-      //   "medium",
-      //   "high",
-      // ]) as IUpcomingDeadlineData["priority"],
-    },
-    {
-      id: faker.string.uuid(),
-      name: faker.helpers.arrayElement(["Project"]),
-      due_date: moment(faker.date.soon()).fromNow(),
-      progress: faker.number.int({
-        max: 100,
-        min: 30,
-      }),
-      status: faker.helpers.arrayElement([
-        "On Progress",
-        "Not Started",
-        "Completed",
-        "Pending",
-      ]) as IUpcomingDeadlineData["status"],
-      // priority: faker.helpers.arrayElement([
-      //   "low",
-      //   "medium",
-      //   "high",
-      // ]) as IUpcomingDeadlineData["priority"],
-    },
-    {
-      id: faker.string.uuid(),
-      name: faker.helpers.arrayElement(["Project"]),
-      due_date: moment(faker.date.soon()).fromNow(),
-      progress: faker.number.int({
-        max: 100,
-        min: 30,
-      }),
-      status: faker.helpers.arrayElement([
-        "On Progress",
-        "Not Started",
-        "Completed",
-        "Pending",
-      ]) as IUpcomingDeadlineData["status"],
-      // priority: faker.helpers.arrayElement([
-      //   "low",
-      //   "medium",
-      //   "high",
-      // ]) as IUpcomingDeadlineData["priority"],
-    },
-    {
-      id: faker.string.uuid(),
-      name: faker.helpers.arrayElement(["Project"]),
-      due_date: moment(faker.date.soon()).fromNow(),
-      progress: faker.number.int({
-        max: 100,
-        min: 30,
-      }),
-      status: faker.helpers.arrayElement([
-        "On Progress",
-        "Not Started",
-        "Completed",
-        "Pending",
-      ]) as IUpcomingDeadlineData["status"],
-      // priority: faker.helpers.arrayElement([
-      //   "low",
-      //   "medium",
-      //   "high",
-      // ]) as IUpcomingDeadlineData["priority"],
-    },
-  ],
-};
-
-export const cardData = [
-  {
-    count: 10,
-    label: i18n.t("component.home.analytics.workspaceNum", "No. of Workspaces"),
-    icon: <WorkspaceIcon />,
-  },
-  {
-    count: 40,
-    label: i18n.t("component.home.analytics.projectNum", "No. of Projects"),
-    icon: <ProjectsIcon />,
-  },
-  {
-    count: 80,
-    label: i18n.t("component.home.analytics.memberNum", " No. of Members"),
-    icon: <PeopleIcon />,
-  },
+export const projectsTableFilterItems = [
+  <Combobox comboboxData={priorityFilterComboboxData} />,
+  <Combobox comboboxData={statusFilterComboboxData} />,
 ];
 
-export const users = [
-  {
-    name: faker.person.fullName(),
-    profile_pic: faker.image.urlPicsumPhotos(),
-  },
-  {
-    name: faker.person.fullName(),
-    profile_pic: faker.image.urlPicsumPhotos(),
-  },
-  {
-    name: faker.person.fullName(),
-    profile_pic: faker.image.urlPicsumPhotos(),
-  },
-  {
-    name: faker.person.fullName(),
-    profile_pic: faker.image.urlPicsumPhotos(),
-  },
-];
+export const ProjectsTableFilters = () => {
+  return (
+    <SpeedDial
+      children={projectsTableFilterItems}
+      direction="left"
+      itemWidth={180}
+    />
+  );
+};
+
+export const ProjectsTableSearch = ({
+  handleSearch,
+}: {
+  handleSearch: any;
+}) => {
+  return (
+    <SpeedDial
+      children={[
+        <SearchInput
+          onSubmit={handleSearch}
+          id="workspace-search"
+          name="workspace-search"
+          inputSize="md"
+          placeholder="Search here..."
+          className=""
+        />,
+      ]}
+      direction="left"
+      itemWidth={250}
+    />
+  );
+};
 
 export const commandData: ICommandProps = {
   shortcut: "⌘j",
@@ -568,155 +413,4 @@ export const commandData: ICommandProps = {
       ],
     },
   ],
-};
-
-import { CalendarIcon } from "@radix-ui/react-icons";
-import { IComboboxProps } from "@/@types";
-import Combobox from "@/components/custom/common/Combobox/Combobox";
-import SpeedDial from "@/components/custom/common/SpeedDial/SpeedDial";
-import SearchInput from "@/components/custom/common/SearchInput/SearchInput";
-
-export const comboboxData: IComboboxProps = {
-  defaultText: "Search items here...",
-  emptyText: "No results found",
-  placeholder: "Search here...",
-  comboboxGroups: [
-    {
-      heading: "Suggestions",
-      comboboxItems: [
-        {
-          icon: <CalendarIcon className="mr-2 h-4 w-4" />,
-          label: "Calendar",
-          value: "calendar",
-        },
-        {
-          icon: <FaceIcon className="mr-2 h-4 w-4" />,
-          label: "Search Emoji",
-          value: "search-emoji",
-        },
-        {
-          icon: <RocketIcon className="mr-2 h-4 w-4" />,
-          label: "Launch",
-          value: "launch",
-        },
-      ],
-    },
-    {
-      heading: "Settings",
-      comboboxItems: [
-        {
-          icon: <PersonIcon className="mr-2 h-4 w-4" />,
-          label: "Profile",
-          value: "profile",
-        },
-        {
-          icon: <EnvelopeClosedIcon className="mr-2 h-4 w-4" />,
-          label: "Mail",
-          value: "mail",
-        },
-        {
-          icon: <GearIcon className="mr-2 h-4 w-4" />,
-          label: "Settings",
-          value: "settings",
-        },
-      ],
-    },
-  ],
-};
-
-export const priorityFilterComboboxData: IComboboxProps = {
-  defaultText: "Filter by priorities",
-  emptyText: "No results found",
-  placeholder: "Search priorities ..",
-  comboboxGroups: [
-    {
-      heading: "Priorities",
-      comboboxItems: [
-        {
-          icon: <DotIconFilled className="mr-2 h-4 w-4" />,
-          label: "High",
-          value: "high",
-        },
-        {
-          icon: <DotIconFilled className="mr-2 h-4 w-4" />,
-          label: "Medium",
-          value: "medium",
-        },
-        {
-          icon: <DotIconFilled className="mr-2 h-4 w-4" />,
-          label: "Low",
-          value: "low",
-        },
-      ],
-    },
-  ],
-};
-export const statusFilterComboboxData: IComboboxProps = {
-  defaultText: "Filter by  statuses",
-  emptyText: "No results found",
-  placeholder: "Search statuses ..",
-  comboboxGroups: [
-    {
-      heading: "Statuses",
-      comboboxItems: [
-        {
-          icon: <DotIconFilled className="mr-2 h-4 w-4" />,
-          label: "Pending",
-          value: "pending",
-        },
-        {
-          icon: <DotIconFilled className="mr-2 h-4 w-4" />,
-          label: "Not Started",
-          value: "not-started",
-        },
-        {
-          icon: <DotIconFilled className="mr-2 h-4 w-4" />,
-          label: "On Progress",
-          value: "on-progress",
-        },
-        {
-          icon: <DotIconFilled className="mr-2 h-4 w-4" />,
-          label: "Completed",
-          value: "completed",
-        },
-      ],
-    },
-  ],
-};
-export const projectsTableFilterItems = [
-  <Combobox comboboxData={priorityFilterComboboxData} />,
-  <Combobox comboboxData={statusFilterComboboxData} />,
-];
-
-export const ProjectsTableFilters = () => {
-  return (
-    <SpeedDial
-      children={projectsTableFilterItems}
-      direction="left"
-      itemWidth={180}
-    />
-  );
-};
-
-export const ProjectsTableSearch = ({
-  handleSearch,
-}: {
-  handleSearch: any;
-}) => {
-  return (
-    <SpeedDial
-      children={[
-        <SearchInput
-          onSubmit={handleSearch}
-          id="workspace-search"
-          name="workspace-search"
-          inputSize="md"
-          placeholder="Search here..."
-          className=""
-        />,
-      ]}
-      direction="left"
-      itemWidth={250}
-    />
-  );
 };

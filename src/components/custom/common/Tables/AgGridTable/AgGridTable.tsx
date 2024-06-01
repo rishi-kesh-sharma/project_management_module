@@ -63,7 +63,7 @@ ModuleRegistry.registerModules([
 const AgGridTable: React.FC<IAgGridTableProps> = ({
   theme = "ag-theme-quartz",
   tableToolbar,
-  height = 10,
+  // height = 10,
   variant,
   colDefs: columnDefinations,
   rowData: tableData,

@@ -9,7 +9,7 @@ import {
   FormMessage,
 } from "@/components/ui/Form/form";
 import { Button } from "@/components/ui/Button/button";
-import { OtpStyledInput } from "@/Extensions/OTPStyledInput/OTPStyledInput";
+import { OtpStyledInput } from "@/components/custom/common/OTPStyledInput/OTPStyledInput";
 import { getSuccessToast } from "@/utils/constants/toast";
 
 const OTPInput = () => {

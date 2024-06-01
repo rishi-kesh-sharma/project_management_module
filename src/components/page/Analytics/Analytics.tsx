@@ -11,7 +11,7 @@ import {
   cardData,
   pieChartData,
   upcomingDeadlineData,
-} from "@/utils/constants";
+} from "@/data";
 import CreateWorkspaceForm from "./CreateWorkspaceForm";
 import {
   IOverdueProjectColumn,

@@ -1,5 +1,6 @@
+/* eslint-disable react-hooks/rules-of-hooks */
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { IProjectRowData } from "@/@types";
+import { IHumanResource, IProjectRowData } from "@/@types";
 import ProgressBar from "@/components/custom/common/ProgressBar/ProgressBar";
 import Tags from "@/components/custom/common/Tags/Tags";
 import {
@@ -12,9 +13,10 @@ import {
   AvatarImage,
 } from "@/components/ui/Avatar/avatar";
 import { getTagVariantForValues } from "@/lib/utils";
-import { users } from "@/utils/constants";
+import { users } from "@/data";
 import moment from "moment";
 import { Link, useParams } from "react-router-dom";
+import { useGetHumanResourcesQuery } from "@/api/humanResource";
 export const colDefs = [
   {
     field: "name",
@@ -153,13 +155,23 @@ export const colDefs = [
     editable: true,
     cellEditor: "agSelectCellEditor",
     filter: "agSelectColumnFilter",
-    cellEditorParams: {
-      allowTyping: true,
-      highlightMatch: true,
-      searchType: "match",
-      filterList: true,
-      valueListMaxHeight: 220,
-      values: ["Member1", "Member2", "Member3", "Member4"],
+    cellEditorParams: (p: { value: { name: string }[] }) => {
+      const { data, isLoading } = useGetHumanResourcesQuery({});
+      console.log(p, "from my area");
+      return {
+        allowTyping: true,
+        highlightMatch: true,
+        searchType: "match",
+        filterList: true,
+        valueListMaxHeight: 220,
+        // popup: true,
+        values: (() => {
+          if (isLoading || !data) return ["loading"];
+          return [...p.value, ...data].map((person: IHumanResource) => {
+            return person.name;
+          });
+        })(),
+      };
     },
     filterParams: {
       allowTyping: true,
@@ -169,19 +181,40 @@ export const colDefs = [
       valueListMaxHeight: 220,
       values: ["Member1", "Member2", "Member3", "Member4"],
     },
-    cellRenderer: () => {
-      return (
-        <div className="flex -space-x-2 items-center h-full ">
-          {users.map((user: any) => {
-            return (
-              <Avatar className="h-6 w-6 cursor-pointer ">
-                <AvatarImage src={user.profile_pic} />
-                <AvatarFallback>{user.name.slice(0, 1)}</AvatarFallback>
-              </Avatar>
-            );
-          })}
-        </div>
-      );
+    cellRenderer: (p: { value: { avatar: string; name: string }[] }) => {
+      const itemsToShow = 3;
+      if (p.value.length > itemsToShow) {
+        return (
+          <div className="flex -space-x-2 items-center h-full ">
+            {[
+              ...p.value.slice(0, itemsToShow),
+              { count: p.value.length - itemsToShow },
+            ].map((user: any) => {
+              return (
+                <Avatar className="h-6 w-6 cursor-pointer ">
+                  <AvatarImage src={user.avatar} />
+                  <AvatarFallback>
+                    {user?.name?.slice(0, 1) || `+${user.count}`}
+                  </AvatarFallback>
+                </Avatar>
+              );
+            })}
+          </div>
+        );
+      } else {
+        return (
+          <div className="flex -space-x-2 items-center h-full ">
+            {p.value.map((user: any) => {
+              return (
+                <Avatar className="h-6 w-6 cursor-pointer ">
+                  <AvatarImage src={user.avatar} />
+                  <AvatarFallback>{user.name.slice(0, 1)}</AvatarFallback>
+                </Avatar>
+              );
+            })}
+          </div>
+        );
+      }
     },
   },
 

@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { IProjectRowData } from "@/@types";
 import {
@@ -7,7 +8,7 @@ import {
 import Tags from "../common/Tags/Tags";
 import { faker } from "@faker-js/faker";
 import moment from "moment";
-import { users } from "@/utils/constants";
+import { users } from "@/data";
 import {
   Avatar,
   AvatarFallback,
