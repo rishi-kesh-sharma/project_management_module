@@ -1,4 +1,5 @@
 import {
+  FilterIcon,
   PlusIcon,
   ThreeVerticalDots,
 } from "@/components/custom/common/icons/commonIcons";
@@ -9,6 +10,7 @@ import IconDropdown from "../../Dropdowns/IconDropdown/IconDropdown";
 // import { ProjectsTableFilters } from "@/utils/constants";
 import Modal from "../../Modal/Modal";
 import { ProjectsTableSearch } from "@/utils/constants";
+import { Toggle } from "@/components/ui/Toggle/toggle";
 
 export interface ITableToolbar {
   handleSearch?: (e: React.FormEvent) => void;
@@ -25,7 +27,8 @@ export interface ITableToolbar {
   hasSearch?: boolean;
   search?: React.ReactNode;
   modal?: IModalProps;
-  // quickAccessOptions?: IQuickAccessOptions;
+  isSideBarVisible: () => boolean;
+  setSideBarVisible: (value: boolean) => void;
 }
 const TableToolbar: React.FC<ITableToolbar> = ({
   // handleSearch,
@@ -34,11 +37,12 @@ const TableToolbar: React.FC<ITableToolbar> = ({
   heading,
   // createButtonText,
   createPagePath,
-  hasFilters = false,
-  filters,
+  hasFilters = true,
   type = "page",
   modal,
   search = ProjectsTableSearch,
+  isSideBarVisible,
+  setSideBarVisible,
 }) => {
   return (
     <div>
@@ -48,8 +52,21 @@ const TableToolbar: React.FC<ITableToolbar> = ({
         </h2>
         <div className="w-full flex flex-col gap-[1rem]  items-end">
           <div className="flex items-center  gap-[1rem]">
-            {hasFilters && filters && filters}
             {hasSearch && search && search}
+            {hasFilters && (
+              <Toggle
+                asChild
+                aria-label="Toggle bold"
+                className="rounded-full h-[2.5rem] w-[2.5rem] p-0">
+                <Button
+                  onClick={() => setSideBarVisible(!isSideBarVisible())}
+                  variant={"outline"}
+                  size={"icon"}
+                  className={`rounded-full ${isSideBarVisible() ? "rotate-90" : ""} transition-all`}>
+                  {<FilterIcon />}
+                </Button>
+              </Toggle>
+            )}
             {type === "page" && (
               <Button
                 size={"icon"}

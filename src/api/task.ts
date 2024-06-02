@@ -9,7 +9,7 @@ export const taskApi = createApi({
   baseQuery: fetchBaseQuery({ baseUrl: `${BASE_URL}` }),
   tagTypes: ["Task"],
   endpoints: (build) => ({
-    getTasks: build.query<TaskResponse, ITask>({
+    getTasks: build.query<TaskResponse, string>({
       query: () => "tasks",
       providesTags: (result) =>
         result

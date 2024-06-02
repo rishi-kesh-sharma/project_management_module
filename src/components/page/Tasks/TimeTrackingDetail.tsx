@@ -1,15 +1,14 @@
 import React from "react";
 import TimeTrackingTable from "./TimeTrackingTable";
 import { ITask } from "@/@types";
-import Timer from "@/components/custom/common/Timer/Timer";
 
 interface ITimeTrackingDetailProps {
   task: ITask;
 }
-const TimeTrackingDetail: React.FC<ITimeTrackingDetailProps> = ({ task }) => {
+const TimeTrackingDetail: React.FC<ITimeTrackingDetailProps> = () => {
   return (
     <div>
-      <TimeTrackingTable timeTrackings={task.timeTrackings} />
+      <TimeTrackingTable />
     </div>
   );
 };

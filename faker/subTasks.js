@@ -9,7 +9,7 @@ import {
 function createRandomSubTasks(value) {
   return {
     id: faker.string.uuid(),
-    name: `Task ${value}`,
+    name: `Sub Task ${value}`,
     created_by: faker.person.fullName(),
     start_date: faker.date.past(),
     status: faker.helpers.arrayElement([

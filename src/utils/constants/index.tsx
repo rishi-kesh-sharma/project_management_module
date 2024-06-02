@@ -236,7 +236,7 @@ export const ProjectsTableSearch = ({
   handleSearch,
 }: {
   handleSearch: any;
-}) => {
+}): React.ReactNode => {
   return (
     <SpeedDial
       children={[

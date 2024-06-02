@@ -192,18 +192,18 @@ export interface ISubTask {
 }
 
 export interface ITimeTracking {
-  trackingId: string;
-  startTime: string;
-  endTime: string;
-  createdBy: string;
+  id: string;
+  start_time: string;
+  end_time: string;
+  created_by: string;
   date: Date;
 }
 
 export interface ITimeTrackingRowData {
-  trackingId: string;
-  startTime: string;
-  endTime: string;
-  createdBy: string;
+  id: string;
+  start_time: string;
+  end_time: string;
+  created_by: string;
   date: Date;
 }
 export interface ITask {
@@ -281,10 +281,12 @@ export interface IBudgetRowData {
 }
 export interface IHumanResourceRowData {
   id: string;
-  fullName: string;
+  name: string;
   username: string;
+
   email: string;
-  lastName: string;
+  first_name: string;
+  last_name: string;
   sex: "male" | "female" | "other";
   role: "frontend" | "backend" | "QA" | "Project Manager";
   allocatedEffort: number;
@@ -315,7 +317,10 @@ export type IAgGridTableProps<T> = {
     | "ag-theme-quartz-dark"
     | "ag-theme-quartz-alpine";
   height?: number;
-  tableToolbar: React.ReactNode;
+  TableToolbarHOC: (
+    isSideBarVisible: () => void,
+    setSideBarVisible: (value: boolean) => void
+  ) => React.ReactNode;
   // rowData?: IRowData[];
   rowData?: IAgGridTableProps<T>[];
   colDefs?: ColDef[];

@@ -28,37 +28,47 @@ const EquipmentTable = ({
   return (
     <div className="">
       <AgGridTable
-        tableToolbar={
-          <TableToolbar
-            heading={"Equipment"}
-            handleSearch={handleSearch}
-            dropdownMenus={dropdownMenus}
-            createButtonText="Equipment"
-            createPagePath={`/equipment/create`}
-            hasSearch={true}
-            search={<ProjectsTableSearch handleSearch={handleSearch} />}
-            type="modal"
-            modal={{
-              size: "lg",
-              title: "Assign Equipments",
-              description:
-                "You can assign the inventories from here to your project",
-              trigger: (
-                <Button
-                  size={"icon"}
-                  className="flex gap-2 rounded-full h-[2.4rem] w-[2.4rem]">
-                  <PlusIcon />
-                  {/* <span>Equipments</span> */}
-                </Button>
-              ),
-              body: (
-                <div className="flex flex-col gap-4">
-                  <AssignEquipmentStepperForm />
-                </div>
-              ),
-            }}
-          />
-        }
+        TableToolbarHOC={({
+          isSideBarVisible,
+          setSideBarVisible,
+        }: {
+          isSideBarVisible: () => boolean;
+          setSideBarVisible: (value: boolean) => void;
+        }) => {
+          return (
+            <TableToolbar
+              heading={"Equipment"}
+              handleSearch={handleSearch}
+              dropdownMenus={dropdownMenus}
+              createButtonText="Equipment"
+              createPagePath={`/equipment/create`}
+              hasSearch={true}
+              search={<ProjectsTableSearch handleSearch={handleSearch} />}
+              type="modal"
+              modal={{
+                size: "lg",
+                title: "Assign Equipments",
+                description:
+                  "You can assign the inventories from here to your project",
+                trigger: (
+                  <Button
+                    size={"icon"}
+                    className="flex gap-2 rounded-full h-[2.4rem] w-[2.4rem]">
+                    <PlusIcon />
+                    {/* <span>Equipments</span> */}
+                  </Button>
+                ),
+                body: (
+                  <div className="flex flex-col gap-4">
+                    <AssignEquipmentStepperForm />
+                  </div>
+                ),
+              }}
+              isSideBarVisible={isSideBarVisible}
+              setSideBarVisible={setSideBarVisible}
+            />
+          );
+        }}
         rowData={equipments}
         heading={"Equipment"}
         dropdownMenus={dropdownMenus}

@@ -1,6 +1,12 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 "use strict";
-import React, { useEffect, useMemo, useRef, useState } from "react";
+import React, {
+  useCallback,
+  useEffect,
+  useMemo,
+  useRef,
+  useState,
+} from "react";
 import { Helmet } from "react-helmet";
 import { AgGridReact } from "@ag-grid-community/react";
 // import { ClipboardModule } from "@ag-grid-enterprise/clipboard";
@@ -62,7 +68,7 @@ ModuleRegistry.registerModules([
 // react table props interface
 const AgGridTable: React.FC<IAgGridTableProps> = ({
   theme = "ag-theme-quartz",
-  tableToolbar,
+  TableToolbarHOC,
   // height = 10,
   variant,
   colDefs: columnDefinations,
@@ -80,7 +86,7 @@ const AgGridTable: React.FC<IAgGridTableProps> = ({
   onCellValueChanged,
   onRowSelected,
   onFilterOpened,
-  sidebar = false,
+  // sidebar = "filters",
   suppressMenuHide = false,
   rowDragMultiRow = true,
   rowMultiSelectWithClick = true,
@@ -99,7 +105,12 @@ const AgGridTable: React.FC<IAgGridTableProps> = ({
 
   // grid style
   // const gridStyle = useMemo(() => ({ height: "100%", width: "100%" }), []);
-  const gridStyle = useMemo(() => ({}), []);
+  const gridStyle = useMemo(
+    () => ({
+      // maxHeight: 300,
+    }),
+    []
+  );
 
   // number cell formatter
   // function numberCellFormatter(params: ValueFormatterParams) {
@@ -213,11 +224,19 @@ const AgGridTable: React.FC<IAgGridTableProps> = ({
   //   gridRef.current!.api.exportDataAsExcel(exportXLSXParams);
   // }, []);
 
+  const setSideBarVisible = useCallback((value: boolean) => {
+    gridRef.current?.api.setSideBarVisible(value);
+    gridRef.current!.api.openToolPanel("filters");
+  }, []);
+
+  const isSideBarVisible = useCallback(() => {
+    return gridRef.current?.api.isSideBarVisible();
+  }, []);
+
   useEffect(() => {
     setColumnDefs(columnDefinations);
     setRowData(tableData);
   }, [columnDefinations, tableData]);
-
   {
     /* <Button variant={"outline"} onClick={onBtnCSVExport}>
           Export CSV{" "}
@@ -228,8 +247,15 @@ const AgGridTable: React.FC<IAgGridTableProps> = ({
   }
 
   return (
-    <div style={containerStyle} className="flex flex-col gap-[1rem]">
-      {tableToolbar}
+    <div style={containerStyle} className="flex flex-col gap-[1rem] ">
+      {
+        <TableToolbarHOC
+          isSideBarVisible={isSideBarVisible}
+          setSideBarVisible={setSideBarVisible}
+        />
+      }
+
+      {/* {TableToolbarHOC(isSideBarVisible, setSideBarVisible)} */}
       <div
         className={`${appTheme == "dark" ? "ag-theme-quartz-dark" : theme}  `}
         style={{ ...gridStyle }}>
@@ -241,6 +267,7 @@ const AgGridTable: React.FC<IAgGridTableProps> = ({
 
         <AgGridReact
           domLayout="autoHeight"
+          gridOptions={{}}
           className=""
           ref={gridRef}
           rowData={rowData}
@@ -256,7 +283,25 @@ const AgGridTable: React.FC<IAgGridTableProps> = ({
           enableRangeSelection={false}
           rowMultiSelectWithClick={rowMultiSelectWithClick}
           rowDragMultiRow={rowDragMultiRow}
-          sideBar={sidebar}
+          sideBar={{
+            hiddenByDefault: true,
+            toolPanels: [
+              {
+                id: "filters",
+                // labelDefault: "Filters",
+                // labelKey: "filters",
+                // iconKey: "filter",
+                labelDefault: "",
+                labelKey: "",
+                iconKey: "",
+                toolPanel: "agFiltersToolPanel",
+                minWidth: 180,
+                maxWidth: 400,
+                width: 250,
+              },
+            ],
+            defaultToolPanel: "filters",
+          }}
           suppressMenuHide={suppressMenuHide}
           enableAdvancedFilter={enableAdvanceFilter}
           rowBuffer={rowBuffer}

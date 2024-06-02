@@ -29,41 +29,52 @@ const InventoriesTable = ({
   return (
     <div className="">
       <AgGridTable
-        tableToolbar={
-          <TableToolbar
-            heading={"Inventories"}
-            handleSearch={handleSearch}
-            dropdownMenus={dropdownMenus}
-            createButtonText="Inventory"
-            // createPagePath={`/inventory/create`}
-            type="modal"
-            modal={{
-              size: "lg",
-              title: "Assign Inventory",
-              description:
-                "You can assign the inventories from here to your project",
-              trigger: (
-                <Button
-                  size={"icon"}
-                  className="flex gap-2 rounded-full h-[2.4rem] w-[2.4rem]">
-                  <PlusIcon />
-                  {/* <span>Inventory</span> */}
-                </Button>
-              ),
-              body: (
-                <div className="flex flex-col gap-4">
-                  <AssignInventoryStepperForm />
-                </div>
-              ),
-            }}
-            hasSearch={true}
-            search={<ProjectsTableSearch handleSearch={handleSearch} />}
-          />
-        }
+        TableToolbarHOC={({
+          isSideBarVisible,
+          setSideBarVisible,
+        }: {
+          isSideBarVisible: () => boolean;
+          setSideBarVisible: (value: boolean) => void;
+        }) => {
+          return (
+            <TableToolbar
+              heading={"Inventories"}
+              handleSearch={handleSearch}
+              dropdownMenus={dropdownMenus}
+              createButtonText="Inventory"
+              // createPagePath={`/inventory/create`}
+              type="modal"
+              modal={{
+                size: "lg",
+                title: "Assign Inventory",
+                description:
+                  "You can assign the inventories from here to your project",
+                trigger: (
+                  <Button
+                    size={"icon"}
+                    className="flex gap-2 rounded-full h-[2.4rem] w-[2.4rem]">
+                    <PlusIcon />
+                    {/* <span>Inventory</span> */}
+                  </Button>
+                ),
+                body: (
+                  <div className="flex flex-col gap-4">
+                    <AssignInventoryStepperForm />
+                  </div>
+                ),
+              }}
+              hasSearch={true}
+              search={<ProjectsTableSearch handleSearch={handleSearch} />}
+              isSideBarVisible={isSideBarVisible}
+              setSideBarVisible={setSideBarVisible}
+            />
+          );
+        }}
         rowData={inventories}
         heading={"Inventories"}
         dropdownMenus={dropdownMenus}
         colDefs={colDefs}
+        sideBar={"filters"}
       />
     </div>
   );

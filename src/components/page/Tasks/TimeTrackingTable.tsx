@@ -1,8 +1,9 @@
 import AgGridTable from "@/components/custom/common/Tables/AgGridTable/AgGridTable";
 import { colDefs } from "./timeTrackingColDefs";
 import TableToolbar from "@/components/custom/common/TableElements/TableToolbar/TableToolbar";
-import { ITimeTrackingRowData } from "@/@types";
 import { ProjectsTableSearch } from "@/utils/constants";
+import { useGetTimeTrackingsQuery } from "@/api/timeTracking";
+import Spinner from "@/components/custom/common/Loaders/Spinner/Spinner";
 // import Timer from "@/components/custom/common/Timer/Timer";
 
 const dropdownMenus = {
@@ -13,32 +14,46 @@ const dropdownMenus = {
   ],
 };
 
-const TimeTrackingTable = ({
-  timeTrackings,
-}: {
-  timeTrackings: ITimeTrackingRowData[];
-}) => {
+const TimeTrackingTable = () => {
   const handleSearch = (e: React.FormEvent) => {
     e.preventDefault();
   };
 
+  const { data, isLoading, isError } = useGetTimeTrackingsQuery("");
+
+  if (isLoading)
+    <div>
+      <Spinner />
+    </div>;
+
+  if (isError) <div>Error Occurred</div>;
   return (
     <div className="mt-[2rem]">
       {/* <Timer /> */}
 
       <AgGridTable
-        tableToolbar={
-          <TableToolbar
-            heading={`Time Tracking`}
-            handleSearch={handleSearch}
-            dropdownMenus={dropdownMenus}
-            createButtonText="Start Timer"
-            // createPagePath=""
-            hasSearch={true}
-            search={<ProjectsTableSearch handleSearch={handleSearch} />}
-          />
-        }
-        rowData={timeTrackings}
+        TableToolbarHOC={({
+          isSideBarVisible,
+          setSideBarVisible,
+        }: {
+          isSideBarVisible: () => boolean;
+          setSideBarVisible: (value: boolean) => void;
+        }) => {
+          return (
+            <TableToolbar
+              heading={`Time Tracking`}
+              handleSearch={handleSearch}
+              hasFilters={true}
+              dropdownMenus={dropdownMenus}
+              createButtonText="Start Timer"
+              hasSearch={true}
+              search={<ProjectsTableSearch handleSearch={handleSearch} />}
+              isSideBarVisible={isSideBarVisible}
+              setSideBarVisible={setSideBarVisible}
+            />
+          );
+        }}
+        rowData={data}
         heading={`Time Tracking`}
         dropdownMenus={dropdownMenus}
         colDefs={colDefs}

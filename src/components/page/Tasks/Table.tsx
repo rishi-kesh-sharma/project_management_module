@@ -5,6 +5,7 @@ import { ITaskRowData } from "@/@types";
 import { ProjectsTableFilters, ProjectsTableSearch } from "@/utils/constants";
 import Spinner from "@/components/custom/common/Loaders/Spinner/Spinner";
 import { useGetSubTasksQuery } from "@/api/subTask";
+import { useParams } from "react-router";
 
 const dropdownMenus = {
   items: [
@@ -15,7 +16,8 @@ const dropdownMenus = {
 };
 
 const TaskTable = ({ task }: { task: ITaskRowData }) => {
-  const { data, isLoading, isError } = useGetSubTasksQuery();
+  const { data, isLoading, isError } = useGetSubTasksQuery("");
+  const { workspaceId, projectId, taskId } = useParams();
 
   const handleSearch = (e: React.FormEvent) => {
     e.preventDefault();
@@ -26,27 +28,39 @@ const TaskTable = ({ task }: { task: ITaskRowData }) => {
   return (
     <div className="mt-[2rem]">
       <AgGridTable
-        tableToolbar={
-          <TableToolbar
-            heading={task.name}
-            hasSearch={true}
-            search={<ProjectsTableSearch handleSearch={handleSearch} />}
-            dropdownMenus={dropdownMenus}
-            createButtonText="Task"
-            createPagePath="/workspace/:workspaceId/task/:taskId/task/create"
-            hasFilters={false}
-            filters={<ProjectsTableFilters />}
-            hasArchive={true}
-            hasBookmark={true}
-            hasNotification={true}
-          />
-        }
+        TableToolbarHOC={({
+          isSideBarVisible,
+          setSideBarVisible,
+        }: {
+          isSideBarVisible: () => boolean;
+          setSideBarVisible: (value: boolean) => void;
+        }) => {
+          return (
+            <TableToolbar
+              heading={task.name}
+              hasSearch={true}
+              search={<ProjectsTableSearch handleSearch={handleSearch} />}
+              dropdownMenus={dropdownMenus}
+              createButtonText="Task"
+              createPagePath={`/workspace/${workspaceId}/project/${projectId}/task/${taskId}/subTask/create`}
+              hasFilters={true}
+              filters={<ProjectsTableFilters />}
+              hasArchive={true}
+              hasBookmark={true}
+              hasNotification={true}
+              handleSearch={handleSearch}
+              isSideBarVisible={isSideBarVisible}
+              setSideBarVisible={setSideBarVisible}
+            />
+          );
+        }}
         rowData={data}
         heading={task.name}
         dropdownMenus={dropdownMenus}
         colDefs={colDefs}
-        sidebar={true}
+        sideBar={"filters"}
       />
+      ;
     </div>
   );
 };

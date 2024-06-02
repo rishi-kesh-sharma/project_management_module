@@ -23,17 +23,27 @@ const BudgetTable = ({ budgets }: { budgets: IBudgetRowData[] }) => {
   return (
     <div className="">
       <AgGridTable
-        tableToolbar={
-          <TableToolbar
-            heading={"Budget"}
-            handleSearch={handleSearch}
-            dropdownMenus={dropdownMenus}
-            createButtonText="Budget"
-            createPagePath={`/workspace/${workspaceId}/project/${projectId}/budget/create`}
-            hasSearch={true}
-            search={<ProjectsTableSearch handleSearch={handleSearch} />}
-          />
-        }
+        TableToolbarHOC={({
+          isSideBarVisible,
+          setSideBarVisible,
+        }: {
+          isSideBarVisible: () => boolean;
+          setSideBarVisible: (value: boolean) => void;
+        }) => {
+          return (
+            <TableToolbar
+              heading={"Budget"}
+              handleSearch={handleSearch}
+              dropdownMenus={dropdownMenus}
+              createButtonText="Budget"
+              createPagePath={`/workspace/${workspaceId}/project/${projectId}/budget/create`}
+              hasSearch={true}
+              search={<ProjectsTableSearch handleSearch={handleSearch} />}
+              isSideBarVisible={isSideBarVisible}
+              setSideBarVisible={setSideBarVisible}
+            />
+          );
+        }}
         rowData={budgets}
         heading={"Budget"}
         dropdownMenus={dropdownMenus}

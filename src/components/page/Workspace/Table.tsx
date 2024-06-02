@@ -16,7 +16,7 @@ const dropdownMenus = {
 };
 
 const ProjectTable = ({ workspace }: { workspace: IWorkspace }) => {
-  const { data, isLoading, isError } = useGetProjectsQuery();
+  const { data, isLoading, isError } = useGetProjectsQuery("");
   const { workspaceId } = useParams();
   const handleSearch = (e: React.FormEvent) => {
     e.preventDefault();
@@ -25,22 +25,32 @@ const ProjectTable = ({ workspace }: { workspace: IWorkspace }) => {
   if (isError) return <div>Error Occurred</div>;
   return (
     <AgGridTable
-      tableToolbar={
-        <TableToolbar
-          // quickAccessOptions={{ primaryOptions, secondaryOptions }}
-          hasSearch={true}
-          search={<ProjectsTableSearch handleSearch={handleSearch} />}
-          heading={"Projects"}
-          handleSearch={handleSearch}
-          hasFilters={false}
-          dropdownMenus={dropdownMenus}
-          createPagePath={`/workspace/${workspaceId}/project/create`}
-          createButtonText={"Project"}
-          hasArchive={true}
-          hasBookmark={true}
-          hasNotification={true}
-        />
-      }
+      TableToolbarHOC={({
+        isSideBarVisible,
+        setSideBarVisible,
+      }: {
+        isSideBarVisible: () => boolean;
+        setSideBarVisible: (value: boolean) => void;
+      }) => {
+        return (
+          <TableToolbar
+            // quickAccessOptions={{ primaryOptions, secondaryOptions }}
+            hasSearch={true}
+            search={<ProjectsTableSearch handleSearch={handleSearch} />}
+            heading={"Projects"}
+            handleSearch={handleSearch}
+            hasFilters={false}
+            dropdownMenus={dropdownMenus}
+            createPagePath={`/workspace/${workspaceId}/project/create`}
+            createButtonText={"Project"}
+            hasArchive={true}
+            hasBookmark={true}
+            hasNotification={true}
+            isSideBarVisible={isSideBarVisible}
+            setSideBarVisible={setSideBarVisible}
+          />
+        );
+      }}
       rowData={data}
       heading={workspace.name}
       dropdownMenus={dropdownMenus}
