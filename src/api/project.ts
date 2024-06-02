@@ -9,7 +9,7 @@ export const projectApi = createApi({
   baseQuery: fetchBaseQuery({ baseUrl: `${BASE_URL}` }),
   tagTypes: ["Project"],
   endpoints: (build) => ({
-    getProjects: build.query<ProjectResponse, IProject>({
+    getProjects: build.query<ProjectResponse, string>({
       query: () => "projects",
       providesTags: (result) =>
         result

@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { IProjectRowData } from "@/@types";
+import { IHumanResourceRowData, IProjectRowData } from "@/@types";
 import {
   EditIcon,
   TrashIcon,
@@ -18,6 +18,7 @@ export const colDefs = [
   {
     field: "name",
     headerCheckboxSelection: true,
+    pinned: "left",
     headerName: "Full Name",
     minWidth: 220,
     checkboxSelection: true,
@@ -35,20 +36,16 @@ export const colDefs = [
     },
   },
   {
-    field: "members",
+    field: "avatar",
     headerName: "Avatar",
     maxWidth: 120,
-    cellRenderer: () => {
+    cellRenderer: (p: { value: string; data: IHumanResourceRowData }) => {
       return (
         <div className="flex  items-center h-full ">
-          {users.slice(0, 1).map((user: any) => {
-            return (
-              <Avatar className="h-8 w-8 cursor-pointer ">
-                <AvatarImage src={user.profile_pic} />
-                <AvatarFallback>{user.name.slice(0, 1)}</AvatarFallback>
-              </Avatar>
-            );
-          })}
+          <Avatar className="h-8 w-8 cursor-pointer ">
+            <AvatarImage src={p.value} />
+            <AvatarFallback>{p.data.name.slice(0, 1)}</AvatarFallback>
+          </Avatar>
         </div>
       );
     },
@@ -56,6 +53,7 @@ export const colDefs = [
   {
     field: "job_title",
     headerName: "Job Title",
+    filter: true,
     cellRenderer: (p: { value: string }) => {
       return (
         <div>
@@ -84,6 +82,7 @@ export const colDefs = [
   // },
   {
     field: "department",
+    filter: true,
     headerName: "Department",
     cellRenderer: (p: { value: string }) => {
       return (
@@ -114,6 +113,7 @@ export const colDefs = [
   },
   {
     headerName: "Start Date",
+    filter: "agDateColumnFilter",
     field: "start_date",
     cellRenderer: (p: { value: Date }) => {
       return moment(p.value).fromNow();
@@ -121,6 +121,7 @@ export const colDefs = [
   },
   {
     headerName: "Due Date",
+    filter: "agDateColumnFilter",
     field: "due_date",
     cellRenderer: (p: { value: Date }) => {
       return moment(p.value).fromNow();

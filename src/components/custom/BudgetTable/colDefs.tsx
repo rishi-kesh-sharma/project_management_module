@@ -10,6 +10,7 @@ export const colDefs = [
     field: "name",
     headerCheckboxSelection: true,
     headerName: "Budget Name",
+    pinned: "left",
     checkboxSelection: true,
     cellRenderer: (p: { value: string; data: IProjectRowData }) => {
       // eslint-disable-next-line react-hooks/rules-of-hooks
@@ -23,15 +24,21 @@ export const colDefs = [
   },
 
   {
+    headerName: "Amount",
+    filter: true,
     field: "allocated_amount",
   },
   {
+    headerName: "Last Used",
+    filter: "agDateColumnFilter",
     field: "last_used",
     cellRenderer: (p: { value: string }) => {
       return <>{moment(p.value).fromNow()}</>;
     },
   },
   {
+    headerName: "Spent",
+    filter: true,
     field: "spent_amount",
   },
   {

@@ -21,17 +21,27 @@ const HumanResourceTable = ({ data }: { data: IHumanResourceRowData[] }) => {
   return (
     <div className="">
       <AgGridTable
-        tableToolbar={
-          <TableToolbar
-            heading={"Human Resource"}
-            handleSearch={handleSearch}
-            dropdownMenus={dropdownMenus}
-            createButtonText="Assign"
-            createPagePath={`/humanResource/add`}
-            hasSearch={true}
-            search={<ProjectsTableSearch handleSearch={handleSearch} />}
-          />
-        }
+        TableToolbarHOC={({
+          isSideBarVisible,
+          setSideBarVisible,
+        }: {
+          isSideBarVisible: () => boolean;
+          setSideBarVisible: (value: boolean) => void;
+        }) => {
+          return (
+            <TableToolbar
+              heading={"Human Resource"}
+              handleSearch={handleSearch}
+              dropdownMenus={dropdownMenus}
+              createButtonText="Assign"
+              createPagePath={`/humanResource/add`}
+              hasSearch={true}
+              search={<ProjectsTableSearch handleSearch={handleSearch} />}
+              isSideBarVisible={isSideBarVisible}
+              setSideBarVisible={setSideBarVisible}
+            />
+          );
+        }}
         rowData={data}
         heading={"Human Resources"}
         dropdownMenus={dropdownMenus}

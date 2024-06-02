@@ -10,6 +10,7 @@ export const colDefs = [
   {
     field: "name",
     headerCheckboxSelection: true,
+    pinned: "left",
     headerName: "Inventory Name",
     checkboxSelection: true,
     cellRenderer: (p: { value: string; data: IProjectRowData }) => {
@@ -27,6 +28,7 @@ export const colDefs = [
   {
     field: "category",
     headerName: "Category",
+    filter: true,
     cellRenderer: (p: { value: string }) => {
       return (
         <div>
@@ -86,6 +88,7 @@ export const colDefs = [
   // },
   {
     field: "quantity",
+    filter: true,
     cellRenderer: (p: { value: string }) => {
       return (
         <div>

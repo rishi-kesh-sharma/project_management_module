@@ -9,7 +9,7 @@ export const subTaskApi = createApi({
   baseQuery: fetchBaseQuery({ baseUrl: `${BASE_URL}` }),
   tagTypes: ["SubTask"],
   endpoints: (build) => ({
-    getSubTasks: build.query<SubTaskResponse, ISubTask>({
+    getSubTasks: build.query<SubTaskResponse, string>({
       query: () => "subTasks",
       providesTags: (result) =>
         result

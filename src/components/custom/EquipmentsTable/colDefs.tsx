@@ -10,8 +10,9 @@ import { faker } from "@faker-js/faker";
 export const colDefs = [
   {
     field: "name",
+    pinned: "left",
     headerCheckboxSelection: true,
-    headerName: "Equipment Name",
+    headerName: "Name",
     checkboxSelection: true,
     cellRenderer: (p: { value: string; data: IProjectRowData }) => {
       // eslint-disable-next-line react-hooks/rules-of-hooks
@@ -27,6 +28,7 @@ export const colDefs = [
   },
   {
     field: "category",
+    filter: true,
     headerName: "Category",
     cellRenderer: (p: { value: string }) => {
       return (
@@ -52,6 +54,7 @@ export const colDefs = [
   },
   {
     field: "status",
+    filter: true,
     headerName: "Status",
     cellRenderer: (p: { value: string }) => {
       return (
@@ -80,6 +83,7 @@ export const colDefs = [
   // },
   {
     field: "quantity",
+    filter: true,
   },
   // {
   //   field: "totalPrice",

@@ -2,10 +2,10 @@ import { faker } from "@faker-js/faker";
 
 function createRandomTimeTrackings(value) {
   return {
-    trackingId: `Tracking No. ${value}`,
-    startTime: faker.date.recent().getTime(),
-    endTime: faker.date.recent().getTime(),
-    createdBy: faker.person.fullName(),
+    id: `Tracking No. ${value}`,
+    start_time: faker.date.recent().getTime(),
+    end_time: faker.date.recent().getTime(),
+    created_by: faker.person.fullName(),
     date: faker.date.recent(),
   };
 }

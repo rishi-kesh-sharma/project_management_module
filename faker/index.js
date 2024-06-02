@@ -10,6 +10,7 @@ import { createNBudgets } from "./budgets.js";
 import { createNSubTasks } from "./subTasks.js";
 import { createNTasks } from "./task.js";
 import { createNProjects } from "./project.js";
+import { createNTimeTrackings } from "./timeTracking.js";
 
 (() => {
   fs.writeFileSync(
@@ -26,6 +27,7 @@ import { createNProjects } from "./project.js";
       subTasks: createNSubTasks(22),
       tasks: createNTasks(22),
       projects: createNProjects(22),
+      timeTrackings: createNTimeTrackings(22),
     })
   );
 })();

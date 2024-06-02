@@ -7,7 +7,7 @@ import moment from "moment";
 import { Link, useParams } from "react-router-dom";
 export const colDefs = [
   {
-    field: "trackingId",
+    field: "id",
     headerCheckboxSelection: true,
     headerName: "Tracking ID",
     checkboxSelection: true,
@@ -31,9 +31,9 @@ export const colDefs = [
       return <>{moment(p.value).format("LL")}</>;
     },
   },
-  { field: "createdBy", headerName: "Created By" },
+  { field: "created_by", headerName: "Created By" },
   {
-    field: "startTime",
+    field: "start_time",
     headerName: "Start Time",
 
     cellRenderer: (p: { value: string }) => {
@@ -41,7 +41,7 @@ export const colDefs = [
     },
   },
   {
-    field: "endTime",
+    field: "end_time",
     headerName: "End Time",
     cellRenderer: (p: { value: string }) => {
       return <>{moment(p.value).format("hh:mm")}</>;
