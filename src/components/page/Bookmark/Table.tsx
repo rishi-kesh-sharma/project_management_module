@@ -16,15 +16,26 @@ const BookmarkTable = ({ tasks }: { tasks: IBookmarkRowData[] }) => {
   return (
     <div className="mt-[2rem]">
       <AgGridTable
-        tableToolbar={
-          <TableToolbar
-            heading={`Tasks`}
-            handleSearch={handleSearch}
-            dropdownMenus={dropdownMenus}
-            // createButtonText={null}
-            // createPagePath="/workspace/:workspaceId/bookmark/:bookmarkId/task/create"
-          />
-        }
+        TableToolbarHOC={({
+          isSideBarVisible,
+          setSideBarVisible,
+        }: {
+          isSideBarVisible: () => boolean;
+          setSideBarVisible: (value: boolean) => void;
+        }) => {
+          return (
+            <TableToolbar
+              heading={`Tasks`}
+              hasSearch={true}
+              handleSearch={handleSearch}
+              dropdownMenus={dropdownMenus}
+              isSideBarVisible={isSideBarVisible}
+              setSideBarVisible={setSideBarVisible}
+              // createButtonText={null}
+              // createPagePath="/workspace/:workspaceId/bookmark/:bookmarkId/task/create"
+            />
+          );
+        }}
         rowData={tasks}
         heading={`Tasks`}
         dropdownMenus={dropdownMenus}

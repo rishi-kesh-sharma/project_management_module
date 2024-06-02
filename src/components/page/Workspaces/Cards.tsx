@@ -1,12 +1,10 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import React from "react";
 import WorkspacesCard from "./WorkspaceCard";
 import AddCard from "@/components/custom/common/AddCard/AddCard";
 import CreateWorkspaceModalForm from "../Analytics/CreateWorkspaceForm";
 import { Button } from "@/components/ui/Button/button";
 
-const Cards: React.FC = ({ data }) => {
-  const handleAdd = () => {};
+const Cards = ({ data }: { data: any }) => {
   return (
     <div className="grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-[2.5rem]">
       {data?.map((item: any) => {

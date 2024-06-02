@@ -25,7 +25,7 @@ export const workspaceApi = createApi({
   baseQuery: fetchBaseQuery({ baseUrl: `${BASE_URL}` }),
   tagTypes: ["Workspace"],
   endpoints: (build) => ({
-    getWorkspaces: build.query<WorkspaceResponse, IWorkspace>({
+    getWorkspaces: build.query<WorkspaceResponse, string>({
       query: () => "workspaces",
       providesTags: (result) =>
         result

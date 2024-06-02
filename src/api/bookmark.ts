@@ -9,7 +9,7 @@ export const bookmarkApi = createApi({
   baseQuery: fetchBaseQuery({ baseUrl: `${BASE_URL}` }),
   tagTypes: ["Bookmark"],
   endpoints: (build) => ({
-    getBookmarks: build.query<BookMarkResponse, IBookmark>({
+    getBookmarks: build.query<BookMarkResponse, string>({
       query: () => "bookmarks",
       providesTags: (result) =>
         result

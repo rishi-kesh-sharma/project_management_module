@@ -1,4 +1,4 @@
-import { IBookmark } from "@/@types";
+import { IArchive } from "@/@types";
 
 import {
   EditIcon,
@@ -20,7 +20,7 @@ import { Ellipsis } from "lucide-react";
 import React from "react";
 import { Link } from "react-router-dom";
 
-const BookmarkCard: React.FC<IBookmark> = ({
+const ArchiveCard: React.FC<IArchive> = ({
   id,
   name,
   // createdBy,
@@ -91,7 +91,7 @@ const BookmarkCard: React.FC<IBookmark> = ({
       </CardContent>
       <CardFooter className="hidden  group-hover:flex gap-[1rem] absolute z-10 text-white text-2xl  left-[50%] top-[50%] translate-x-[-50%] translate-y-[-50%] ">
         <EditIcon />
-        <Link to={`/bookmark/${id}`}>
+        <Link to={`/archive/${id}`}>
           {" "}
           <EyeIcon />
         </Link>
@@ -100,4 +100,4 @@ const BookmarkCard: React.FC<IBookmark> = ({
   );
 };
 
-export default BookmarkCard;
+export default ArchiveCard;

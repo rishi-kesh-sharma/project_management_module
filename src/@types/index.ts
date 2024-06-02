@@ -88,7 +88,7 @@ export interface IHeaderProps {
 export interface IProject {
   id: string;
   name: string;
-  createdBy: string;
+  created_by: string;
   start_date: Date;
   status: "On Progress" | "Not Started" | "Completed" | "Pending";
   due_date: Date;
@@ -137,12 +137,25 @@ export interface IHumanResource {
 export interface IBookmark {
   id: string;
   name: string;
-  createdBy: string;
+  created_by: string;
   start_date: string;
   due_date: string;
   status: string;
   priority: string;
-  assignee: string;
+  members: string;
+  tasks: ITaskRowData[];
+  description: string;
+}
+
+export interface IArchive {
+  id: string;
+  name: string;
+  created_by: string;
+  start_date: string;
+  due_date: string;
+  status: string;
+  priority: string;
+  members: string;
   tasks: ITaskRowData[];
   description: string;
 }
@@ -164,7 +177,7 @@ export interface IRowData {
 export interface IWorkspaceRowData {
   id: string;
   name: string;
-  createdBy: string;
+  created_by: string;
   start_date: string;
   due_date: string;
   status: string;
@@ -174,7 +187,7 @@ export interface IWorkspaceRowData {
 export interface ISubTaskRowData {
   id: string;
   subTaskName: string;
-  createdBy: string;
+  created_by: string;
   start_date: string;
   due_date: string;
   status: string;
@@ -184,7 +197,7 @@ export interface ISubTaskRowData {
 export interface ISubTask {
   id: string;
   subTaskName: string;
-  createdBy: string;
+  created_by: string;
   start_date: string;
   due_date: string;
   status: string;
@@ -209,47 +222,59 @@ export interface ITimeTrackingRowData {
 export interface ITask {
   id: string;
   name: string;
-  createdBy: string;
+  created_by: string;
   start_date: string;
   due_date: string;
   status: string;
   priority: string;
-  assignee: string;
+  members: string;
   subTasks: ISubTask[];
   timeTrackings: ITimeTracking[];
 }
 export interface ITaskRowData {
   id: string;
   name: string;
-  createdBy: string;
+  created_by: string;
   start_date: string;
   due_date: string;
   status: string;
   priority: string;
-  assignee: string;
+  members: string;
   subTasks: ISubTaskRowData[];
 }
 
 export interface IProjectRowData {
   id: string;
   name: string;
-  createdBy: string;
+  created_by: string;
   start_date: string;
   due_date: string;
   status: string;
   priority: string;
-  assignee: string;
+  members: string;
   tasks: ITaskRowData[];
 }
 export interface IBookmarkRowData {
   id: string;
   name: string;
-  createdBy: string;
+  created_by: string;
   start_date: string;
   due_date: string;
   status: string;
   priority: string;
-  assignee: string;
+  members: string;
+  tasks: ITaskRowData[];
+}
+
+export interface IArchiveRowData {
+  id: string;
+  name: string;
+  created_by: string;
+  start_date: string;
+  due_date: string;
+  status: string;
+  priority: string;
+  members: string;
   tasks: ITaskRowData[];
 }
 

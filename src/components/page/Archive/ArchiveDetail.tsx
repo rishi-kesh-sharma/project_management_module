@@ -1,4 +1,3 @@
-import { useGetProjectsQuery } from "@/api/project";
 import ArchiveTable from "./Table";
 
 const archiveDetailTabTriggers = [
@@ -57,10 +56,14 @@ import InventoriesDetail from "@/components/custom/InventoriesTable/InventoriesD
 import { KanbanBoard } from "@/components/custom/common/Kanban/KanbanBoard";
 import TabWithButtonedTrigger from "@/components/custom/common/Tabs/TabsWithButtonedTrigger/TabsWithButtonedTrigger";
 import Spinner from "@/components/custom/common/Loaders/Spinner/Spinner";
+// import { useParams } from "react-router";
+import { useGetTasksQuery } from "@/api/task";
 const ArchiveDetail = () => {
-  const { data: projectsData, isLoading } = useGetProjectsQuery();
-  const data = projectsData?.[0];
+  // const { archiveId } = useParams();
+  const { data, isLoading } = useGetTasksQuery(``);
+
   console.log(data, "project data");
+  // const firstProject = data && data[0];
   if (isLoading || !data) return <Spinner />;
   return (
     <div className="my-[2rem]">
@@ -69,7 +72,7 @@ const ArchiveDetail = () => {
         contents={[
           {
             id: "tasks",
-            element: <ArchiveTable tasks={data.tasks} />,
+            element: <ArchiveTable tasks={data} />,
           },
           {
             id: "planning",

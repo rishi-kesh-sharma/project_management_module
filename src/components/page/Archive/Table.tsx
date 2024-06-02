@@ -1,7 +1,7 @@
 import AgGridTable from "@/components/custom/common/Tables/AgGridTable/AgGridTable";
 import { colDefs } from "./colDefs";
 import TableToolbar from "@/components/custom/common/TableElements/TableToolbar/TableToolbar";
-import { IBookmarkRowData } from "@/@types";
+import { IArchiveRowData } from "@/@types";
 
 const dropdownMenus = {
   items: [
@@ -11,20 +11,31 @@ const dropdownMenus = {
   ],
 };
 
-const BookmarkTable = ({ tasks }: { tasks: IBookmarkRowData[] }) => {
+const BookmarkTable = ({ tasks }: { tasks: IArchiveRowData[] }) => {
   const handleSearch = () => {};
   return (
     <div className="mt-[2rem]">
       <AgGridTable
-        tableToolbar={
-          <TableToolbar
-            heading={`Tasks`}
-            handleSearch={handleSearch}
-            dropdownMenus={dropdownMenus}
-            // createButtonText={null}
-            // createPagePath="/workspace/:workspaceId/bookmark/:bookmarkId/task/create"
-          />
-        }
+        TableToolbarHOC={({
+          isSideBarVisible,
+          setSideBarVisible,
+        }: {
+          isSideBarVisible: () => boolean;
+          setSideBarVisible: (value: boolean) => void;
+        }) => {
+          return (
+            <TableToolbar
+              heading={`Tasks`}
+              hasSearch={true}
+              handleSearch={handleSearch}
+              dropdownMenus={dropdownMenus}
+              // createButtonText={null}
+              // createPagePath="/workspace/:workspaceId/bookmark/:bookmarkId/task/create"
+              isSideBarVisible={isSideBarVisible}
+              setSideBarVisible={setSideBarVisible}
+            />
+          );
+        }}
         rowData={tasks}
         heading={`Tasks`}
         dropdownMenus={dropdownMenus}
