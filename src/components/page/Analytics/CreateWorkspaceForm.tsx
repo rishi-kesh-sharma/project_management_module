@@ -69,11 +69,13 @@ const CreateWorkspaceModalForm = ({
         trigger={trigger}
         title={`Create workspace`}
         // description={`This form creates a new workspace`}
-      >
+        size="xl">
         <Form {...form}>
           <form
             onSubmit={form.handleSubmit(onSubmit)}
             className="flex gap-[2rem] flex-col">
+            {/* <div className="grid grid-cols-3 gap-[1.5rem]"> */}
+            {/* <div className="col-span-2"> */}
             <FormField
               control={form.control}
               name="name"
@@ -93,6 +95,13 @@ const CreateWorkspaceModalForm = ({
                 </FormItem>
               )}
             />
+            {/* </div> */}
+            {/* <div className="flex flex-col ">
+                <FormLabel> Pick Color </FormLabel>
+
+                <ColorPicker />
+              </div> */}
+            {/* </div> */}
             <FormField
               control={form.control}
               name="tags"

@@ -2,7 +2,7 @@
 
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { useForm } from "react-hook-form";
+import { useFieldArray, useForm } from "react-hook-form";
 import {
   FormControl,
   FormField,
@@ -22,6 +22,15 @@ import PlateEditor from "../common/Editors/PlateEditor/PlateEditor";
 import { useMemo } from "react";
 import { ELEMENT_PARAGRAPH } from "@udecode/plate-paragraph";
 import DatePicker from "../common/FormElements/DatePicker/DatePicker";
+import {
+  Sortable,
+  SortableDragHandle,
+  SortableItem,
+} from "../common/Sortable/Sortable";
+import { TrashIcon } from "../common/icons/commonIcons";
+import { DragHandleDots2Icon } from "@radix-ui/react-icons";
+import { Skeleton } from "@/components/ui/Skeleton/skeleton";
+import { faker } from "@faker-js/faker";
 
 const CreateBudget: React.FC = () => {
   // const { workspaceId } = useParams();
@@ -48,7 +57,7 @@ const CreateBudget: React.FC = () => {
       z.object({
         id: z.string(),
         title: z.string(),
-        estimated_expense: z.string(),
+        estimated_expense: z.number(),
       })
     ),
     description: z.string().min(10).max(1000),
@@ -80,6 +89,11 @@ const CreateBudget: React.FC = () => {
     // ✅ This will be type-safe and validated.
     console.log(values);
   }
+
+  const { fields, append, move, remove } = useFieldArray({
+    control: form.control,
+    name: "particulars",
+  });
 
   return (
     <ShadForm {...form}>
@@ -119,6 +133,102 @@ const CreateBudget: React.FC = () => {
             </FormItem>
           )}
         />
+        {/* <SortableArrayField /> */}
+
+        <div className="flex w-full max-w-4xl flex-col gap-4 border rounded-lg p-[1rem]">
+          <div className="space-y-1 ">
+            <h4>Particulars</h4>
+            <p className="text-[0.8rem] text-muted-foreground">
+              Add particulars to tbe budget
+            </p>
+          </div>
+          <div className="space-y-2">
+            <Sortable
+              value={fields}
+              onMove={({ activeIndex, overIndex }) =>
+                move(activeIndex, overIndex)
+              }
+              overlay={
+                <div className="grid grid-cols-[0.5fr,1fr,auto,auto] items-center gap-2">
+                  <Skeleton className="h-8 w-full rounded-sm" />
+                  <Skeleton className="h-8 w-full rounded-sm" />
+                  <Skeleton className="size-8 shrink-0 rounded-sm" />
+                  <Skeleton className="size-8 shrink-0 rounded-sm" />
+                </div>
+              }>
+              <div className="w-full space-y-2">
+                {fields.map((field, index) => (
+                  <SortableItem key={field.id} value={field.id} asChild>
+                    <div className="grid grid-cols-[1fr,0.5fr,auto,auto] items-center gap-2">
+                      <FormField
+                        control={form.control}
+                        name={`particulars.${index}.title`}
+                        render={({ field }) => (
+                          <FormItem>
+                            <FormControl>
+                              <TextInput
+                                {...field}
+                                id={`particulars.${index}.title`}
+                                name={`particulars.${index}.title`}
+                              />
+                            </FormControl>
+                          </FormItem>
+                        )}
+                      />
+                      <FormField
+                        control={form.control}
+                        name={`particulars.${index}.estimated_expense`}
+                        render={({ field }) => (
+                          <FormItem>
+                            <FormControl>
+                              <NumberInput {...field} />
+                            </FormControl>
+                          </FormItem>
+                        )}
+                      />
+
+                      <SortableDragHandle
+                        variant="outline"
+                        size="icon"
+                        className="size-8 shrink-0">
+                        <DragHandleDots2Icon
+                          className="size-4"
+                          aria-hidden="true"
+                        />
+                      </SortableDragHandle>
+                      <Button
+                        type="button"
+                        variant="outline"
+                        size="icon"
+                        className="size-8 shrink-0"
+                        onClick={() => remove(index)}>
+                        <TrashIcon
+                          className="size-4 text-destructive"
+                          aria-hidden="true"
+                        />
+                        <span className="sr-only">Remove</span>
+                      </Button>
+                    </div>
+                  </SortableItem>
+                ))}
+              </div>
+            </Sortable>
+            <Button
+              type="button"
+              variant="outline"
+              size="sm"
+              className="w-fit"
+              onClick={() =>
+                append({
+                  title: "",
+                  estimated_expense: 0,
+                  id: faker.string.uuid(),
+                })
+              }>
+              Add Particular
+            </Button>
+          </div>
+        </div>
 
         <FormField
           control={form.control}
@@ -208,7 +318,10 @@ const CreateBudget: React.FC = () => {
                   id="description"
                   maxHeight={300}
                 /> */}
-                <PlateEditor initialValue={plateEditorInitialValue} />
+                <PlateEditor
+                  initialValue={plateEditorInitialValue}
+                  {...field}
+                />
               </FormControl>
               <FormMessage />
             </FormItem>

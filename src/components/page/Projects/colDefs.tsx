@@ -4,6 +4,7 @@ import { IHumanResource, IProjectRowData } from "@/@types";
 import ProgressBar from "@/components/custom/common/ProgressBar/ProgressBar";
 import Tags from "@/components/custom/common/Tags/Tags";
 import {
+  CommentIcon,
   EditIcon,
   TrashIcon,
 } from "@/components/custom/common/icons/commonIcons";
@@ -16,6 +17,8 @@ import { getTagVariantForValues } from "@/lib/utils";
 import moment from "moment";
 import { Link, useParams } from "react-router-dom";
 import { useGetHumanResourcesQuery } from "@/api/humanResource";
+import Modal from "@/components/custom/common/Modal/Modal";
+import AddCommentNew from "@/components/custom/common/AddCommentNew/AddCommentNew";
 export const colDefs = [
   {
     field: "name",
@@ -241,6 +244,16 @@ export const colDefs = [
               className="text-primary text-2xl cursor-pointer"
             />
           </Link>
+
+          <Modal
+            trigger={
+              <CommentIcon
+                id={p.data.id}
+                className="text-foreground text-sm cursor-pointer"
+              />
+            }
+            body={<AddCommentNew />}
+          />
         </div>
       );
     },
