@@ -3,17 +3,20 @@ import { cn } from "@/lib/utils";
 import { VariantProps, cva } from "class-variance-authority";
 import { Loader2 } from "lucide-react";
 
-const spinnerVariants = cva(" w-full flex-col items-center justify-center", {
-  variants: {
-    show: {
-      true: "flex",
-      false: "hidden",
+const spinnerVariants = cva(
+  " w-full h-screen flex-col absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] items-center justify-center",
+  {
+    variants: {
+      show: {
+        true: "flex",
+        false: "hidden",
+      },
     },
-  },
-  defaultVariants: {
-    show: true,
-  },
-});
+    defaultVariants: {
+      show: true,
+    },
+  }
+);
 
 const loaderVariants = cva("animate-spin text-primary", {
   variants: {
