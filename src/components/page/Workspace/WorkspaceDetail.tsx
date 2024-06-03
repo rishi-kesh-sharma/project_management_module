@@ -26,6 +26,12 @@ import {
   UserIconOutlined,
 } from "@/components/custom/common/icons/commonIcons";
 import IconDropdown from "@/components/custom/common/Dropdowns/IconDropdown/IconDropdown";
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from "@/components/ui/Tooltip/tooltip";
 
 // quick access options
 export const secondaryOptions = [
@@ -157,15 +163,25 @@ const WorkspaceDetail = () => {
           ) && (
             <div className="flex gap-2  ">
               {isBookmarked ? (
-                <StarIconFilled
-                  onClick={toggleBookmark}
-                  className="text-orange-400 text-lg cursor-pointer"
-                />
+                <Tooltip>
+                  <TooltipTrigger>
+                    <StarIconFilled
+                      onClick={toggleBookmark}
+                      className="text-orange-400 text-lg cursor-pointer"
+                    />
+                  </TooltipTrigger>
+                  <TooltipContent>{`Bookmark`}</TooltipContent>
+                </Tooltip>
               ) : (
-                <StarIconOutlined
-                  onClick={toggleBookmark}
-                  className="text-gray-500 text-lg cursor-pointer"
-                />
+                <Tooltip>
+                  <TooltipTrigger>
+                    <StarIconOutlined
+                      onClick={toggleBookmark}
+                      className="text-gray-500 text-lg cursor-pointer"
+                    />
+                  </TooltipTrigger>
+                  <TooltipContent>{`Bookmark`}</TooltipContent>
+                </Tooltip>
               )}
 
               {/* <ThreeHorizontalInsideCircle className="text-primary text-lg cursor-pointer" /> */}
@@ -178,15 +194,25 @@ const WorkspaceDetail = () => {
             ) && (
               <div className="flex gap-2  ">
                 {isArchived ? (
-                  <ArchiveIconFilled
-                    onClick={toggleArchive}
-                    className="text-primary text-lg cursor-pointer"
-                  />
+                  <Tooltip>
+                    <TooltipTrigger>
+                      <ArchiveIconFilled
+                        onClick={toggleArchive}
+                        className="text-primary text-lg cursor-pointer"
+                      />
+                    </TooltipTrigger>
+                    <TooltipContent>Archive</TooltipContent>
+                  </Tooltip>
                 ) : (
-                  <ArchiveIconOutlined
-                    onClick={toggleArchive}
-                    className="text-gray-500 text-lg cursor-pointer"
-                  />
+                  <Tooltip>
+                    <TooltipTrigger>
+                      <ArchiveIconOutlined
+                        onClick={toggleArchive}
+                        className="text-gray-500 text-lg cursor-pointer"
+                      />
+                    </TooltipTrigger>
+                    <TooltipContent>Archive</TooltipContent>
+                  </Tooltip>
                 )}
 
                 {/* <ThreeHorizontalInsideCircle className="text-primary text-lg cursor-pointer" /> */}
@@ -203,12 +229,28 @@ const WorkspaceDetail = () => {
               (item) => item.id !== "bookmark" && item.id !== "archive"
               //  && item.id !== "notification"
             )
-            .map((item) => item.icon)}
+            .map((item) => {
+              return (
+                <TooltipProvider>
+                  <Tooltip>
+                    <TooltipTrigger>{item.icon}</TooltipTrigger>
+                    <TooltipContent>{item.label}</TooltipContent>
+                  </Tooltip>
+                </TooltipProvider>
+              );
+            })}
 
           <IconDropdown
             className={` `}
             menu={{ items: secondaryOptions }}
-            icon={<EllipsisIconHorizontal className="relative " />}
+            icon={
+              <Tooltip>
+                <TooltipTrigger>
+                  <EllipsisIconHorizontal className="relative " />
+                </TooltipTrigger>
+                <TooltipContent className="">{`More options`}</TooltipContent>
+              </Tooltip>
+            }
           />
         </div>
       </div>

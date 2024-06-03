@@ -134,11 +134,11 @@ export const colDefs = [
         <div className="flex gap-4 items-center justify-start  h-full">
           <TrashIcon
             id={p.data.id}
-            className="text-destructive cursor-pointer"
+            className="text-destructive cursor-pointer text-base"
           />
           <EditIcon
             id={p.data.id}
-            className="text-primary text-lg cursor-pointer"
+            className="text-primary text-2xl cursor-pointer"
           />
         </div>
       );

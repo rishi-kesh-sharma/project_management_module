@@ -109,7 +109,7 @@ const WorkspaceCard: React.FC<IWorkspaceCardProps> = ({
               // type="button"
               className="flex gap-1  w-full h-full p-0 border-none  focus:bg-none"
               size={"xl"}>
-              <EditIcon className="text-[1.6rem] hover:bg-none text-primary-foreground " />
+              <EditIcon className="text-xl hover:bg-none text-primary-foreground " />
             </Button>
           }
         />

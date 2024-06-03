@@ -1,7 +1,7 @@
 import AgGridTable from "@/components/custom/common/Tables/AgGridTable/AgGridTable";
 import { colDefs } from "./colDefs";
 import TableToolbar from "@/components/custom/common/TableElements/TableToolbar/TableToolbar";
-import { IBookmarkRowData } from "@/@types";
+import { ITaskRowData } from "@/@types";
 
 const dropdownMenus = {
   items: [
@@ -11,7 +11,7 @@ const dropdownMenus = {
   ],
 };
 
-const BookmarkTable = ({ tasks }: { tasks: IBookmarkRowData[] }) => {
+const BookmarkTable = ({ tasks }: { tasks: ITaskRowData[] }) => {
   const handleSearch = () => {};
   return (
     <div className="mt-[2rem]">

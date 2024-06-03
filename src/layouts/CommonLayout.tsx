@@ -7,11 +7,13 @@ import Breadcrumb from "@/components/custom/common/Breadcrumb/Breadcrumb.tsx";
 import { useGetWorkspaceQuery } from "@/api/workspace";
 import { useGetBookmarksQuery } from "@/api/bookmark.ts";
 import Spinner from "@/components/custom/common/Loaders/Spinner/Spinner.tsx";
+import { useGetArchivesQuery } from "@/api/archives.ts";
 
 const CommonLayout = () => {
   const { pathname: currentPath } = useLocation();
   const { data: workspaces, isLoading } = useGetWorkspaceQuery("");
-  const { data: bookmarks } = useGetBookmarksQuery();
+  const { data: bookmarks } = useGetBookmarksQuery("");
+  const { data: archives } = useGetArchivesQuery("");
 
   if (isLoading)
     return (
@@ -22,7 +24,7 @@ const CommonLayout = () => {
   return (
     <div className="relative w-full min-h-screen flex">
       <Sidebar
-        items={sidebarItems({ workspaces, bookmarks, archives: bookmarks })}
+        items={sidebarItems({ workspaces, bookmarks, archives })}
         path={currentPath}
       />
 

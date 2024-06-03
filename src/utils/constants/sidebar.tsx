@@ -1,7 +1,9 @@
 import { IWorkspace, IProject } from "@/api/workspace";
 import {
   AnalysticIcon,
+  ArchiveIconOutlined,
   BookmarkIconOutlined,
+  DotIconFilled,
   OverviewIcon,
   // GoalsIcon,
   // HomeIcon,
@@ -30,16 +32,16 @@ export const sidebarItems = (injectables: ISidebarItemsProps) => [
     const items = workspaces?.slice(0, 3).map((workspace: IWorkspace) => {
       const link = `/workspace/${workspace?.id}`;
       const items = workspace?.projects?.map((project: IProject) => {
+        const link = `/project/${project.id}`;
         return {
+          link,
           label: project.name,
-          link: `/project/${project?.id}`,
+          icon: <DotIconFilled className="text-[0.6rem]" />,
         };
       });
 
       return { link, label: workspace.name, items };
     });
-
-    console.log(items, "items");
 
     return {
       label: i18n.t("component.sidebar.menu.workspaces", "Workspaces"),
@@ -48,6 +50,7 @@ export const sidebarItems = (injectables: ISidebarItemsProps) => [
       items: items && [
         ...items,
         {
+          // icon: <DotIconFilled className="text-[0.6rem]" />,
           label: (
             <>
               <span>View all</span>
@@ -64,7 +67,11 @@ export const sidebarItems = (injectables: ISidebarItemsProps) => [
     const bookmarks = injectables?.bookmarks;
     const items = bookmarks?.slice(0, 3)?.map((project: IProject) => {
       const link = `/bookmark/${project.id}`;
-      return { link, label: project.name };
+      return {
+        link,
+        label: project.name,
+        icon: <DotIconFilled className="text-[0.6rem]" />,
+      };
     });
 
     return {
@@ -74,6 +81,7 @@ export const sidebarItems = (injectables: ISidebarItemsProps) => [
       items: items && [
         ...items,
         {
+          // icon: <DotIconFilled className="text-[0.6rem]" />,
           label: (
             <>
               <span>View All</span>
@@ -89,16 +97,21 @@ export const sidebarItems = (injectables: ISidebarItemsProps) => [
     const archives = injectables?.archives;
     const items = archives?.slice(0, 3)?.map((project: IProject) => {
       const link = `/archive/${project.id}`;
-      return { link, label: project.name };
+      return {
+        link,
+        label: project.name,
+        icon: <DotIconFilled className="text-[0.6rem]" />,
+      };
     });
 
     return {
       label: i18n.t("component.sidebar.menu.archives", "Archives"),
       link: `/archives`,
-      icon: <BookmarkIconOutlined />,
+      icon: <ArchiveIconOutlined />,
       items: items && [
         ...items,
         {
+          // icon: <DotIconFilled className="text-[0.6rem]" />,
           label: (
             <>
               <span>View All</span>
