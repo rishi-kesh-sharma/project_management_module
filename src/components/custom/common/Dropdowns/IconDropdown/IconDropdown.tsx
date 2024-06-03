@@ -33,10 +33,9 @@ const IconDropdown: React.FC<IIconDropdownMenuProps> = ({
   dropdownSize,
   dropdownVariant,
   icon,
-  className,
 }) => {
   return (
-    <DropdownMenu className={className}>
+    <DropdownMenu>
       <DropdownMenuTrigger>{icon}</DropdownMenuTrigger>
       <DropdownMenuContent
         className={`${iconDropdownVariants({ dropdownSize, dropdownVariant })} `}>

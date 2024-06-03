@@ -246,10 +246,12 @@ export const colDefs = [
           </Link>
 
           <Modal
+            title={`Comments`}
+            size="xl"
             trigger={
               <CommentIcon
                 id={p.data.id}
-                className="text-foreground text-sm cursor-pointer"
+                className="text-foreground/70 text-sm cursor-pointer"
               />
             }
             body={<AddCommentNew />}
