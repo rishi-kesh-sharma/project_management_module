@@ -37,7 +37,7 @@ const CreateProject: React.FC = () => {
 
   const formSchema = z.object({
     name: z.string().min(2).max(100),
-    projectType: z.string(),
+    type: z.string(),
     workspace: z.string(),
     teamMembers: z.array(z.string()),
     priority: z.string(),
@@ -58,7 +58,7 @@ const CreateProject: React.FC = () => {
     resolver: zodResolver(formSchema),
     defaultValues: {
       name: "",
-      projectType: "",
+      type: "",
       workspace: "",
       teamMembers: [],
       priority: "",
@@ -103,7 +103,7 @@ const CreateProject: React.FC = () => {
 
         <FormField
           control={form.control}
-          name="projectType"
+          name="type"
           render={({ field }) => (
             <FormItem>
               <FormLabel>Project Type</FormLabel>

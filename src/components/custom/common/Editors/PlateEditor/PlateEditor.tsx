@@ -31,8 +31,15 @@ export interface IPlateEditorProps {
       ];
     },
   ];
+  height?: number;
+  size?: "sm" | "md";
+  className: string;
 }
-export default function PlateEditor({ initialValue }: IPlateEditorProps) {
+export default function PlateEditor({
+  initialValue,
+  size = "md",
+  className,
+}: IPlateEditorProps) {
   const containerRef = useRef(null);
 
   return (
@@ -51,11 +58,11 @@ export default function PlateEditor({ initialValue }: IPlateEditorProps) {
             </FixedToolbar>
 
             <Editor
-              className="px-[96px] py-16 h-[300px]"
               autoFocus
               focusRing={false}
               variant="ghost"
-              size="md"
+              size={size}
+              className={cn(`px-[2rem] py-[2rem]`, className)}
             />
 
             <FloatingToolbar>

@@ -142,7 +142,9 @@ const CreateTask: React.FC = () => {
 
   return (
     <ShadForm {...form}>
-      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
+      <form
+        onSubmit={form.handleSubmit(onSubmit)}
+        className="space-y-8 pb-[2rem]">
         <h1 className="text-bold text-xl mt-[2rem]">Create Task</h1>
         <FormField
           control={form.control}
