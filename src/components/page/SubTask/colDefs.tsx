@@ -3,6 +3,7 @@ import { ISubTaskRowData } from "@/@types";
 import ProgressBar from "@/components/custom/common/ProgressBar/ProgressBar";
 import Tags from "@/components/custom/common/Tags/Tags";
 import {
+  CommentIcon,
   EditIcon,
   TrashIcon,
 } from "@/components/custom/common/icons/commonIcons";
@@ -198,6 +199,10 @@ export const colDefs = [
             className="text-destructive cursor-pointer"
           />
           <EditIcon
+            id={p.data.id}
+            className="text-primary text-lg cursor-pointer"
+          />
+          <CommentIcon
             id={p.data.id}
             className="text-primary text-lg cursor-pointer"
           />

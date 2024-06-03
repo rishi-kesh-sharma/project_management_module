@@ -13,7 +13,6 @@ import {
   BookmarkIconOutlined,
   CalendarIcon,
   CopyIconOutlined,
-  DropIconOutlined,
   EditIcon,
   EllipsisIconHorizontal,
   FlagIconOutlined,
@@ -32,6 +31,7 @@ import {
   TooltipProvider,
   TooltipTrigger,
 } from "@/components/ui/Tooltip/tooltip";
+import ColorPicker from "@/components/custom/common/ColorPicker/ColorPicker";
 
 // quick access options
 export const secondaryOptions = [
@@ -70,8 +70,9 @@ export const primaryOptions = [
   {
     label: "Color",
     id: "color",
-    icon: <DropIconOutlined className="cursor-pointer text-foreground/80" />,
+    // icon: <DropIconOutlined className="cursor-pointer text-foreground/80" />,
     isLink: false,
+    element: <ColorPicker />,
   },
   {
     label: "Members",
@@ -233,7 +234,7 @@ const WorkspaceDetail = () => {
               return (
                 <TooltipProvider>
                   <Tooltip>
-                    <TooltipTrigger>{item.icon}</TooltipTrigger>
+                    <TooltipTrigger>{item.icon || item.element}</TooltipTrigger>
                     <TooltipContent>{item.label}</TooltipContent>
                   </Tooltip>
                 </TooltipProvider>

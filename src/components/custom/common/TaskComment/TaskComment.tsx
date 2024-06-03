@@ -9,7 +9,7 @@ interface IComment {
   name: string;
 }
 
-const AddCommentNew = () => {
+const TaskComment = () => {
   const [comment, setcomment] = useState("");
   const [comments, setcomments] = useState<IComment[]>([]);
   const handlesubmit = (Event: FormEvent) => {
@@ -410,4 +410,4 @@ const AddCommentNew = () => {
   );
 };
 
-export default AddCommentNew;
+export default TaskComment;
