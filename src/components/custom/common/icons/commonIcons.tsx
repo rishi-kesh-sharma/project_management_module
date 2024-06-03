@@ -54,6 +54,8 @@ import { PiMagicWandLight } from "react-icons/pi";
 import { IoEllipsisHorizontal } from "react-icons/io5";
 import { CiSearch } from "react-icons/ci";
 import { FaMinus } from "react-icons/fa";
+import { MdOutlineAccountBox } from "react-icons/md";
+import { MdOutlineRoomPreferences } from "react-icons/md";
 export {
   FaRegCircleDot as GoalsIcon,
   HiOutlineChartBar as PlanningIcon,
@@ -72,7 +74,8 @@ export {
   BiChevronRight as RightAngularArrowIcon,
   IoEyeOutline as EyeIcon,
   BsThreeDotsVertical as ThreeVerticalDots,
-  MdOutlineAccountCircle as AccountIcon,
+  MdOutlineAccountBox as AccountIcon,
+  MdOutlineAccountCircle as ProfileIcon,
   FaPlus as PlusIcon,
   FaRegStar as StarIconOutlined,
   RxStarFilled as StarIconFilled,
@@ -113,4 +116,5 @@ export {
   IoEllipsisHorizontal as EllipsisIconHorizontal,
   CiSearch as SearchIcon,
   FaMinus as MinusIcon,
+  MdOutlineRoomPreferences as PreferencesIcon,
 };

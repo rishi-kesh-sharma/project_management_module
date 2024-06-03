@@ -13,7 +13,6 @@ import {
   AvatarImage,
 } from "@/components/ui/Avatar/avatar";
 import { getTagVariantForValues } from "@/lib/utils";
-import { users } from "@/data";
 import moment from "moment";
 import { Link, useParams } from "react-router-dom";
 import { useGetHumanResourcesQuery } from "@/api/humanResource";
@@ -233,13 +232,13 @@ export const colDefs = [
         <div className="flex gap-4 items-center justify-start  h-full">
           <TrashIcon
             id={p.data.id}
-            className="text-destructive cursor-pointer"
+            className="text-destructive cursor-pointer text-base"
           />
           <Link
             to={`/workspace/${workspaceId}/project/${projectId}/task/${p.data.id}/update`}>
             <EditIcon
               id={p.data.id}
-              className="text-primary text-lg cursor-pointer"
+              className="text-primary text-2xl cursor-pointer"
             />
           </Link>
         </div>

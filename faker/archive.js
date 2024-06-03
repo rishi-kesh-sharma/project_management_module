@@ -14,6 +14,7 @@ function createRandomArchivedProjects(value) {
     ]),
     due_date: faker.date.future(),
     priority: faker.helpers.arrayElement(["Low", "Normal", "High"]),
+    description: faker.lorem.words({ min: 10, max: 50 }),
   };
 }
 

@@ -1,4 +1,4 @@
-import { useGetProjectsQuery } from "@/api/project";
+// import { useGetProjectsQuery } from "@/api/project";
 import BookmarkTable from "./Table";
 
 const bookmarkDetailTabTriggers = [
@@ -57,11 +57,15 @@ import InventoriesDetail from "@/components/custom/InventoriesTable/InventoriesD
 import { KanbanBoard } from "@/components/custom/common/Kanban/KanbanBoard";
 import TabWithButtonedTrigger from "@/components/custom/common/Tabs/TabsWithButtonedTrigger/TabsWithButtonedTrigger";
 import Spinner from "@/components/custom/common/Loaders/Spinner/Spinner";
+// import { useGetBookmarkQuery } from "@/api/bookmark";
+// import { useParams } from "react-router";
+import { useGetTasksQuery } from "@/api/task";
 const BookmarkDetail = () => {
-  const { data: projectsData, isLoading } = useGetProjectsQuery();
-  const data = projectsData?.[0];
-  console.log(data, "project data");
-  if (isLoading || !data) return <Spinner />;
+  // const { bookmarkId } = useParams();
+  // const { data: bookmark } = useGetBookmarkQuery(`${bookmarkId}`);
+  const { data: tasks, isLoading } = useGetTasksQuery(``);
+  console.log(tasks, "project data");
+  if (isLoading || !tasks) return <Spinner />;
   return (
     <div className="my-[2rem]">
       <Tabs
@@ -69,7 +73,7 @@ const BookmarkDetail = () => {
         contents={[
           {
             id: "tasks",
-            element: <BookmarkTable tasks={data.tasks} />,
+            element: <BookmarkTable tasks={tasks} />,
           },
           {
             id: "planning",

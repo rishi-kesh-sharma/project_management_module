@@ -4,7 +4,7 @@ import { createNProjects } from "./project.js";
 function createRandomWorkspaces(value) {
   return {
     id: faker.string.uuid(),
-    name: `My Workspace ${value}`,
+    name: `Workspace ${value}`,
     projects: createNProjects(4),
     description: faker.lorem.lines({ max: 5, min: 1 }),
     tags: faker.helpers.arrayElements([

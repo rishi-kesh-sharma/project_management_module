@@ -61,9 +61,12 @@ export const colDefs = [
         <div className="flex gap-4 items-center justify-start  h-full">
           <TrashIcon
             id={p.data.id}
-            className="text-destructive cursor-pointer"
+            className="text-destructive cursor-pointer text-base"
           />
-          <EditIcon id={p.data.id} className="text-blue-900 cursor-pointer" />
+          <EditIcon
+            id={p.data.id}
+            className="text-primary font-bold text-2xl cursor-pointer"
+          />
         </div>
       );
     },

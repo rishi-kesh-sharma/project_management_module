@@ -153,12 +153,12 @@ export const colDefs = [
         <div className="flex gap-4 items-center justify-start  h-full">
           <TrashIcon
             id={p.data.id}
-            className="text-destructive cursor-pointer"
+            className="text-destructive cursor-pointer text-base"
           />
           <Link to={`/workspace/${workspaceId}/project/${p.data.id}/update`}>
             <EditIcon
               id={p.data.id}
-              className="text-primary font-bold text-lg cursor-pointer"
+              className="text-primary font-bold text-2xl cursor-pointer"
             />
           </Link>
         </div>

@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/rules-of-hooks */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { ISubTaskRowData } from "@/@types";
 import ProgressBar from "@/components/custom/common/ProgressBar/ProgressBar";
@@ -197,16 +198,20 @@ export const colDefs = [
     headerCheckboxSelection: false,
 
     cellRenderer: (p: { value: string; data: ISubTaskRowData }) => {
+      const { workspaceId, projectId, taskId } = useParams();
       return (
         <div className="flex gap-4 items-center justify-start  h-full">
           <TrashIcon
             id={p.data.id}
-            className="text-destructive cursor-pointer"
+            className="text-destructive cursor-pointer text-base"
           />
-          <EditIcon
-            id={p.data.id}
-            className="text-primary text-lg cursor-pointer"
-          />
+          <Link
+            to={`/workspace/${workspaceId}/project/${projectId}/task/${taskId}/subTask/${p.data.id}/update`}>
+            <EditIcon
+              id={p.data.id}
+              className="text-primary font-bold text-2xl cursor-pointer"
+            />
+          </Link>
         </div>
       );
     },
