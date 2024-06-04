@@ -56,6 +56,8 @@ import { CiSearch } from "react-icons/ci";
 import { FaMinus } from "react-icons/fa";
 import { MdOutlineAccountBox } from "react-icons/md";
 import { MdOutlineRoomPreferences } from "react-icons/md";
+import { MdOutlineTimeline } from "react-icons/md";
+import { GoMilestone } from "react-icons/go";
 export {
   FaRegCircleDot as GoalsIcon,
   HiOutlineChartBar as PlanningIcon,
@@ -117,4 +119,6 @@ export {
   CiSearch as SearchIcon,
   FaMinus as MinusIcon,
   MdOutlineRoomPreferences as PreferencesIcon,
+  MdOutlineTimeline as TimelineIcon,
+  GoMilestone as MilestoneIcon,
 };

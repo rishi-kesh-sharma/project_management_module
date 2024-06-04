@@ -55,7 +55,7 @@ import Tabs from "@/components/custom/common/Tabs/TabsWithBottomBorder/Tabs";
 import EquipmentsDetail from "@/components/custom/EquipmentsTable/EquipmentDetail";
 import HumanResourceDetail from "@/components/custom/HumanResourceTable/HumanResourceDetail";
 import InventoriesDetail from "@/components/custom/InventoriesTable/InventoriesDetail";
-import { KanbanBoard } from "@/components/custom/common/Kanban/KanbanBoard";
+import { KanbanBoard } from "@/components/custom/common/Kanban/TasksKanbanBoard";
 import TimeTrackingDetail from "./TimeTrackingDetail";
 import TabWithButtonedTrigger from "@/components/custom/common/Tabs/TabsWithButtonedTrigger/TabsWithButtonedTrigger";
 import Spinner from "@/components/custom/common/Loaders/Spinner/Spinner";
