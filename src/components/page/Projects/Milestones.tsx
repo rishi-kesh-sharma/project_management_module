@@ -1,4 +1,5 @@
 import PlateEditor from "@/components/custom/common/Editors/PlateEditor/PlateEditor";
+import { AutosizeTextarea } from "@/components/custom/common/FormElements/AutosizeTextArea/AutosizeTextArea";
 import DatePicker from "@/components/custom/common/FormElements/DatePicker/DatePicker";
 import TextInput from "@/components/custom/common/FormElements/Input/TextInput/TextInput";
 import { TrashIcon } from "@/components/custom/common/icons/commonIcons";
@@ -68,7 +69,7 @@ export const AddMileStonesForm = () => {
       {
         id: "1",
         type: ELEMENT_PARAGRAPH,
-        children: [{ text: "Enter notes here..." }],
+        children: [{ text: "Enter description here..." }],
       },
     ];
   }, []);
@@ -87,13 +88,7 @@ export const AddMileStonesForm = () => {
   return (
     <Form {...form}>
       <form onSubmit={form.handleSubmit(onSubmit)}>
-        <div className="flex w-full  flex-col gap-4 border rounded-lg p-[1rem]">
-          <div className="space-y-1 ">
-            <h4>Milestones</h4>
-            <p className="text-[0.8rem] text-muted-foreground">
-              Add milestones to the project
-            </p>
-          </div>
+        <div className="flex w-full  flex-col gap-4  rounded-lg  ">
           <div className="space-y-2 ">
             <Sortable
               value={fields}
@@ -108,11 +103,11 @@ export const AddMileStonesForm = () => {
                   <Skeleton className="size-8 shrink-0 rounded-sm" />
                 </div>
               }>
-              <div className="w-full space-y-2 flex flex-col h-[350px]  overflow-auto">
+              <div className="w-full  flex flex-col gap-[2.5rem] max-h-[400px]  overflow-auto  py-[1rem] px-[0.3rem]">
                 {fields.map((field, index) => (
                   <SortableItem key={field.id} value={field.id} asChild>
-                    <div className="grid grid-cols-3  items-start gap-[2rem] justify-between ">
-                      <div className="col-span-2">
+                    <div className="grid grid-cols-4  items-start gap-[2rem] justify-between ">
+                      <div className="col-span-3 grid  gap-[1rem]">
                         <FormField
                           control={form.control}
                           name={`milestones.${index}.title`}
@@ -123,6 +118,7 @@ export const AddMileStonesForm = () => {
                                   {...field}
                                   id={`milestones.${index}.title`}
                                   name={`milestones.${index}.title`}
+                                  placeholder="Enter title"
                                 />
                               </FormControl>
                             </FormItem>
@@ -139,25 +135,25 @@ export const AddMileStonesForm = () => {
                             </FormItem>
                           )}
                         />
-
                         <FormField
                           control={form.control}
                           name={`milestones.${index}.description`}
                           render={({ field }) => (
                             <FormItem>
-                              <FormLabel>Description</FormLabel>
+                              {/* <FormLabel>Description</FormLabel> */}
                               <FormControl>
-                                {/* <AutosizeTextarea
-                  placeholder="Enter task notes..."
-                  {...field}
-                  id="description"
-                  maxHeight={300}
-                /> */}
-                                <PlateEditor
+                                <AutosizeTextarea
+                                  placeholder="Enter description here..."
+                                  {...field}
+                                  name={`milestones.${index}.description`}
+                                  id={`milestones.${index}.description`}
+                                  maxHeight={300}
+                                />
+                                {/* <PlateEditor
                                   id={`milestones.${index}.description`}
                                   initialValue={plateEditorInitialValue}
                                   {...field}
-                                />
+                                /> */}
                               </FormControl>
                               <FormMessage />
                             </FormItem>
@@ -224,6 +220,8 @@ const Milestones = () => {
   return (
     <div>
       <Modal
+        title={`Milestones`}
+        description={` Add milestones to the project`}
         size="xl"
         trigger={
           <Button

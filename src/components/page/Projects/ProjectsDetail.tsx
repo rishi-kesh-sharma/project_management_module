@@ -12,7 +12,6 @@ import {
   FlagIconOutlined,
   LinkIconOutlined,
   MagicIconOutlined,
-  MilestoneIcon,
   NotificationIconOutlined,
   SettingIcon,
   StarIconFilled,
@@ -346,8 +345,8 @@ const ProjectDetail = () => {
                   {
                     id: "gantt-chart",
                     element: (
-                      <div>
-                        <h1 className="text-xl font-semibold my-[1.5rem]">
+                      <div className="pb-[1.3rem]">
+                        <h1 className="text-xl font-semibold my-[1.5rem]  overflow-auto ">
                           {" "}
                           Gantt Chart
                         </h1>
@@ -358,11 +357,10 @@ const ProjectDetail = () => {
                   {
                     id: "tasks-board",
                     element: (
-                      <div>
+                      <div className="pb-[1.3rem]">
                         <h1 className="text-xl font-semibold my-[1.5rem]">
                           Tasks Board
                         </h1>
-
                         <TasksKanbanBoard />
                       </div>
                     ),
@@ -370,7 +368,7 @@ const ProjectDetail = () => {
                   {
                     id: "milestones-board",
                     element: (
-                      <div>
+                      <div className="pb-[1.3rem]">
                         <h1 className="text-xl font-semibold my-[1.5rem]">
                           Milestones Board
                         </h1>
@@ -382,7 +380,7 @@ const ProjectDetail = () => {
                   {
                     id: "timeline",
                     element: (
-                      <div>
+                      <div className="pb-[1.3rem]">
                         <h1 className="text-xl font-semibold my-[1.5rem]">
                           Timeline
                         </h1>
@@ -393,7 +391,7 @@ const ProjectDetail = () => {
                   {
                     id: "files",
                     element: (
-                      <div>
+                      <div className="pb-[1.3rem]">
                         <h1 className="text-xl font-semibold my-[1.5rem]">
                           Files
                         </h1>

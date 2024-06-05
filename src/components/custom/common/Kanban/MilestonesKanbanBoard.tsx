@@ -33,7 +33,7 @@ const defaultCols = [
   },
   {
     id: "requirement-approval" as const,
-    title: "Requirement Approval",
+    title: "Approval",
   },
   {
     id: "design-completion" as const,
@@ -68,7 +68,7 @@ const defaultCols = [
 
 export type ColumnId = (typeof defaultCols)[number]["id"];
 
-const initialTasks: Task[] = [
+const initialTasks = [
   {
     id: "task1",
     columnId: "tasks",
@@ -549,7 +549,7 @@ export default function TasksKanbanBoard() {
   const pickedUpTaskColumn = useRef<ColumnId | null>(null);
   const columnsId = useMemo(() => columns.map((col) => col.id), [columns]);
 
-  const [tasks, setTasks] = useState<Task[]>(initialTasks);
+  const [tasks, setTasks] = useState(initialTasks);
 
   const [activeColumn, setActiveColumn] = useState<Column | null>(null);
 
