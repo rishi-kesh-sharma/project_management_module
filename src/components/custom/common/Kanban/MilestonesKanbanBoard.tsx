@@ -24,30 +24,54 @@ import { coordinateGetter } from "./multipleContainersKeyboardPreset";
 
 const defaultCols = [
   {
-    id: "pending" as const,
-    title: "Pending",
+    id: "tasks" as const,
+    title: "Tasks",
   },
   {
-    id: "not-started" as const,
-    title: "Not Started",
+    id: "project-initiation" as const,
+    title: "Project Initiation",
   },
   {
-    id: "on-progress" as const,
-    title: "On Progress",
+    id: "requirement-approval" as const,
+    title: "Approval",
+  },
+  {
+    id: "design-completion" as const,
+    title: "Design Completion",
   },
 
   {
-    id: "completed" as const,
-    title: "Completed",
+    id: "prototype-completion" as const,
+    title: "Prototype Completion",
   },
 ] satisfies Column[];
 
+// const defaultCols = [
+//   {
+//     id: "pending" as const,
+//     title: "Pending",
+//   },
+//   {
+//     id: "not-started" as const,
+//     title: "Not Started",
+//   },
+//   {
+//     id: "on-progress" as const,
+//     title: "On Progress",
+//   },
+
+//   {
+//     id: "completed" as const,
+//     title: "Completed",
+//   },
+// ] satisfies Column[];
+
 export type ColumnId = (typeof defaultCols)[number]["id"];
 
-const initialTasks: Task[] = [
+const initialTasks = [
   {
     id: "task1",
-    columnId: "completed",
+    columnId: "tasks",
     title: "Project initiation and planning",
     description:
       "This task should be completed within the week. The task is assigned to the large number of team.",
@@ -58,7 +82,7 @@ const initialTasks: Task[] = [
   },
   {
     id: "task2",
-    columnId: "completed",
+    columnId: "tasks",
     title: "Gather requirements from stakeholders",
     description:
       "This task should be completed within the week. The task is assigned to the large number of team.",
@@ -69,7 +93,41 @@ const initialTasks: Task[] = [
   },
   {
     id: "task3",
-    columnId: "completed",
+    columnId: "tasks",
+    title: "Create wireframes and mockups",
+    description:
+      "This task should be completed within the week. The task is assigned to the large number of team.",
+    priority: "high",
+    team: ["member1", "member2"],
+    deadline: "Feb 23, 2024",
+    noOfComments: 3,
+  },
+
+  {
+    id: "task1",
+    columnId: "prototype-completion",
+    title: "Project initiation and planning",
+    description:
+      "This task should be completed within the week. The task is assigned to the large number of team.",
+    priority: "high",
+    team: ["member1", "member2"],
+    deadline: "Feb 23, 2024",
+    noOfComments: 3,
+  },
+  {
+    id: "task2",
+    columnId: "prototype-completion",
+    title: "Gather requirements from stakeholders",
+    description:
+      "This task should be completed within the week. The task is assigned to the large number of team.",
+    priority: "high",
+    team: ["member1", "member2"],
+    deadline: "Feb 23, 2024",
+    noOfComments: 3,
+  },
+  {
+    id: "task3",
+    columnId: "prototype-completion",
     title: "Create wireframes and mockups",
     description:
       "This task should be completed within the week. The task is assigned to the large number of team.",
@@ -80,7 +138,7 @@ const initialTasks: Task[] = [
   },
   {
     id: "task4",
-    columnId: "on-progress",
+    columnId: "design-completion",
     title: "Develop homepage layout",
     description:
       "This task should be completed within the week. The task is assigned to the large number of team.",
@@ -91,7 +149,7 @@ const initialTasks: Task[] = [
   },
   {
     id: "task5",
-    columnId: "on-progress",
+    columnId: "design-completion",
     title: "Design color scheme and typography",
     description:
       "This task should be completed within the week. The task is assigned to the large number of team.",
@@ -102,7 +160,7 @@ const initialTasks: Task[] = [
   },
   {
     id: "task6",
-    columnId: "on-progress",
+    columnId: "design-completion",
     title: "Implement user authentication",
     description:
       "This task should be completed within the week. The task is assigned to the large number of team.",
@@ -113,7 +171,84 @@ const initialTasks: Task[] = [
   },
   {
     id: "task7",
-    columnId: "on-progress",
+    columnId: "design-completion",
+    title: "Build contact us page",
+    description:
+      "This task should be completed within the week. The task is assigned to the large number of team.",
+    priority: "high",
+    team: ["member1", "member2"],
+    deadline: "Feb 23, 2024",
+    noOfComments: 3,
+  },
+  {
+    id: "task1",
+    columnId: "prototype-completion",
+    title: "Project initiation and planning",
+    description:
+      "This task should be completed within the week. The task is assigned to the large number of team.",
+    priority: "high",
+    team: ["member1", "member2"],
+    deadline: "Feb 23, 2024",
+    noOfComments: 3,
+  },
+  {
+    id: "task2",
+    columnId: "prototype-completion",
+    title: "Gather requirements from stakeholders",
+    description:
+      "This task should be completed within the week. The task is assigned to the large number of team.",
+    priority: "high",
+    team: ["member1", "member2"],
+    deadline: "Feb 23, 2024",
+    noOfComments: 3,
+  },
+  {
+    id: "task3",
+    columnId: "prototype-completion",
+    title: "Create wireframes and mockups",
+    description:
+      "This task should be completed within the week. The task is assigned to the large number of team.",
+    priority: "high",
+    team: ["member1", "member2"],
+    deadline: "Feb 23, 2024",
+    noOfComments: 3,
+  },
+  {
+    id: "task4",
+    columnId: "design-completion",
+    title: "Develop homepage layout",
+    description:
+      "This task should be completed within the week. The task is assigned to the large number of team.",
+    priority: "high",
+    team: ["member1", "member2"],
+    deadline: "Feb 23, 2024",
+    noOfComments: 3,
+  },
+  {
+    id: "task5",
+    columnId: "design-completion",
+    title: "Design color scheme and typography",
+    description:
+      "This task should be completed within the week. The task is assigned to the large number of team.",
+    priority: "high",
+    team: ["member1", "member2"],
+    deadline: "Feb 23, 2024",
+    noOfComments: 3,
+  },
+  {
+    id: "task6",
+    columnId: "design-completion",
+    title: "Implement user authentication",
+    description:
+      "This task should be completed within the week. The task is assigned to the large number of team.",
+    priority: "high",
+    team: ["member1", "member2"],
+    deadline: "Feb 23, 2024",
+    noOfComments: 3,
+  },
+  {
+    id: "task7",
+    columnId: "design-completion",
     title: "Build contact us page",
     description:
       "This task should be completed within the week. The task is assigned to the large number of team.",
@@ -124,7 +259,7 @@ const initialTasks: Task[] = [
   },
   {
     id: "task8",
-    columnId: "on-progress",
+    columnId: "design-completion",
     title: "Create product catalog",
     description:
       "This task should be completed within the week. The task is assigned to the large number of team.",
@@ -135,7 +270,7 @@ const initialTasks: Task[] = [
   },
   {
     id: "task9",
-    columnId: "on-progress",
+    columnId: "design-completion",
     title: "Develop about us page",
     description:
       "This task should be completed within the week. The task is assigned to the large number of team.",
@@ -146,7 +281,7 @@ const initialTasks: Task[] = [
   },
   {
     id: "task10",
-    columnId: "on-progress",
+    columnId: "design-completion",
     title: "Optimize website for mobile devices",
     description:
       "This task should be completed within the week. The task is assigned to the large number of team.",
@@ -157,7 +292,7 @@ const initialTasks: Task[] = [
   },
   {
     id: "task11",
-    columnId: "on-progress",
+    columnId: "design-completion",
     title: "Integrate payment gateway",
     description:
       "This task should be completed within the week. The task is assigned to the large number of team.",
@@ -168,7 +303,7 @@ const initialTasks: Task[] = [
   },
   {
     id: "task12",
-    columnId: "on-progress",
+    columnId: "design-completion",
     title: "Perform testing and bug fixing",
     description:
       "This task should be completed within the week. The task is assigned to the large number of team.",
@@ -179,7 +314,7 @@ const initialTasks: Task[] = [
   },
   {
     id: "task13",
-    columnId: "pending",
+    columnId: "project-initiation",
     title: "Launch website and deploy to server",
     description:
       "This task should be completed within the week. The task is assigned to the large number of team.",
@@ -190,7 +325,7 @@ const initialTasks: Task[] = [
   },
   {
     id: "task4",
-    columnId: "pending",
+    columnId: "project-initiation",
     title: "Develop homepage layout",
     description:
       "This task should be completed within the week. The task is assigned to the large number of team.",
@@ -201,7 +336,7 @@ const initialTasks: Task[] = [
   },
   {
     id: "task5",
-    columnId: "pending",
+    columnId: "project-initiation",
     title: "Design color scheme and typography",
     description:
       "This task should be completed within the week. The task is assigned to the large number of team.",
@@ -212,7 +347,7 @@ const initialTasks: Task[] = [
   },
   {
     id: "task6",
-    columnId: "pending",
+    columnId: "project-initiation",
     title: "Implement user authentication",
     description:
       "This task should be completed within the week. The task is assigned to the large number of team.",
@@ -223,7 +358,7 @@ const initialTasks: Task[] = [
   },
   {
     id: "task7",
-    columnId: "pending",
+    columnId: "project-initiation",
     title: "Build contact us page",
     description:
       "This task should be completed within the week. The task is assigned to the large number of team.",
@@ -234,7 +369,7 @@ const initialTasks: Task[] = [
   },
   {
     id: "task8",
-    columnId: "pending",
+    columnId: "project-initiation",
     title: "Create product catalog",
     description:
       "This task should be completed within the week. The task is assigned to the large number of team.",
@@ -245,7 +380,7 @@ const initialTasks: Task[] = [
   },
   {
     id: "task9",
-    columnId: "pending",
+    columnId: "project-initiation",
     title: "Develop about us page",
     description:
       "This task should be completed within the week. The task is assigned to the large number of team.",
@@ -256,7 +391,7 @@ const initialTasks: Task[] = [
   },
   {
     id: "task10",
-    columnId: "pending",
+    columnId: "project-initiation",
     title: "Optimize website for mobile devices",
     description:
       "This task should be completed within the week. The task is assigned to the large number of team.",
@@ -267,7 +402,7 @@ const initialTasks: Task[] = [
   },
   {
     id: "task11",
-    columnId: "pending",
+    columnId: "project-initiation",
     title: "Integrate payment gateway",
     description:
       "This task should be completed within the week. The task is assigned to the large number of team.",
@@ -278,7 +413,7 @@ const initialTasks: Task[] = [
   },
   {
     id: "task12",
-    columnId: "pending",
+    columnId: "project-initiation",
     title: "Perform testing and bug fixing",
     description:
       "This task should be completed within the week. The task is assigned to the large number of team.",
@@ -289,7 +424,7 @@ const initialTasks: Task[] = [
   },
   {
     id: "task13",
-    columnId: "pending",
+    columnId: "project-initiation",
     title: "Launch website and deploy to server",
     description:
       "This task should be completed within the week. The task is assigned to the large number of team.",
@@ -300,7 +435,7 @@ const initialTasks: Task[] = [
   },
   {
     id: "task4",
-    columnId: "not-started",
+    columnId: "requirement-approval",
     title: "Develop homepage layout",
     description:
       "This task should be completed within the week. The task is assigned to the large number of team.",
@@ -311,7 +446,7 @@ const initialTasks: Task[] = [
   },
   {
     id: "task5",
-    columnId: "not-started",
+    columnId: "requirement-approval",
     title: "Design color scheme and typography",
     description:
       "This task should be completed within the week. The task is assigned to the large number of team.",
@@ -322,7 +457,7 @@ const initialTasks: Task[] = [
   },
   {
     id: "task6",
-    columnId: "not-started",
+    columnId: "requirement-approval",
     title: "Implement user authentication",
     description:
       "This task should be completed within the week. The task is assigned to the large number of team.",
@@ -333,7 +468,7 @@ const initialTasks: Task[] = [
   },
   {
     id: "task7",
-    columnId: "not-started",
+    columnId: "requirement-approval",
     title: "Build contact us page",
     description:
       "This task should be completed within the week. The task is assigned to the large number of team.",
@@ -344,7 +479,7 @@ const initialTasks: Task[] = [
   },
   {
     id: "task8",
-    columnId: "not-started",
+    columnId: "requirement-approval",
     title: "Create product catalog",
     description:
       "This task should be completed within the week. The task is assigned to the large number of team.",
@@ -355,7 +490,7 @@ const initialTasks: Task[] = [
   },
   {
     id: "task9",
-    columnId: "not-started",
+    columnId: "requirement-approval",
     title: "Develop about us page",
     description:
       "This task should be completed within the week. The task is assigned to the large number of team.",
@@ -366,7 +501,7 @@ const initialTasks: Task[] = [
   },
   {
     id: "task10",
-    columnId: "not-started",
+    columnId: "requirement-approval",
     title: "Optimize website for mobile devices",
     description:
       "This task should be completed within the week. The task is assigned to the large number of team.",
@@ -377,7 +512,7 @@ const initialTasks: Task[] = [
   },
   {
     id: "task11",
-    columnId: "not-started",
+    columnId: "requirement-approval",
     title: "Integrate payment gateway",
     description:
       "This task should be completed within the week. The task is assigned to the large number of team.",
@@ -388,7 +523,7 @@ const initialTasks: Task[] = [
   },
   {
     id: "task12",
-    columnId: "not-started",
+    columnId: "requirement-approval",
     title: "Perform testing and bug fixing",
     description:
       "This task should be completed within the week. The task is assigned to the large number of team.",
@@ -399,7 +534,7 @@ const initialTasks: Task[] = [
   },
   {
     id: "task13",
-    columnId: "not-started",
+    columnId: "requirement-approval",
     title: "Launch website and deploy to server",
     description:
       "This task should be completed within the week. The task is assigned to the large number of team.",
@@ -409,12 +544,12 @@ const initialTasks: Task[] = [
     noOfComments: 3,
   },
 ];
-export function KanbanBoard() {
+export default function TasksKanbanBoard() {
   const [columns, setColumns] = useState<Column[]>(defaultCols);
   const pickedUpTaskColumn = useRef<ColumnId | null>(null);
   const columnsId = useMemo(() => columns.map((col) => col.id), [columns]);
 
-  const [tasks, setTasks] = useState<Task[]>(initialTasks);
+  const [tasks, setTasks] = useState(initialTasks);
 
   const [activeColumn, setActiveColumn] = useState<Column | null>(null);
 
@@ -453,7 +588,7 @@ export function KanbanBoard() {
         pickedUpTaskColumn.current = active.data.current.task.columnId;
         const { tasksInColumn, taskPosition, column } = getDraggingTaskData(
           active.id,
-          pickedUpTaskColumn.current
+          pickedUpTaskColumn.current || "project-initiation"
         );
         return `Picked up Task ${
           active.data.current.task.content

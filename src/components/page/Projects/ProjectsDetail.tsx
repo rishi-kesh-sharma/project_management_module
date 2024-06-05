@@ -16,6 +16,7 @@ import {
   SettingIcon,
   StarIconFilled,
   StarIconOutlined,
+  TimelineIcon,
   UserIconOutlined,
 } from "@/components/custom/common/icons/commonIcons";
 import IconDropdown from "@/components/custom/common/Dropdowns/IconDropdown/IconDropdown";
@@ -42,14 +43,24 @@ const projectDetailTabTriggers = [
 
 const planningTabTriggers = [
   {
-    id: "kanban-board",
-    label: "Kanban",
+    id: "tasks-board",
+    label: "Tasks ",
+    icon: <KanbanIconOutlined className="text-xl" />,
+  },
+  {
+    id: "milestones-board",
+    label: "Milestones ",
     icon: <KanbanIconOutlined className="text-xl" />,
   },
   {
     id: "gantt-chart",
     label: "Gantt chart",
     icon: <GanttChartIconOutlined className="text-xl" />,
+  },
+  {
+    id: "timeline",
+    label: "Timeline",
+    icon: <TimelineIcon className="text-xl" />,
   },
   {
     id: "files",
@@ -113,13 +124,24 @@ export const secondaryOptions = [
     isLink: false,
   },
 ];
+
 export const primaryOptions = [
+  {
+    label: "Milestones",
+    id: "milestones",
+    // icon: (
+    //   <MilestoneIcon className="cursor-pointe text-lg text-foreground/80" />
+    // ),
+    element: <Milestones />,
+    isLink: false,
+  },
   {
     label: "Color",
     id: "color",
     icon: <DropIconOutlined className="cursor-pointer text-foreground/80" />,
     isLink: false,
   },
+
   {
     label: "Members",
     id: "members",
@@ -165,7 +187,8 @@ import TabWithButtonedTrigger from "@/components/custom/common/Tabs/TabsWithButt
 import EquipmentsDetail from "@/components/custom/EquipmentsTable/EquipmentDetail";
 import HumanResourceDetail from "@/components/custom/HumanResourceTable/HumanResourceDetail";
 import InventoriesDetail from "@/components/custom/InventoriesTable/InventoriesDetail";
-import { KanbanBoard } from "@/components/custom/common/Kanban/KanbanBoard";
+import TasksKanbanBoard from "@/components/custom/common/Kanban/TasksKanbanBoard";
+import MilestonesKanbanBoard from "@/components/custom/common/Kanban/MilestonesKanbanBoard";
 import { useParams } from "react-router";
 import GanttChart from "@/components/custom/common/charts/GanttChart/GanttChart";
 import { Helmet } from "react-helmet";
@@ -182,6 +205,8 @@ import {
 import { useState } from "react";
 import { getSuccessToast } from "@/utils/constants/toast";
 import { useGetProjectQuery } from "@/api/project";
+import Timeline from "@/components/custom/common/Timeline/Timeline";
+import Milestones from "./Milestones";
 const ProjectDetail = () => {
   const [isBookmarked, setIsBookmarked] = useState(false);
   const { workspaceId, projectId } = useParams();
@@ -287,7 +312,14 @@ const ProjectDetail = () => {
                 item.id !== "archive" &&
                 item.id !== "notification"
             )
-            .map((item) => item.icon)}
+            .map((item) => {
+              return (
+                <>
+                  {item.icon && item.icon}
+                  {item.element && item.element}
+                </>
+              );
+            })}
 
           <IconDropdown
             menu={{ items: secondaryOptions }}
@@ -313,8 +345,8 @@ const ProjectDetail = () => {
                   {
                     id: "gantt-chart",
                     element: (
-                      <div>
-                        <h1 className="text-xl font-semibold my-[1.5rem]">
+                      <div className="pb-[1.3rem]">
+                        <h1 className="text-xl font-semibold my-[1.5rem]  overflow-auto ">
                           {" "}
                           Gantt Chart
                         </h1>
@@ -323,21 +355,43 @@ const ProjectDetail = () => {
                     ),
                   },
                   {
-                    id: "kanban-board",
+                    id: "tasks-board",
                     element: (
-                      <div>
+                      <div className="pb-[1.3rem]">
                         <h1 className="text-xl font-semibold my-[1.5rem]">
-                          Kanban Board
+                          Tasks Board
+                        </h1>
+                        <TasksKanbanBoard />
+                      </div>
+                    ),
+                  },
+                  {
+                    id: "milestones-board",
+                    element: (
+                      <div className="pb-[1.3rem]">
+                        <h1 className="text-xl font-semibold my-[1.5rem]">
+                          Milestones Board
                         </h1>
 
-                        <KanbanBoard />
+                        <MilestonesKanbanBoard />
+                      </div>
+                    ),
+                  },
+                  {
+                    id: "timeline",
+                    element: (
+                      <div className="pb-[1.3rem]">
+                        <h1 className="text-xl font-semibold my-[1.5rem]">
+                          Timeline
+                        </h1>
+                        <Timeline />
                       </div>
                     ),
                   },
                   {
                     id: "files",
                     element: (
-                      <div>
+                      <div className="pb-[1.3rem]">
                         <h1 className="text-xl font-semibold my-[1.5rem]">
                           Files
                         </h1>

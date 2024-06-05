@@ -13,7 +13,6 @@ const ProjectDetailPage = ({ title }: Props) => {
   return (
     <div>
       <Helmet>{`${title}`}</Helmet>
-
       <ProjectDetail />
     </div>
   );

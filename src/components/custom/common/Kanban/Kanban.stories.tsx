@@ -1,7 +1,7 @@
 // Sidebar.stories.tsx
 
 import { StoryObj, Meta } from "@storybook/react";
-import { KanbanBoard } from "./KanbanBoard";
+import { KanbanBoard } from "./TasksKanbanBoard";
 
 const meta: Meta<typeof KanbanBoard> = {
   title: "KanbanBoard",

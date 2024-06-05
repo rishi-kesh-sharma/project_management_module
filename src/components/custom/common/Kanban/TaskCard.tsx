@@ -6,7 +6,7 @@ import { Button } from "@/components/ui/Button/button";
 import { cva } from "class-variance-authority";
 import { GripVertical } from "lucide-react";
 import { Badge } from "@/components/ui/Badge/badge";
-import { ColumnId } from "./KanbanBoard";
+import { ColumnId } from "./TasksKanbanBoard";
 import {
   CalendarIcon,
   CommentIcon,

@@ -68,7 +68,7 @@ const Sidebar: React.FC<SidebarProps> = ({ path, items }) => {
   //   path === link ? `font-medium text-sm ` : "font-medium text-sm";
   return (
     <aside
-      className={` ${isSidebarExpanded ? "w-[240px]" : "w-[70px]"}  bg-primary dark:bg-background text-primary-foreground dark:text-foreground dark:border-r h-full   py-4 hidden md:flex md:flex-col gap-7     cursor-pointer min-h-screen transition-all sticky top-0 `}>
+      className={` ${isSidebarExpanded ? "w-[240px]" : "w-[70px]"} overflow-auto  bg-primary dark:bg-background text-primary-foreground dark:text-foreground dark:border-r h-full   py-4 hidden md:flex md:flex-col gap-7     cursor-pointer min-h-screen transition-all sticky top-0 `}>
       <div className="logo flex items-center justify-between text-2xl gap-3 w-full ">
         {isSidebarExpanded && (
           <Link to={`/`}>
