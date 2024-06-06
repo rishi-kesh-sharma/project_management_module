@@ -1,4 +1,5 @@
-import { ILoginProps } from "@/components/page/Login/Login";
+/* eslint-disable @typescript-eslint/no-explicit-any */
+// import { ILoginProps } from "@/components/page/Login/Login";
 import { REAL_API_BASE_URL } from "@/utils/constants";
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 
@@ -19,13 +20,23 @@ export interface IUser {
   projects: [];
 }
 
-export interface ILogin {
+export interface ILoginRequest {
   email: string;
   password?: string;
 }
+
+export interface ILoginResponse {
+  data: {
+    email: string;
+    access: string;
+    refresh: string;
+  };
+  message: string;
+  status: string;
+}
 type UserResponse = IUser[];
 
-export const UserApi = createApi({
+export const userApi = createApi({
   reducerPath: "users",
   baseQuery: fetchBaseQuery({ baseUrl: `${REAL_API_BASE_URL}/accounts` }),
   tagTypes: ["User"],
@@ -48,7 +59,7 @@ export const UserApi = createApi({
       }),
       invalidatesTags: [{ type: "User", id: "LIST" }],
     }),
-    loginUser: build.mutation<IUser, ILogin>({
+    loginUser: build.mutation<ILoginResponse, ILoginRequest>({
       query: (body) => ({
         url: `/login/`,
         method: "POST",
@@ -68,7 +79,7 @@ export const UserApi = createApi({
       }),
       async onQueryStarted({ id, ...patch }, { dispatch, queryFulfilled }) {
         const patchResult = dispatch(
-          UserApi.util.updateQueryData("getUser", id, (draft) => {
+          userApi.util.updateQueryData("getUser", id, (draft) => {
             Object.assign(draft, patch);
           })
         );
@@ -99,4 +110,4 @@ export const {
   useUpdateUserMutation,
   useDeleteUserMutation,
   useLoginUserMutation,
-} = UserApi;
+} = userApi;

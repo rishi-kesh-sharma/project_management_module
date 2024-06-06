@@ -19,6 +19,11 @@ import {
   FormMessage,
 } from "@/components/ui/Form/form";
 import { Skeleton } from "@/components/ui/Skeleton/skeleton";
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipTrigger,
+} from "@/components/ui/Tooltip/tooltip";
 import { faker } from "@faker-js/faker";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { DragHandleDots2Icon } from "@radix-ui/react-icons";
@@ -228,7 +233,12 @@ const Milestones = () => {
             variant={`ghost`}
             size={`icon`}
             className="h-5 w-5 flex items-center bg">
-            <MilestoneIcon className="cursor-pointe text-xl text-foreground/60" />
+            <Tooltip>
+              <TooltipTrigger className="h-5 w-5 flex items-center bg">
+                <MilestoneIcon className="cursor-pointe text-xl text-foreground/60" />
+              </TooltipTrigger>
+              <TooltipContent>Milestones</TooltipContent>
+            </Tooltip>
           </Button>
         }
         body={<AddMileStonesForm />}

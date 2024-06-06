@@ -80,6 +80,10 @@ export const appSlice = createSlice({
       localStorage.setItem("lang", JSON.stringify(action.payload.language));
       window.location.reload();
     },
+    setUser: (state, action) => {
+      state.user = action.payload;
+      state.isLoggedIn = true;
+    },
   },
 });
 

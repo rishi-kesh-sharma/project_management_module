@@ -4,7 +4,6 @@ import LogoEnter from "../../../assets/images/LogoEnter.png";
 import PasswordInput from "@/components/custom/common/FormElements/Input/PasswordInput/PasswordInput";
 import { Helmet } from "react-helmet";
 import { z } from "zod";
-import { getSuccessToast } from "@/utils/constants/toast";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useLoginUserMutation } from "@/api/user";
 import { useForm } from "react-hook-form";
@@ -16,23 +15,32 @@ import {
   FormLabel,
   FormMessage,
 } from "@/components/ui/Form/form";
+import { getSuccessToast } from "@/utils/constants/toast";
 
 export interface ILoginProps {
   title: string;
 }
 const Login: React.FC<ILoginProps> = ({ title }) => {
-  const [loginUser, { isLoading }] = useLoginUserMutation();
+  const [loginUser, { isLoading, status, error, data }] =
+    useLoginUserMutation();
   const formSchema = z.object({
     email: z.string().min(2).max(50),
     password: z.string().min(8).max(20),
   });
 
+  console.log(isLoading, "loading");
+  console.log(status, "status");
+  console.log(error, "error");
+  console.log(data, "data");
+
   // 2. Define a submit handler.
   async function onSubmit(values: z.infer<typeof formSchema>) {
     try {
-      alert(values);
-      await loginUser(values);
-      getSuccessToast("WorkSpace Created");
+      const res = await loginUser(values);
+      getSuccessToast(res.data?.message || "User logged in !!!");
+      console.log(data, "data");
+      localStorage.setItem("access", res.data?.data?.access || ``);
+      localStorage.setItem("refresh", res.data?.data?.refresh || ``);
     } catch (err) {
       console.log(err);
     }
@@ -45,6 +53,7 @@ const Login: React.FC<ILoginProps> = ({ title }) => {
       password: "",
     },
   });
+
   return (
     <div className="grid h-screen justify-between   gap-[2rem] grid-cols-2 md:grid-cols-3 xl:grid-cols-5  ">
       <Helmet>
@@ -113,8 +122,8 @@ const Login: React.FC<ILoginProps> = ({ title }) => {
                   Forgot Password
                 </p>
               </div>
-              <Button type="submit" size={"lg"}>
-                Login
+              <Button type="submit" size={"lg"} disabled={isLoading}>
+                {isLoading ? `loading...` : "Login"}
               </Button>
             </form>
           </Form>

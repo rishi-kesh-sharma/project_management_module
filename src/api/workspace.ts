@@ -1,5 +1,10 @@
+// import { axiosBaseQuery } from "@/axios";
 import { BASE_URL } from "@/utils/constants";
-import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
+import {
+  createApi,
+  fetchBaseQuery,
+  //  fetchBaseQuery
+} from "@reduxjs/toolkit/query/react";
 
 export interface IProject {
   id: string;
@@ -23,6 +28,7 @@ type WorkspaceResponse = IWorkspace[];
 export const workspaceApi = createApi({
   reducerPath: "workspaces",
   baseQuery: fetchBaseQuery({ baseUrl: `${BASE_URL}` }),
+  // baseQuery: axiosBaseQuery({ baseUrl: `${BASE_URL}` }),
   tagTypes: ["Workspace"],
   endpoints: (build) => ({
     getWorkspaces: build.query<WorkspaceResponse, string>({
