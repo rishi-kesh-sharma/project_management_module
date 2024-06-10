@@ -54,7 +54,7 @@ export const sidebarItems = (injectables: ISidebarItemsProps) => [
           label: (
             <>
               <span>View all</span>
-              <Ellipsis />
+              {/* <Ellipsis /> */}
             </>
           ),
           link: `/workspaces`,
@@ -85,7 +85,7 @@ export const sidebarItems = (injectables: ISidebarItemsProps) => [
           label: (
             <>
               <span>View All</span>
-              <Ellipsis />
+              {/* <Ellipsis /> */}
             </>
           ),
           link: `/bookmarks`,
@@ -115,7 +115,7 @@ export const sidebarItems = (injectables: ISidebarItemsProps) => [
           label: (
             <>
               <span>View All</span>
-              <Ellipsis />
+              {/* <Ellipsis /> */}
             </>
           ),
           link: `/archives`,

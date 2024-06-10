@@ -1,13 +1,14 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import type { RootState } from "../../store";
+import { TRole } from "@/@types";
 
 // Define a type for the slice state
 
 interface IUser {
-  name: string;
-  username: string;
-  email: string;
-  role: "admin" | "user" | "manager";
+  name?: string;
+  username?: string;
+  email?: string | null;
+  role?: TRole;
   image?: string;
 }
 interface INotification {
@@ -24,7 +25,9 @@ export interface IBreadCrumb {
 interface AppState {
   isSidebarExpanded: boolean;
   isLoggedIn: boolean;
-  user: IUser;
+  access: string | null;
+  refresh: string | null;
+  user: IUser | null;
   notifications: INotification[];
   language: "en";
 }
@@ -32,13 +35,10 @@ interface AppState {
 // Define the initial state using that type
 const initialState: AppState = {
   isSidebarExpanded: true,
-  isLoggedIn: true,
-  user: {
-    name: "User",
-    username: "user",
-    email: "user@gmail.com",
-    role: "admin",
-  },
+  isLoggedIn: false,
+  access: null,
+  refresh: null,
+  user: null,
   notifications: [
     {
       title: "Meeting Reminder",
@@ -80,14 +80,24 @@ export const appSlice = createSlice({
       localStorage.setItem("lang", JSON.stringify(action.payload.language));
       window.location.reload();
     },
-    setUser: (state, action) => {
-      state.user = action.payload;
+    setUser: (
+      state,
+      action: PayloadAction<{
+        user: IUser | null;
+        access: string | null;
+        refresh: string | null;
+      }>
+    ) => {
+      state.user = action.payload.user;
+      state.access = action.payload.access;
+      state.refresh = action.payload.refresh;
       state.isLoggedIn = true;
     },
   },
 });
 
-export const { expandSidebar, collapseSidebar, setLanguage } = appSlice.actions;
+export const { expandSidebar, collapseSidebar, setLanguage, setUser } =
+  appSlice.actions;
 
 // Other code such as selectors can use the imported `RootState` type
 export const selectIsSidebarExpanded = (state: RootState) =>

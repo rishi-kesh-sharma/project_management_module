@@ -94,14 +94,13 @@ const Header: React.FC<IHeaderProps> = () => {
             />
           )}
         </div>
-
         <AvatarDropdown
           menu={avatarDropdownMenu}
-          name={user.name}
+          name={(user && user.name && user.name) || ``}
           dropdownSize="sm"
           dropdownVariant="default"
           avatarSize="sm"
-          imgSrc={user.image}
+          imgSrc={(user && user.image && user.image) || ``}
         />
       </div>
     </div>

@@ -28,6 +28,11 @@ import {
 import { buttonVariants } from "@/components/ui/Button/button";
 import { cn } from "@/lib/utils";
 import i18n from "@/intl/i18n";
+import {
+  useLoginUserMutation,
+  useLogoutUserQuery,
+  usePrefetch,
+} from "@/api/user";
 
 const settings = {
   label: i18n.t("component.sidebar.menu.settings", "Settings"),
@@ -52,6 +57,7 @@ const settings = {
 };
 const Sidebar: React.FC<SidebarProps> = ({ path, items }) => {
   const isSidebarExpanded: boolean = useAppSelector(selectIsSidebarExpanded);
+  const logoutUser = usePrefetch("logoutUser");
 
   const dispatch = useAppDispatch();
 
@@ -63,6 +69,14 @@ const Sidebar: React.FC<SidebarProps> = ({ path, items }) => {
     dispatch(expandSidebar());
   };
   console.log(path);
+  const handleLogout = async () => {
+    try {
+      const res = await logoutUser();
+      console.log(res);
+    } catch (err) {
+      console.log(err);
+    }
+  };
   //   Active Menu Css
   // const getActiveCss = (link: string) =>
   //   path === link ? `font-medium text-sm ` : "font-medium text-sm";
@@ -228,7 +242,9 @@ const Sidebar: React.FC<SidebarProps> = ({ path, items }) => {
             </AccordionItem>
           </Accordion>
 
-          <div className="flex items-center p-3.5 gap-1 hover:text-primary hover:bg-white dark:hover:bg-primary/15  text-sm   ">
+          <div
+            onClick={handleLogout}
+            className="flex items-center p-3.5 gap-1 hover:text-primary hover:bg-white dark:hover:bg-primary/15  text-sm   ">
             <LogoutIcon className="text-xl" />
             {isSidebarExpanded &&
               i18n.t("component.sidebar.menu.logout", "Log out")}

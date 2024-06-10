@@ -2,7 +2,10 @@ import PlateEditor from "@/components/custom/common/Editors/PlateEditor/PlateEdi
 import { AutosizeTextarea } from "@/components/custom/common/FormElements/AutosizeTextArea/AutosizeTextArea";
 import DatePicker from "@/components/custom/common/FormElements/DatePicker/DatePicker";
 import TextInput from "@/components/custom/common/FormElements/Input/TextInput/TextInput";
-import { TrashIcon } from "@/components/custom/common/icons/commonIcons";
+import {
+  PlusIcon,
+  TrashIcon,
+} from "@/components/custom/common/icons/commonIcons";
 import Modal from "@/components/custom/common/Modal/Modal";
 import {
   Sortable,
@@ -170,7 +173,7 @@ export const AddMileStonesForm = () => {
                         <SortableDragHandle
                           variant="outline"
                           size="icon"
-                          className="size-8 shrink-0">
+                          className="rounded-full">
                           <DragHandleDots2Icon
                             className="size-4"
                             aria-hidden="true"
@@ -180,13 +183,34 @@ export const AddMileStonesForm = () => {
                           type="button"
                           variant="outline"
                           size="icon"
-                          className="size-8 shrink-0"
+                          className="shrink-0 rounded-full"
                           onClick={() => remove(index)}>
                           <TrashIcon
-                            className="size-4 text-destructive"
+                            className="text-destructive"
                             aria-hidden="true"
                           />
                           <span className="sr-only">Remove</span>
+                        </Button>
+                        <Button
+                          type="button"
+                          variant="default"
+                          size="icon"
+                          className="rounded-full "
+                          onClick={() =>
+                            append({
+                              title: "",
+                              description: "",
+                              id: faker.string.uuid(),
+                              expected_achievement_date: new Date(),
+                              tasks: [
+                                {
+                                  id: "",
+                                  name: "",
+                                },
+                              ],
+                            })
+                          }>
+                          <PlusIcon />
                         </Button>
                       </div>
                     </div>
@@ -194,11 +218,11 @@ export const AddMileStonesForm = () => {
                 ))}
               </div>
             </Sortable>
-            <Button
+            {/* <Button
               type="button"
-              variant="outline"
-              size="sm"
-              className="w-fit"
+              variant="default"
+              size="icon"
+              className="rounded-full "
               onClick={() =>
                 append({
                   title: "",
@@ -213,8 +237,8 @@ export const AddMileStonesForm = () => {
                   ],
                 })
               }>
-              Add Milestone
-            </Button>
+              <PlusIcon />
+            </Button> */}
           </div>
         </div>
       </form>

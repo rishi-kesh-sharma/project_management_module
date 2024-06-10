@@ -376,7 +376,13 @@ export interface IBadgeProps {
   variant?: "default" | "secondary" | "destructive" | "outline";
 }
 
-export type TRole = "admin" | "user" | "manager";
+export type TRole =
+  | "admin"
+  | "user"
+  | "manager"
+  | "client-admin"
+  | null
+  | undefined;
 
 export interface ICarouselItem {
   content?: React.ReactNode;

@@ -24,7 +24,7 @@ export const getSuccessToast = (
 
 export const getErrorToast = (
   msg: string,
-  theme: "light" | "dark" | "system"
+  theme?: "light" | "dark" | "system"
 ) =>
   toast.error(msg, {
     ...commonToast,
@@ -33,14 +33,17 @@ export const getErrorToast = (
 
 export const getWarningToast = (
   msg: string,
-  theme: "light" | "dark" | "system"
+  theme?: "light" | "dark" | "system"
 ) =>
   toast.warning(msg, {
     ...commonToast,
     theme: theme === "dark" ? "dark" : "light",
   });
 
-export const getInfoToast = (msg: string, theme: "light" | "dark" | "system") =>
+export const getInfoToast = (
+  msg: string,
+  theme?: "light" | "dark" | "system"
+) =>
   toast.info(msg, {
     ...commonToast,
     theme: theme === "dark" ? "dark" : "light",

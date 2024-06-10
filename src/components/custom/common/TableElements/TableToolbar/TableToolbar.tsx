@@ -67,6 +67,7 @@ const TableToolbar: React.FC<ITableToolbar> = ({
                 </Button>
               </Toggle>
             )}
+            {type == "modal" && <Modal {...modal} />}
             {type === "page" && (
               <Button
                 size={"icon"}
@@ -84,7 +85,6 @@ const TableToolbar: React.FC<ITableToolbar> = ({
               dropdownVariant="default"
               icon={<ThreeVerticalDots />}
             />
-            {type == "modal" && <Modal {...modal} />}
           </div>
         </div>
       </div>

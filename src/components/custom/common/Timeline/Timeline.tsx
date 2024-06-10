@@ -3,11 +3,11 @@ import {
   VerticalTimelineElement,
 } from "react-vertical-timeline-component";
 import "react-vertical-timeline-component/style.min.css";
-import { EllipsisIconHorizontal, WorkspaceIcon } from "../icons/commonIcons";
-import { SchoolIcon, StarIcon } from "lucide-react";
+import { WorkspaceIcon } from "../icons/commonIcons";
 import { faker } from "@faker-js/faker";
 import Tags from "../Tags/Tags";
 import moment from "moment";
+import { getTagVariantForValues } from "@/lib/utils";
 
 const timelineData = [
   {
@@ -40,7 +40,7 @@ const timelineData = [
     title: "Prototype Completion",
     description: faker.lorem.words({ min: 40, max: 100 }),
     expected_achievement_date: faker.date.future(),
-    status: " Not Achieved",
+    status: "Not Achieved",
     priority: "High",
   },
   {
@@ -64,7 +64,7 @@ const timelineData = [
     title: "Project Closure",
     description: faker.lorem.words({ min: 10, max: 30 }),
     expected_achievement_date: faker.date.future(),
-    status: " Not Achieved",
+    status: "Not Achieved",
     priority: "High",
   },
 ];
@@ -81,6 +81,7 @@ const Timeline = () => {
         {timelineData.map((timeline) => {
           return (
             <VerticalTimelineElement
+            
               className="vertical-timeline-element--work "
               date={moment(timeline.expected_achievement_date).format("LL")}
               iconStyle={{
@@ -92,15 +93,19 @@ const Timeline = () => {
               }}
               icon={<WorkspaceIcon />}>
               <div className="flex flex-col gap-3">
-                <div className="flex items-center gap-[1rem]">
-                  <Tags
-                    value={timeline.status}
-                    className="vertical-timeline-element-title mb-[1rem]"
-                  />
-                  <Tags
-                    value={timeline.priority}
-                    className="vertical-timeline-element- mb-[1rem]"
-                  />
+                <div className="flex justify-between">
+                  <h1 className="font-semibold text-lg">{timeline.title}</h1>
+                  <div className="flex items-center gap-[1rem]">
+                    <Tags
+                      value={timeline.status}
+                      variant={getTagVariantForValues(timeline.status)}
+                      className="vertical-timeline-element-title mb-[1rem]"
+                    />
+                    {/* <Tags
+                      value={timeline.priority}
+                      className="vertical-timeline-element- mb-[1rem]"
+                    /> */}
+                  </div>
                 </div>
                 <div className="vertical-timeline-element-subtitle text-sm text-foreground/80">
                   {timeline.description.length > descriptionLength ? (

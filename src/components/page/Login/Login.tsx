@@ -16,11 +16,13 @@ import {
   FormMessage,
 } from "@/components/ui/Form/form";
 import { getSuccessToast } from "@/utils/constants/toast";
+import { useNavigate } from "react-router";
 
 export interface ILoginProps {
   title: string;
 }
 const Login: React.FC<ILoginProps> = ({ title }) => {
+  const navigate = useNavigate();
   const [loginUser, { isLoading, status, error, data }] =
     useLoginUserMutation();
   const formSchema = z.object({
@@ -36,11 +38,10 @@ const Login: React.FC<ILoginProps> = ({ title }) => {
   // 2. Define a submit handler.
   async function onSubmit(values: z.infer<typeof formSchema>) {
     try {
-      const res = await loginUser(values);
-      getSuccessToast(res.data?.message || "User logged in !!!");
-      console.log(data, "data");
-      localStorage.setItem("access", res.data?.data?.access || ``);
-      localStorage.setItem("refresh", res.data?.data?.refresh || ``);
+      const res = await loginUser(values).unwrap();
+      console.log(res.message);
+      getSuccessToast(res.message || "User logged in");
+      return navigate(`/`);
     } catch (err) {
       console.log(err);
     }

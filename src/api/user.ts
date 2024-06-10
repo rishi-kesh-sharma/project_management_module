@@ -1,5 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 // import { ILoginProps } from "@/components/page/Login/Login";
+import { TRole } from "@/@types";
+import { setUser } from "@/redux/features/app/appSlice";
 import { REAL_API_BASE_URL } from "@/utils/constants";
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 
@@ -16,8 +18,7 @@ export interface IProject {
 export interface IUser {
   id?: string;
   name?: string;
-
-  projects: [];
+  projects?: [];
 }
 
 export interface ILoginRequest {
@@ -27,18 +28,34 @@ export interface ILoginRequest {
 
 export interface ILoginResponse {
   data: {
-    email: string;
-    access: string;
-    refresh: string;
+    email: string | null;
+    role: TRole | null;
+    name: string | null;
+    username: string;
+    access: string | null;
+    refresh: string | null;
   };
   message: string;
   status: string;
+}
+
+export interface ILogoutResponse {
+  status: string;
+  message: string;
 }
 type UserResponse = IUser[];
 
 export const userApi = createApi({
   reducerPath: "users",
-  baseQuery: fetchBaseQuery({ baseUrl: `${REAL_API_BASE_URL}/accounts` }),
+
+  baseQuery: fetchBaseQuery({
+    baseUrl: `${REAL_API_BASE_URL}/accounts`,
+    credentials: "include",
+    headers: {
+      authorization: localStorage.getItem(`access`) || ``,
+      [`X-CSRFToken`]: localStorage.getItem(`access`) || ``,
+    },
+  }),
   tagTypes: ["User"],
   endpoints: (build) => ({
     getUsers: build.query<UserResponse, string>({
@@ -65,7 +82,56 @@ export const userApi = createApi({
         method: "POST",
         body,
       }),
+      async onQueryStarted(_, { dispatch, queryFulfilled }) {
+        try {
+          const { data } = await queryFulfilled;
+          const user = {
+            email: data.data.email,
+            role: data.data.role || `admin`,
+            name: data.data.name || `Admin`,
+            username: data.data.username || "admin",
+          };
+          data.data.access && localStorage.setItem(`access`, data.data.access);
+          data.data.refresh &&
+            localStorage.setItem(`refresh`, data.data.refresh);
+          localStorage.setItem(`user`, JSON.stringify(user));
+          const patchResult = dispatch(
+            setUser({
+              user: user,
+              access: data.data.access,
+              refresh: data.data.refresh,
+            })
+          );
+          console.log(patchResult);
+        } catch (err) {
+          console.log(err);
+        }
+      },
       invalidatesTags: [{ type: "User", id: "LIST" }],
+    }),
+
+    // logout
+    logoutUser: build.query<ILogoutResponse, void>({
+      query: () => {
+        return `/logout/`;
+      },
+      async onQueryStarted(_, { dispatch, queryFulfilled }) {
+        try {
+          await queryFulfilled;
+          localStorage.removeItem(`access`);
+          localStorage.removeItem(`refresh`);
+          localStorage.removeItem(`user`);
+          dispatch(
+            setUser({
+              user: null,
+              access: null,
+              refresh: null,
+            })
+          );
+        } catch (err) {
+          console.log(err);
+        }
+      },
     }),
     getUser: build.query<IUser, string | undefined>({
       query: (id) => `users/${id}`,
@@ -104,9 +170,11 @@ export const userApi = createApi({
 });
 
 export const {
+  usePrefetch,
   useGetUserQuery,
   useGetUsersQuery,
   useAddUserMutation,
+  useLogoutUserQuery,
   useUpdateUserMutation,
   useDeleteUserMutation,
   useLoginUserMutation,

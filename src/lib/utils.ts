@@ -50,6 +50,10 @@ export const getTagVariantForValues = (value: string) => {
       return "yellow";
     case "high":
       return "red";
+    case "achieved":
+      return "green";
+    case "not achieved":
+      return "red";
     default:
       return "purple";
   }
