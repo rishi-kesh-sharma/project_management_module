@@ -96,7 +96,7 @@ export const AddMileStonesForm = () => {
   return (
     <Form {...form}>
       <form onSubmit={form.handleSubmit(onSubmit)}>
-        <div className="flex w-full  flex-col gap-4  rounded-lg  ">
+        <div className="flex w-full  flex-col   rounded-lg  ">
           <div className="space-y-2 ">
             <Sortable
               value={fields}
@@ -111,7 +111,7 @@ export const AddMileStonesForm = () => {
                   <Skeleton className="size-8 shrink-0 rounded-sm" />
                 </div>
               }>
-              <div className="w-full  flex flex-col gap-[2.5rem] max-h-[400px]  overflow-auto  py-[1rem] px-[0.3rem]">
+              <div className="w-full  flex flex-col gap-[4rem] max-h-[400px]  overflow-auto  py-[1rem] px-[0.3rem]">
                 {fields.map((field, index) => (
                   <SortableItem key={field.id} value={field.id} asChild>
                     <div className="grid grid-cols-4  items-start gap-[2rem] justify-between ">
@@ -169,7 +169,7 @@ export const AddMileStonesForm = () => {
                         />
                       </div>
 
-                      <div className="col-span-1 space-x-2">
+                      <div className="col-span-1 space-x-2 group">
                         <SortableDragHandle
                           variant="outline"
                           size="icon"
@@ -183,7 +183,7 @@ export const AddMileStonesForm = () => {
                           type="button"
                           variant="outline"
                           size="icon"
-                          className="shrink-0 rounded-full"
+                          className="shrink-0 rounded-full "
                           onClick={() => remove(index)}>
                           <TrashIcon
                             className="text-destructive"
@@ -191,27 +191,29 @@ export const AddMileStonesForm = () => {
                           />
                           <span className="sr-only">Remove</span>
                         </Button>
-                        <Button
-                          type="button"
-                          variant="default"
-                          size="icon"
-                          className="rounded-full "
-                          onClick={() =>
-                            append({
-                              title: "",
-                              description: "",
-                              id: faker.string.uuid(),
-                              expected_achievement_date: new Date(),
-                              tasks: [
-                                {
-                                  id: "",
-                                  name: "",
-                                },
-                              ],
-                            })
-                          }>
-                          <PlusIcon />
-                        </Button>
+                        {index === fields.length - 1 && (
+                          <Button
+                            type="button"
+                            variant="default"
+                            size="icon"
+                            className="rounded-full "
+                            onClick={() =>
+                              append({
+                                title: "",
+                                description: "",
+                                id: faker.string.uuid(),
+                                expected_achievement_date: new Date(),
+                                tasks: [
+                                  {
+                                    id: "",
+                                    name: "",
+                                  },
+                                ],
+                              })
+                            }>
+                            <PlusIcon />
+                          </Button>
+                        )}
                       </div>
                     </div>
                   </SortableItem>
@@ -256,7 +258,7 @@ const Milestones = () => {
           <Button
             variant={`ghost`}
             size={`icon`}
-            className="h-5 w-5 flex items-center bg">
+            className="h-5 w-5 flex items-center hover:bg-inherit">
             <Tooltip>
               <TooltipTrigger className="h-5 w-5 flex items-center bg">
                 <MilestoneIcon className="cursor-pointe text-xl text-foreground/60" />
@@ -266,6 +268,12 @@ const Milestones = () => {
           </Button>
         }
         body={<AddMileStonesForm />}
+        footer={
+          <div className="flex gap-4">
+            <Button variant={`outline`}>Cancel</Button>
+            <Button>Save</Button>
+          </div>
+        }
       />
     </div>
   );

@@ -34,7 +34,6 @@ const timelineData = [
     status: "Achieved",
     priority: "High",
   },
-
   {
     id: "prototype-completion" as const,
     title: "Prototype Completion",
@@ -81,7 +80,6 @@ const Timeline = () => {
         {timelineData.map((timeline) => {
           return (
             <VerticalTimelineElement
-            
               className="vertical-timeline-element--work "
               date={moment(timeline.expected_achievement_date).format("LL")}
               iconStyle={{
