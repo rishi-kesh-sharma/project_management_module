@@ -7,7 +7,7 @@ export interface IWidgetWrapper {
 }
 const WidgetWrapper: React.FC<IWidgetWrapper> = ({ children }) => {
   return (
-    <div className="relative group ">
+    <div className="relative group bg-block ">
       <div className="absolute top-[0.7rem] right-[0.5rem]  items-center hidden text-gray-500 gap-[1rem]   group-hover:flex transition-all ">
         <Modal
           size="full"

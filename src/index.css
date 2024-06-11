@@ -5,10 +5,25 @@
 
 @layer base {
   :root {
+    /* black gray */
+    /* --background: 210, 40%, 98%; */
+    /* white background  */
     --background: 0 0% 100%;
+
+    /* gray background  */
+    /* --background: 220 14% 96%; */
     --foreground: 222.2 84% 4.9%;
+
+    /* block */
+    --block: 0 0% 100%;
+    --block-foreground: 222.2 84% 4.9%;
+
     --card: 0 0% 100%;
     --card-foreground: 222.2 84% 4.9%;
+
+    /* changed popover background */
+    --popover: 0 0% 100%;
+    /* initial popover background */
     --popover: 210 40% 98%;
     --popover-foreground: 222.2 84% 4.9%;
     --primary: 208 89% 49%;
@@ -17,7 +32,13 @@
     --secondary-foreground: 222.2 47.4% 11.2%;
     --muted: 210 40% 96.1%;
     --muted-foreground: 215.4 16.3% 46.9%;
+
+    /* accent initial */
     --accent: 210 40% 96.1%;
+
+    /* changed accent */
+    --popover: 0 0% 100%;
+
     --accent-foreground: 208, 89%, 49%;
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 210 40% 98%;
@@ -25,6 +46,19 @@
     --input: 214.3 31.8% 91.4%;
     --ring: 208 89% 49%;
     --radius: 0.5rem;
+
+    /* custom font sizes */
+    --font-size-xs: 0.5rem;
+    --font-size-sm: 0.625rem;
+    --font-size-sm: 0.75rem;
+    --font-size-md: 0.875rem;
+    --font-size-lg: 1rem;
+    --font-size-xl: 1.125rem;
+    --font-size-2xl: 1.25rem;
+    --font-size-3xl: 1.5rem;
+    --font-size-4xl: 1.75rem;
+    --font-size-4xl: 2rem;
+    --font-size-5xl: 2.25rem;
   }
 
   .dark {

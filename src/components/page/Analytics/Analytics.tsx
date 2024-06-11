@@ -53,46 +53,58 @@ const Analytics = () => {
       </div>
 
       <div className="grid grid-cols-2 py-[2rem] gap-[2rem] overflow-hidden ">
-        <div className="w-full    p-[2rem] border rounded-lg ">
-          <PieChart
-            data={pieChartData}
-            title={i18n.t(
-              "component.home.text.projectStatus",
-              "Project Status"
-            )}
+        <WidgetWrapper>
+          <div className="w-full    p-[2rem] border rounded-lg ">
+            <PieChart
+              data={pieChartData}
+              title={i18n.t(
+                "component.home.text.projectStatus",
+                "Project Status"
+              )}
+            />
+          </div>
+        </WidgetWrapper>
+        <WidgetWrapper>
+          <div className="w-full p-[2rem] border rounded-lg ">
+            <AreaCharts />
+          </div>
+        </WidgetWrapper>
+        <WidgetWrapper>
+          <BasicTable<
+            IUpcomingDeadlineTableProps["tableCaption"],
+            IUpcomingDeadlineColumn,
+            IUpcomingDeadlineData
+          >
+            {...upcomingDeadlineData}
           />
-        </div>
-        <div className="w-full p-[2rem] border rounded-lg ">
-          <AreaCharts />
-        </div>
-        <BasicTable<
-          IUpcomingDeadlineTableProps["tableCaption"],
-          IUpcomingDeadlineColumn,
-          IUpcomingDeadlineData
-        >
-          {...upcomingDeadlineData}
-        />
-        <BasicTable<
-          IOverdueProjectTableProps["tableCaption"],
-          IOverdueProjectColumn,
-          IOverdueProjectData
-        >
-          {...overdueProjectData}
-        />
-
-        <div className="w-full col-span-2  p-[2rem] border rounded-lg ">
-          <BarChart
-            title={i18n.t(
-              "component.home.text.budgetEstimation",
-              "Budget Estimation"
-            )}
-            data={barChartData}
+        </WidgetWrapper>
+        <WidgetWrapper>
+          <BasicTable<
+            IOverdueProjectTableProps["tableCaption"],
+            IOverdueProjectColumn,
+            IOverdueProjectData
+          >
+            {...overdueProjectData}
           />
-        </div>
+        </WidgetWrapper>
 
-        <div className="w-full col-span-2  p-[2rem] border rounded-lg ">
-          <LineChart />
-        </div>
+        <WidgetWrapper>
+          <div className="w-full col-span-2  p-[2rem] border rounded-lg ">
+            <BarChart
+              title={i18n.t(
+                "component.home.text.budgetEstimation",
+                "Budget Estimation"
+              )}
+              data={barChartData}
+            />
+          </div>
+        </WidgetWrapper>
+
+        <WidgetWrapper>
+          <div className="w-full col-span-2  p-[2rem] border rounded-lg ">
+            <LineChart />
+          </div>
+        </WidgetWrapper>
       </div>
     </div>
   );
