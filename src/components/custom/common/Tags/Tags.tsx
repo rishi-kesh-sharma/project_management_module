@@ -3,7 +3,7 @@ import { cva } from "class-variance-authority";
 import React from "react";
 
 const tagsVariants = cva(
-  "text-xs font-medium me-2 px-2.5 py-0.5 rounded dark:bg-background",
+  "text-sm font-medium me-2 px-2.5 py-0.5 rounded dark:bg-background",
   {
     variants: {
       variant: {
