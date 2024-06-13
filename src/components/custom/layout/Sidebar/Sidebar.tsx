@@ -56,6 +56,8 @@ const settings = {
   ],
 };
 const Sidebar: React.FC<SidebarProps> = ({ path, items }) => {
+  console.log(items);
+
   const isSidebarExpanded: boolean = useAppSelector(selectIsSidebarExpanded);
   const logoutUser = usePrefetch("logoutUser");
 
@@ -82,7 +84,8 @@ const Sidebar: React.FC<SidebarProps> = ({ path, items }) => {
   //   path === link ? `font-medium text-sm ` : "font-medium text-sm";
   return (
     <aside
-      className={` ${isSidebarExpanded ? "w-[240px]" : "w-[70px]"} overflow-auto  bg-primary dark:bg-background text-primary-foreground dark:text-foreground dark:border-r h-full   py-4 hidden md:flex md:flex-col gap-7     cursor-pointer min-h-screen transition-all sticky top-0 `}>
+      className={` ${isSidebarExpanded ? "w-[200px]" : "w-[70px]"} overflow-auto  bg-primary dark:bg-background text-primary-foreground dark:text-foreground dark:border-r h-full   py-4 hidden md:flex md:flex-col gap-7     cursor-pointer min-h-screen transition-all sticky top-0 `}
+    >
       <div className="logo flex items-center justify-between text-2xl gap-3 w-full ">
         {isSidebarExpanded && (
           <Link to={`/`}>
@@ -109,7 +112,8 @@ const Sidebar: React.FC<SidebarProps> = ({ path, items }) => {
               <Accordion type="single" className="" collapsible>
                 <AccordionItem
                   className="flex flex-col gap-0 w-full h-full border-none"
-                  value={item.label}>
+                  value={item.label}
+                >
                   <AccordionTrigger
                     className={cn(
                       buttonVariants({
@@ -119,7 +123,8 @@ const Sidebar: React.FC<SidebarProps> = ({ path, items }) => {
                       "justify-between",
                       " flex py-6  w-full rounded-none gap-0 no-underline hover:no-underline   ",
                       "hover:text-primary"
-                    )}>
+                    )}
+                  >
                     <div className="flex items-center justify-start w-full gap-2 ">
                       <div className="text-xl">{item.icon && item.icon}</div>
                       {isSidebarExpanded && item.label}
@@ -148,7 +153,8 @@ const Sidebar: React.FC<SidebarProps> = ({ path, items }) => {
                               "hover:text-primary"
 
                               //   child.disabled && "cursor-not-allowed opacity-80"
-                            )}>
+                            )}
+                          >
                             <div className="text-xl ">
                               {child.icon && child.icon}
                             </div>
@@ -179,7 +185,8 @@ const Sidebar: React.FC<SidebarProps> = ({ path, items }) => {
                     "py-6",
                     "",
                     "hover:text-primary"
-                  )}>
+                  )}
+                >
                   <div className="text-xl">{item.icon && item.icon}</div>
                   {isSidebarExpanded && item.label}
                 </Link>
@@ -192,7 +199,8 @@ const Sidebar: React.FC<SidebarProps> = ({ path, items }) => {
           <Accordion type="single" className="" collapsible>
             <AccordionItem
               className="flex flex-col gap-0 w-full h-full border-none "
-              value={settings.label}>
+              value={settings.label}
+            >
               <AccordionTrigger
                 className={cn(
                   buttonVariants({
@@ -202,7 +210,8 @@ const Sidebar: React.FC<SidebarProps> = ({ path, items }) => {
                   "justify-between",
                   "flex  py-6  w-full rounded-none gap-0 no-underline hover:no-underline   ",
                   "hover:text-primary"
-                )}>
+                )}
+              >
                 <div className="flex items-center justify-start w-full gap-1 ">
                   <div className="text-xl">
                     {settings.icon && settings.icon}
@@ -232,7 +241,8 @@ const Sidebar: React.FC<SidebarProps> = ({ path, items }) => {
                         "hover:text-primary"
 
                         //   child.disabled && "cursor-not-allowed opacity-80"
-                      )}>
+                      )}
+                    >
                       <div className="text-xl">{child.icon && child.icon}</div>
                       {isSidebarExpanded && child.label}
                     </Link>
@@ -244,7 +254,8 @@ const Sidebar: React.FC<SidebarProps> = ({ path, items }) => {
 
           <div
             onClick={handleLogout}
-            className="flex items-center p-3.5 gap-1 hover:text-primary hover:bg-white dark:hover:bg-primary/15  text-sm   ">
+            className="flex items-center p-3.5 gap-1 hover:text-primary hover:bg-white dark:hover:bg-primary/15  text-sm   "
+          >
             <LogoutIcon className="text-xl" />
             {isSidebarExpanded &&
               i18n.t("component.sidebar.menu.logout", "Log out")}

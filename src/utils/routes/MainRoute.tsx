@@ -23,6 +23,11 @@ import UpdateTaskPage from "@/pages/Task/UpdateTaskPage.tsx";
 import CreateTaskPage from "@/pages/Task/CreateTaskPage.tsx";
 import UpdateProjectPage from "@/pages/Project/UpdateProjectPage.tsx";
 import CreateBudgetPage from "@/pages/Budget/CreateBudgetPage.tsx";
+import SettingPage from "@/pages/Setting/SettingPage.tsx";
+import AccountSettingPage from "@/pages/Setting/AccountSettingPage.tsx";
+import ProfileSettingPage from "@/pages/Setting/ProfileSettingPage.tsx";
+import PreferencesSettingPage from "@/pages/Setting/PreferencesSettingPage.tsx";
+import SettingLayout from "@/layouts/SettingLayout.tsx";
 
 interface IROLE {
   ADMIN: TRole;
@@ -138,7 +143,8 @@ export function MainRoute() {
                   <Link to={`/workspace/${workspaceId}`}>{`Workspace`}</Link>
                   <BreadcrumbSeparator />
                   <Link
-                    to={`/workspace/${workspaceId}`}>{`Create Project`}</Link>
+                    to={`/workspace/${workspaceId}`}
+                  >{`Create Project`}</Link>
                 </>
               );
             },
@@ -182,10 +188,12 @@ export function MainRoute() {
                   <Link to={`/workspace/${workspaceId}`}>{`Workspace`}</Link>
                   <BreadcrumbSeparator />
                   <Link
-                    to={`/workspace/${workspaceId}/project/${projectId}`}>{`Project`}</Link>
+                    to={`/workspace/${workspaceId}/project/${projectId}`}
+                  >{`Project`}</Link>
                   <BreadcrumbSeparator />
                   <Link
-                    to={`/workspace/${workspaceId}/project/${projectId}`}>{`Create Task`}</Link>
+                    to={`/workspace/${workspaceId}/project/${projectId}`}
+                  >{`Create Task`}</Link>
                 </>
               );
             },
@@ -209,13 +217,16 @@ export function MainRoute() {
                   <Link to={`/workspace/${workspaceId}`}>{`Workspace`}</Link>
                   <BreadcrumbSeparator />
                   <Link
-                    to={`/workspace/${workspaceId}/project/${projectId}`}>{`Project`}</Link>
+                    to={`/workspace/${workspaceId}/project/${projectId}`}
+                  >{`Project`}</Link>
                   <BreadcrumbSeparator />
                   <Link
-                    to={`/workspace/${workspaceId}/project/${projectId}/task/${taskId}`}>{`Task`}</Link>
+                    to={`/workspace/${workspaceId}/project/${projectId}/task/${taskId}`}
+                  >{`Task`}</Link>
                   <BreadcrumbSeparator />
                   <Link
-                    to={`/workspace/${workspaceId}/project/${projectId}/task/${taskId}`}>{`Update `}</Link>
+                    to={`/workspace/${workspaceId}/project/${projectId}/task/${taskId}`}
+                  >{`Update `}</Link>
                 </>
               );
             },
@@ -258,10 +269,12 @@ export function MainRoute() {
                   <Link to={`/workspace/${workspaceId}`}>{`Workspace`}</Link>
                   <BreadcrumbSeparator />
                   <Link
-                    to={`/workspace/${workspaceId}/project/${projectId}/`}>{`Project`}</Link>
+                    to={`/workspace/${workspaceId}/project/${projectId}/`}
+                  >{`Project`}</Link>
                   <BreadcrumbSeparator />
                   <Link
-                    to={`/workspace/${workspaceId}/project/${projectId}/task/${taskId}`}>{`${`Task`}`}</Link>
+                    to={`/workspace/${workspaceId}/project/${projectId}/task/${taskId}`}
+                  >{`${`Task`}`}</Link>
                 </>
               );
             },
@@ -284,14 +297,73 @@ export function MainRoute() {
                   <Link to={`/workspace/${workspaceId}`}>{`Workspace`}</Link>
                   <BreadcrumbSeparator />
                   <Link
-                    to={`/workspace/${workspaceId}/project/${projectId}`}>{`Project`}</Link>
+                    to={`/workspace/${workspaceId}/project/${projectId}`}
+                  >{`Project`}</Link>
                   <BreadcrumbSeparator />
                   <Link
-                    to={`/workspace/${workspaceId}/project/${projectId}`}>{`Create Budget`}</Link>
+                    to={`/workspace/${workspaceId}/project/${projectId}`}
+                  >{`Create Budget`}</Link>
                 </>
               );
             },
           },
+        },
+        {
+          path: "/settings",
+          element: (
+            <SettingPage
+              title={pageTitles.settingPage}
+              component={SettingLayout}
+            />
+          ),
+          handle: {
+            crumb: () => {
+              return <Link to={`/settings`}>{`settings`}</Link>;
+            },
+          },
+          children: [
+            {
+              path: "/settings/account",
+              element: <AccountSettingPage title={pageTitles.settingPage} />,
+              handle: {
+                crumb: () => {
+                  return (
+                    <>
+                      <Link to={`/settings/account`}>{`account`}</Link>
+                    </>
+                  );
+                },
+              },
+            },
+            {
+              path: "/settings/profile",
+              element: <ProfileSettingPage title={pageTitles.settingPage} />,
+              handle: {
+                crumb: () => {
+                  return (
+                    <>
+                      <Link to={`/settings/profile`}>{`profile`}</Link>
+                    </>
+                  );
+                },
+              },
+            },
+            {
+              path: "/settings/preferences",
+              element: (
+                <PreferencesSettingPage title={pageTitles.settingPage} />
+              ),
+              handle: {
+                crumb: () => {
+                  return (
+                    <>
+                      <Link to={`/settings/preferences`}>{`preferences`}</Link>
+                    </>
+                  );
+                },
+              },
+            },
+          ],
         },
       ],
     },

@@ -43,14 +43,14 @@ export const PrivateRoute: React.FC<Props> = ({
   console.log(isLoggedIn, "isloggedin");
   console.log(userHasRequiredRole, "has role");
 
-  if (isLoggedIn && userHasRequiredRole) {
-    return <RouteComponent />;
-  }
+  // if (isLoggedIn && userHasRequiredRole) {
+  return <RouteComponent />;
+  // }
 
-  if (isLoggedIn && !userHasRequiredRole) {
-    return <AccessDenied title={pageTitles.accessDeniedPage} />;
-  }
-  if (!isLoggedIn && userHasRequiredRole) {
-    return <Navigate to="/login" />;
-  }
+  // if (isLoggedIn && !userHasRequiredRole) {
+  //   return <AccessDenied title={pageTitles.accessDeniedPage} />;
+  // }
+  // if (!isLoggedIn && userHasRequiredRole) {
+  //   return <Navigate to="/login" />;
+  // }
 };
