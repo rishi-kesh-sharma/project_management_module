@@ -1,5 +1,10 @@
 import CommonLayout from "../../layouts/CommonLayout.tsx";
-import { createBrowserRouter, Link, RouterProvider, useParams } from "react-router-dom";
+import {
+  createBrowserRouter,
+  Link,
+  RouterProvider,
+  useParams,
+} from "react-router-dom";
 import LoginPage from "@/components/page/Login/Login.tsx";
 import RegisterPage from "@/components/page/Register/Register.tsx";
 import AnalyticsPage from "@/pages/Dashboard/AnalyticsPage.tsx";
@@ -43,9 +48,7 @@ const ROLE: IROLE = {
 };
 
 export function MainRoute() {
-  const params = useParams()
-  const router = createBrowserRouter(
-    createRoutes(routes, params)
-    )
+  const params = useParams();
+  const router = createBrowserRouter(createRoutes(routes, params));
   return <RouterProvider router={router} />;
 }

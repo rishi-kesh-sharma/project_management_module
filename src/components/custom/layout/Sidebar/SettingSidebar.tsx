@@ -58,33 +58,17 @@ const settings = {
 const Sidebar: React.FC<SidebarProps> = ({ path, items }) => {
   console.log(items);
 
-  const isSidebarExpanded: boolean = useAppSelector(selectIsSidebarExpanded);
+  // const isSidebarExpanded: boolean = useAppSelector(selectIsSidebarExpanded);
   const logoutUser = usePrefetch("logoutUser");
 
   const dispatch = useAppDispatch();
 
-  const handleCollapse = () => {
-    console.log("collapsed");
-    dispatch(collapseSidebar());
-  };
-  const handleExpand = () => {
-    dispatch(expandSidebar());
-  };
-  console.log(path);
-  const handleLogout = async () => {
-    try {
-      const res = await logoutUser();
-      console.log(res);
-    } catch (err) {
-      console.log(err);
-    }
-  };
   //   Active Menu Css
   // const getActiveCss = (link: string) =>
   //   path === link ? `font-medium text-sm ` : "font-medium text-sm";
   return (
     <aside
-      className={` ${isSidebarExpanded ? "w-[240px]" : "w-[70px]"} overflow-auto dark:bg-background text-foreground dark:text-foreground dark:border-r h-4/6  py-4 hidden md:flex md:flex-col gap-7     cursor-pointer min-h-screen transition-all sticky top-0 `}
+      className={`w-[240px] overflow-auto dark:bg-background text-foreground dark:text-foreground dark:border-r h-4/6  py-4 hidden md:flex md:flex-col gap-7     cursor-pointer min-h-screen transition-all sticky top-0 `}
     >
       <div className="h-full flex flex-col justify-between min-h-[calc(100vh-6.50rem)] ">
         <nav className="flex flex-col  w-full ">
@@ -111,7 +95,7 @@ const Sidebar: React.FC<SidebarProps> = ({ path, items }) => {
                   )}
                 >
                   <div className="text-xl">{item.icon && item.icon}</div>
-                  {isSidebarExpanded && item.label}
+                  {item.label}
                 </Link>
               )
           )}
