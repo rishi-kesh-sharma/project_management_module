@@ -1,113 +1,53 @@
-import { Avatar } from "@/components/ui/Avatar/avatar";
-import React from "react";
+import { DarkModeCard } from "@/components/custom/common/Theme/DarkModeCard";
+import { LightModeCard } from "@/components/custom/common/Theme/LightModeCard";
+import { useTheme } from "@/components/Providers/Theme/ThemeProvider";
 
 export default function PreferencesSettingDetail() {
-  return (
-    <div>
-      <h3 className="mb-5 text-lg font-medium text-gray-900 dark:text-white">
-        How much do you expect to use each month?
-      </h3>
-      <ul className="grid w-full gap-6 md:grid-cols-2">
-        <li>
-          <input
-            type="radio"
-            id="hosting-small"
-            name="hosting"
-            value="hosting-small"
-            className="hidden peer"
-            required
-          />
-          <label
-            htmlFor="hosting-small"
-            className="inline-flex items-center justify-between w-full p-5 text-gray-500 bg-white border border-gray-200 rounded-lg cursor-pointer dark:hover:text-gray-300 dark:border-gray-700 dark:peer-checked:text-blue-500 peer-checked:border-blue-600 peer-checked:text-blue-600 hover:text-gray-600 hover:bg-gray-100 dark:text-gray-400 dark:bg-gray-800 dark:hover:bg-gray-700"
-          >
-            <div className="block">
-              <div className="w-full text-lg font-semibold">Dark</div>
-            </div>
-            <svg
-              className="w-5 h-5 ms-3 rtl:rotate-180"
-              aria-hidden="true"
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 14 10"
-            >
-              <path
-                stroke="currentColor"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
-                d="M1 5h12m0 0L9 1m4 4L9 9"
-              />
-            </svg>
-          </label>
-        </li>
-        <li>
-          <input
-            type="radio"
-            id="hosting-big"
-            name="hosting"
-            value="hosting-big"
-            className="hidden peer"
-          />
-          <label
-            htmlFor="hosting-big"
-            className="inline-flex items-center justify-between w-full p-5 text-gray-500 bg-white border border-gray-200 rounded-lg cursor-pointer dark:hover:text-gray-300 dark:border-gray-700 dark:peer-checked:text-blue-500 peer-checked:border-blue-600 peer-checked:text-blue-600 hover:text-gray-600 hover:bg-gray-100 dark:text-gray-400 dark:bg-gray-800 dark:hover:bg-gray-700"
-          >
-            <div className="block">
-              <div className="w-full text-lg font-semibold">Light</div>
-            </div>
-            <svg
-              className="w-5 h-5 ms-3 rtl:rotate-180"
-              aria-hidden="true"
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 14 10"
-            >
-              <path
-                stroke="currentColor"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
-                d="M1 5h12m0 0L9 1m4 4L9 9"
-              />
-            </svg>
-          </label>
-        </li>
-        <li>
-          <input
-            type="radio"
-            id="hosting-big"
-            name="hosting"
-            value="hosting-big"
-            className="hidden peer"
-          />
-          <label
-            htmlFor="hosting-big"
-            className="inline-flex items-center justify-between w-full p-5 text-gray-500 bg-white border border-gray-200 rounded-lg cursor-pointer dark:hover:text-gray-300 dark:border-gray-700 dark:peer-checked:text-blue-500 peer-checked:border-blue-600 peer-checked:text-blue-600 hover:text-gray-600 hover:bg-gray-100 dark:text-gray-400 dark:bg-gray-800 dark:hover:bg-gray-700"
-          >
-            <div className="block">
-              <div className="w-full text-lg font-semibold">System</div>
-            </div>
-            <svg
-              className="w-5 h-5 ms-3 rtl:rotate-180"
-              aria-hidden="true"
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 14 10"
-            >
-              <path
-                stroke="currentColor"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
-                d="M1 5h12m0 0L9 1m4 4L9 9"
-              />
-            </svg>
-          </label>
-        </li>
-      </ul>
+  const { setTheme, theme } = useTheme();
 
-      <Avatar />
-    </div>
+  return (
+    <>
+      <div className="pb-5">
+        <h1 className="text-4xl  mt-[2rem]">Appearance</h1>
+        <span className="text-sm text-gray-500">
+          Appearance settings for the workspace.
+        </span>
+      </div>
+
+      <div className="grid grid-cols-1 gap-4 md:grid-cols-4 sm:grid-cols-2 items-center">
+        <button type="button" onClick={() => setTheme("light")}>
+          <LightModeCard active={theme === "light"} />
+          <span className="mt-2 font-normal text-muted-foreground text-sm">
+            Light
+          </span>
+        </button>
+        <button type="button" onClick={() => setTheme("dark")}>
+          <DarkModeCard active={theme === "dark"} />
+          <span className="mt-2 font-normal text-muted-foreground text-sm">
+            Dark
+          </span>
+        </button>
+        <button type="button" onClick={() => setTheme("system")}>
+          <div className="relative">
+            <LightModeCard active={theme === "system"} />
+            <div
+              className="absolute top-0 right-0 bottom-0 left-0"
+              style={{
+                clipPath: "polygon(100% 0, 0 0, 100% 100%)",
+              }}
+            >
+              <DarkModeCard active={theme === "system"} />
+            </div>
+          </div>
+          <span className="mt-2 font-normal text-muted-foreground text-sm">
+            System
+          </span>
+        </button>
+      </div>
+      <div className="py-5">
+        <h1 className="text-4xl  mt-[2rem]">Languages</h1>
+        <span className="text-sm text-gray-500">Language settings</span>
+      </div>
+    </>
   );
 }
