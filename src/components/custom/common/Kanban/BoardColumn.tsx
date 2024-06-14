@@ -92,7 +92,7 @@ export function BoardColumn({ column, tasks, isOverlay }: BoardColumnProps) {
           <Tags
             value={column.title}
             variant={getTagVariantForValues(column.title)}
-            className="py-1.5 px-3 text-lg"
+            className="py-1.5 px-3 text-sm"
           />
         </span>
       </CardHeader>
