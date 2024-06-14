@@ -68,18 +68,6 @@ export default function PreferencesSettingDetail() {
         <h1 className="text-4xl  mt-[2rem]">Languages</h1>
         <span className="text-sm text-gray-500">Language settings</span>
       </div>
-      {/* <Dropdown
-          className="flex"
-          menu={{
-            label: i18n.t("component.button.language", "Select Language"),
-            items: availableLanguages,
-          }}
-          dropdownSize="sm"
-          dropdownVariant="default"
-          dropdownTriggerSize={"sm"}
-          dropdownTriggerVariant={"outline"}
-          onSelect={handleLanguageSelect}
-        /> */}
 
       <Select onValueChange={handleLanguageSelect}>
         <SelectTrigger>
