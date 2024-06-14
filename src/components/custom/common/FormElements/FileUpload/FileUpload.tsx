@@ -93,10 +93,12 @@ export default function FileUpload() {
 
           <div
             {...getRootProps()}
-            className=" flex items-center justify-center w-full">
+            className=" flex items-center justify-center w-full"
+          >
             <label
               htmlFor="dropzone-file"
-              className="relative flex flex-col items-center justify-center w-full py-6 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 dark:hover:bg-bray-800 dark:bg-gray-700 hover:bg-gray-100 dark:border-gray-600 dark:hover:border-gray-500 dark:hover:bg-gray-600">
+              className="relative flex flex-col items-center justify-center w-full py-6 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 dark:hover:bg-bray-800 dark:bg-gray-700 hover:bg-gray-100 dark:border-gray-600 dark:hover:border-gray-500 dark:hover:bg-gray-600"
+            >
               {loading && (
                 <div className=" text-center max-w-md  ">
                   <RadialProgress progress={progress} />
@@ -158,7 +160,8 @@ export default function FileUpload() {
             <Button
               onClick={removeSelectedFile}
               type="button"
-              variant="secondary">
+              variant="secondary"
+            >
               Close
             </Button>
           </DialogClose>
@@ -168,7 +171,8 @@ export default function FileUpload() {
               onClick={handleSubmit}
               disabled={!selectedFile || loading}
               size={"sm"}
-              className=" text-sm">
+              className=" text-sm"
+            >
               {loading ? "Uploading..." : "Submit"}
             </Button>
           </DialogClose>
