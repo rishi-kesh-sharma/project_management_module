@@ -18,154 +18,255 @@ import BookmarkDetailPage from "@/pages/Bookmark/BookmarkDetail";
 import ArchiveDetailPage from "@/pages/Archive/ArchiveDetail";
 import CreateBudgetPage from "@/pages/Budget/CreateBudgetPage";
 
-
 // private routes
 export const privateRoutes = [
-    {
-        path: `/`,
-        element: AnalyticsPage,
-        pageTitle: pageTitles.analyticsPage
-    },
+  {
+    path: `/`,
+    element: AnalyticsPage,
+    pageTitle: pageTitles.analyticsPage,
+  },
 
-    // bookmark related routes
-    {
-        path: `/bookmarks`,
-        element: BookmarksPage,
-        pageTitle: pageTitles.bookmarksPage,
-        crumbs: () => [{ label: { key: ``, fallback: `Bookmarks` }, path: `/bookmarks` }]
-    },
-    {
-        path: `/bookmark/:projectId`,
-        element: BookmarkDetailPage,
-        pageTitle: pageTitles.bookmarkDetailPage,
-        crumbs: ({ projectId }: { projectId: string }) => [{ label: { key: ``, fallback: `Bookmarks` }, path: `/project/${projectId}` }]
-    },
+  // bookmark related routes
+  {
+    path: `/bookmarks`,
+    element: BookmarksPage,
+    pageTitle: pageTitles.bookmarksPage,
+    crumbs: () => [
+      { label: { key: ``, fallback: `Bookmarks` }, path: `/bookmarks` },
+    ],
+  },
+  {
+    path: `/bookmark/:projectId`,
+    element: BookmarkDetailPage,
+    pageTitle: pageTitles.bookmarkDetailPage,
+    crumbs: ({ projectId }: { projectId: string }) => [
+      {
+        label: { key: ``, fallback: `Bookmarks` },
+        path: `/project/${projectId}`,
+      },
+    ],
+  },
 
-    // archive related routes
-    {
-        path: `/archives`,
-        element: ArchivesPage,
-        pageTitle: pageTitles.archivesPage,
-        crumbs: () => [{ label: { key: ``, fallback: `Archives` }, path: `/archives` }]
-    },
-    {
-        path: `/archive/:projectId`,
-        element: ArchiveDetailPage,
-        pageTitle: pageTitles.archiveDetailPage,
-        crumbs: ({ projectId }: { projectId: string }) => [{ label: { key: ``, fallback: `Archive` }, path: `/project/${projectId}` }]
-    },
+  // archive related routes
+  {
+    path: `/archives`,
+    element: ArchivesPage,
+    pageTitle: pageTitles.archivesPage,
+    crumbs: () => [
+      { label: { key: ``, fallback: `Archives` }, path: `/archives` },
+    ],
+  },
+  {
+    path: `/archive/:projectId`,
+    element: ArchiveDetailPage,
+    pageTitle: pageTitles.archiveDetailPage,
+    crumbs: ({ projectId }: { projectId: string }) => [
+      {
+        label: { key: ``, fallback: `Archive` },
+        path: `/project/${projectId}`,
+      },
+    ],
+  },
 
-    // workspace related routes
-    {
-        path: `/workspaces`,
-        element: WorkspacesPage,
-        pageTitle: pageTitles.workspacesPage,
-        crumbs: () => [{ label: { key: ``, fallback: `Workspaces` }, path: `/workspaces` }]
-    },
-    {
-        path: `/workspace/:workspaceId`,
-        element: WorkspaceDetailPage,
-        pageTitle: pageTitles.workspaceDetailPage,
-        crumbs: ({ workspaceId }: { workspaceId: string }) => [{ label: { key: ``, fallback: `Workspace` }, path: `/workspace/${workspaceId}` }]
-    },
+  // workspace related routes
+  {
+    path: `/workspaces`,
+    element: WorkspacesPage,
+    pageTitle: pageTitles.workspacesPage,
+    crumbs: () => [
+      { label: { key: ``, fallback: `Workspaces` }, path: `/workspaces` },
+    ],
+  },
+  {
+    path: `/workspace/:workspaceId`,
+    element: WorkspaceDetailPage,
+    pageTitle: pageTitles.workspaceDetailPage,
+    crumbs: ({ workspaceId }: { workspaceId: string }) => [
+      {
+        label: { key: ``, fallback: `Workspace` },
+        path: `/workspace/${workspaceId}`,
+      },
+    ],
+  },
 
-    // project related routes
-    {
-        path: `/workspace/:workspaceId/project/:projectId`,
-        element: ProjectDetailPage,
-        pageTitle: pageTitles.projectDetailPage,
-        crumbs: ({ workspaceId, projectId }: { workspaceId: string, projectId: string }) => [
-            { label: { key: ``, fallback: `Workspace` }, path: `/workspace/${workspaceId}` },
-            { label: { key: ``, fallback: `Project` }, path: `/workspace/${workspaceId}/project/${projectId}` }
-        ]
-    },
-    {
-        path: `/workspace/:workspaceId/project/create`,
-        element: CreateProjectPage,
-        pageTitle: pageTitles.createProjectPage,
-        crumbs: ({ workspaceId }: { workspaceId: string }) => [
-            { label: { key: ``, fallback: `Workspace` }, path: `/workspace/${workspaceId}` },
-            { label: { key: ``, fallback: `Create Project` }, path: `/workspace/${workspaceId}/project/create` }
-        ]
-    },
-    {
-        path: `/workspace/:workspaceId/project/:projectId/update`,
-        element: UpdateProjectPage,
-        pageTitle: pageTitles.updateProjectPage,
-        crumbs: ({ workspaceId, projectId }: { workspaceId: string, projectId: string }) => [
-            { label: { key: ``, fallback: `Workspace` }, path: `/workspace/${workspaceId}` },
-            { label: { key: ``, fallback: ` Project` }, path: `/workspace/${workspaceId}/project/${projectId}` },
-            { label: { key: ``, fallback: ` Update` }, path: `/workspace/${workspaceId}/project/${projectId}/update` }
-        ]
-    },
+  // project related routes
+  {
+    path: `/workspace/:workspaceId/project/:projectId`,
+    element: ProjectDetailPage,
+    pageTitle: pageTitles.projectDetailPage,
+    crumbs: ({
+      workspaceId,
+      projectId,
+    }: {
+      workspaceId: string;
+      projectId: string;
+    }) => [
+      {
+        label: { key: ``, fallback: `Workspace` },
+        path: `/workspace/${workspaceId}`,
+      },
+      {
+        label: { key: ``, fallback: `Project` },
+        path: `/workspace/${workspaceId}/project/${projectId}`,
+      },
+    ],
+  },
+  {
+    path: `/workspace/:workspaceId/project/create`,
+    element: CreateProjectPage,
+    pageTitle: pageTitles.createProjectPage,
+    crumbs: ({ workspaceId }: { workspaceId: string }) => [
+      {
+        label: { key: ``, fallback: `Workspace` },
+        path: `/workspace/${workspaceId}`,
+      },
+      {
+        label: { key: ``, fallback: `Create Project` },
+        path: `/workspace/${workspaceId}/project/create`,
+      },
+    ],
+  },
+  {
+    path: `/workspace/:workspaceId/project/:projectId/update`,
+    element: UpdateProjectPage,
+    pageTitle: pageTitles.updateProjectPage,
+    crumbs: ({
+      workspaceId,
+      projectId,
+    }: {
+      workspaceId: string;
+      projectId: string;
+    }) => [
+      {
+        label: { key: ``, fallback: `Workspace` },
+        path: `/workspace/${workspaceId}`,
+      },
+      {
+        label: { key: ``, fallback: ` Project` },
+        path: `/workspace/${workspaceId}/project/${projectId}`,
+      },
+      {
+        label: { key: ``, fallback: ` Update` },
+        path: `/workspace/${workspaceId}/project/${projectId}/update`,
+      },
+    ],
+  },
 
-    // task related routes
-    {
-        path: `/workspace/:workspaceId/project/:projectId/task/create`,
-        element: CreateTaskPage,
-        pageTitle: pageTitles.createTaskPage,
-        crumbs: ({ workspaceId, projectId }: { workspaceId: string, projectId: string }) => [
-            { label: { key: ``, fallback: `Workspace` }, path: `/workspace/${workspaceId}` },
-            { label: { key: ``, fallback: `Project` }, path: `/workspace/${workspaceId}/project/${projectId}` },
-            { label: { key: ``, fallback: `Create Task` }, path: `/workspace/${workspaceId}/project/${projectId}/task/create` }
-        ]
-    },
-    {
-        path: `/workspace/:workspaceId/project/:projectId/task/:taskId/update`,
-        element: UpdateTaskPage,
-        pageTitle: pageTitles.updateTaskPage,
-        crumbs: ({ workspaceId, projectId, taskId }: { workspaceId: string, projectId: string, taskId: string }) => [
-            { label: { key: ``, fallback: `Workspace` }, path: `/workspace/${workspaceId}` },
-            { label: { key: ``, fallback: `Project` }, path: `/workspace/${workspaceId}/project/${projectId}` },
-            { label: { key: ``, fallback: `Task` }, path: `/workspace/${workspaceId}/project/${projectId}/task/${taskId}` },
-            { label: { key: ``, fallback: `Update` }, path: `/workspace/${workspaceId}/project/${projectId}/task/${taskId}/update` }
-        ]
-    },
+  // task related routes
+  {
+    path: `/workspace/:workspaceId/project/:projectId/task/create`,
+    element: CreateTaskPage,
+    pageTitle: pageTitles.createTaskPage,
+    crumbs: ({
+      workspaceId,
+      projectId,
+    }: {
+      workspaceId: string;
+      projectId: string;
+    }) => [
+      {
+        label: { key: ``, fallback: `Workspace` },
+        path: `/workspace/${workspaceId}`,
+      },
+      {
+        label: { key: ``, fallback: `Project` },
+        path: `/workspace/${workspaceId}/project/${projectId}`,
+      },
+      {
+        label: { key: ``, fallback: `Create Task` },
+        path: `/workspace/${workspaceId}/project/${projectId}/task/create`,
+      },
+    ],
+  },
+  {
+    path: `/workspace/:workspaceId/project/:projectId/task/:taskId/update`,
+    element: UpdateTaskPage,
+    pageTitle: pageTitles.updateTaskPage,
+    crumbs: ({
+      workspaceId,
+      projectId,
+      taskId,
+    }: {
+      workspaceId: string;
+      projectId: string;
+      taskId: string;
+    }) => [
+      {
+        label: { key: ``, fallback: `Workspace` },
+        path: `/workspace/${workspaceId}`,
+      },
+      {
+        label: { key: ``, fallback: `Project` },
+        path: `/workspace/${workspaceId}/project/${projectId}`,
+      },
+      {
+        label: { key: ``, fallback: `Task` },
+        path: `/workspace/${workspaceId}/project/${projectId}/task/${taskId}`,
+      },
+      {
+        label: { key: ``, fallback: `Update` },
+        path: `/workspace/${workspaceId}/project/${projectId}/task/${taskId}/update`,
+      },
+    ],
+  },
 
-    // budget related routes
-    {
-        path: `/workspace/:workspaceId/project/:projectId/budget/create`,
-        element: CreateBudgetPage,
-        pageTitle: pageTitles.createBudgetPage,
-        crumbs: ({ workspaceId, projectId }: { workspaceId: string, projectId: string }) => [
-            { label: { key: ``, fallback: `Workspace` }, path: `/workspace/${workspaceId}` },
-            { label: { key: ``, fallback: `Project` }, path: `/workspace/${workspaceId}/project/${projectId}` },
-            { label: { key: ``, fallback: `Create Budget` }, path: `/workspace/${workspaceId}/project/${projectId}/budget/create` },
-        ]
-    },
-
-]
-
-
+  // budget related routes
+  {
+    path: `/workspace/:workspaceId/project/:projectId/budget/create`,
+    element: CreateBudgetPage,
+    pageTitle: pageTitles.createBudgetPage,
+    crumbs: ({
+      workspaceId,
+      projectId,
+    }: {
+      workspaceId: string;
+      projectId: string;
+    }) => [
+      {
+        label: { key: ``, fallback: `Workspace` },
+        path: `/workspace/${workspaceId}`,
+      },
+      {
+        label: { key: ``, fallback: `Project` },
+        path: `/workspace/${workspaceId}/project/${projectId}`,
+      },
+      {
+        label: { key: ``, fallback: `Create Budget` },
+        path: `/workspace/${workspaceId}/project/${projectId}/budget/create`,
+      },
+    ],
+  },
+];
 
 // all routes
 export const routes = [
+  // public routes
+  {
+    path: `/login`,
+    element: LoginPage,
+    pageTitle: pageTitles.loginPage,
+  },
+  {
+    path: `/signup`,
+    element: RegisterPage,
+    pageTitle: pageTitles.signupPage,
+  },
 
-    // public routes
-    {
-        path: `/login`,
-        element: LoginPage,
-        pageTitle: pageTitles.loginPage
-    },
-    {
-        path: `/signup`,
-        element: RegisterPage,
-        pageTitle: pageTitles.signupPage
-    },
-
-    // private routes
-    {
+  // private routes
+  {
+    path: `/`,
+    element: PrivateRoute,
+    roles: [ROLE.ADMIN],
+    component: CommonLayout,
+    crumbs: () => [
+      {
+        label: {
+          key: `component.sidebar.menu.dashboard`,
+          fallback: `Dashboard`,
+        },
         path: `/`,
-        element: PrivateRoute,
-        roles: [ROLE.ADMIN],
-        component: CommonLayout,
-        crumbs: () => [{
-            label: {
-                key: `component.sidebar.menu.dashboard`, fallback: `Dashboard`
-            }, path: `/`
-        }],
-        children: privateRoutes
-    }
-]
-
-
+      },
+    ],
+    children: privateRoutes,
+  },
+];

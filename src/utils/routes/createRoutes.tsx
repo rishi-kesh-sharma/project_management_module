@@ -1,8 +1,6 @@
 import { TRole } from "@/@types";
-import i18n from "@/intl/i18n";
 import React from "react";
 import { Params, RouteObject } from "react-router";
-import { Link } from "react-router-dom";
 
 export interface ICrumb {
   label: {
@@ -16,6 +14,7 @@ export interface IRoute {
   element?: React.ElementType;
   pageTitle?: string;
   component?: React.ReactNode;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   crumbs: (p: any) => ICrumb[];
   roles: TRole[];
   children: IRoute[];
@@ -42,17 +41,6 @@ export const createRoutes = (routes: IRoute[]): TCustomRouteObject[] => {
       handle: {
         crumb: (params: Params) => {
           return route.crumbs ? route.crumbs(params)?.[0] : [];
-          // route?.crumbs(params)?.map((crumb: ICrumb) => {
-          //   return (
-          //     //   <Link to={crumb?.path}>
-          //     //     {i18n.t(
-          //     //       crumb.label.key ? crumb.label.key : "",
-          //     //       crumb.label.fallback
-          //     //     )}
-          //     //   </Link>
-          //     crumb?.[0]
-          //   );
-          // })
         },
       },
       children: createRoutes(route?.children),
