@@ -34,7 +34,8 @@ const CommonLayout = () => {
       />
 
       <div
-        className={`flex flex-col flex-1 overflow-auto ${isSidebarExpanded ? `max-w-[calc(100vw-[240px])]` : `max-w-[calc(100vw-70px)]`}`}>
+        className={`flex flex-col flex-1 overflow-auto ${isSidebarExpanded ? `max-w-[calc(100vw-[240px])]` : `max-w-[calc(100vw-70px)]`}`}
+      >
         <div className="z-[50] sticky top-0 flex h-[70px] w-full justify-between  items-center px-8 border-b-2 border-primary-100 bg-background">
           <Header />
         </div>

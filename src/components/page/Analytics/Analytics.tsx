@@ -36,7 +36,8 @@ const Analytics = () => {
             <WidgetWrapper>
               <Card
                 key={index}
-                className=" grid px-[2rem] grid-cols-2  py-[2rem] gap-[0.2rem] place-items-center justify-center shadow-md">
+                className=" grid px-[2rem] grid-cols-2  py-[2rem] gap-[0.2rem] place-items-center justify-center shadow-md"
+              >
                 <div className="flex flex-col gap-3">
                   <p className="font-semibold text-3xl  h-16 w-16 text-foreground rounded-full flex items-center justify-center p-auto">
                     {cardDataItem.count}
@@ -51,7 +52,6 @@ const Analytics = () => {
           );
         })}
       </div>
-
       <div className="grid grid-cols-2 py-[2rem] gap-[2rem] overflow-hidden ">
         <WidgetWrapper>
           <div className="w-full    p-[2rem] border rounded-lg ">
