@@ -42,9 +42,8 @@ export const PrivateRoute: React.FC<Props> = ({
 
   console.log(isLoggedIn, "isloggedin");
   console.log(userHasRequiredRole, "has role");
-
   // if (isLoggedIn && userHasRequiredRole) {
-  return <RouteComponent />;
+    return <RouteComponent />;
   // }
 
   // if (isLoggedIn && !userHasRequiredRole) {
