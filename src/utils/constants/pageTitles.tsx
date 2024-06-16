@@ -20,4 +20,7 @@ export const pageTitles = {
   updateSubTaskPage: `PMS | Update Sub Task`,
   createBudgetPage: `PMS | Create Budget`,
   settingPage: `PMS | Settings`,
+  settingAccountPage: `PMS | Settings | Account`,
+  settingProfilePage: `PMS | Settings | Profile`,
+  settingPreferencesPage: `PMS | Settings | Preferences`,
 };
