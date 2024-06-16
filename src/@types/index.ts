@@ -4,7 +4,7 @@ import { ColDef } from "@ag-grid-community/core";
 import React from "react";
 
 export interface IDropdownMenuItem {
-  id: string;
+  id: number;
   isLink: boolean;
   label: string;
   link?: string;

@@ -93,6 +93,7 @@ const AvatarDropdown: React.FC<IAvatarDropdownProps> = ({
               <DropdownMenuItem
                 onClick={() => {
                   if (item.id === 4 || item.label === `Logout`) {
+                    // logout
                   }
                 }}
                 className="cursor-pointer text-secondary-foreground

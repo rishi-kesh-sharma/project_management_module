@@ -19,12 +19,22 @@ const TooltipContent = React.forwardRef<
     className={cn(
       "z-50 overflow-hidden rounded-md border bg-popover px-3 py-1.5 text-sm text-popover-foreground shadow-md animate-in fade-in-0 zoom-in-95 data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=closed]:zoom-out-95 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2",
       className,
-      "bg-background text-foreground",
-      "relative"
+      "bg-tooltip text-tooltip-foreground",
+      "relative",
+      "group"
     )}
     {...props}>
     {props.children}
-    <div className="tooltip-arrow" data-popper-arrow></div>
+    <div className="tooltip-arrow" data-popper-arrow>
+      <svg
+        className="absolute text-black h-2 w-full left-0 top-full"
+        x="0px"
+        y="0px"
+        viewBox="0 0 255 255"
+        xmlSpace="preserve">
+        <polygon className="fill-current" points="0,0 127.5,127.5 255,0" />
+      </svg>
+    </div>
   </TooltipPrimitive.Content>
 ));
 TooltipContent.displayName = TooltipPrimitive.Content.displayName;

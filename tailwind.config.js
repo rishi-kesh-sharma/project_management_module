@@ -65,6 +65,10 @@ export const theme = {
         DEFAULT: "hsl(var(--block))",
         foreground: "hsl(var(--block-foreground))",
       },
+      tooltip: {
+        DEFAULT: "hsl(var(--tooltip))",
+        foreground: "hsl(var(--tooltip-foreground))",
+      },
     },
 
     borderRadius: {
