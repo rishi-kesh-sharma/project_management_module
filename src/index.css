@@ -59,11 +59,20 @@
     --font-size-4xl: 1.75rem;
     --font-size-4xl: 2rem;
     --font-size-5xl: 2.25rem;
+
+    /* tooltip */
+    --tooltip: 222.2 84% 4.9%;
+    --tooltip-foreground: 0 0% 90%;
   }
 
   .dark {
     --background: 222.2 84% 4.9%;
     --foreground: 0 0% 75%;
+
+    /*block  */
+    --block: 222.2 84% 4.9%;
+    --block-foreground: 0 0% 75%;
+
     --card: 222.2 84% 4.9%;
     --card-foreground: 0 0% 75%;
     --popover: 222.2 84% 4.9%;
