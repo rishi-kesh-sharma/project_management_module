@@ -23,6 +23,7 @@ import { Calendar as CalendarIcon } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { Calendar } from "@/components/ui/Calendar/calendar";
 import { format } from "date-fns";
+import DatePicker from "@/components/custom/common/FormElements/DatePicker/DatePicker";
 
 const ProfileSettingDetail: React.FC = () => {
   const [date, setDate] = useState<Date>();
@@ -61,52 +62,51 @@ const ProfileSettingDetail: React.FC = () => {
 
   return (
     <ShadForm {...form}>
-      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
-        <h1 className="text-bold text-xl mt-[2rem]">Profile</h1>
-        <span className="text-sm text-gray-500">
-          This is how others will see you on the site.
-        </span>
-        <div className="flex w-auto space-x-5">
-          <FormField
-            control={form.control}
-            name="firstName"
-            render={({ field }) => (
-              <FormItem>
-                <FormLabel>First Name</FormLabel>
-                <FormControl>
-                  <TextInput
-                    placeholder="First Name"
-                    {...field}
-                    id="firstName"
-                    // name="name"
-                  />
-                </FormControl>
+      <form
+        onSubmit={form.handleSubmit(onSubmit)}
+        className="grid grid-cols-2 gap-[2rem]"
+      >
+        <h1 className="text-bold text-xl mt-[2rem] col-span-2">Profile</h1>
 
-                <FormMessage />
-              </FormItem>
-            )}
-          />
+        <FormField
+          control={form.control}
+          name="firstName"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>First Name</FormLabel>
+              <FormControl>
+                <TextInput
+                  placeholder="First Name"
+                  {...field}
+                  id="firstName"
+                  // name="name"
+                />
+              </FormControl>
 
-          <FormField
-            control={form.control}
-            name="lastName"
-            render={({ field }) => (
-              <FormItem>
-                <FormLabel>Last Name</FormLabel>
-                <FormControl>
-                  <TextInput
-                    placeholder="lastName"
-                    {...field}
-                    id="lastName"
-                    // name="name"
-                  />
-                </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
 
-                <FormMessage />
-              </FormItem>
-            )}
-          />
-        </div>
+        <FormField
+          control={form.control}
+          name="lastName"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>Last Name</FormLabel>
+              <FormControl>
+                <TextInput
+                  placeholder="lastName"
+                  {...field}
+                  id="lastName"
+                  // name="name"
+                />
+              </FormControl>
+
+              <FormMessage />
+            </FormItem>
+          )}
+        />
 
         <FormField
           control={form.control}
@@ -135,7 +135,7 @@ const ProfileSettingDetail: React.FC = () => {
             <FormItem>
               <FormLabel>Birth day </FormLabel>
               <FormControl>
-                <Popover>
+                {/* <Popover>
                   <PopoverTrigger asChild>
                     <Button
                       variant={"outline"}
@@ -156,7 +156,8 @@ const ProfileSettingDetail: React.FC = () => {
                       initialFocus
                     />
                   </PopoverContent>
-                </Popover>
+                </Popover> */}
+                <DatePicker />
               </FormControl>
 
               <FormMessage />
@@ -222,7 +223,10 @@ const ProfileSettingDetail: React.FC = () => {
           )}
         />
 
-        <Button type="submit">Submit</Button>
+        <Button type="submit" className="col-span-2 max-w-[100px]">
+          {" "}
+          Submit
+        </Button>
       </form>
     </ShadForm>
   );

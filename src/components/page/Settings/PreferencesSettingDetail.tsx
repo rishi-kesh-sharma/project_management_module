@@ -1,10 +1,27 @@
+import Dropdown from "@/components/custom/common/Dropdowns/DropdownMenu/DropdownMenu";
 import { DarkModeCard } from "@/components/custom/common/Theme/DarkModeCard";
 import { LightModeCard } from "@/components/custom/common/Theme/LightModeCard";
 import { useTheme } from "@/components/Providers/Theme/ThemeProvider";
-
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/Select/select";
+import { useAppDispatch } from "@/hooks";
+import i18n from "@/intl/i18n";
+import { setLanguage } from "@/redux/features/app/appSlice";
+import { availableLanguages } from "@/utils/constants/intl";
+import { useState } from "react";
 export default function PreferencesSettingDetail() {
   const { setTheme, theme } = useTheme();
-
+  const dispatch = useAppDispatch();
+  const handleLanguageSelect = (language: any) => {
+    if (language) {
+      dispatch(setLanguage({ language }));
+    }
+  };
   return (
     <>
       <div className="pb-5">
@@ -13,7 +30,6 @@ export default function PreferencesSettingDetail() {
           Appearance settings for the workspace.
         </span>
       </div>
-
       <div className="grid grid-cols-1 gap-4 md:grid-cols-4 sm:grid-cols-2 items-center">
         <button type="button" onClick={() => setTheme("light")}>
           <LightModeCard active={theme === "light"} />
@@ -48,6 +64,18 @@ export default function PreferencesSettingDetail() {
         <h1 className="text-4xl  mt-[2rem]">Languages</h1>
         <span className="text-sm text-gray-500">Language settings</span>
       </div>
+      <Select onValueChange={handleLanguageSelect}>
+        <SelectTrigger>
+          <SelectValue placeholder={`Select Language`} />
+        </SelectTrigger>
+        <SelectContent>
+          {availableLanguages.map((language) => {
+            return (
+              <SelectItem value={language.id}>{language.label}</SelectItem>
+            );
+          })}
+        </SelectContent>
+      </Select>
     </>
   );
 }

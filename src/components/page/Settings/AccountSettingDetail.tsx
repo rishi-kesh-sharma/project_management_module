@@ -51,7 +51,7 @@ const AccountSettingDetail: React.FC = () => {
 
   return (
     <ShadForm {...form}>
-      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
+      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8 ">
         <h1 className="text-bold text-xl mt-[2rem]">Change Password</h1>
         <span className="text-sm text-gray-500">
           You can change your password here
