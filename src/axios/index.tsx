@@ -40,5 +40,3 @@ export const axiosBaseQuery =
   };
 
 setupInterceptorsTo(axios);
-
-// export default instance;

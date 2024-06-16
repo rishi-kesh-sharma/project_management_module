@@ -1,5 +1,4 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-// import { ILoginProps } from "@/components/page/Login/Login";
 import { TRole } from "@/@types";
 import { setUser } from "@/redux/features/app/appSlice";
 import { REAL_API_BASE_URL } from "@/utils/constants";
@@ -52,8 +51,8 @@ export const userApi = createApi({
     baseUrl: `${REAL_API_BASE_URL}/accounts`,
     credentials: "include",
     headers: {
-      authorization: localStorage.getItem(`access`) || ``,
-      [`X-CSRFToken`]: localStorage.getItem(`access`) || ``,
+      authorization: localStorage.getItem(`access`) ?? ``,
+      [`X-CSRFToken`]: localStorage.getItem(`access`) ?? ``,
     },
   }),
   tagTypes: ["User"],
@@ -87,9 +86,9 @@ export const userApi = createApi({
           const { data } = await queryFulfilled;
           const user = {
             email: data.data.email,
-            role: data.data.role || `admin`,
-            name: data.data.name || `Admin`,
-            username: data.data.username || "admin",
+            role: data.data.role ?? `admin`,
+            name: data.data.name ?? `Admin`,
+            username: data.data.username ?? "admin",
           };
           data.data.access && localStorage.setItem(`access`, data.data.access);
           data.data.refresh &&
