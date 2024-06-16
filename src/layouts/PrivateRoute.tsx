@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
-import { Navigate } from "react-router-dom";
-import AccessDenied from "@/pages/AccessDenied";
+// import { Navigate } from "react-router-dom";
+// import AccessDenied from "@/pages/AccessDenied";
 // import { ROLE } from "./features//auth";
 import {
   selectIsLoggedIn,
@@ -8,7 +8,6 @@ import {
   setUser,
 } from "@/redux/features/app/appSlice";
 import { TRole } from "@/@types";
-import { pageTitles } from "@/utils/constants/pageTitles";
 import { useEffect } from "react";
 
 interface Props {
@@ -38,12 +37,12 @@ export const PrivateRoute: React.FC<Props> = ({
   const user = useSelector(selectUser);
   console.log(user);
   const isLoggedIn = useSelector(selectIsLoggedIn);
-  const userHasRequiredRole = user && roles.includes(user.role) ? true : false;
+  const userHasRequiredRole = user && roles?.includes(user.role) ? true : false;
 
   console.log(isLoggedIn, "isloggedin");
   console.log(userHasRequiredRole, "has role");
   // if (isLoggedIn && userHasRequiredRole) {
-    return <RouteComponent />;
+  return <RouteComponent />;
   // }
 
   // if (isLoggedIn && !userHasRequiredRole) {

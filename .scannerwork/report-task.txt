@@ -1,0 +1,6 @@
+projectKey=Project_Management_Module
+serverUrl=http://localhost:9000
+serverVersion=10.5.1.90531
+dashboardUrl=http://localhost:9000/dashboard?id=Project_Management_Module
+ceTaskId=1b7ddd3c-0dbf-4798-b787-d020a31ad03a
+ceTaskUrl=http://localhost:9000/api/ce/task?id=1b7ddd3c-0dbf-4798-b787-d020a31ad03a
