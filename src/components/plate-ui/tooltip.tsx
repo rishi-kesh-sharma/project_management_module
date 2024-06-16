@@ -17,6 +17,7 @@ export const TooltipContent = withCn(
 );
 
 export function withTooltip<
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   T extends React.ComponentType<any> | keyof HTMLElementTagNameMap,
 >(Component: T) {
   return React.forwardRef<
@@ -42,6 +43,7 @@ export function withTooltip<
       setMounted(true);
     }, []);
 
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const component = <Component ref={ref} {...(props as any)} />;
 
     if (tooltip && mounted) {
