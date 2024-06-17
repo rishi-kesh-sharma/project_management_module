@@ -70,25 +70,24 @@ export const settingRoutes = [
   },
 ];
 
-// private routes
-export const privateRoutes = [
+export const projectManagementModuleRoutes = [
   {
-    path: `/`,
+    path: ``,
     element: AnalyticsPage,
     pageTitle: pageTitles.analyticsPage,
   },
 
   // bookmark related routes
   {
-    path: `/bookmarks`,
+    path: `bookmarks`,
     element: BookmarksPage,
     pageTitle: pageTitles.bookmarksPage,
     crumbs: () => [
-      { label: { key: ``, fallback: `Bookmarks` }, path: `/bookmarks` },
+      { label: { key: ``, fallback: `Bookmarks` }, path: `bookmarks` },
     ],
   },
   {
-    path: `/bookmark/:projectId`,
+    path: `bookmark/:projectId`,
     element: BookmarkDetailPage,
     pageTitle: pageTitles.bookmarkDetailPage,
     crumbs: ({ projectId }: { projectId: string }) => [
@@ -101,7 +100,7 @@ export const privateRoutes = [
 
   // archive related routes
   {
-    path: `/archives`,
+    path: `archives`,
     element: ArchivesPage,
     pageTitle: pageTitles.archivesPage,
     crumbs: () => [
@@ -109,7 +108,7 @@ export const privateRoutes = [
     ],
   },
   {
-    path: `/archive/:projectId`,
+    path: `archive/:projectId`,
     element: ArchiveDetailPage,
     pageTitle: pageTitles.archiveDetailPage,
     crumbs: ({ projectId }: { projectId: string }) => [
@@ -122,7 +121,7 @@ export const privateRoutes = [
 
   // workspace related routes
   {
-    path: `/workspaces`,
+    path: `workspaces`,
     element: WorkspacesPage,
     pageTitle: pageTitles.workspacesPage,
     crumbs: () => [
@@ -130,7 +129,7 @@ export const privateRoutes = [
     ],
   },
   {
-    path: `/workspace/:workspaceId`,
+    path: `workspace/:workspaceId`,
     element: WorkspaceDetailPage,
     pageTitle: pageTitles.workspaceDetailPage,
     crumbs: ({ workspaceId }: { workspaceId: string }) => [
@@ -143,7 +142,7 @@ export const privateRoutes = [
 
   // project related routes
   {
-    path: `/workspace/:workspaceId/project/:projectId`,
+    path: `workspace/:workspaceId/project/:projectId`,
     element: ProjectDetailPage,
     pageTitle: pageTitles.projectDetailPage,
     crumbs: ({
@@ -164,7 +163,7 @@ export const privateRoutes = [
     ],
   },
   {
-    path: `/workspace/:workspaceId/project/create`,
+    path: `workspace/:workspaceId/project/create`,
     element: CreateProjectPage,
     pageTitle: pageTitles.createProjectPage,
     crumbs: ({ workspaceId }: { workspaceId: string }) => [
@@ -179,7 +178,7 @@ export const privateRoutes = [
     ],
   },
   {
-    path: `/workspace/:workspaceId/project/:projectId/update`,
+    path: `workspace/:workspaceId/project/:projectId/update`,
     element: UpdateProjectPage,
     pageTitle: pageTitles.updateProjectPage,
     crumbs: ({
@@ -206,7 +205,7 @@ export const privateRoutes = [
 
   // task related routes
   {
-    path: `/workspace/:workspaceId/project/:projectId/task/create`,
+    path: `workspace/:workspaceId/project/:projectId/task/create`,
     element: CreateTaskPage,
     pageTitle: pageTitles.createTaskPage,
     crumbs: ({
@@ -231,7 +230,7 @@ export const privateRoutes = [
     ],
   },
   {
-    path: `/workspace/:workspaceId/project/:projectId/task/:taskId/update`,
+    path: `workspace/:workspaceId/project/:projectId/task/:taskId/update`,
     element: UpdateTaskPage,
     pageTitle: pageTitles.updateTaskPage,
     crumbs: ({
@@ -264,7 +263,7 @@ export const privateRoutes = [
 
   // budget related routes
   {
-    path: `/workspace/:workspaceId/project/:projectId/budget/create`,
+    path: `workspace/:workspaceId/project/:projectId/budget/create`,
     element: CreateBudgetPage,
     pageTitle: pageTitles.createBudgetPage,
     crumbs: ({
@@ -288,13 +287,30 @@ export const privateRoutes = [
       },
     ],
   },
+];
 
-  // settings related routes
+// private routes
+export const privateRoutes = [
+  // project management modules related routes
   {
     path: `/`,
-    element: PrivateRoute,
     roles: [ROLE.ADMIN],
+    crumbs: () => [
+      {
+        label: {
+          key: `component.sidebar.menu.project-management`,
+          fallback: `Project`,
+        },
+        path: `/project`,
+      },
+    ],
+    children: projectManagementModuleRoutes,
+  },
+  // settings module related routes
+  {
+    path: `/`,
     component: SettingLayout,
+    roles: [ROLE.ADMIN],
     crumbs: () => [
       {
         label: {
@@ -326,7 +342,6 @@ export const routes = [
   {
     path: `/`,
     element: PrivateRoute,
-    // roles: [ROLE.ADMIN],
     component: CommonLayout,
     crumbs: () => [
       {

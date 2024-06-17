@@ -29,7 +29,7 @@ export const createRoutes = (routes: IRoute[]): TCustomRouteObject[] => {
   if (routes?.length === 0) return [];
   return routes?.map((route: IRoute) => {
     return {
-      path: route?.path,
+      path: `${route?.path}`,
       element: route.element && (
         <route.element
           title={route?.pageTitle}

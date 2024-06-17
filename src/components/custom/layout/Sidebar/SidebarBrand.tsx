@@ -1,8 +1,15 @@
-import { LeftAngularArrowIcon, RightAngularArrowIcon } from '../../common/icons/commonIcons'
-import { collapseSidebar, expandSidebar, selectIsSidebarExpanded } from '@/redux/features/app/appSlice';
-import { useAppDispatch, useAppSelector } from '@/hooks';
-import { Link } from 'react-router-dom';
-import config from '@/config';
+import {
+  LeftAngularArrowIcon,
+  RightAngularArrowIcon,
+} from "../../common/icons/commonIcons";
+import {
+  collapseSidebar,
+  expandSidebar,
+  selectIsSidebarExpanded,
+} from "@/redux/features/app/appSlice";
+import { useAppDispatch, useAppSelector } from "@/hooks";
+import { Link } from "react-router-dom";
+import config from "@/config";
 
 const SidebarBrand = () => {
   const dispatch = useAppDispatch();
@@ -21,7 +28,7 @@ const SidebarBrand = () => {
           <img
             src={config.LOGO}
             alt={config.APP_NAME}
-            className=" object-contain justify-self-end ml-5"
+            className=" object-contain justify-self-end ml-5 max-w-[100px]"
           />
         </Link>
       )}
@@ -34,7 +41,7 @@ const SidebarBrand = () => {
         />
       )}
     </div>
-  )
-}
+  );
+};
 
-export default SidebarBrand
+export default SidebarBrand;
