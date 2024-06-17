@@ -70,6 +70,7 @@ const AgGridTable: React.FC<IAgGridTableProps> = ({
   theme = "ag-theme-quartz",
   TableToolbarHOC,
   // height = 10,
+  dropdownMenus,
   variant,
   colDefs: columnDefinations,
   rowData: tableData,
@@ -252,13 +253,15 @@ const AgGridTable: React.FC<IAgGridTableProps> = ({
         <TableToolbarHOC
           isSideBarVisible={isSideBarVisible}
           setSideBarVisible={setSideBarVisible}
+          dropdownMenus={dropdownMenus}
         />
       }
 
       {/* {TableToolbarHOC(isSideBarVisible, setSideBarVisible)} */}
       <div
         className={`${appTheme == "dark" ? "ag-theme-quartz-dark" : theme}  `}
-        style={{ ...gridStyle }}>
+        style={{ ...gridStyle }}
+      >
         {variant === "primary" && (
           <Helmet>
             <link rel="stylesheet" href="/src/AgGridPrimaryTable.css" />

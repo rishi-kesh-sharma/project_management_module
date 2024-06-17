@@ -1,4 +1,3 @@
-// import { axiosBaseQuery } from "@/axios";
 import { BASE_URL } from "@/utils/constants";
 import {
   createApi,

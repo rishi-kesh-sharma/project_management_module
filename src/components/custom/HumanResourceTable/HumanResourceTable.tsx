@@ -17,7 +17,6 @@ const HumanResourceTable = ({ data }: { data: IHumanResourceRowData[] }) => {
     e.preventDefault();
   };
 
-  // if (!humanResource) return "loading...";
   return (
     <div className="">
       <AgGridTable

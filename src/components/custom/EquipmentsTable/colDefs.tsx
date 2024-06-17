@@ -1,5 +1,5 @@
 import { IProjectRowData } from "@/@types";
-import Badge from "@/components/custom/common/Badge/Badge";
+
 import {
   EditIcon,
   TrashIcon,
@@ -20,7 +20,8 @@ export const colDefs = [
       return (
         <Link
           className="hover:underline"
-          to={`/workspace/${workspaceId}/project/${projectId}/task/${p.data.id}`}>
+          to={`/workspace/${workspaceId}/project/${projectId}/task/${p.data.id}`}
+        >
           {p.value}
         </Link>
       );

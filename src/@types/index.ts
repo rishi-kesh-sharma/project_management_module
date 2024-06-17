@@ -2,7 +2,8 @@ import { ButtonProps } from "@/components/ui/Button/button";
 import { AvatarProps } from "@radix-ui/react-avatar";
 import { ColDef } from "@ag-grid-community/core";
 import React from "react";
-
+type TDropdownSize = "lg" | "md" | "sm" | "default";
+type TDropdownVariant = "primary" | "secondary" | "default";
 export interface IDropdownMenuItem {
   id: number;
   isLink: boolean;
@@ -16,8 +17,8 @@ export interface IDropdownMenuProps {
     label: string;
     items: IDropdownMenuItem[];
   };
-  dropdownSize: "lg" | "md" | "sm" | "default";
-  dropdownVariant: "primary" | "secondary" | "default";
+  dropdownSize: TDropdownSize;
+  dropdownVariant: TDropdownVariant;
   dropdownTriggerSize: ButtonProps["size"];
   dropdownTriggerVariant: ButtonProps["variant"];
   className?: string;
@@ -28,8 +29,8 @@ export interface ICheckboxDropdownMenuProps {
     label: string;
     items: IDropdownMenuItem[];
   };
-  dropdownSize: "lg" | "md" | "sm" | "default";
-  dropdownVariant: "primary" | "secondary" | "default";
+  dropdownSize: TDropdownSize;
+  dropdownVariant: TDropdownVariant;
   dropdownTriggerSize: ButtonProps["size"];
   dropdownTriggerVariant: ButtonProps["variant"];
   className?: string;
@@ -41,8 +42,8 @@ export interface IIconDropdownMenuProps {
   menu: {
     items: IDropdownMenuItem[];
   };
-  dropdownSize?: "lg" | "md" | "sm" | "default";
-  dropdownVariant?: "primary" | "secondary" | "default";
+  dropdownSize?: TDropdownSize;
+  dropdownVariant?: TDropdownVariant;
   icon: React.ReactNode;
   className?: string;
 }
@@ -52,9 +53,9 @@ export interface IAvatarDropdownProps {
     // label: string;
     items: IDropdownMenuItem[];
   };
-  dropdownSize: "lg" | "md" | "sm" | "default";
-  dropdownVariant: "primary" | "secondary" | "default";
-  avatarSize: "lg" | "md" | "sm" | "default";
+  dropdownSize: TDropdownSize;
+  dropdownVariant: TDropdownVariant;
+  avatarSize: TDropdownSize;
   name: string;
   imgSrc?: string;
 }
@@ -325,7 +326,7 @@ export type RowModelType =
   | "clientSide"
   | "serverSide";
 
-export type IsRowSelectable = unknown;
+export type IsRowSelectable = boolean;
 
 export type IAgGridTableRow<T> = {
   data: T;
@@ -342,10 +343,7 @@ export type IAgGridTableProps<T> = {
     | "ag-theme-quartz-dark"
     | "ag-theme-quartz-alpine";
   height?: number;
-  TableToolbarHOC: (
-    isSideBarVisible: () => void,
-    setSideBarVisible: (value: boolean) => void
-  ) => React.ReactNode;
+  TableToolbarHOC: React.Component;
   // rowData?: IRowData[];
   rowData?: IAgGridTableProps<T>[];
   colDefs?: ColDef[];
@@ -386,6 +384,7 @@ export type TRole =
 
 export interface ICarouselItem {
   content?: React.ReactNode;
+  key: string;
 }
 
 export interface ICarouselProps {
@@ -444,7 +443,7 @@ export interface ICommandProps {
 }
 
 export interface InputProps {
-  size?: "sm" | "md" | "lg" | "xl" | "default" | undefined;
+  size?: "sm" | "md" | "lg" | "xl" | "default";
   type: string;
   placeholder?: string;
   required?: boolean;

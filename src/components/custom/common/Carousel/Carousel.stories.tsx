@@ -25,22 +25,22 @@ type Story = StoryObj<typeof meta>;
 const picSumUrl = "https://picsum.photos/400/400";
 const carouselData = [
   {
-    content: <img className="object-cover rounded-md" src={picSumUrl} />,
+    content: <img alt="" className="object-cover rounded-md" src={picSumUrl} />,
   },
   {
-    content: <img className="object-cover rounded-md" src={picSumUrl} />,
+    content: <img alt="" className="object-cover rounded-md" src={picSumUrl} />,
   },
   {
-    content: <img className="object-cover rounded-md" src={picSumUrl} />,
+    content: <img alt="" className="object-cover rounded-md" src={picSumUrl} />,
   },
   {
-    content: <img className="object-cover rounded-md" src={picSumUrl} />,
+    content: <img alt="" className="object-cover rounded-md" src={picSumUrl} />,
   },
   {
-    content: <img className="object-cover rounded-md" src={picSumUrl} />,
+    content: <img alt="" className="object-cover rounded-md" src={picSumUrl} />,
   },
   {
-    content: <img className="object-cover rounded-md" src={picSumUrl} />,
+    content: <img alt="" className="object-cover rounded-md" src={picSumUrl} />,
   },
 ];
 export const Default: Story = {

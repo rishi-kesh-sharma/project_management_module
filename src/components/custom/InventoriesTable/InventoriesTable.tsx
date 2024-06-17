@@ -25,7 +25,7 @@ const InventoriesTable = ({
   };
 
   console.log(inventories, "inventories");
-  // if (!inventories) return "loading...";
+
   return (
     <div className="">
       <AgGridTable
@@ -52,7 +52,8 @@ const InventoriesTable = ({
                 trigger: (
                   <Button
                     size={"icon"}
-                    className="flex gap-2 rounded-full h-[2.4rem] w-[2.4rem]">
+                    className="flex gap-2 rounded-full h-[2.4rem] w-[2.4rem]"
+                  >
                     <PlusIcon />
                     {/* <span>Inventory</span> */}
                   </Button>
