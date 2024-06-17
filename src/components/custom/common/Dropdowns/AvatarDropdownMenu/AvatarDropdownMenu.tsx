@@ -7,6 +7,7 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui//Dropdown/dropdown-menu";
 import Avatar from "../../Avatar/Avatar";
+import { Link } from "react-router-dom";
 
 const AvatarDropdown: React.FC<IAvatarDropdownProps> = ({
   menu,
@@ -90,16 +91,22 @@ const AvatarDropdown: React.FC<IAvatarDropdownProps> = ({
         {menu.items.map((item: IDropdownMenuItem) => {
           return (
             <>
-              <DropdownMenuItem
-                onClick={() => {
-                  if (item.id === 4 || item.label === `Logout`) {
-                    // logout
-                  }
-                }}
-                className="cursor-pointer text-secondary-foreground
+              {
+                item.isLink && item.link ? <DropdownMenuItem className="cursor-pointer text-secondary-foreground">
+                  <Link to={`${item.link}`}>
+                    {item.label}
+                  </Link>
+                </DropdownMenuItem> : <DropdownMenuItem
+                  onClick={() => {
+                    if (item.id === 4 || item.label === `Logout`) {
+                      // logout
+                    }
+                  }}
+                  className="cursor-pointer text-secondary-foreground
              ">
-                {item.label}
-              </DropdownMenuItem>
+                  {item.label}
+                </DropdownMenuItem>
+              }
 
               <DropdownMenuSeparator className="last-of-type:hidden" />
             </>

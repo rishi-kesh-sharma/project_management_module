@@ -37,11 +37,9 @@ const settings = {
   ],
 };
 const SidebarSettingsMenu = () => {
-
   const isSidebarExpanded: boolean = useAppSelector(selectIsSidebarExpanded);
 
   return (
-
     <div className="flex flex-col justify-center  font-semibold  mt-[2rem] w-full">
       <Accordion type="single" className="" collapsible>
         <AccordionItem

@@ -1,7 +1,4 @@
-import Sidebar from "@/components/custom/layout/Sidebar/Sidebar";
-import React from "react";
 import { Outlet, useLocation } from "react-router";
-import Header from "./Header/Header";
 import SettingSidebar from "@/components/custom/layout/Sidebar/SettingSidebar";
 import i18n from "@/intl/i18n";
 import {
