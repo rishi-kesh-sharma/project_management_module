@@ -90,7 +90,8 @@ export function GradientPicker({
             "justify-start text-left font-normal hover:text-primary hover:bg-transparent w-auto",
             !background && "text-muted-foreground",
             className
-          )}>
+          )}
+        >
           <div className="flex w-full items-center gap-2">
             {background && (
               <DropIconOutlined
@@ -119,6 +120,7 @@ export function GradientPicker({
             {solids.map((s) => (
               <div
                 key={s}
+                role="button"
                 style={{ background: s }}
                 className="h-6 w-6 cursor-pointer rounded-md active:scale-105"
                 onClick={() => setBackground(s)}
@@ -131,6 +133,7 @@ export function GradientPicker({
               {gradients.map((s) => (
                 <div
                   key={s}
+                  role="button"
                   style={{ background: s }}
                   className="h-6 w-6 cursor-pointer rounded-md active:scale-105"
                   onClick={() => setBackground(s)}
@@ -143,7 +146,8 @@ export function GradientPicker({
               <Link
                 to="https://gradient.page/css/ui-gradients"
                 className="font-bold hover:underline"
-                target="_blank">
+                target="_blank"
+              >
                 GradientPage
               </Link>
             </GradientButton>
@@ -154,6 +158,7 @@ export function GradientPicker({
               {images.map((s) => (
                 <div
                   key={s}
+                  role="button"
                   style={{ backgroundImage: s }}
                   className="h-12 w-full cursor-pointer rounded-md bg-cover bg-center active:scale-105"
                   onClick={() => setBackground(s)}
@@ -166,7 +171,8 @@ export function GradientPicker({
               <Link
                 to="https://gradient.page/wallpapers"
                 className="font-bold hover:underline"
-                target="_blank">
+                target="_blank"
+              >
                 wallpapers
               </Link>
               <br />
@@ -175,7 +181,8 @@ export function GradientPicker({
                 <Link
                   to="https://gradient.page/affiliate"
                   className="font-bold hover:underline"
-                  target="_blank">
+                  target="_blank"
+                >
                   GradientPage
                 </Link>
                 , get 80%
@@ -205,7 +212,8 @@ const GradientButton = ({
   return (
     <div
       className="relative rounded-md !bg-cover !bg-center p-0.5 transition-all"
-      style={{ background }}>
+      style={{ background }}
+    >
       <div className="rounded-md bg-popover/80 p-1 text-center text-xs">
         {children}
       </div>

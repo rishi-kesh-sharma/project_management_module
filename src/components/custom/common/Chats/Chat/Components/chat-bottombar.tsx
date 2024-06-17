@@ -27,7 +27,10 @@ interface ChatBottombarProps {
 }
 
 // eslint-disable-next-line react-refresh/only-export-components
-export const BottombarIcons = [{ icon: FileImage }, { icon: Paperclip }];
+export const BottombarIcons = [
+  { icon: FileImage, key: "file" },
+  { icon: Paperclip, key: "paper-clip" },
+];
 
 export default function ChatBottombar({
   sendMessage,
@@ -91,7 +94,8 @@ export default function ChatBottombar({
                 buttonVariants({ variant: "ghost", size: "icon" }),
                 "h-9 w-9",
                 "dark:bg-muted dark:text-muted-foreground dark:hover:bg-muted dark:hover:text-white"
-              )}>
+              )}
+            >
               <PlusCircle size={20} className="text-muted-foreground" />
             </Link>
           </PopoverTrigger>
@@ -104,18 +108,20 @@ export default function ChatBottombar({
                     buttonVariants({ variant: "ghost", size: "icon" }),
                     "h-9 w-9",
                     "dark:bg-muted dark:text-muted-foreground dark:hover:bg-muted dark:hover:text-white"
-                  )}>
+                  )}
+                >
                   <Mic size={20} className="text-muted-foreground" />
                 </Link>
-                {BottombarIcons.map((icon, index) => (
+                {BottombarIcons.map((icon) => (
                   <Link
-                    key={index}
+                    key={icon.key}
                     to="#"
                     className={cn(
                       buttonVariants({ variant: "ghost", size: "icon" }),
                       "h-9 w-9",
                       "dark:bg-muted dark:text-muted-foreground dark:hover:bg-muted dark:hover:text-white"
-                    )}>
+                    )}
+                  >
                     <icon.icon size={20} className="text-muted-foreground" />
                   </Link>
                 ))}
@@ -127,7 +133,8 @@ export default function ChatBottombar({
                   buttonVariants({ variant: "ghost", size: "icon" }),
                   "h-9 w-9",
                   "dark:bg-muted dark:text-muted-foreground dark:hover:bg-muted dark:hover:text-white"
-                )}>
+                )}
+              >
                 <Mic size={20} className="text-muted-foreground" />
               </Link>
             )}
@@ -135,15 +142,16 @@ export default function ChatBottombar({
         </Popover>
         {!message.trim() && !isMobile && (
           <div className="flex">
-            {BottombarIcons.map((icon, index) => (
+            {BottombarIcons.map((icon) => (
               <Link
-                key={index}
+                key={icon.key}
                 to="#"
                 className={cn(
                   buttonVariants({ variant: "ghost", size: "icon" }),
                   "h-9 w-9",
                   "dark:bg-muted dark:text-muted-foreground dark:hover:bg-muted dark:hover:text-white"
-                )}>
+                )}
+              >
                 <icon.icon size={20} className="text-muted-foreground" />
               </Link>
             ))}
@@ -165,7 +173,8 @@ export default function ChatBottombar({
               type: "spring",
               bounce: 0.15,
             },
-          }}>
+          }}
+        >
           <Textarea
             autoComplete="off"
             value={message}
@@ -174,7 +183,8 @@ export default function ChatBottombar({
             onChange={handleInputChange}
             name="message"
             placeholder="Aa"
-            className=" w-full border rounded-3xl flex items-center  resize-none overflow-hidden bg-background"></Textarea>
+            className=" w-full border rounded-3xl flex items-center  resize-none overflow-hidden bg-background"
+          ></Textarea>
           <div className="absolute right-[1rem] top-[50%] translate-y-[-50%]  ">
             <EmojiPicker
               onChange={(value) => {
@@ -195,7 +205,8 @@ export default function ChatBottombar({
               "h-9 w-9",
               "dark:bg-muted dark:text-muted-foreground dark:hover:bg-muted dark:hover:text-white shrink-0"
             )}
-            onClick={handleSend}>
+            onClick={handleSend}
+          >
             <SendHorizontal size={20} className="text-muted-foreground" />
           </Link>
         ) : (
@@ -206,7 +217,8 @@ export default function ChatBottombar({
               "h-9 w-9",
               "dark:bg-muted dark:text-muted-foreground dark:hover:bg-muted dark:hover:text-white shrink-0"
             )}
-            onClick={handleThumbsUp}>
+            onClick={handleThumbsUp}
+          >
             <ThumbsUp size={20} className="text-muted-foreground" />
           </Link>
         )}

@@ -31,11 +31,12 @@ export function ChatList({
     <div className="w-full overflow-y-auto overflow-x-hidden h-full flex flex-col">
       <div
         ref={messagesContainerRef}
-        className="w-full overflow-y-auto overflow-x-hidden h-full flex flex-col">
+        className="w-full overflow-y-auto overflow-x-hidden h-full flex flex-col"
+      >
         <AnimatePresence>
-          {messages?.map((message, index) => (
+          {messages?.map((message) => (
             <motion.div
-              key={index}
+              key={message.id}
               layout
               initial={{ opacity: 0, scale: 1, y: 50, x: 0 }}
               animate={{ opacity: 1, scale: 1, y: 0, x: 0 }}
@@ -55,7 +56,8 @@ export function ChatList({
               className={cn(
                 "flex flex-col gap-2 p-4 whitespace-pre-wrap",
                 message.name !== selectedUser.name ? "items-end" : "items-start"
-              )}>
+              )}
+            >
               <div className="flex gap-3 items-center">
                 {message.name === selectedUser.name && (
                   <Avatar className="flex justify-center items-center">

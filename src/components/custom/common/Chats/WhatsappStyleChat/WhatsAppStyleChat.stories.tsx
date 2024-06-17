@@ -1,7 +1,6 @@
 // Sidebar.stories.tsx
 
 import { StoryObj, Meta } from "@storybook/react";
-// import { sidebarItems } from "@/utils/constants/sidebar";
 import MessageBox from "./WhatsAppStyleChat.tsx";
 
 const meta: Meta<typeof MessageBox> = {
