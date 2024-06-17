@@ -27,28 +27,28 @@ import WidgetWrapper from "@/components/custom/common/WidgetWrapper/WidgetWrappe
 
 const Analytics = () => {
   return (
-    <div className=" flex flex-col gap-[1rem]">
+    <div className=" flex flex-col gap-[1.5rem]">
       {/* <ThreeVerticalDots className="ml-auto" /> */}
       <CreateWorkspaceForm />
-      <div className="grid grid-cols-3 col-span-2 gap-[1.8rem] ">
+      <div className="grid grid-cols-4  gap-[1.8rem] ">
         {cardData.map((cardDataItem, index) => {
           return (
-            <WidgetWrapper>
-              <Card
-                key={index}
-                className=" grid px-[2rem] grid-cols-2  py-[2rem] gap-[0.2rem] place-items-center justify-center shadow-md"
-              >
-                <div className="flex flex-col gap-3">
-                  <p className="font-semibold text-3xl  h-16 w-16 text-foreground rounded-full flex items-center justify-center p-auto">
-                    {cardDataItem.count}
-                  </p>
-                  <p className=" text-foreground/60 ">{cardDataItem.label}</p>
-                </div>
-                <div className="text-5xl  text-primary h-20 w-20 rounded-full text-center flex items-center justify-center">
-                  {cardDataItem.icon}
-                </div>
-              </Card>
-            </WidgetWrapper>
+            // <WidgetWrapper>
+            <Card
+              key={index}
+              className="flex justify-between px-[1rem] h-auto  items-center  py-[1rem] gap-[1rem] "
+            >
+              <div className="flex flex-col  ">
+                <p className="text-foreground">{cardDataItem.label}</p>
+                <p className="font-semibold text-3xl">
+                  {cardDataItem.count}
+                </p>
+              </div>
+              <div className="text-3xl bg-primary text-primary-foreground h-14 w-14 rounded-md text-center flex items-center justify-center">
+                {cardDataItem.icon}
+              </div>
+            </Card>
+            // </WidgetWrapper>
           );
         })}
       </div>
