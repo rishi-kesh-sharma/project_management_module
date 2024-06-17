@@ -19,22 +19,22 @@ export const avatarDropdownMenu = {
   label: "",
   items: [
     {
-      id: 1,
-      label: "Account",
-      isLink: true,
-      link: "/settings/account",
-    },
-    {
       id: 2,
       label: "Profile",
       isLink: true,
       link: "/settings/profile",
     },
     {
+      id: 1,
+      label: "Account",
+      isLink: true,
+      link: "/settings/account",
+    },
+    {
       id: 3,
       label: "Preferences",
       isLink: true,
-      link: "/settings/dashboard",
+      link: "/settings/preferences",
     },
     {
       id: 4,

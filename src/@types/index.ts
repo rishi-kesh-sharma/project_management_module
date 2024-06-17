@@ -5,7 +5,7 @@ import React from "react";
 type TDropdownSize = "lg" | "md" | "sm" | "default";
 type TDropdownVariant = "primary" | "secondary" | "default";
 export interface IDropdownMenuItem {
-  id: string;
+  id: number;
   isLink: boolean;
   label: string;
   link?: string;

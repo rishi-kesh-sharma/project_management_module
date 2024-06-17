@@ -13,7 +13,6 @@ import {
   // SettingIcon,
 } from "@/components/custom/common/icons/commonIcons";
 import i18n from "@/intl/i18n";
-import { Ellipsis } from "lucide-react";
 
 interface ISidebarItemsProps {
   workspaces: IWorkspace[];
