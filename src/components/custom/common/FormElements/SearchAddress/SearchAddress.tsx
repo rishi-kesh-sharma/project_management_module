@@ -98,9 +98,9 @@ const SearchAddress: React.FC<SearchAddressProps> = ({ onSelectLocation }) => {
                   key={type}
                   heading={type.charAt(0).toUpperCase() + type.slice(1)}
                 >
-                  {items.map((item, index) => (
+                  {items.map((item) => (
                     <CommandItem
-                      key={index}
+                      key={item.label}
                       value={item.label}
                       onSelect={(currentValue: string) => {
                         const item = results[type]?.find(

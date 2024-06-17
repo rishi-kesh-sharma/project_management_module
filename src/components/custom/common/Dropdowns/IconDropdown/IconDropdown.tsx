@@ -38,12 +38,13 @@ const IconDropdown: React.FC<IIconDropdownMenuProps> = ({
     <DropdownMenu>
       <DropdownMenuTrigger>{icon}</DropdownMenuTrigger>
       <DropdownMenuContent
-        className={`${iconDropdownVariants({ dropdownSize, dropdownVariant })} `}>
+        className={`${iconDropdownVariants({ dropdownSize, dropdownVariant })} `}
+      >
         {menu.items.map((item) => {
           return (
             <>
               <DropdownMenuItem className="cursor-pointer flex gap-3 items-center text-foreground">
-                {item.icon && item.icon}
+                {item?.icon}
                 {item.label}
               </DropdownMenuItem>
               <DropdownMenuSeparator className="last-of-type:hidden" />

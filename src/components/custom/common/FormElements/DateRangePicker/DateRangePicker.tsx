@@ -312,12 +312,10 @@ export const DateRangePicker: FC<DateRangePickerProps> & {
         setPreset(preset);
       }}
     >
-      <>
-        <span className={cn("pr-2 opacity-0", isSelected && "opacity-70")}>
-          <CheckIcon width={18} height={18} />
-        </span>
-        {label}
-      </>
+      <span className={cn("pr-2 opacity-0", isSelected && "opacity-70")}>
+        <CheckIcon width={18} height={18} />
+      </span>
+      {label}
     </Button>
   );
 
@@ -474,7 +472,7 @@ export const DateRangePicker: FC<DateRangePickerProps> & {
                       <DateInput
                         value={rangeCompare?.to}
                         onChange={(date: Date) => {
-                          if (rangeCompare && rangeCompare.from) {
+                          if (rangeCompare?.from) {
                             const compareFromDate =
                               date < rangeCompare.from
                                 ? date

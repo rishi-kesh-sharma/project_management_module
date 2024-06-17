@@ -109,7 +109,8 @@ const VerticalStep = React.forwardRef<HTMLDivElement, VerticalStepProps>(
                   });
                 }
               }}
-              className="overflow-hidden data-[state=open]:animate-collapsible-down data-[state=closed]:animate-collapsible-up">
+              className="overflow-hidden data-[state=open]:animate-collapsible-down data-[state=closed]:animate-collapsible-up"
+            >
               {children}
             </CollapsibleContent>
           </Collapsible>
@@ -120,6 +121,7 @@ const VerticalStep = React.forwardRef<HTMLDivElement, VerticalStepProps>(
 
     return (
       <div
+        role="form"
         ref={ref}
         className={cn(
           "stepper__vertical-step",
@@ -137,7 +139,8 @@ const VerticalStep = React.forwardRef<HTMLDivElement, VerticalStepProps>(
         onClick={() =>
           onClickStep?.(index || 0, setStep) ||
           onClickStepGeneral?.(index || 0, setStep)
-        }>
+        }
+      >
         <div
           data-vertical={true}
           data-active={active}
@@ -147,9 +150,11 @@ const VerticalStep = React.forwardRef<HTMLDivElement, VerticalStepProps>(
             variant === "line" &&
               "border-s-[3px] data-[active=true]:border-primary py-2 ps-3",
             styles?.["vertical-step-container"]
-          )}>
+          )}
+        >
           <StepButtonContainer
-            {...{ isLoading: localIsLoading, isError: localIsError, ...props }}>
+            {...{ isLoading: localIsLoading, isError: localIsError, ...props }}
+          >
             <StepIcon
               {...{
                 index,
@@ -176,7 +181,8 @@ const VerticalStep = React.forwardRef<HTMLDivElement, VerticalStepProps>(
             variant !== "line" && "ps-[--step-icon-size]",
             variant === "line" && orientation === "vertical" && "min-h-0",
             styles?.["vertical-step-content"]
-          )}>
+          )}
+        >
           {renderChildren()}
         </div>
       </div>

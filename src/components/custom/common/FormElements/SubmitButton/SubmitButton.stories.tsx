@@ -4,8 +4,6 @@ import { StoryObj, Meta } from "@storybook/react";
 import SubmitButton from "./SubmitButton";
 import { IoMdAdd } from "react-icons/io";
 
-// import { userInfo } from "@/utils/constants";
-
 const meta: Meta<typeof SubmitButton> = {
   title: "Form/SubmitButton",
 
@@ -57,7 +55,10 @@ export const RoundedIcon: Story = {
     className: "rounded-full flex gap-[0.4rem] ",
     // asChild: true,
     children: [
-      <IoMdAdd className=" bg-primary  text-white rounded-full w-[1.7rem] h-[1.5rem]" />,
+      <IoMdAdd
+        key={"roundedIcon"}
+        className=" bg-primary  text-white rounded-full w-[1.7rem] h-[1.5rem]"
+      />,
       "Submit",
     ],
   },

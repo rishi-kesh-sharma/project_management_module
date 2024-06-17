@@ -17,7 +17,6 @@ import { FiUpload } from "react-icons/fi";
 import { Button } from "@/components/ui/Button/button";
 import { Input } from "@/components/ui/Input/input";
 import { IoCloudUploadOutline } from "react-icons/io5";
-// import { Link } from "react-router-dom";
 
 import RadialProgress from "@/components/custom/common/RadialProgress/RadialProgress";
 
@@ -27,12 +26,12 @@ export default function FileUpload() {
   const [selectedFile, setSelectedFile] = useState<File | null>();
   const [fileUrl, setFileUrl] = useState<string>();
 
-  const onUploadProgress = (progressEvent: ProgressEvent) => {
-    const percentage = Math.round(
-      (progressEvent.loaded * 100) / progressEvent.total
-    );
-    setProgress(percentage);
-  };
+  // const onUploadProgress = (progressEvent: ProgressEvent) => {
+  //   const percentage = Math.round(
+  //     (progressEvent.loaded * 100) / progressEvent.total
+  //   );
+  //   setProgress(percentage);
+  // };
 
   const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     if (event.target.files?.length) {
