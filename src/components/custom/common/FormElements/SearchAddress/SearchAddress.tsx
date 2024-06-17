@@ -28,23 +28,53 @@ const SearchAddress: React.FC<SearchAddressProps> = ({ onSelectLocation }) => {
   const [open, setOpen] = React.useState(false);
   const [value, setValue] = React.useState("");
 
-  const {
-    // query,
-    results,
-    loading,
-    handleSearch,
-    selectedItem,
-    setSelectedItem,
-  } = useSearchAddress();
+  const { results, loading, handleSearch, selectedItem, setSelectedItem } =
+    useSearchAddress();
+
+  if (loading) {
+    return (
+      <Popover open={open} onOpenChange={setOpen}>
+        <PopoverTrigger asChild>
+          <Button
+            variant="outline"
+            aria-expanded={open}
+            className="w-80 justify-between truncate"
+          >
+            <p className="truncate">
+              {selectedItem
+                ? `${selectedItem.label} (${selectedItem.raw.entityType})`
+                : "Select place..."}
+            </p>
+
+            <ChevronsUpDown className="ml-2 h-4 w-4 shrink-0 opacity-50" />
+          </Button>
+        </PopoverTrigger>
+        <PopoverContent className="w-80 p-0">
+          <Command>
+            <CommandInput
+              placeholder="Search the place..."
+              onValueChange={(value) => handleSearch(value)}
+              className="w-full"
+            />
+            <CommandList>
+              <CommandLoading>
+                <CommandEmpty>Type to search</CommandEmpty>
+              </CommandLoading>
+            </CommandList>
+          </Command>
+        </PopoverContent>
+      </Popover>
+    );
+  }
 
   return (
     <Popover open={open} onOpenChange={setOpen}>
       <PopoverTrigger asChild>
         <Button
           variant="outline"
-          role="combobox"
           aria-expanded={open}
-          className="w-80 justify-between truncate">
+          className="w-80 justify-between truncate"
+        >
           <p className="truncate">
             {selectedItem
               ? `${selectedItem.label} (${selectedItem.raw.entityType})`
@@ -62,15 +92,12 @@ const SearchAddress: React.FC<SearchAddressProps> = ({ onSelectLocation }) => {
             className="w-full"
           />
           <CommandList>
-            {loading ? (
-              <CommandLoading>
-                <CommandEmpty>Type to search</CommandEmpty>
-              </CommandLoading>
-            ) : Object.keys(results).length > 0 ? (
+            {Object.keys(results).length > 0 ? (
               Object.entries(results).map(([type, items]) => (
                 <CommandGroup
                   key={type}
-                  heading={type.charAt(0).toUpperCase() + type.slice(1)}>
+                  heading={type.charAt(0).toUpperCase() + type.slice(1)}
+                >
                   {items.map((item, index) => (
                     <CommandItem
                       key={index}
@@ -83,7 +110,8 @@ const SearchAddress: React.FC<SearchAddressProps> = ({ onSelectLocation }) => {
                         setSelectedItem(item ?? null);
                         onSelectLocation(item ?? null);
                         setOpen(false);
-                      }}>
+                      }}
+                    >
                       <Check
                         className={cn(
                           "mr-2 h-4 w-4",

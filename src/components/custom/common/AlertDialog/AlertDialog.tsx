@@ -11,7 +11,7 @@ import {
   AlertDialogTrigger,
 } from "@/components/ui/AlertDialog/alert-dialog";
 
-export default function AlertDialog(props: IAlertDialogProps) {
+export default function AlertDialog(props: Readonly<IAlertDialogProps>) {
   return (
     <ShadAlertDialog>
       <AlertDialogTrigger asChild>{props.trigger}</AlertDialogTrigger>

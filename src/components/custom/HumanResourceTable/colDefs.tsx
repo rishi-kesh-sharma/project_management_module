@@ -8,7 +8,7 @@ import {
 import Tags from "../common/Tags/Tags";
 import { faker } from "@faker-js/faker";
 import moment from "moment";
-import { users } from "@/data";
+
 import {
   Avatar,
   AvatarFallback,

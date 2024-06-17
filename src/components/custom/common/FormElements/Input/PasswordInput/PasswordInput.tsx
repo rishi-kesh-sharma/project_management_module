@@ -1,8 +1,7 @@
 import { useState } from "react";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/Button/button";
-import { FaEye } from "react-icons/fa";
-import { FaEyeSlash } from "react-icons/fa";
+import { FaEye, FaEyeSlash } from "react-icons/fa";
 import Input from "@/components/custom/common/FormElements/Input/Input/Input";
 import { IPasswordInputProps } from "@/@types";
 
@@ -39,7 +38,8 @@ const PasswordInput: React.FC<IPasswordInputProps> = ({
         variant="ghost"
         size="sm"
         className="absolute right-0 top-0 h-full px-3 py-2 hover:bg-transparent"
-        onClick={togglePasswordVisibility}>
+        onClick={togglePasswordVisibility}
+      >
         {showPassword ? (
           <FaEye className="h-4 w-4" aria-hidden="true" />
         ) : (

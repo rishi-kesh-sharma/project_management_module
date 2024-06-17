@@ -8,18 +8,20 @@ import {
 } from "@/components/ui/Carousel/carousel";
 import { ICarouselItem, ICarouselProps } from "@/@types";
 
-export default function Carousel({ carouselData }: ICarouselProps) {
+export default function Carousel({ carouselData }: Readonly<ICarouselProps>) {
   return (
     <ShadCarousel
       opts={{
         align: "start",
       }}
-      className="w-full">
+      className="w-full"
+    >
       <CarouselContent>
-        {carouselData.map((item: ICarouselItem, index) => (
+        {carouselData.map((item: ICarouselItem) => (
           <CarouselItem
-            key={index}
-            className="md:basis-1/1 lg:basis-1/2 xl:basis:1/3">
+            key={item.key}
+            className="md:basis-1/1 lg:basis-1/2 xl:basis:1/3"
+          >
             <div className="p-1">
               <Card>
                 <CardContent className="flex items-center justify-cent{er p-2">

@@ -28,7 +28,7 @@ const inventories = createRandomInventories();
 
 const createNInventories = (count) => {
   const data = Array.from(Array(count)).map((_, index) => {
-    return createRandomInventories(index + 1);
+    return createRandomInventories();
   });
   return data;
 };
