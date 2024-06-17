@@ -13,43 +13,43 @@ const dropdownMenus = {
   ],
 };
 
+const handleSearch = (e: React.FormEvent) => {
+  e.preventDefault();
+};
 const BudgetTable = ({ budgets }: { budgets: IBudgetRowData[] }) => {
-  const { workspaceId, projectId } = useParams();
-  const handleSearch = (e: React.FormEvent) => {
-    e.preventDefault();
-  };
-
-  // if (!budget) return "loading...";
   return (
     <div className="">
       <AgGridTable
-        TableToolbarHOC={({
-          isSideBarVisible,
-          setSideBarVisible,
-        }: {
-          isSideBarVisible: () => boolean;
-          setSideBarVisible: (value: boolean) => void;
-        }) => {
-          return (
-            <TableToolbar
-              heading={"Budget"}
-              handleSearch={handleSearch}
-              dropdownMenus={dropdownMenus}
-              createButtonText="Budget"
-              createPagePath={`/workspace/${workspaceId}/project/${projectId}/budget/create`}
-              hasSearch={true}
-              search={<ProjectsTableSearch handleSearch={handleSearch} />}
-              isSideBarVisible={isSideBarVisible}
-              setSideBarVisible={setSideBarVisible}
-            />
-          );
-        }}
+        TableToolbarHOC={TableToolbarHOC}
         rowData={budgets}
         heading={"Budget"}
         dropdownMenus={dropdownMenus}
         colDefs={colDefs}
       />
     </div>
+  );
+};
+const TableToolbarHOC = ({
+  isSideBarVisible,
+  setSideBarVisible,
+}: {
+  isSideBarVisible: () => boolean;
+  setSideBarVisible: (value: boolean) => void;
+}) => {
+  const { workspaceId, projectId } = useParams();
+
+  return (
+    <TableToolbar
+      heading={"Budget"}
+      handleSearch={handleSearch}
+      dropdownMenus={dropdownMenus}
+      createButtonText="Budget"
+      createPagePath={`/workspace/${workspaceId}/project/${projectId}/budget/create`}
+      hasSearch={true}
+      search={<ProjectsTableSearch handleSearch={handleSearch} />}
+      isSideBarVisible={isSideBarVisible}
+      setSideBarVisible={setSideBarVisible}
+    />
   );
 };
 

@@ -24,7 +24,6 @@ const EquipmentTable = ({
     e.preventDefault();
   };
 
-  // if (!equipment) return "loading...";
   return (
     <div className="">
       <AgGridTable
@@ -53,7 +52,8 @@ const EquipmentTable = ({
                 trigger: (
                   <Button
                     size={"icon"}
-                    className="flex gap-2 rounded-full h-[2.4rem] w-[2.4rem]">
+                    className="flex gap-2 rounded-full h-[2.4rem] w-[2.4rem]"
+                  >
                     <PlusIcon />
                     {/* <span>Equipments</span> */}
                   </Button>

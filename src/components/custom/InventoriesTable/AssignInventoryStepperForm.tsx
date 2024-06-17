@@ -3,7 +3,6 @@ import { Button } from "@/components/ui/Button/button";
 import { Step, Stepper, useStepper } from "../common/Forms/StepperForm";
 import { IComboboxProps, StepItem } from "@/@types";
 import Combobox from "../common/Combobox/Combobox";
-// import { comboboxData } from "@/utils/constants";
 import { Label } from "@/components/ui/Label/label";
 import { RocketIcon } from "@radix-ui/react-icons";
 import { CalendarIcon, MinusIcon, PlusIcon } from "../common/icons/commonIcons";
@@ -15,7 +14,6 @@ import {
   TableRow,
 } from "@/components/ui/Table/table";
 import NumberInput from "../common/FormElements/Input/NumberInput/NumberInput";
-import { useEffect } from "react";
 
 const categoriesComboboxData: IComboboxProps = {
   defaultText: "Search categories here...",
@@ -161,9 +159,6 @@ const Footer = () => {
     isDisabledStep,
   } = useStepper();
 
-  // useEffect(() => {
-  //   resetSteps();
-  // }, [hasCompletedAllSteps]);
   return (
     <>
       {hasCompletedAllSteps && (
@@ -182,7 +177,8 @@ const Footer = () => {
               disabled={isDisabledStep}
               onClick={prevStep}
               size="sm"
-              variant="secondary">
+              variant="secondary"
+            >
               Prev
             </Button>
             <Button size="sm" onClick={nextStep}>

@@ -1,5 +1,3 @@
-// import { useParams } from "react-router";
-
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useFieldArray, useForm } from "react-hook-form";
@@ -33,8 +31,6 @@ import { Skeleton } from "@/components/ui/Skeleton/skeleton";
 import { faker } from "@faker-js/faker";
 
 const CreateBudget: React.FC = () => {
-  // const { workspaceId } = useParams();
-
   const plateEditorInitialValue = useMemo(() => {
     return [
       {
@@ -155,7 +151,8 @@ const CreateBudget: React.FC = () => {
                   <Skeleton className="size-8 shrink-0 rounded-sm" />
                   <Skeleton className="size-8 shrink-0 rounded-sm" />
                 </div>
-              }>
+              }
+            >
               <div className="w-full space-y-2">
                 {fields.map((field, index) => (
                   <SortableItem key={field.id} value={field.id} asChild>
@@ -190,7 +187,8 @@ const CreateBudget: React.FC = () => {
                       <SortableDragHandle
                         variant="outline"
                         size="icon"
-                        className="size-8 shrink-0">
+                        className="size-8 shrink-0"
+                      >
                         <DragHandleDots2Icon
                           className="size-4"
                           aria-hidden="true"
@@ -201,7 +199,8 @@ const CreateBudget: React.FC = () => {
                         variant="outline"
                         size="icon"
                         className="size-8 shrink-0"
-                        onClick={() => remove(index)}>
+                        onClick={() => remove(index)}
+                      >
                         <TrashIcon
                           className="size-4 text-destructive"
                           aria-hidden="true"
@@ -224,7 +223,8 @@ const CreateBudget: React.FC = () => {
                   estimated_expense: 0,
                   id: faker.string.uuid(),
                 })
-              }>
+              }
+            >
               Add Particular
             </Button>
           </div>

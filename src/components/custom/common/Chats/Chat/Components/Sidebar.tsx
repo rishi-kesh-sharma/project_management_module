@@ -29,11 +29,12 @@ export function Sidebar({
   links,
   isCollapsed,
   // isMobile
-}: SidebarProps) {
+}: Readonly<SidebarProps>) {
   return (
     <div
       data-collapsed={isCollapsed}
-      className="relative group flex flex-col h-full gap-4 p-2 data-[collapsed=true]:p-2 ">
+      className="relative group flex flex-col h-full gap-4 p-2 data-[collapsed=true]:p-2 "
+    >
       {!isCollapsed && (
         <div className="flex justify-between p-2 items-center flex-wrap">
           <div className="flex gap-2 items-center text-2xl">
@@ -47,7 +48,8 @@ export function Sidebar({
               className={cn(
                 buttonVariants({ variant: "ghost", size: "icon" }),
                 "h-9 w-9"
-              )}>
+              )}
+            >
               <MoreHorizontal size={20} />
             </Link>
 
@@ -56,7 +58,8 @@ export function Sidebar({
               className={cn(
                 buttonVariants({ variant: "ghost", size: "icon" }),
                 "h-9 w-9"
-              )}>
+              )}
+            >
               <SquarePen size={20} />
             </Link>
           </div>
@@ -65,7 +68,7 @@ export function Sidebar({
       <nav className="grid gap-2 px-2 group-[[data-collapsed=true]]:justify-center group-[[data-collapsed=true]]:px-2">
         {links.map((link, index) =>
           isCollapsed ? (
-            <TooltipProvider key={index}>
+            <TooltipProvider key={link.name}>
               <Tooltip key={index} delayDuration={0}>
                 <TooltipTrigger asChild>
                   <Link
@@ -74,7 +77,8 @@ export function Sidebar({
                       buttonVariants({ variant: link.variant, size: "icon" }),
                       "h-11 w-11 md:h-16 md:w-16",
                       "dark:bg-muted dark:text-muted-foreground dark:hover:bg-muted dark:hover:text-white"
-                    )}>
+                    )}
+                  >
                     <Avatar className="flex justify-center items-center">
                       <AvatarImage
                         src={link.avatar}
@@ -89,7 +93,8 @@ export function Sidebar({
                 </TooltipTrigger>
                 <TooltipContent
                   side="right"
-                  className="flex items-center gap-4">
+                  className="flex items-center gap-4"
+                >
                   {link.name}
                 </TooltipContent>
               </Tooltip>
@@ -102,7 +107,8 @@ export function Sidebar({
                 buttonVariants({ variant: link.variant, size: "xl" }),
                 "dark:bg-muted dark:text-white dark:hover:bg-muted dark:hover:text-white shrink py-1",
                 "justify-start gap-4"
-              )}>
+              )}
+            >
               <Avatar className="flex justify-center items-center">
                 <AvatarImage
                   src={link.avatar}
