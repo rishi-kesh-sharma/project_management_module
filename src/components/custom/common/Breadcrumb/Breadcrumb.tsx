@@ -45,7 +45,6 @@ const Breadcrumb = () => {
     }[]
   >([]);
   useEffect(() => {
-    // const lastParamValue = Object.values(params).slice(-1)[0];
     const crumbs = matches
       .filter((match: RouteObject) => Boolean(match.handle?.crumb))
       .map((match: RouteObject) => match.handle.crumb(params));
@@ -63,7 +62,6 @@ const Breadcrumb = () => {
                   <Link to={crumb?.path}>
                     {i18n.t(crumb?.label?.key, crumb?.label?.fallback)}
                   </Link>
-                  {/* {crumb} */}
                 </BreadcrumbLink>
               </BreadcrumbItem>
               <BreadcrumbSeparator />

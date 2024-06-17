@@ -384,6 +384,7 @@ export type TRole =
 
 export interface ICarouselItem {
   content?: React.ReactNode;
+  key: string;
 }
 
 export interface ICarouselProps {
