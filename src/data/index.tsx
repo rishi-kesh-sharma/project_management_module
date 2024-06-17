@@ -1,5 +1,6 @@
 import {
   PeopleIcon,
+  PeopleIconOutlined,
   ProjectsIcon,
   WorkspaceIcon,
 } from "@/components/custom/common/icons/commonIcons";
@@ -277,18 +278,23 @@ export const upcomingDeadlineData = {
 export const cardData = [
   {
     count: 10,
-    label: i18n.t("component.home.analytics.workspaceNum", "No. of Workspaces"),
+    label: i18n.t("component.home.analytics.workspaceNum", "Workspaces"),
     icon: <WorkspaceIcon />,
   },
   {
     count: 40,
-    label: i18n.t("component.home.analytics.projectNum", "No. of Projects"),
+    label: i18n.t("component.home.analytics.projectNum", "Projects"),
     icon: <ProjectsIcon />,
   },
   {
     count: 80,
-    label: i18n.t("component.home.analytics.memberNum", " No. of Members"),
-    icon: <PeopleIcon />,
+    label: i18n.t("component.home.analytics.memberNum", "Members"),
+    icon: <PeopleIconOutlined />,
+  },
+  {
+    count: 80,
+    label: i18n.t("component.home.analytics.memberNum", "Members"),
+    icon: <PeopleIconOutlined />,
   },
 ];
 

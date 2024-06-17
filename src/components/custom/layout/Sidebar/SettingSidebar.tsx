@@ -1,4 +1,3 @@
-// import { getUniqueKey } from "@/utils/methods/stringMethods";
 import { SidebarItemProps, SidebarProps } from "@/@types";
 import * as React from "react";
 import { Link } from "react-router-dom";
@@ -6,7 +5,6 @@ import { buttonVariants } from "@/components/ui/Button/button";
 import { cn } from "@/lib/utils";
 
 const Sidebar: React.FC<SidebarProps> = ({ items }) => {
-
   return (
     <aside
       className={`w-[240px] overflow-auto dark:bg-background text-foreground dark:text-foreground dark:border-r h-4/6  py-4 hidden md:flex md:flex-col gap-7     cursor-pointer min-h-screen transition-all sticky top-0 `}
