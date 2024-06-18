@@ -1,5 +1,6 @@
 import * as React from "react";
 import type { StepperProps } from "./types";
+import { useMemo } from "react";
 
 interface StepperContextValue extends StepperProps {
   clickable?: boolean;
@@ -55,19 +56,21 @@ const StepperProvider = ({ value, children }: StepperContextProviderProps) => {
   const setStep = (step: number) => {
     setActiveStep(step);
   };
+  const providerValue = useMemo(() => {
+    return {
+      ...value,
+      isError,
+      isLoading,
+      activeStep,
+      nextStep,
+      prevStep,
+      resetSteps,
+      setStep,
+    };
+  }, []);
 
   return (
-    <StepperContext.Provider
-      value={{
-        ...value,
-        isError,
-        isLoading,
-        activeStep,
-        nextStep,
-        prevStep,
-        resetSteps,
-        setStep,
-      }}>
+    <StepperContext.Provider value={providerValue}>
       {children}
     </StepperContext.Provider>
   );

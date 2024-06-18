@@ -78,13 +78,15 @@ export function TaskCard({ task, isOverlay }: TaskCardProps) {
           dragging: isOverlay ? "overlay" : isDragging ? "over" : undefined,
         }),
         "!w-auto"
-      )}>
+      )}
+    >
       <CardHeader className="px-3 py-3 space-between flex flex-row border-b-2 border-secondary ">
         <Button
           variant={"ghost"}
           {...attributes}
           {...listeners}
-          className="p-1 text-secondary-foreground/50 -ml-2 h-auto cursor-grab">
+          className="p-1 text-secondary-foreground/50 -ml-2 h-auto cursor-grab"
+        >
           <span className="sr-only">Move task</span>
           <GripVertical />
         </Button>
@@ -102,7 +104,7 @@ export function TaskCard({ task, isOverlay }: TaskCardProps) {
         <div className="flex items-center justify-between text-foreground/60 text-xs">
           <div className="flex items-center gap-1">
             {task.team.map((member) => {
-              return <span>{member}</span>;
+              return <span key={member}>{member}</span>;
             })}
           </div>
           <div className="flex gap-1 items-center text-xs ">

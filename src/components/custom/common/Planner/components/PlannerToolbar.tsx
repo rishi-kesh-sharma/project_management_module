@@ -3,7 +3,6 @@ import { useCalendar } from "../contexts/PlannerContext";
 import { cn } from "@/lib/utils";
 import { DateRange } from "react-day-picker";
 import { endOfDay, endOfWeek, startOfWeek } from "date-fns";
-// import { useData } from "../../contexts/PlannerDataContext";
 import AddAppointmentDialog from "./AddAppointmentDialog";
 import { DateRangePicker } from "../../FormElements/DateRangePicker/DateRangePicker";
 
@@ -15,7 +14,6 @@ const CalendarToolbar: React.FC<CalendarToolbarProps> = ({
   ...props
 }) => {
   const { setDateRange } = useCalendar();
-  // const { addResource, addAppointment } = useData();
 
   const [range] = useState<DateRange>({
     from: startOfWeek(new Date(), {
@@ -38,7 +36,8 @@ const CalendarToolbar: React.FC<CalendarToolbarProps> = ({
   return (
     <div
       className={cn("flex items-center justify-end space-x-2", className)}
-      {...props}>
+      {...props}
+    >
       <AddAppointmentDialog />
       <DateRangePicker
         // eslint-disable-next-line @typescript-eslint/no-explicit-any

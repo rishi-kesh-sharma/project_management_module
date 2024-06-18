@@ -17,6 +17,7 @@ import React, {
   forwardRef,
   useCallback,
   useContext,
+  useMemo,
   useState,
 } from "react";
 
@@ -124,18 +125,20 @@ const MultiSelector = ({
     [value, inputValue, activeIndex, loop]
   );
 
+  const providerValue = useMemo(() => {
+    return {
+      value,
+      onValueChange: onValueChangeHandler,
+      open,
+      setOpen,
+      inputValue,
+      setInputValue,
+      activeIndex,
+      setActiveIndex,
+    };
+  }, []);
   return (
-    <MultiSelectContext.Provider
-      value={{
-        value,
-        onValueChange: onValueChangeHandler,
-        open,
-        setOpen,
-        inputValue,
-        setInputValue,
-        activeIndex,
-        setActiveIndex,
-      }}>
+    <MultiSelectContext.Provider value={providerValue}>
       <Command
         onKeyDown={handleKeyDown}
         className={cn(
@@ -143,7 +146,8 @@ const MultiSelector = ({
           className
         )}
         dir={dir}
-        {...props}>
+        {...props}
+      >
         {children}
       </Command>
     </MultiSelectContext.Provider>
@@ -168,7 +172,8 @@ const MultiSelectorTrigger = forwardRef<
         "flex flex-wrap gap-2 p-1 px-3 py-3 border  rounded-lg bg-background",
         className
       )}
-      {...props}>
+      {...props}
+    >
       {value.map((item, index) => (
         <Badge
           key={item}
@@ -176,14 +181,16 @@ const MultiSelectorTrigger = forwardRef<
             "px-1 rounded flex items-center gap-1",
             activeIndex === index && "ring-2 ring-muted-foreground "
           )}
-          variant={"secondary"}>
+          variant={"secondary"}
+        >
           <span className="text-xs p-1">{item}</span>
           <button
             aria-label={`Remove ${item} option`}
             aria-roledescription="button to remove option"
             type="button"
             onMouseDown={mousePreventDefault}
-            onClick={() => onValueChange(item)}>
+            onClick={() => onValueChange(item)}
+          >
             <span className="sr-only">Remove {item} option</span>
             <RemoveIcon className="h-4 w-4 hover:stroke-destructive" />
           </button>
@@ -246,7 +253,8 @@ const MultiSelectorList = forwardRef<
       className={cn(
         "p-2 flex flex-col gap-2 rounded-md scrollbar-thin scrollbar-track-transparent transition-colors scrollbar-thumb-muted-foreground dark:scrollbar-thumb-muted scrollbar-thumb-rounded-lg w-full absolute bg-background shadow-md z-10 border border-muted top-0",
         className
-      )}>
+      )}
+    >
       {children}
       <CommandEmpty>
         <span className="text-muted-foreground">No results found</span>
@@ -285,7 +293,8 @@ const MultiSelectorItem = forwardRef<
         isIncluded && "opacity-50 cursor-default",
         props.disabled && "opacity-50 cursor-not-allowed"
       )}
-      onMouseDown={mousePreventDefault}>
+      onMouseDown={mousePreventDefault}
+    >
       {children}
       {isIncluded && <Check className="h-4 w-4" />}
     </CommandItem>

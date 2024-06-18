@@ -27,7 +27,8 @@ const Planner: React.FC<PlannerProps> = ({
   return (
     <PlannerDataContextProvider
       initialAppointments={initialAppointments}
-      initialResources={initialResources}>
+      initialResources={initialResources}
+    >
       <PlannerProvider>
         <PlannerMainComponent {...props} />
       </PlannerProvider>
@@ -104,7 +105,8 @@ const CalendarContent: React.FC<CalendarContentProps> = ({ ...props }) => {
                   <DropTableCell
                     resourceId={resource.id}
                     columnIndex={index}
-                    key={index}>
+                    key={label}
+                  >
                     {appointments
                       .filter(
                         (appt) =>

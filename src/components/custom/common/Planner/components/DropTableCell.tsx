@@ -34,10 +34,6 @@ const DropTableCell: FC<DropTableCellProps> = ({
       },
     });
   }, [columnIndex, resourceId]);
-  // const style = {
-  //   backgroundColor: isOver ? "#f0f0f0" : "#fff",
-  //   border: "1px solid #ddd",
-  // };
   return (
     <TableCell
       className={cn(
@@ -45,7 +41,8 @@ const DropTableCell: FC<DropTableCellProps> = ({
         isOver ? "bg-primary-foreground" : "bg-background"
       )}
       ref={ref}
-      {...props}>
+      {...props}
+    >
       <div className="grid grid-flow-row grid-cols-2 gap-2">{children}</div>
     </TableCell>
   );
