@@ -162,32 +162,32 @@ const WorkspaceDetail = () => {
           {quickAccessOptions?.primaryOptions?.find(
             (item) => item.id === "bookmark"
           ) && (
-            <div className="flex gap-2  ">
-              {isBookmarked ? (
-                <Tooltip>
-                  <TooltipTrigger>
-                    <StarIconFilled
-                      onClick={toggleBookmark}
-                      className="text-orange-400 text-lg cursor-pointer"
-                    />
-                  </TooltipTrigger>
-                  <TooltipContent>{`Bookmark`}</TooltipContent>
-                </Tooltip>
-              ) : (
-                <Tooltip>
-                  <TooltipTrigger>
-                    <StarIconOutlined
-                      onClick={toggleBookmark}
-                      className="text-gray-500 text-lg cursor-pointer"
-                    />
-                  </TooltipTrigger>
-                  <TooltipContent>{`Bookmark`}</TooltipContent>
-                </Tooltip>
-              )}
+              <div className="flex gap-2  ">
+                {isBookmarked ? (
+                  <Tooltip>
+                    <TooltipTrigger>
+                      <StarIconFilled
+                        onClick={toggleBookmark}
+                        className="text-orange-400 text-lg cursor-pointer"
+                      />
+                    </TooltipTrigger>
+                    <TooltipContent>{`Bookmark`}</TooltipContent>
+                  </Tooltip>
+                ) : (
+                  <Tooltip>
+                    <TooltipTrigger>
+                      <StarIconOutlined
+                        onClick={toggleBookmark}
+                        className="text-gray-500 text-lg cursor-pointer"
+                      />
+                    </TooltipTrigger>
+                    <TooltipContent>{`Bookmark`}</TooltipContent>
+                  </Tooltip>
+                )}
 
-              {/* <ThreeHorizontalInsideCircle className="text-primary text-lg cursor-pointer" /> */}
-            </div>
-          )}
+                {/* <ThreeHorizontalInsideCircle className="text-primary text-lg cursor-pointer" /> */}
+              </div>
+            )}
 
           {quickAccessOptions &&
             quickAccessOptions?.primaryOptions?.find(
