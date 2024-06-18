@@ -21,6 +21,7 @@ import SettingLayout from "@/layouts/SettingLayout";
 import AccountSettingPage from "@/pages/Setting/AccountSettingPage";
 import ProfileSettingPage from "@/pages/Setting/ProfileSettingPage";
 import PreferencesSettingPage from "@/pages/Setting/PreferencesSettingPage";
+import TaskDetailPage from "@/pages/Task/TaskDetailPage";
 
 // setting routes
 export const settingRoutes = [
@@ -152,15 +153,15 @@ export const projectManagementModuleRoutes = [
       workspaceId: string;
       projectId: string;
     }) => [
-      {
-        label: { key: ``, fallback: `Workspace` },
-        path: `/workspace/${workspaceId}`,
-      },
-      {
-        label: { key: ``, fallback: `Project` },
-        path: `/workspace/${workspaceId}/project/${projectId}`,
-      },
-    ],
+        {
+          label: { key: ``, fallback: `Workspace` },
+          path: `/workspace/${workspaceId}`,
+        },
+        {
+          label: { key: ``, fallback: `Project` },
+          path: `/workspace/${workspaceId}/project/${projectId}`,
+        },
+      ],
   },
   {
     path: `workspace/:workspaceId/project/create`,
@@ -188,22 +189,49 @@ export const projectManagementModuleRoutes = [
       workspaceId: string;
       projectId: string;
     }) => [
-      {
-        label: { key: ``, fallback: `Workspace` },
-        path: `/workspace/${workspaceId}`,
-      },
-      {
-        label: { key: ``, fallback: ` Project` },
-        path: `/workspace/${workspaceId}/project/${projectId}`,
-      },
-      {
-        label: { key: ``, fallback: ` Update` },
-        path: `/workspace/${workspaceId}/project/${projectId}/update`,
-      },
-    ],
+        {
+          label: { key: ``, fallback: `Workspace` },
+          path: `/workspace/${workspaceId}`,
+        },
+        {
+          label: { key: ``, fallback: ` Project` },
+          path: `/workspace/${workspaceId}/project/${projectId}`,
+        },
+        {
+          label: { key: ``, fallback: ` Update` },
+          path: `/workspace/${workspaceId}/project/${projectId}/update`,
+        },
+      ],
   },
 
   // task related routes
+  {
+    path: `workspace/:workspaceId/project/:projectId/task/:taskId`,
+    element: TaskDetailPage,
+    pageTitle: pageTitles.taskDetailPage,
+    crumbs: ({
+      workspaceId,
+      projectId,
+      taskId,
+    }: {
+      workspaceId: string;
+      projectId: string;
+      taskId: string
+    }) => [
+        {
+          label: { key: ``, fallback: `Workspace` },
+          path: `/workspace/${workspaceId}`,
+        },
+        {
+          label: { key: ``, fallback: `Project` },
+          path: `/workspace/${workspaceId}/project/${projectId}`,
+        },
+        {
+          label: { key: ``, fallback: `Task` },
+          path: `/workspace/${workspaceId}/project/${projectId}/task/${taskId}`,
+        },
+      ],
+  },
   {
     path: `workspace/:workspaceId/project/:projectId/task/create`,
     element: CreateTaskPage,
@@ -215,19 +243,19 @@ export const projectManagementModuleRoutes = [
       workspaceId: string;
       projectId: string;
     }) => [
-      {
-        label: { key: ``, fallback: `Workspace` },
-        path: `/workspace/${workspaceId}`,
-      },
-      {
-        label: { key: ``, fallback: `Project` },
-        path: `/workspace/${workspaceId}/project/${projectId}`,
-      },
-      {
-        label: { key: ``, fallback: `Create Task` },
-        path: `/workspace/${workspaceId}/project/${projectId}/task/create`,
-      },
-    ],
+        {
+          label: { key: ``, fallback: `Workspace` },
+          path: `/workspace/${workspaceId}`,
+        },
+        {
+          label: { key: ``, fallback: `Project` },
+          path: `/workspace/${workspaceId}/project/${projectId}`,
+        },
+        {
+          label: { key: ``, fallback: `Create Task` },
+          path: `/workspace/${workspaceId}/project/${projectId}/task/create`,
+        },
+      ],
   },
   {
     path: `workspace/:workspaceId/project/:projectId/task/:taskId/update`,
@@ -242,23 +270,23 @@ export const projectManagementModuleRoutes = [
       projectId: string;
       taskId: string;
     }) => [
-      {
-        label: { key: ``, fallback: `Workspace` },
-        path: `/workspace/${workspaceId}`,
-      },
-      {
-        label: { key: ``, fallback: `Project` },
-        path: `/workspace/${workspaceId}/project/${projectId}`,
-      },
-      {
-        label: { key: ``, fallback: `Task` },
-        path: `/workspace/${workspaceId}/project/${projectId}/task/${taskId}`,
-      },
-      {
-        label: { key: ``, fallback: `Update` },
-        path: `/workspace/${workspaceId}/project/${projectId}/task/${taskId}/update`,
-      },
-    ],
+        {
+          label: { key: ``, fallback: `Workspace` },
+          path: `/workspace/${workspaceId}`,
+        },
+        {
+          label: { key: ``, fallback: `Project` },
+          path: `/workspace/${workspaceId}/project/${projectId}`,
+        },
+        {
+          label: { key: ``, fallback: `Task` },
+          path: `/workspace/${workspaceId}/project/${projectId}/task/${taskId}`,
+        },
+        {
+          label: { key: ``, fallback: `Update` },
+          path: `/workspace/${workspaceId}/project/${projectId}/task/${taskId}/update`,
+        },
+      ],
   },
 
   // budget related routes
@@ -273,19 +301,19 @@ export const projectManagementModuleRoutes = [
       workspaceId: string;
       projectId: string;
     }) => [
-      {
-        label: { key: ``, fallback: `Workspace` },
-        path: `/workspace/${workspaceId}`,
-      },
-      {
-        label: { key: ``, fallback: `Project` },
-        path: `/workspace/${workspaceId}/project/${projectId}`,
-      },
-      {
-        label: { key: ``, fallback: `Create Budget` },
-        path: `/workspace/${workspaceId}/project/${projectId}/budget/create`,
-      },
-    ],
+        {
+          label: { key: ``, fallback: `Workspace` },
+          path: `/workspace/${workspaceId}`,
+        },
+        {
+          label: { key: ``, fallback: `Project` },
+          path: `/workspace/${workspaceId}/project/${projectId}`,
+        },
+        {
+          label: { key: ``, fallback: `Create Budget` },
+          path: `/workspace/${workspaceId}/project/${projectId}/budget/create`,
+        },
+      ],
   },
 ];
 
