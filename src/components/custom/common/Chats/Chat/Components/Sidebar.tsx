@@ -66,10 +66,10 @@ export function Sidebar({
         </div>
       )}
       <nav className="grid gap-2 px-2 group-[[data-collapsed=true]]:justify-center group-[[data-collapsed=true]]:px-2">
-        {links.map((link, index) =>
+        {links.map((link) =>
           isCollapsed ? (
             <TooltipProvider key={link.name}>
-              <Tooltip key={index} delayDuration={0}>
+              <Tooltip key={link.name} delayDuration={0}>
                 <TooltipTrigger asChild>
                   <Link
                     to="#"
@@ -101,8 +101,8 @@ export function Sidebar({
             </TooltipProvider>
           ) : (
             <Link
-              key={index}
-              to="#"
+              key={link.name}
+              to="/"
               className={cn(
                 buttonVariants({ variant: link.variant, size: "xl" }),
                 "dark:bg-muted dark:text-white dark:hover:bg-muted dark:hover:text-white shrink py-1",

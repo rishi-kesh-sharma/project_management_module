@@ -45,20 +45,24 @@ const CheckboxDropdown: React.FC<ICheckboxDropdownMenuProps> = ({
       <DropdownMenuTrigger
         asChild
         // className={`flex items-center gap-2 justify-between ${dropdownTriggerVariants({ dropdownTriggerSize, dropdownTriggerVariant })}`}
-        className={`flex items-center gap-2  ${buttonVariants({ size: dropdownTriggerSize, variant: dropdownTriggerVariant })}`}>
+        className={`flex items-center gap-2  ${buttonVariants({ size: dropdownTriggerSize, variant: dropdownTriggerVariant })}`}
+      >
         <DropdownMenuLabel>{menu.label}</DropdownMenuLabel>
         {icon}
       </DropdownMenuTrigger>
       <DropdownMenuContent
-        className={`${checkboxDropdownVariants({ dropdownSize, dropdownVariant })} `}>
+        className={`${checkboxDropdownVariants({ dropdownSize, dropdownVariant })} `}
+      >
         {dropdownVariant !== "primary" && <DropdownMenuSeparator />}
         {menu.items.map((item) => {
           return (
             <DropdownMenuItem
+              key={item.id}
               textValue={item.id}
               id={item.id}
               onSelect={onSelect}
-              className="cursor-pointer text-foreground flex gap-2 items-center">
+              className="cursor-pointer text-foreground flex gap-2 items-center"
+            >
               <DropdownMenuLabel> {item.label}</DropdownMenuLabel>
             </DropdownMenuItem>
           );

@@ -20,10 +20,14 @@ const GroupSelect: React.FC<IGroupSelect> = ({ placeholder = "", groups }) => {
       <SelectContent>
         {groups.map((group: ISelectGroup) => {
           return (
-            <SelectGroup>
+            <SelectGroup key={group.label}>
               <SelectLabel>{group.label}</SelectLabel>
               {group.items.map((item: ISelectGroupItem) => {
-                return <SelectItem value={item.value}>{item.label}</SelectItem>;
+                return (
+                  <SelectItem key={item.label} value={item.value}>
+                    {item.label}
+                  </SelectItem>
+                );
               })}
             </SelectGroup>
           );

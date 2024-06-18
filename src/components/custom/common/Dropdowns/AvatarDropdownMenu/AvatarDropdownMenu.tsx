@@ -91,22 +91,23 @@ const AvatarDropdown: React.FC<IAvatarDropdownProps> = ({
         {menu.items.map((item: IDropdownMenuItem) => {
           return (
             <>
-              {
-                item.isLink && item.link ? <DropdownMenuItem className="cursor-pointer text-secondary-foreground">
-                  <Link to={`${item.link}`}>
-                    {item.label}
-                  </Link>
-                </DropdownMenuItem> : <DropdownMenuItem
+              {item.isLink && item.link ? (
+                <DropdownMenuItem className="cursor-pointer text-secondary-foreground">
+                  <Link to={`${item.link}`}>{item.label}</Link>
+                </DropdownMenuItem>
+              ) : (
+                <DropdownMenuItem
                   onClick={() => {
                     if (item.id === 4 || item.label === `Logout`) {
-                      // logout
+                      console.log("Logout");
                     }
                   }}
                   className="cursor-pointer text-secondary-foreground
-             ">
+             "
+                >
                   {item.label}
                 </DropdownMenuItem>
-              }
+              )}
 
               <DropdownMenuSeparator className="last-of-type:hidden" />
             </>

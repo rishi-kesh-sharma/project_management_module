@@ -48,6 +48,7 @@ const HorizontalStep = React.forwardRef<HTMLDivElement, StepSharedProps>(
 
     return (
       <div
+        role="form"
         aria-disabled={!hasVisited}
         className={cn(
           "stepper__horizontal-step",
@@ -71,7 +72,8 @@ const HorizontalStep = React.forwardRef<HTMLDivElement, StepSharedProps>(
         data-invalid={localIsError}
         data-clickable={clickable}
         onClick={() => onClickStep?.(index || 0, setStep)}
-        ref={ref}>
+        ref={ref}
+      >
         <div
           className={cn(
             "stepper__horizontal-step-container",
@@ -79,9 +81,11 @@ const HorizontalStep = React.forwardRef<HTMLDivElement, StepSharedProps>(
             variant === "circle-alt" && "flex-col justify-center gap-1",
             variant === "line" && "w-full",
             styles?.["horizontal-step-container"]
-          )}>
+          )}
+        >
           <StepButtonContainer
-            {...{ ...props, isError: localIsError, isLoading: localIsLoading }}>
+            {...{ ...props, isError: localIsError, isLoading: localIsLoading }}
+          >
             <StepIcon
               {...{
                 index,

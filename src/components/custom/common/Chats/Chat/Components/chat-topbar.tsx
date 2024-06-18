@@ -9,7 +9,11 @@ interface ChatTopbarProps {
   selectedUser: UserData;
 }
 
-export const TopbarIcons = [{ icon: Phone }, { icon: Video }, { icon: Info }];
+export const TopbarIcons = [
+  { icon: Phone, key: "phone" },
+  { icon: Video, key: "video" },
+  { icon: Info, key: "info" },
+];
 
 export default function ChatTopbar({ selectedUser }: ChatTopbarProps) {
   return (
@@ -31,15 +35,16 @@ export default function ChatTopbar({ selectedUser }: ChatTopbarProps) {
       </div>
 
       <div>
-        {TopbarIcons.map((icon, index) => (
+        {TopbarIcons.map((icon) => (
           <Link
-            key={index}
+            key={icon.key}
             to="#"
             className={cn(
               buttonVariants({ variant: "ghost", size: "icon" }),
               "h-9 w-9",
               "dark:bg-muted dark:text-muted-foreground dark:hover:bg-muted dark:hover:text-white"
-            )}>
+            )}
+          >
             <icon.icon size={20} className="text-muted-foreground" />
           </Link>
         ))}

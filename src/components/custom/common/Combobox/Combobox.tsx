@@ -34,17 +34,8 @@ export default function Combobox({
           variant="outline"
           role="combobox"
           aria-expanded={open}
-          className="w-auto justify-between peer">
-          {/* {() => {
-            
-            return value
-              ? comboboxGroups.find((group: IComboboxGroup) =>
-                  group.comboboxItems.find(
-                    (item: IComboboxItem) => item.value === value
-                  )
-                )?.label
-              : defaultText;
-          }} */}
+          className="w-auto justify-between peer"
+        >
           {defaultText}
           <CaretSortIcon className="ml-2 h-4 w-4 shrink-0 opacity-50" />
         </Button>
@@ -57,7 +48,7 @@ export default function Combobox({
           <CommandList className="w-full">
             {comboboxGroups?.map((group: IComboboxGroup) => {
               return (
-                <div>
+                <div key={group.heading}>
                   <CommandGroup heading={group.heading}>
                     {group.comboboxItems.map((comboboxItem: IComboboxItem) => {
                       console.log(comboboxItem);
@@ -71,7 +62,8 @@ export default function Combobox({
                                 currentValue === value ? "" : currentValue
                               );
                               setOpen(false);
-                            }}>
+                            }}
+                          >
                             {comboboxItem.label}
                             <CheckIcon
                               className={cn(
