@@ -73,8 +73,8 @@ const Appointment: React.FC<AppointmentProps> = ({
     resolver: zodResolver(updateAppointmentSchema),
     defaultValues: {
       title: appointment.title,
-      start: new Date(appointment.start) ?? new Date(),
-      end: new Date(appointment.end) ?? new Date(),
+      start: appointment.start ? new Date(appointment.start) : new Date(),
+      end: appointment.end ? new Date(appointment.end) : new Date(),
     },
   });
 
@@ -110,7 +110,8 @@ const Appointment: React.FC<AppointmentProps> = ({
                 <Form {...form}>
                   <form
                     onSubmit={form.handleSubmit(onSubmit)}
-                    className="space-y-8">
+                    className="space-y-8"
+                  >
                     <FormField
                       control={form.control}
                       name="title"
@@ -138,7 +139,8 @@ const Appointment: React.FC<AppointmentProps> = ({
                                   className={cn(
                                     "w-[280px] justify-start text-left font-normal",
                                     !field.value && "text-muted-foreground"
-                                  )}>
+                                  )}
+                                >
                                   <CalendarIcon className="mr-2 h-4 w-4" />
                                   {field.value ? (
                                     format(field.value, "PPP HH:mm:ss")
@@ -180,7 +182,8 @@ const Appointment: React.FC<AppointmentProps> = ({
                                   className={cn(
                                     "w-[280px] justify-start text-left font-normal",
                                     !field.value && "text-muted-foreground"
-                                  )}>
+                                  )}
+                                >
                                   <CalendarIcon className="mr-2 h-4 w-4" />
                                   {field.value ? (
                                     format(field.value, "PPP HH:mm:ss")
@@ -219,7 +222,8 @@ const Appointment: React.FC<AppointmentProps> = ({
       <CardContent
         className={cn("px-2 py-2", {
           "cursor-grabbing bg-muted opacity-50": isDragging,
-        })}>
+        })}
+      >
         <div className="flex flex-col items-center gap-2 text-xs">
           <div>{appointment.title}</div>
           <div>

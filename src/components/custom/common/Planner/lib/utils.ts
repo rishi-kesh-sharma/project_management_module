@@ -41,9 +41,6 @@ export const calculateNewDates = (
       end.setHours(end.getHours() + delta);
       break;
     case "week":
-      start.setDate(start.getDate() + delta);
-      end.setDate(end.getDate() + delta);
-      break;
     case "month":
       start.setDate(start.getDate() + delta);
       end.setDate(end.getDate() + delta);

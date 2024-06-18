@@ -41,12 +41,14 @@ const SpeedDial: React.FC<ISpeedDialProps> = ({
         <Toggle
           asChild
           aria-label="Toggle bold"
-          className="rounded-full h-[2.5rem] w-[2.5rem] p-0">
+          className="rounded-full h-[2.5rem] w-[2.5rem] p-0"
+        >
           <Button
             onClick={() => setShow((show) => !show)}
             variant={"outline"}
             size={"icon"}
-            className={`rounded-full ${show ? "rotate-90" : ""} transition-all`}>
+            className={`rounded-full ${show ? "rotate-90" : ""} transition-all`}
+          >
             {icon}
           </Button>
         </Toggle>
@@ -56,14 +58,15 @@ const SpeedDial: React.FC<ISpeedDialProps> = ({
         >
           {children.map((item: React.ReactNode, i: number) => (
             <li
-              key={i}
+              key={`element-${i}`}
               className={`absolute z-20  ${
                 show ? "scale-100" : "scale-0"
               } transition duration-300`}
               style={{
                 ...getTransitionDelay(i),
                 ...getPosition(i, itemWidth),
-              }}>
+              }}
+            >
               {item}
             </li>
           ))}

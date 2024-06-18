@@ -80,18 +80,15 @@ const AddAppointmentDialog: React.FC = () => {
     };
 
     startAddAppointmentTransition(() => {
-      toast.promise(
-        () =>
-          new Promise((resolve) => {
-            resolve(addAppointment(newAppointment));
-          }),
-        {
-          loading: "Adding appointment",
-          success: "Appointment added",
-          error: "Failed to add appointment",
-        }
-      );
+      toast.promise(Promise.resolve(addAppointment(newAppointment)), {
+        loading: "Adding appointment",
+        success: "Appointment added",
+        error: "Failed to add appointment",
+      });
       form.reset();
+      setTimeout(() => {
+        setIsOpened(false);
+      }, 1000);
     });
     setTimeout(() => {
       setIsOpened(false);

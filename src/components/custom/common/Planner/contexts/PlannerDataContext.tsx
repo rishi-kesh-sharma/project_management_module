@@ -1,4 +1,11 @@
-import React, { createContext, useContext, useState, ReactNode, FC } from "react";
+import React, {
+  createContext,
+  useContext,
+  useState,
+  ReactNode,
+  FC,
+  useMemo,
+} from "react";
 import { AppointmentService, ResourceService } from "../services";
 import { Appointment, Resource } from "../models";
 
@@ -20,7 +27,9 @@ export const PlannerDataContextProvider: FC<{
   initialAppointments: Appointment[];
   initialResources: Resource[];
 }> = ({ children, initialAppointments, initialResources }) => {
-  const appointmentService = useState(new AppointmentService(initialAppointments))[0];
+  const appointmentService = useState(
+    new AppointmentService(initialAppointments)
+  )[0];
   const resourceService = useState(new ResourceService(initialResources))[0];
 
   // Create a state that will re-render the context when updated
@@ -28,39 +37,39 @@ export const PlannerDataContextProvider: FC<{
 
   const handleUpdate = () => setTrigger(!trigger); // simple state toggle to trigger re-render
 
-  const contextValue: DataContextType = {
-    appointments: appointmentService.getAppointments(),
-    resources: resourceService.getResources(),
-    addAppointment: (appointment) => {
-      appointmentService.createAppointment(appointment);
-      handleUpdate();
-    },
-    updateAppointment: (appointment) => {
-      appointmentService.updateAppointment(appointment);
-      handleUpdate();
-    },
-    removeAppointment: (id) => {
-      appointmentService.deleteAppointment(id);
-      handleUpdate();
-    },
-    addResource: (resource) => {
-      resourceService.addResource(resource);
-      handleUpdate();
-    },
-    updateResource: (resource) => {
-      resourceService.updateResource(resource);
-      handleUpdate();
-    },
-    removeResource: (id) => {
-      resourceService.removeResource(id);
-      handleUpdate();
-    }
-  };
+  const contextValue: DataContextType = useMemo(() => {
+    return {
+      appointments: appointmentService.getAppointments(),
+      resources: resourceService.getResources(),
+      addAppointment: (appointment) => {
+        appointmentService.createAppointment(appointment);
+        handleUpdate();
+      },
+      updateAppointment: (appointment) => {
+        appointmentService.updateAppointment(appointment);
+        handleUpdate();
+      },
+      removeAppointment: (id) => {
+        appointmentService.deleteAppointment(id);
+        handleUpdate();
+      },
+      addResource: (resource) => {
+        resourceService.addResource(resource);
+        handleUpdate();
+      },
+      updateResource: (resource) => {
+        resourceService.updateResource(resource);
+        handleUpdate();
+      },
+      removeResource: (id) => {
+        resourceService.removeResource(id);
+        handleUpdate();
+      },
+    };
+  }, []);
 
   return (
-    <DataContext.Provider value={contextValue}>
-      {children}
-    </DataContext.Provider>
+    <DataContext.Provider value={contextValue}>{children}</DataContext.Provider>
   );
 };
 
