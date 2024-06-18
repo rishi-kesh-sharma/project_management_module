@@ -280,6 +280,7 @@ export const cardData = [
     count: 10,
     label: i18n.t("component.home.analytics.workspaceNum", "Workspaces"),
     icon: <WorkspaceIcon />,
+    className: "bg-green-400"
   },
   {
     count: 40,
@@ -290,11 +291,15 @@ export const cardData = [
     count: 80,
     label: i18n.t("component.home.analytics.memberNum", "Members"),
     icon: <PeopleIconOutlined />,
+    className: "bg-yellow-400"
+
   },
   {
     count: 80,
     label: i18n.t("component.home.analytics.memberNum", "Members"),
     icon: <PeopleIconOutlined />,
+    className: "bg-purple-400"
+
   },
 ];
 

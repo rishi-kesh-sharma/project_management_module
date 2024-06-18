@@ -24,6 +24,7 @@ import {
   IUpcomingDeadlineTableProps,
 } from "@/@types";
 import WidgetWrapper from "@/components/custom/common/WidgetWrapper/WidgetWrapper";
+import { cn } from "@/lib/utils";
 
 const Analytics = () => {
   return (
@@ -44,7 +45,10 @@ const Analytics = () => {
                   {cardDataItem.count}
                 </p>
               </div>
-              <div className="text-3xl bg-primary text-primary-foreground h-14 w-14 rounded-md text-center flex items-center justify-center">
+              <div className={cn(
+                "text-3xl bg-primary text-primary-foreground h-14 w-14 rounded-md text-center flex items-center justify-center",
+                cardDataItem.className
+              )}>
                 {cardDataItem.icon}
               </div>
             </Card>
