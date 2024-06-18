@@ -25,35 +25,35 @@ import PreferencesSettingPage from "@/pages/Setting/PreferencesSettingPage";
 // setting routes
 export const settingRoutes = [
   {
-    path: `/settings`,
+    path: ``,
     element: ProfileSettingPage,
     pageTitle: pageTitles.settingProfilePage,
     crumbs: () => [
       {
         label: { key: ``, fallback: `Profile` },
-        path: `/settings/profile`,
+        path: `profile`,
       },
     ],
   },
   {
-    path: `/settings/account`,
+    path: `account`,
     element: AccountSettingPage,
     pageTitle: pageTitles.settingAccountPage,
     crumbs: () => [
       {
         label: { key: ``, fallback: `Account` },
-        path: `/settings/account`,
+        path: `account`,
       },
     ],
   },
   {
-    path: `/settings/profile`,
+    path: `profile`,
     element: ProfileSettingPage,
     pageTitle: pageTitles.settingProfilePage,
     crumbs: () => [
       {
         label: { key: ``, fallback: `Profile` },
-        path: `/settings/profile`,
+        path: `profile`,
       },
     ],
   },
@@ -291,9 +291,14 @@ export const projectManagementModuleRoutes = [
 
 // private routes
 export const privateRoutes = [
+  {
+    path: ``,
+    element: AnalyticsPage,
+    pageTitle: pageTitles.analyticsPage,
+  },
   // project management modules related routes
   {
-    path: `/`,
+    path: `project`,
     roles: [ROLE.ADMIN],
     crumbs: () => [
       {
@@ -308,8 +313,9 @@ export const privateRoutes = [
   },
   // settings module related routes
   {
-    path: `/`,
+    path: `settings`,
     component: SettingLayout,
+    element: SettingLayout,
     roles: [ROLE.ADMIN],
     crumbs: () => [
       {
@@ -340,7 +346,7 @@ export const routes = [
 
   // private routes
   {
-    path: `/`,
+    path: ``,
     element: PrivateRoute,
     component: CommonLayout,
     crumbs: () => [

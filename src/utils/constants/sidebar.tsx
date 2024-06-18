@@ -11,6 +11,9 @@ import {
   // ProgressIcon,
   // TaskIcon,
   // SettingIcon,
+  MoneyIconOutlined,
+  FolderIconOutlined,
+  PeopleIconOutlined,
 } from "@/components/custom/common/icons/commonIcons";
 import i18n from "@/intl/i18n";
 
@@ -18,6 +21,7 @@ const otherModules = [
   {
     id: "customer-relationship-management",
     label: "CRM",
+    icon: <PeopleIconOutlined />,
     items: [
       {
         id: "lead",
@@ -38,6 +42,7 @@ const otherModules = [
     ],
   },
   {
+    icon: <MoneyIconOutlined />,
     id: `purchase-management`,
     label: `Purchase`,
     items: [
@@ -69,6 +74,7 @@ export const sidebarItems = (injectables: ISidebarItemsProps) => [
     icon: <OverviewIcon />,
   },
   {
+    icon: <FolderIconOutlined />,
     id: `project-management`,
     label: `Project`,
     link: `/project`,
