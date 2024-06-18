@@ -341,10 +341,10 @@ export type IAgGridTableProps<T> = {
     items?: IDropdownMenuProps["menu"]["items"];
   };
   theme?:
-    | "ag-theme-quartz"
-    | "ag-theme-alpine"
-    | "ag-theme-quartz-dark"
-    | "ag-theme-quartz-alpine";
+  | "ag-theme-quartz"
+  | "ag-theme-alpine"
+  | "ag-theme-quartz-dark"
+  | "ag-theme-quartz-alpine";
   height?: number;
   TableToolbarHOC: React.Component;
   // rowData?: IRowData[];
@@ -536,7 +536,7 @@ export interface ITextInputProps {
   className?: string;
 }
 
-export interface ISubmitButton extends ButtonProps {}
+export interface ISubmitButton extends ButtonProps { }
 
 export interface RootLayoutProps {
   children: React.ReactNode;
