@@ -34,7 +34,7 @@ export const colDefs = [
       return (
         <Link
           className="hover:underline"
-          to={`/workspace/${workspaceId}/project/${projectId}/task/${p.data.id}`}>
+          to={`/project/workspace/${workspaceId}/project/${projectId}/task/${p.data.id}`}>
           {p.value}
         </Link>
       );

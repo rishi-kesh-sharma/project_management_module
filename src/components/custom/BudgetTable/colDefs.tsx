@@ -16,7 +16,7 @@ export const colDefs = [
       // eslint-disable-next-line react-hooks/rules-of-hooks
       const { budgetId } = useParams();
       return (
-        <Link className="hover:underline" to={`/budget/${budgetId}`}>
+        <Link className="hover:underline" to={`/project/budget/${budgetId}`}>
           {p.value}
         </Link>
       );

@@ -96,7 +96,7 @@ const WorkspaceCard: React.FC<IWorkspaceCardProps> = ({
           size={"xl"}>
           <Link
             className="text-xl text-primary-foreground"
-            to={`/workspace/${id}`}>
+            to={`/project/workspace/${id}`}>
             {" "}
             <EyeIcon />
           </Link>
