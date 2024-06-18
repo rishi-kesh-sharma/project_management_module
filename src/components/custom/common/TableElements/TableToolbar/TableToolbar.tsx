@@ -52,7 +52,7 @@ const TableToolbar: React.FC<ITableToolbar> = ({
         </h2>
         <div className="w-full flex flex-col gap-[1rem]  items-end">
           <div className="flex items-center  gap-[1rem]">
-            {hasSearch && search && search}
+            {hasSearch && <>{search}</>}
             {hasFilters && (
               <Toggle
                 asChild

@@ -260,8 +260,7 @@ const AgGridTable: React.FC<IAgGridTableProps> = ({
       {/* {TableToolbarHOC(isSideBarVisible, setSideBarVisible)} */}
       <div
         className={`${appTheme == "dark" ? "ag-theme-quartz-dark" : theme}  `}
-        style={{ ...gridStyle }}
-      >
+        style={{ ...gridStyle }}>
         {variant === "primary" && (
           <Helmet>
             <link rel="stylesheet" href="/src/AgGridPrimaryTable.css" />

@@ -26,18 +26,22 @@ const otherModules = [
       {
         id: "lead",
         label: "Lead",
+        icon: <DotIconFilled className="text-[0.6rem]" />,
       },
       {
         id: "customer",
         label: "Customer ",
+        icon: <DotIconFilled className="text-[0.6rem]" />,
       },
       {
         id: "opportunity",
         label: "Opportunity",
+        icon: <DotIconFilled className="text-[0.6rem]" />,
       },
       {
         id: "opportunity",
         label: "Opportunity",
+        icon: <DotIconFilled className="text-[0.6rem]" />,
       },
     ],
   },
@@ -49,14 +53,17 @@ const otherModules = [
       {
         id: `orders`,
         label: `Orders`,
+        icon: <DotIconFilled className="text-[0.6rem]" />,
       },
       {
         id: `invoices`,
         label: `Invoices`,
+        icon: <DotIconFilled className="text-[0.6rem]" />,
       },
       {
         id: `suppliers`,
         label: `Suppliers`,
+        icon: <DotIconFilled className="text-[0.6rem]" />,
       },
     ],
   },

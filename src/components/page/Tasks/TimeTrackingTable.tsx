@@ -1,7 +1,7 @@
 import AgGridTable from "@/components/custom/common/Tables/AgGridTable/AgGridTable";
 import { colDefs } from "./timeTrackingColDefs";
 import TableToolbar from "@/components/custom/common/TableElements/TableToolbar/TableToolbar";
-import { ProjectsTableSearch } from "@/utils/constants";
+import { ProjectsTableFilters, ProjectsTableSearch } from "@/utils/constants";
 import { useGetTimeTrackingsQuery } from "@/api/timeTracking";
 import Spinner from "@/components/custom/common/Loaders/Spinner/Spinner";
 // import Timer from "@/components/custom/common/Timer/Timer";
@@ -26,7 +26,7 @@ const TimeTrackingTable = () => {
       <Spinner />
     </div>;
 
-  if (isError) <div>Error Occurred</div>;
+  if (isError) return <div>Error Occurred</div>;
   return (
     <div className="mt-[2rem]">
       {/* <Timer /> */}
@@ -42,12 +42,16 @@ const TimeTrackingTable = () => {
           return (
             <TableToolbar
               heading={`Time Tracking`}
-              handleSearch={handleSearch}
-              hasFilters={true}
-              dropdownMenus={dropdownMenus}
               createButtonText="Start Timer"
               hasSearch={true}
               search={<ProjectsTableSearch handleSearch={handleSearch} />}
+              dropdownMenus={dropdownMenus}
+              hasFilters={true}
+              filters={<ProjectsTableFilters />}
+              hasArchive={true}
+              hasBookmark={true}
+              hasNotification={true}
+              handleSearch={handleSearch}
               isSideBarVisible={isSideBarVisible}
               setSideBarVisible={setSideBarVisible}
             />
@@ -57,6 +61,7 @@ const TimeTrackingTable = () => {
         heading={`Time Tracking`}
         dropdownMenus={dropdownMenus}
         colDefs={colDefs}
+        sideBar={"filters"}
       />
     </div>
   );

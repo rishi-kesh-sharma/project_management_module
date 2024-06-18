@@ -31,7 +31,8 @@ const SidebarMenuItem = ({
         "flex",
         "gap-2",
         " rounded-none p-4",
-        "hover:text-white hover:bg-blue-600"
+        "hover:text-white hover:bg-blue-600",
+        "px-5"
       )}>
       <div className="text-xl ">{child?.icon}</div>
       {isSidebarExpanded && child.label}

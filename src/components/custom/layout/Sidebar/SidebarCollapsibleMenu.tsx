@@ -34,7 +34,7 @@ const SidebarCollapsibleMenu = ({ item }: { item: SidebarItemProps }) => {
             {isSidebarExpanded && item.label}
           </div>
         </AccordionTrigger>
-        <AccordionContent className="bg-primary dark:bg-background/10 py-0 px-4  ">
+        <AccordionContent className="bg-primary dark:bg-background/10 py-0 ">
           <div className="flex flex-col ">
             {item?.items?.map((child: SidebarItemProps) => (
               <SidebarMenuItem key={child.link} child={child} parent={item} />

@@ -12,9 +12,8 @@ const Sidebar: React.FC<SidebarProps> = ({ items }) => {
     <aside
       style={{
         width: config.sidebarWidth,
-        minWidth:config.sidebarMinWidth,
-        maxWidth:config.sidebarMaxWidth
-  
+        minWidth: config.sidebarMinWidth,
+        maxWidth: config.sidebarMaxWidth,
       }}
       className={` ${isSidebarExpanded ? "w-[170px]" : "w-[70px]"} overflow-auto bg-primary dark:bg-background text-primary-foreground dark:text-foreground dark:border-r h-full   py-4 hidden md:flex md:flex-col gap-7 cursor-pointer min-h-screen transition-all sticky top-0 `}>
       <SidebarBrand />
