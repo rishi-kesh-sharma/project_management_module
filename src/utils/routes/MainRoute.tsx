@@ -1,7 +1,7 @@
 import {
   createBrowserRouter,
   RouterProvider,
-  useParams,
+  // useParams,
 } from "react-router-dom";
 
 import { createRoutes } from "./createRoutes.tsx";
@@ -14,7 +14,8 @@ import { routes } from "./routes.tsx";
 // };
 
 export function MainRoute() {
-  const params = useParams();
-  const router = createBrowserRouter(createRoutes(routes, params));
+  // const params = useParams();
+  console.log(createRoutes(routes), "routes");
+  const router = createBrowserRouter(createRoutes(routes));
   return <RouterProvider router={router} />;
 }

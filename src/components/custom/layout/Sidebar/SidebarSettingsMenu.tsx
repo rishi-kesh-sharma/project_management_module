@@ -1,8 +1,12 @@
-import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/Accordion/accordion"
-import { buttonVariants } from "@/components/ui/Button/button"
-import { cn } from "@/lib/utils"
-import { Link } from "react-router-dom"
-
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/Accordion/accordion";
+import { buttonVariants } from "@/components/ui/Button/button";
+import { cn } from "@/lib/utils";
+import { Link } from "react-router-dom";
 
 import {
   AccountIcon,
@@ -56,9 +60,7 @@ const SidebarSettingsMenu = () => {
               "hover:text-white hover:bg-blue-600"
             )}>
             <div className="flex items-center justify-start w-full gap-1 ">
-              <div className="text-xl">
-                {settings.icon && settings.icon}
-              </div>
+              <div className="text-xl">{settings.icon && settings.icon}</div>
               {isSidebarExpanded && settings.label}
             </div>
           </AccordionTrigger>
@@ -94,10 +96,8 @@ const SidebarSettingsMenu = () => {
           </AccordionContent>
         </AccordionItem>
       </Accordion>
-
-
     </div>
-  )
-}
+  );
+};
 
-export default SidebarSettingsMenu
+export default SidebarSettingsMenu;
