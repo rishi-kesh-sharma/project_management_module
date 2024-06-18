@@ -1,7 +1,6 @@
 // Sidebar.stories.tsx
 
 import { StoryObj, Meta } from "@storybook/react";
-// import { userInfo } from "@/utils/constants";
 import FilePicker from "./FilePicker";
 
 const meta: Meta<typeof FilePicker> = {

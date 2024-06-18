@@ -1,7 +1,7 @@
 /* eslint-disable max-lines */
 "use client";
 
-import React, { type FC, useState, useEffect, useRef } from "react";
+import { type FC, useState, useEffect, useRef } from "react";
 import { Button } from "@/components/ui/Button/button";
 import {
   Popover,
@@ -258,29 +258,30 @@ export const DateRangePicker: FC<DateRangePickerProps> & {
     setSelectedPreset(undefined);
   };
 
+  const isString = (value: unknown) => {
+    return typeof value === "string";
+  };
   const resetValues = (): void => {
     setRange({
-      from:
-        typeof initialDateFrom === "string"
-          ? getDateAdjustedForTimezone(initialDateFrom)
-          : initialDateFrom,
+      from: isString(initialDateFrom)
+        ? getDateAdjustedForTimezone(initialDateFrom)
+        : initialDateFrom,
       to: initialDateTo
-        ? typeof initialDateTo === "string"
+        ? isString(initialDateTo)
           ? getDateAdjustedForTimezone(initialDateTo)
           : initialDateTo
-        : typeof initialDateFrom === "string"
+        : isString(initialDateFrom)
           ? getDateAdjustedForTimezone(initialDateFrom)
           : initialDateFrom,
     });
     setRangeCompare(
       initialCompareFrom
         ? {
-            from:
-              typeof initialCompareFrom === "string"
-                ? getDateAdjustedForTimezone(initialCompareFrom)
-                : initialCompareFrom,
+            from: isString(initialCompareFrom)
+              ? getDateAdjustedForTimezone(initialCompareFrom)
+              : initialCompareFrom,
             to: initialCompareTo
-              ? typeof initialCompareTo === "string"
+              ? isString(initialCompareTo)
                 ? getDateAdjustedForTimezone(initialCompareTo)
                 : initialCompareTo
               : typeof initialCompareFrom === "string"
@@ -309,13 +310,12 @@ export const DateRangePicker: FC<DateRangePickerProps> & {
       variant="ghost"
       onClick={() => {
         setPreset(preset);
-      }}>
-      <>
-        <span className={cn("pr-2 opacity-0", isSelected && "opacity-70")}>
-          <CheckIcon width={18} height={18} />
-        </span>
-        {label}
-      </>
+      }}
+    >
+      <span className={cn("pr-2 opacity-0", isSelected && "opacity-70")}>
+        <CheckIcon width={18} height={18} />
+      </span>
+      {label}
     </Button>
   );
 
@@ -344,7 +344,8 @@ export const DateRangePicker: FC<DateRangePickerProps> & {
           resetValues();
         }
         setIsOpen(open);
-      }}>
+      }}
+    >
       <PopoverTrigger asChild>
         <Button size={"lg"} variant="outline">
           <div className="text-right">
@@ -471,7 +472,7 @@ export const DateRangePicker: FC<DateRangePickerProps> & {
                       <DateInput
                         value={rangeCompare?.to}
                         onChange={(date: Date) => {
-                          if (rangeCompare && rangeCompare.from) {
+                          if (rangeCompare?.from) {
                             const compareFromDate =
                               date < rangeCompare.from
                                 ? date
@@ -493,7 +494,8 @@ export const DateRangePicker: FC<DateRangePickerProps> & {
                   defaultValue={selectedPreset}
                   onValueChange={(value: never) => {
                     setPreset(value);
-                  }}>
+                  }}
+                >
                   <SelectTrigger className="w-[180px] mx-auto mb-2">
                     <SelectValue placeholder="Select..." />
                   </SelectTrigger>
@@ -548,7 +550,8 @@ export const DateRangePicker: FC<DateRangePickerProps> & {
               setIsOpen(false);
               resetValues();
             }}
-            variant="ghost">
+            variant="ghost"
+          >
             Cancel
           </Button>
           <Button
@@ -560,7 +563,8 @@ export const DateRangePicker: FC<DateRangePickerProps> & {
               ) {
                 onUpdate?.({ range, rangeCompare });
               }
-            }}>
+            }}
+          >
             Update
           </Button>
         </div>
