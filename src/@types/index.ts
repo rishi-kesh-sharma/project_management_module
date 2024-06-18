@@ -74,6 +74,9 @@ export interface SidebarProps {
 export interface IConfig {
   APP_NAME: string;
   LOGO: string;
+  sidebarWidth: string;
+  sidebarMaxWidth: string;
+  sidebarMinWidth: string;
 }
 
 export interface IUser {

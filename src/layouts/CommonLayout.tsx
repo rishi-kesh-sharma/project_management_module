@@ -9,7 +9,6 @@ import { useGetBookmarksQuery } from "@/api/bookmark.ts";
 import Spinner from "@/components/custom/common/Loaders/Spinner/Spinner.tsx";
 import { useGetArchivesQuery } from "@/api/archives.ts";
 import { selectIsSidebarExpanded } from "@/redux/features/app/appSlice.ts";
-import { useSelector } from "react-redux";
 import { useAppSelector } from "@/hooks/index.ts";
 
 const CommonLayout = () => {
@@ -34,8 +33,7 @@ const CommonLayout = () => {
       />
 
       <div
-        className={`flex flex-col flex-1 overflow-auto ${isSidebarExpanded ? `max-w-[calc(100vw-[240px])]` : `max-w-[calc(100vw-70px)]`}`}
-      >
+        className={`flex flex-col flex-1 overflow-auto ${isSidebarExpanded ? `max-w-[calc(100vw-[240px])]` : `max-w-[calc(100vw-70px)]`}`}>
         <div className="z-[50] sticky top-0 flex h-[70px] w-full justify-between  items-center px-8 border-b-2 border-primary-100 bg-background">
           <Header />
         </div>

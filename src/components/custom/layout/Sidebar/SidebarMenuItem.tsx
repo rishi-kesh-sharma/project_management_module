@@ -13,6 +13,7 @@ const SidebarMenuItem = ({
   parent?: SidebarItemProps;
 }) => {
   const isSidebarExpanded: boolean = useAppSelector(selectIsSidebarExpanded);
+
   return (
     <Link
       // to={`${parent?.link}${child.link}` || "/"}
@@ -32,7 +33,7 @@ const SidebarMenuItem = ({
         " rounded-none p-4",
         "hover:text-white hover:bg-blue-600"
       )}>
-      <div className="text-xl ">{child.icon && child.icon}</div>
+      <div className="text-xl ">{child?.icon}</div>
       {isSidebarExpanded && child.label}
     </Link>
   );
