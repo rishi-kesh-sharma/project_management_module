@@ -53,7 +53,9 @@ const AddAppointmentDialog: React.FC = () => {
   const { addAppointment, resources } = useData();
   const [isOpened, setIsOpened] = useState(false);
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const [isPending, startAddAppointmentTransition] = useTransition();
+  // const [isPending, startAddAppointmentTransition] = useTransition();
+  const [_, startAddAppointmentTransition] = useTransition();
+
   const form = useForm<AppointmentType>({
     resolver: zodResolver(createAppointmentSchema),
     defaultValues: {
@@ -78,18 +80,15 @@ const AddAppointmentDialog: React.FC = () => {
     };
 
     startAddAppointmentTransition(() => {
-      toast.promise(
-        () =>
-          new Promise((resolve) => {
-            resolve(addAppointment(newAppointment));
-          }),
-        {
-          loading: "Adding appointment",
-          success: "Appointment added",
-          error: "Failed to add appointment",
-        }
-      );
+      toast.promise(Promise.resolve(addAppointment(newAppointment)), {
+        loading: "Adding appointment",
+        success: "Appointment added",
+        error: "Failed to add appointment",
+      });
       form.reset();
+      setTimeout(() => {
+        setIsOpened(false);
+      }, 1000);
     });
     setTimeout(() => {
       setIsOpened(false);
@@ -133,7 +132,8 @@ const AddAppointmentDialog: React.FC = () => {
                           className={cn(
                             "w-[280px] justify-start text-left font-normal",
                             !field.value && "text-muted-foreground"
-                          )}>
+                          )}
+                        >
                           <CalendarIcon className="mr-2 h-4 w-4" />
                           {field.value ? (
                             format(field.value, "PPP HH:mm:ss")
@@ -176,7 +176,8 @@ const AddAppointmentDialog: React.FC = () => {
                           className={cn(
                             "w-[280px] justify-start text-left font-normal",
                             !field.value && "text-muted-foreground"
-                          )}>
+                          )}
+                        >
                           <CalendarIcon className="mr-2 h-4 w-4" />
                           {field.value ? (
                             format(field.value, "PPP HH:mm:ss")
@@ -214,7 +215,8 @@ const AddAppointmentDialog: React.FC = () => {
                   <FormControl>
                     <Select
                       onValueChange={field.onChange}
-                      defaultValue={field.value}>
+                      defaultValue={field.value}
+                    >
                       <SelectTrigger>
                         <SelectValue>
                           {field.value

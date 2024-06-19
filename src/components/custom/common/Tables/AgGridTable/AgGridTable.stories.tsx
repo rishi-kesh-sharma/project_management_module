@@ -115,10 +115,3 @@ export const Short: Story = {
     // variant: "secondary",
   },
 };
-
-// const [count, setCount] = useState(0);
-
-// const isRowSelectable = useCallback(
-//   (node: { data: { value: number } }) => node.data.value > count,
-//   [count]
-// );

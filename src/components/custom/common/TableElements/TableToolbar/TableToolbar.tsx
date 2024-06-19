@@ -7,7 +7,6 @@ import { Button } from "@/components/plate-ui/button";
 import { IIconDropdownMenuProps, IModalProps } from "@/@types";
 import { Link } from "react-router-dom";
 import IconDropdown from "../../Dropdowns/IconDropdown/IconDropdown";
-// import { ProjectsTableFilters } from "@/utils/constants";
 import Modal from "../../Modal/Modal";
 import { ProjectsTableSearch } from "@/utils/constants";
 import { Toggle } from "@/components/ui/Toggle/toggle";
@@ -57,12 +56,14 @@ const TableToolbar: React.FC<ITableToolbar> = ({
               <Toggle
                 asChild
                 aria-label="Toggle bold"
-                className="rounded-full h-[2.5rem] w-[2.5rem] p-0">
+                className="rounded-full h-[2.5rem] w-[2.5rem] p-0"
+              >
                 <Button
                   onClick={() => setSideBarVisible(!isSideBarVisible())}
                   variant={"outline"}
                   size={"icon"}
-                  className={`rounded-full ${isSideBarVisible() ? "rotate-90" : ""} transition-all`}>
+                  className={`rounded-full ${isSideBarVisible() ? "rotate-90" : ""} transition-all`}
+                >
                   {<FilterIcon />}
                 </Button>
               </Toggle>
@@ -72,7 +73,8 @@ const TableToolbar: React.FC<ITableToolbar> = ({
               <Button
                 size={"icon"}
                 className="flex gap-2 rounded-full h-[2.4rem] w-[2.4rem]"
-                asChild>
+                asChild
+              >
                 <Link to={`${createPagePath}`}>
                   <PlusIcon className="" />
                   {/* <span>{createButtonText && createButtonText}</span> */}

@@ -6,8 +6,8 @@ import Combobox from "../Combobox/Combobox";
 import { comboboxData } from "@/utils/constants";
 
 const items = [
-  <Combobox comboboxData={comboboxData} />,
-  <Combobox comboboxData={comboboxData} />,
+  <Combobox key={"combobox-1"} comboboxData={comboboxData} />,
+  <Combobox key={"combobox-2"} comboboxData={comboboxData} />,
 ];
 
 const meta: Meta<typeof SpeedDial> = {
