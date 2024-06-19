@@ -101,7 +101,7 @@ const AgGridTable: React.FC<IAgGridTableProps> = ({
   const { theme: appTheme } = useTheme();
 
   // container style
-  // const containerStyle = useMemo(() => ({ width: "100%", height: "100%" }), []);
+
   const containerStyle = useMemo(() => ({}), []);
 
   // grid style
@@ -260,7 +260,8 @@ const AgGridTable: React.FC<IAgGridTableProps> = ({
       {/* {TableToolbarHOC(isSideBarVisible, setSideBarVisible)} */}
       <div
         className={`${appTheme == "dark" ? "ag-theme-quartz-dark" : theme}  `}
-        style={{ ...gridStyle }}>
+        style={{ ...gridStyle }}
+      >
         {variant === "primary" && (
           <Helmet>
             <link rel="stylesheet" href="/src/AgGridPrimaryTable.css" />
