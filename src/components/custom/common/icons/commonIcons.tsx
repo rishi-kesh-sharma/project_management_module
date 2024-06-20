@@ -40,7 +40,6 @@ import { GoPlus } from "react-icons/go";
 import { LuKanban } from "react-icons/lu";
 import { LuGanttChart } from "react-icons/lu";
 import { PiFolderSimpleBold } from "react-icons/pi";
-import { MdOutlineInventory2 } from "react-icons/md";
 import { GiMoneyStack } from "react-icons/gi";
 import { PiUsersThree } from "react-icons/pi";
 import { IoExpand } from "react-icons/io5";
@@ -58,6 +57,7 @@ import { MdOutlineAccountBox } from "react-icons/md";
 import { MdOutlineRoomPreferences } from "react-icons/md";
 import { MdOutlineTimeline } from "react-icons/md";
 import { GoMilestone } from "react-icons/go";
+import { MdOutlineInventory2 } from "react-icons/md";
 export {
   FaRegCircleDot as GoalsIcon,
   HiOutlineChartBar as PlanningIcon,

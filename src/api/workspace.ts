@@ -22,8 +22,6 @@ export interface IWorkspace {
   projects: [];
 }
 
-type WorkspaceResponse = IWorkspace[];
-
 export const workspaceApi = createApi({
   reducerPath: "workspaces",
   baseQuery: fetchBaseQuery({
@@ -32,7 +30,7 @@ export const workspaceApi = createApi({
   // baseQuery: axiosBaseQuery({ baseUrl: `${BASE_URL}` }),
   tagTypes: ["Workspace"],
   endpoints: (build) => ({
-    getWorkspaces: build.query<WorkspaceResponse, string>({
+    getWorkspaces: build.query<IWorkspace[], string>({
       query: () => "workspaces",
       providesTags: (result) =>
         result
@@ -67,7 +65,7 @@ export const workspaceApi = createApi({
         const patchResult = dispatch(
           workspaceApi.util.updateQueryData("getWorkspace", id, (draft) => {
             Object.assign(draft, patch);
-          })
+          }),
         );
         try {
           await queryFulfilled;

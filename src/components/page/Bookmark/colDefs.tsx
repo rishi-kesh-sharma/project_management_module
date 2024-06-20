@@ -1,9 +1,10 @@
 import { IProjectRowData } from "@/@types";
-import Badge from "@/components/custom/common/Badge/Badge";
 import {
   EditIcon,
   TrashIcon,
 } from "@/components/custom/common/icons/commonIcons";
+import Tags from "@/components/custom/common/Tags/Tags";
+import { getTagVariantForValues } from "@/lib/utils";
 import moment from "moment";
 import { Link, useParams } from "react-router-dom";
 export const colDefs = [
@@ -18,7 +19,8 @@ export const colDefs = [
       return (
         <Link
           className="hover:underline"
-          to={`/workspace/${workspaceId}/project/${projectId}/task/${p.data.id}`}>
+          to={`/workspace/${workspaceId}/project/${projectId}/task/${p.data.id}`}
+        >
           {p.value}
         </Link>
       );
@@ -46,7 +48,7 @@ export const colDefs = [
     cellRenderer: (p: { value: string }) => {
       return (
         <div>
-          <Badge label={p.value} variant={"outline"} />
+          <Tags value={p.value} variant={getTagVariantForValues(p.value)} />
         </div>
       );
     },
@@ -58,7 +60,7 @@ export const colDefs = [
     cellRenderer: (p: { value: string }) => {
       return (
         <div>
-          <Badge label={p.value} variant={"outline"} />
+          <Tags value={p.value} variant={getTagVariantForValues(p.value)} />
         </div>
       );
     },

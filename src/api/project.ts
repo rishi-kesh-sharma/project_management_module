@@ -21,7 +21,7 @@ export const projectApi = createApi({
     }),
     addProject: build.mutation<IProject, Partial<IProject>>({
       query: (body) => ({
-        url: `project`,
+        url: `projects`,
         method: "POST",
         body,
       }),
@@ -44,7 +44,7 @@ export const projectApi = createApi({
         const patchResult = dispatch(
           projectApi.util.updateQueryData("getProject", id, (draft) => {
             Object.assign(draft, patch);
-          })
+          }),
         );
         try {
           await queryFulfilled;
