@@ -29,7 +29,7 @@ export const colDefs = [
     pinned: "left",
     filter: false,
     cellRenderer: (p: { value: string; data: IProjectRowData }) => {
-      // eslint-disable-next-line react-hooks/rules-of-hooks
+       
       const { workspaceId, projectId } = useParams();
       return (
         <Link
@@ -229,7 +229,7 @@ export const colDefs = [
     headerCheckboxSelection: false,
 
     cellRenderer: (p: { value: string; data: IProjectRowData }) => {
-      // eslint-disable-next-line react-hooks/rules-of-hooks
+       
       const { workspaceId, projectId } = useParams();
       return (
         <div className="flex gap-4 items-center justify-start  h-full">

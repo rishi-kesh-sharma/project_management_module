@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
-/* eslint-disable @typescript-eslint/no-explicit-any */
+ 
 import { IHumanResourceRowData, IProjectRowData } from "@/@types";
 import {
   EditIcon,
@@ -23,7 +23,7 @@ export const colDefs = [
     minWidth: 220,
     checkboxSelection: true,
     cellRenderer: (p: { value: string; data: IProjectRowData }) => {
-      // eslint-disable-next-line react-hooks/rules-of-hooks
+       
       // const { humanResourceId } = useParams();
       return (
         // <Link

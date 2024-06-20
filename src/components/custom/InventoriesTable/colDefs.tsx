@@ -14,7 +14,7 @@ export const colDefs = [
     headerName: "Inventory Name",
     checkboxSelection: true,
     cellRenderer: (p: { value: string; data: IProjectRowData }) => {
-      // eslint-disable-next-line react-hooks/rules-of-hooks
+       
       // const { workspaceId, projectId } = useParams();
       return (
         // <Link

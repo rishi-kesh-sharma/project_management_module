@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import { TRole } from "@/@types";
 import { setUser } from "@/redux/features/app/appSlice";
 import { REAL_API_BASE_URL } from "@/utils/constants";

@@ -21,7 +21,7 @@ type Story = StoryObj<typeof meta>;
 export const Default: Story = {
   args: {
     length:6,
-    onChange:(otp: String) => console.log(otp),
+    onChange:(otp: string) => console.log(otp),
 
   },
 };

@@ -17,7 +17,7 @@ import { Link } from "react-router-dom";
 import { cn } from "@/lib/utils";
 
 export default function CommandDialog({
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+   
   commandData: { placeholder, emptyText, commandGroups },
 }: {
   commandData: ICommandProps;

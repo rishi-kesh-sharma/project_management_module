@@ -75,7 +75,7 @@ export default function FileUpload() {
     setSelectedFile(null);
     setFileUrl("");
   };
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+   
   const { getRootProps, getInputProps, isDragActive } = useDropzone({ onDrop });
 
   return (
