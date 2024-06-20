@@ -26,7 +26,7 @@ interface ChatBottombarProps {
   isMobile: boolean;
 }
 
-// eslint-disable-next-line react-refresh/only-export-components
+ 
 export const BottombarIcons = [
   { icon: FileImage, key: "file" },
   { icon: Paperclip, key: "paper-clip" },

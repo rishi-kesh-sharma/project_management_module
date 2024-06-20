@@ -1,4 +1,4 @@
-/* eslint-disable react-refresh/only-export-components */
+ 
 import WorkspaceDetailTable from "./Table";
 
 import { useGetWorkspaceQuery } from "@/api/workspace";

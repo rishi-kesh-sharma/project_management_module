@@ -8,7 +8,7 @@ import { DateRangePicker } from "../../FormElements/DateRangePicker/DateRangePic
 
 interface CalendarToolbarProps extends React.HTMLAttributes<HTMLDivElement> {}
 
-// eslint-disable-next-line react-refresh/only-export-components
+ 
 const CalendarToolbar: React.FC<CalendarToolbarProps> = ({
   className,
   ...props
@@ -51,5 +51,5 @@ const CalendarToolbar: React.FC<CalendarToolbarProps> = ({
   );
 };
 
-// eslint-disable-next-line react-refresh/only-export-components
+ 
 export default React.memo(CalendarToolbar);
