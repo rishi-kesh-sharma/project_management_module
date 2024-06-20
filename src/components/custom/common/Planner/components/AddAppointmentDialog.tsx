@@ -52,7 +52,7 @@ import { toast } from "sonner";
 const AddAppointmentDialog: React.FC = () => {
   const { addAppointment, resources } = useData();
   const [isOpened, setIsOpened] = useState(false);
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+   
   // const [isPending, startAddAppointmentTransition] = useTransition();
   const [_, startAddAppointmentTransition] = useTransition();
 

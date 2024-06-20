@@ -24,7 +24,7 @@ export const colDefs = [
     editable: true,
     filter: false,
     cellRenderer: (p: { value: string; data: ISubTaskRowData }) => {
-      // eslint-disable-next-line react-hooks/rules-of-hooks
+       
       const { workspaceId, projectId, taskId } = useParams();
       return (
         <Link

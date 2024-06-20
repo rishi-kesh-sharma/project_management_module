@@ -1,4 +1,4 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
+ 
 import { Progress } from "@/components/ui/Progress/progress";
 import {
   Table,

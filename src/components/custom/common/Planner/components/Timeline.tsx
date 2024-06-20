@@ -4,7 +4,7 @@ import { cn } from "@/lib/utils";
 import { TableHead, TableHeader, TableRow } from "@/components/ui/Table/table";
 
 export const Timeline: React.FC<React.HTMLAttributes<HTMLDivElement>> = () =>
-  // eslint-disable-next-line no-empty-pattern
+   
 
   {
     const { timeLabels } = useCalendar();

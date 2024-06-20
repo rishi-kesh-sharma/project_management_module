@@ -1,4 +1,4 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
+ 
 import { IoMdNotificationsOutline } from "react-icons/io";
 import { IHeaderProps } from "@/@types";
 import { avatarDropdownMenu, commandData } from "@/utils/constants";

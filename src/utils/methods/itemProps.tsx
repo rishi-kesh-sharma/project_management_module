@@ -1,4 +1,4 @@
-/* eslint-disable react-refresh/only-export-components */
+ 
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
 import Badge from "../../helpers/components/common/badges/Badge.tsx";

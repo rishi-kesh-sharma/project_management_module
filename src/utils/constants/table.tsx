@@ -1,4 +1,4 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
+ 
 
 // An example of what a design memo should look like
 export const INVENTORY_TABLE_MEMO = [
