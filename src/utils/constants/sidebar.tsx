@@ -96,6 +96,7 @@ export const sidebarItems = (injectables: ISidebarItemsProps) => [
         const workspaces = injectables.workspaces;
         const items = workspaces?.slice(0, 3).map((workspace: IWorkspace) => {
           const link = `/workspace/${workspace?.id}`;
+          const icon = <DotIconFilled className="text-[0.6rem]" />;
           const items = workspace?.projects?.map((project: IProject) => {
             const link = `/project/${project.id}`;
             return {
@@ -104,8 +105,7 @@ export const sidebarItems = (injectables: ISidebarItemsProps) => [
               icon: <DotIconFilled className="text-[0.6rem]" />,
             };
           });
-
-          return { link, label: workspace.name, items };
+          return { link, label: workspace.name, items, icon };
         });
 
         return {

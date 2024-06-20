@@ -8,20 +8,23 @@ import { Link } from "react-router-dom";
 const SidebarMenuItem = ({
   child,
   parent,
+  level,
+  padding,
 }: {
   child: SidebarItemProps;
   parent?: SidebarItemProps;
+  level: number;
+  padding: number;
 }) => {
   const isSidebarExpanded: boolean = useAppSelector(selectIsSidebarExpanded);
 
+  console.log(level, "level from item");
   return (
     <Link
-      // to={`${parent?.link}${child.link}` || "/"}
       to={`${parent && parent.link ? `${parent.link}${child.link}` : child.link}`}
       className={cn(
         buttonVariants({
           size: "sm",
-
           variant: "ghost",
         }),
         "justify-start",
@@ -30,11 +33,14 @@ const SidebarMenuItem = ({
         "active::no-underline",
         "flex",
         "gap-2",
-        " rounded-none p-4",
+        " rounded-none py-4",
         "hover:text-white hover:bg-blue-600",
-        "px-5"
-      )}>
-      <div className="text-xl ">{child?.icon}</div>
+      )}
+      style={{
+        paddingLeft: `${level * padding}px`,
+      }}
+    >
+      <div className="text-xl">{child?.icon}</div>
       {isSidebarExpanded && child.label}
     </Link>
   );
