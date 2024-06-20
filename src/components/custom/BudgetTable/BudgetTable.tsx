@@ -44,7 +44,7 @@ const TableToolbarHOC = ({
       handleSearch={handleSearch}
       dropdownMenus={dropdownMenus}
       createButtonText="Budget"
-      createPagePath={`/workspace/${workspaceId}/project/${projectId}/budget/create`}
+      createPagePath={`/project/workspace/${workspaceId}/project/${projectId}/budget/create`}
       hasSearch={true}
       search={<ProjectsTableSearch handleSearch={handleSearch} />}
       isSideBarVisible={isSideBarVisible}

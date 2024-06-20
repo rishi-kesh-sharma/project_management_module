@@ -2,6 +2,7 @@ import AgGridTable from "@/components/custom/common/Tables/AgGridTable/AgGridTab
 import { colDefs } from "./timeTrackingColDefs";
 import TableToolbar from "@/components/custom/common/TableElements/TableToolbar/TableToolbar";
 import { ITimeTrackingRowData } from "@/@types";
+import { ProjectsTableSearch } from "@/utils/constants";
 
 const dropdownMenus = {
   items: [
@@ -23,19 +24,35 @@ const TimeTrackingTable = ({
   return (
     <div className="mt-[2rem]">
       <AgGridTable
-        tableToolbar={
-          <TableToolbar
-            heading={`Time Tracking`}
-            handleSearch={handleSearch}
-            dropdownMenus={dropdownMenus}
-            createButtonText="Start Timer"
-            createPagePath=""
-          />
-        }
+        TableToolbarHOC={({
+          isSideBarVisible,
+          setSideBarVisible,
+        }: {
+          isSideBarVisible: () => boolean;
+          setSideBarVisible: (value: boolean) => void;
+        }) => {
+          return (
+            <TableToolbar
+              hasFilters={true}
+              // filters={<ProjectsTableFilters />}
+              hasSearch={true}
+              search={<ProjectsTableSearch handleSearch={handleSearch} />}
+              heading={`Time Tracking`}
+              createButtonText="Start Timer"
+              handleSearch={handleSearch}
+              dropdownMenus={dropdownMenus}
+              hasArchive={true}
+              hasBookmark={true}
+              hasNotification={true}
+              isSideBarVisible={isSideBarVisible}
+              setSideBarVisible={setSideBarVisible}
+            />
+          );
+        }}
         rowData={timeTrackings}
-        heading={`Time Tracking`}
         dropdownMenus={dropdownMenus}
         colDefs={colDefs}
+        sideBar={"filters"}
       />
     </div>
   );
