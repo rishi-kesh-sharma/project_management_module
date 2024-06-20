@@ -41,14 +41,14 @@ const Analytics = () => {
             >
               <div className="flex flex-col  ">
                 <p className="text-foreground">{cardDataItem.label}</p>
-                <p className="font-semibold text-3xl">
-                  {cardDataItem.count}
-                </p>
+                <p className="font-semibold text-3xl">{cardDataItem.count}</p>
               </div>
-              <div className={cn(
-                "text-3xl bg-primary text-primary-foreground h-14 w-14 rounded-md text-center flex items-center justify-center",
-                cardDataItem.className
-              )}>
+              <div
+                className={cn(
+                  "text-3xl bg-primary text-primary-foreground h-14 w-14 rounded-md text-center flex items-center justify-center",
+                  cardDataItem.className,
+                )}
+              >
                 {cardDataItem.icon}
               </div>
             </Card>
@@ -63,7 +63,7 @@ const Analytics = () => {
               data={pieChartData}
               title={i18n.t(
                 "component.home.text.projectStatus",
-                "Project Status"
+                "Project Status",
               )}
             />
           </div>
@@ -97,7 +97,7 @@ const Analytics = () => {
             <BarChart
               title={i18n.t(
                 "component.home.text.budgetEstimation",
-                "Budget Estimation"
+                "Budget Estimation",
               )}
               data={barChartData}
             />

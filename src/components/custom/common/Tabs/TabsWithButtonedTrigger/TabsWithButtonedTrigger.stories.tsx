@@ -1,7 +1,4 @@
-// Sidebar.stories.tsx
-
 import { StoryObj, Meta } from "@storybook/react";
-// import { userInfo } from "@/utils/constants";
 import TabsWithButtonedTrigger from "./TabsWithButtonedTrigger";
 import {
   Card as ShadCard,
@@ -26,7 +23,6 @@ const meta: Meta<typeof TabsWithButtonedTrigger> = {
   title: "TabsWithButtonedTrigger",
 
   args: {
-    // user: userInfo,
     triggers: [{ id: "update-profile", label: "Update Profile" }],
     contents: [
       {

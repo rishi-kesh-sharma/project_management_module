@@ -80,6 +80,7 @@ const Timeline = () => {
         {timelineData.map((timeline) => {
           return (
             <VerticalTimelineElement
+              key={timeline.id}
               className="vertical-timeline-element--work "
               date={moment(timeline.expected_achievement_date).format("LL")}
               iconStyle={{
@@ -89,7 +90,8 @@ const Timeline = () => {
                     : colors.notAchievedColor,
                 color: "#fff",
               }}
-              icon={<WorkspaceIcon />}>
+              icon={<WorkspaceIcon />}
+            >
               <div className="flex flex-col gap-3">
                 <div className="flex justify-between">
                   <h1 className="font-semibold text-lg">{timeline.title}</h1>
