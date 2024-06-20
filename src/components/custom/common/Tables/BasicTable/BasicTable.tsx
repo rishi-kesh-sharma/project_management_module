@@ -1,4 +1,3 @@
- 
 import { Progress } from "@/components/ui/Progress/progress";
 import {
   Table,
@@ -14,7 +13,7 @@ import Tags from "../../Tags/Tags";
 const BasicTable = <
   ICaption extends string,
   IColumn extends { id: string; label: string },
-  IData,
+  IData extends { id: string },
 >({
   tableCaption,
   columns,
@@ -34,19 +33,24 @@ const BasicTable = <
         <TableHeader className="">
           <TableRow className="">
             {columns.map((column: IColumn) => {
-              return <TableHead className="border">{column.label}</TableHead>;
+              return (
+                <TableHead key={column.id} className="border">
+                  {column.label}
+                </TableHead>
+              );
             })}
           </TableRow>
         </TableHeader>
         <TableBody className="">
           {data.map((item: IData) => {
             return (
-              <TableRow className="">
+              <TableRow key={item.id} className="">
                 {columns.map((column: IColumn) => {
                   return (
                     <TableCell
                       key={column.id as string}
-                      className="border text-sm">
+                      className="border text-sm"
+                    >
                       {(() => {
                         if (column.id === "progress") {
                           return (

@@ -1,9 +1,9 @@
-import React, { useRef, useState } from "react";
+import { useState } from "react";
 import { AutosizeTextarea } from "../FormElements/AutosizeTextArea/AutosizeTextArea";
 import {
   LikeIconFilled,
   LikeIconOutlined,
-  ReplyIconOutlined
+  ReplyIconOutlined,
 } from "../icons/commonIcons";
 
 const AddComment = () => {
@@ -16,7 +16,6 @@ const AddComment = () => {
   const handleReplyToggle = () => {
     setIsReply((prev) => !prev);
   };
-  const ReplyComment = () => {};
 
   return (
     <div className="flex gap-[0.5rem]  flex-col items-start justify-start">
@@ -25,12 +24,10 @@ const AddComment = () => {
       <h2 className="text-lg font-[500]">Comments</h2>
       <div className="flex flex-col gap-[1rem] text-sm">
         <div>
-          <h2 className="text-base font-[500] flex flex-col gap-2">
-            Raju singh
-          </h2>
+          <h2 className="text-base font-[500] flex flex-col gap-2">singh</h2>
           <div className="flex items-center gap-3 ">
             <p className="text-foreground/70">
-              This is the comment made by hero raju singh from dhalkewar
+              This is the comment made by hero
             </p>
             <div className="flex gap-3 items-center text-lg">
               {isLiked ? (
@@ -52,7 +49,7 @@ const AddComment = () => {
           </div>
           {isReply && (
             <div className="mb-4 p-4 border round-lg mt-5">
-              <p className="mb-2 text-lg front-semibold ml-7">Raju Singh</p>
+              <p className="mb-2 text-lg front-semibold ml-7"> Singh</p>
 
               <div className="ml-4 border-1-2 pl-4">
                 {/* <button className='text-blue-500 hover:underline'>Reply</button> */}

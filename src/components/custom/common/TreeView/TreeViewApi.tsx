@@ -10,6 +10,7 @@ import React, {
   useCallback,
   useContext,
   useEffect,
+  useMemo,
   useState,
 } from "react";
 import { Button } from "@/components/ui/Button/button";
@@ -70,13 +71,13 @@ const Tree = forwardRef<HTMLDivElement, TreeViewProps>(
       dir,
       ...props
     },
-    ref
+    ref,
   ) => {
     const [selectedId, setSelectedId] = useState<string | undefined>(
-      initialSelectedId
+      initialSelectedId,
     );
     const [expendedItems, setExpendedItems] = useState<string[] | undefined>(
-      initialExpendedItems
+      initialExpendedItems,
     );
 
     const selectItem = useCallback((id: string) => {
@@ -97,7 +98,7 @@ const Tree = forwardRef<HTMLDivElement, TreeViewProps>(
         if (!elements || !selectId) return;
         const findParent = (
           currentElement: TreeViewElement,
-          currentPath: string[] = []
+          currentPath: string[] = [],
         ) => {
           const isSelectable = currentElement.isSelectable ?? true;
           const newPath = [...currentPath, currentElement.id];
@@ -108,6 +109,8 @@ const Tree = forwardRef<HTMLDivElement, TreeViewProps>(
               if (newPath.includes(currentElement.id)) {
                 newPath.pop();
                 setExpendedItems((prev) => [...(prev ?? []), ...newPath]);
+              } else {
+                return;
               }
             }
             return;
@@ -126,7 +129,7 @@ const Tree = forwardRef<HTMLDivElement, TreeViewProps>(
           findParent(element);
         });
       },
-      []
+      [],
     );
 
     useEffect(() => {
@@ -135,26 +138,38 @@ const Tree = forwardRef<HTMLDivElement, TreeViewProps>(
       }
     }, [initialSelectedId, elements, expandSpecificTargetedElements]);
 
-    const direction = dir === "rtl" ? "rtl" : "ltr";
+    const direction = dir === "rtl" ? "rtl" : ("ltr" as "rtl" | "ltr");
 
+    const treeContextValue = useMemo(() => {
+      return {
+        selectedId,
+        expendedItems,
+        handleExpand,
+        selectItem,
+        setExpendedItems,
+        indicator,
+        openIcon,
+        closeIcon,
+        direction,
+      };
+    }, [
+      closeIcon,
+      direction,
+      expendedItems,
+      handleExpand,
+      indicator,
+      openIcon,
+      selectItem,
+      selectedId,
+    ]);
     return (
-      <TreeContext.Provider
-        value={{
-          selectedId,
-          expendedItems,
-          handleExpand,
-          selectItem,
-          setExpendedItems,
-          indicator,
-          openIcon,
-          closeIcon,
-          direction,
-        }}>
+      <TreeContext.Provider value={treeContextValue}>
         <div className={cn("size-full", className)}>
           <ScrollArea
             ref={ref}
             className="h-full relative px-2"
-            dir={dir as Direction}>
+            dir={dir as Direction}
+          >
             <AccordionPrimitive.Root
               {...props}
               type="multiple"
@@ -164,14 +179,15 @@ const Tree = forwardRef<HTMLDivElement, TreeViewProps>(
               onValueChange={(value) =>
                 setExpendedItems((prev) => [...(prev ?? []), value[0]])
               }
-              dir={dir as Direction}>
+              dir={dir as Direction}
+            >
               {children}
             </AccordionPrimitive.Root>
           </ScrollArea>
         </div>
       </TreeContext.Provider>
     );
-  }
+  },
 );
 
 Tree.displayName = "Tree";
@@ -188,7 +204,7 @@ const TreeIndicator = forwardRef<
       ref={ref}
       className={cn(
         "h-full w-px bg-muted absolute left-1.5 rtl:right-1.5 py-3 rounded-md hover:bg-slate-300 duration-300 ease-in-out",
-        className
+        className,
       )}
       {...props}
     />
@@ -234,7 +250,8 @@ const Folder = forwardRef<
       <AccordionPrimitive.Item
         {...props}
         value={value}
-        className="relative overflow-hidden h-full ">
+        className="relative overflow-hidden h-full "
+      >
         <AccordionPrimitive.Trigger
           className={cn(
             `flex items-center gap-1 text-sm rounded-md`,
@@ -243,10 +260,11 @@ const Folder = forwardRef<
               "bg-muted rounded-md": isSelect && isSelectable,
               "cursor-pointer": isSelectable,
               "cursor-not-allowed opacity-50": !isSelectable,
-            }
+            },
           )}
           disabled={!isSelectable}
-          onClick={() => handleExpand(value)}>
+          onClick={() => handleExpand(value)}
+        >
           {expendedItems?.includes(value)
             ? openIcon ?? <FolderOpenIcon className="h-4 w-4" />
             : closeIcon ?? <FolderIcon className="h-4 w-4" />}
@@ -262,13 +280,14 @@ const Folder = forwardRef<
             value={expendedItems}
             onValueChange={(value) => {
               setExpendedItems?.((prev) => [...(prev ?? []), value[0]]);
-            }}>
+            }}
+          >
             {children}
           </AccordionPrimitive.Root>
         </AccordionPrimitive.Content>
       </AccordionPrimitive.Item>
     );
-  }
+  },
 );
 
 Folder.displayName = "Folder";
@@ -294,7 +313,7 @@ const File = forwardRef<
       children,
       ...props
     },
-    ref
+    ref,
   ) => {
     const { direction, selectedId, selectItem } = useTree();
     const isSelected = isSelect ?? selectedId === value;
@@ -312,15 +331,16 @@ const File = forwardRef<
               "bg-muted": isSelected && isSelectable,
             },
             isSelectable ? "cursor-pointer" : "opacity-50 cursor-not-allowed",
-            className
+            className,
           )}
-          onClick={() => selectItem(value)}>
+          onClick={() => selectItem(value)}
+        >
           {fileIcon ?? <FileIcon className="h-4 w-4" />}
           {children}
         </AccordionPrimitive.Trigger>
       </AccordionPrimitive.Item>
     );
-  }
+  },
 );
 
 File.displayName = "File";
@@ -340,7 +360,7 @@ const CollapseButton = forwardRef<
       children,
       ...props
     },
-    ref
+    ref,
   ) => {
     const { expendedItems, setExpendedItems } = useTree();
 
@@ -356,7 +376,7 @@ const CollapseButton = forwardRef<
 
         elements.forEach(expandTree);
       },
-      [setExpendedItems]
+      [setExpendedItems],
     );
 
     const closeAll = useCallback(() => {
@@ -380,12 +400,13 @@ const CollapseButton = forwardRef<
             : () => expendAllTree(elements)
         }
         ref={ref}
-        {...props}>
+        {...props}
+      >
         {children}
         <span className="sr-only">Toggle</span>
       </Button>
     );
-  }
+  },
 );
 
 CollapseButton.displayName = "CollapseButton";

@@ -85,17 +85,21 @@ export default function TableSkeleton(props: TableSkeletonProps) {
   return (
     <div
       className={cn("w-full space-y-2.5 overflow-auto", className)}
-      {...skeletonProps}>
+      {...skeletonProps}
+    >
       <div className="flex w-full items-center justify-between space-x-2 overflow-auto p-1">
         <div className="flex flex-1 items-center space-x-2">
           {searchableColumnCount > 0
             ? Array.from({ length: searchableColumnCount }).map((_, i) => (
-                <Skeleton key={i} className="h-7 w-40 lg:w-60" />
+                <Skeleton key={`skeleton ${i}`} className="h-7 w-40 lg:w-60" />
               ))
             : null}
           {filterableColumnCount > 0
             ? Array.from({ length: filterableColumnCount }).map((_, i) => (
-                <Skeleton key={i} className="h-7 w-[4.5rem] border-dashed" />
+                <Skeleton
+                  key={`skeleton ${i}`}
+                  className="h-7 w-[4.5rem] border-dashed"
+                />
               ))
             : null}
         </div>
@@ -107,14 +111,15 @@ export default function TableSkeleton(props: TableSkeletonProps) {
         <Table>
           <TableHeader>
             {Array.from({ length: 1 }).map((_, i) => (
-              <TableRow key={i} className="hover:bg-transparent">
+              <TableRow key={`head ${i}`} className="hover:bg-transparent">
                 {Array.from({ length: columnCount }).map((_, j) => (
                   <TableHead
                     key={j}
                     style={{
                       width: cellWidths[j],
                       minWidth: shrinkZero ? cellWidths[j] : "auto",
-                    }}>
+                    }}
+                  >
                     <Skeleton className="h-6 w-full" />
                   </TableHead>
                 ))}
@@ -123,14 +128,15 @@ export default function TableSkeleton(props: TableSkeletonProps) {
           </TableHeader>
           <TableBody>
             {Array.from({ length: rowCount }).map((_, i) => (
-              <TableRow key={i} className="hover:bg-transparent">
+              <TableRow key={`row ${i}`} className="hover:bg-transparent">
                 {Array.from({ length: columnCount }).map((_, j) => (
                   <TableCell
-                    key={j}
+                    key={`cell ${i} ${j}`}
                     style={{
                       width: cellWidths[j],
                       minWidth: shrinkZero ? cellWidths[j] : "auto",
-                    }}>
+                    }}
+                  >
                     <Skeleton className="h-6 w-full" />
                   </TableCell>
                 ))}

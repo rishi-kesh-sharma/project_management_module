@@ -27,7 +27,7 @@ type TreeViewProps = {
       expandAll?: false;
     }
   | {
-      initialExpendedItems?: undefined;
+      initialExpendedItems: undefined;
       expandAll: true;
     }
 ) &
@@ -59,16 +59,18 @@ const TreeView = ({
       ref={containerRef}
       className={cn(
         "w-full rounded-md overflow-hidden py-1 relative ",
-        className
-      )}>
+        className,
+      )}
+    >
       <Tree
         initialSelectedId={initialSelectedId}
         initialExpendedItems={initialExpendedItems}
         elements={elements}
         style={{ height, width }}
-        className="w-full h-full overflow-y-auto">
+        className="w-full h-full overflow-y-auto"
+      >
         <CollapseButton elements={elements} expandAll={expandAll}>
-        <Button>Toggle</Button>
+          <Button>Toggle</Button>
         </CollapseButton>
         {getVirtualItems().map((element) => (
           <TreeItem
@@ -99,18 +101,19 @@ export const TreeItem = forwardRef<
       indicator,
       ...props
     },
-    ref
+    ref,
   ) => {
     return (
       <ul ref={ref} className="w-full space-y-1 " {...props}>
         {elements &&
           elements.map((element) => (
             <li key={element.id} className="w-full">
-              {element.children && element.children?.length > 0 ? (
+              {element.children && element?.children?.length > 0 ? (
                 <Folder
                   element={element.name}
                   value={element.id}
-                  isSelectable={element.isSelectable}>
+                  isSelectable={element.isSelectable}
+                >
                   <TreeItem
                     key={element.id}
                     aria-label={`folder ${element.name}`}
@@ -123,7 +126,8 @@ export const TreeItem = forwardRef<
                   value={element.id}
                   aria-label={`File ${element.name}`}
                   key={element.id}
-                  isSelectable={element.isSelectable}>
+                  isSelectable={element.isSelectable}
+                >
                   <span>{element?.name}</span>
                 </File>
               )}
@@ -131,7 +135,7 @@ export const TreeItem = forwardRef<
           ))}
       </ul>
     );
-  }
+  },
 );
 
 export default TreeView;

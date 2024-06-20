@@ -341,10 +341,10 @@ export type IAgGridTableProps<T> = {
     items?: IDropdownMenuProps["menu"]["items"];
   };
   theme?:
-  | "ag-theme-quartz"
-  | "ag-theme-alpine"
-  | "ag-theme-quartz-dark"
-  | "ag-theme-quartz-alpine";
+    | "ag-theme-quartz"
+    | "ag-theme-alpine"
+    | "ag-theme-quartz-dark"
+    | "ag-theme-quartz-alpine";
   height?: number;
   TableToolbarHOC: React.Component;
   // rowData?: IRowData[];
@@ -536,7 +536,7 @@ export interface ITextInputProps {
   className?: string;
 }
 
-export interface ISubmitButton extends ButtonProps { }
+export interface ISubmitButton extends ButtonProps {}
 
 export interface RootLayoutProps {
   children: React.ReactNode;
@@ -722,10 +722,10 @@ export type {
 };
 
 export interface IOverdueProjectData {
-  id: string | number;
+  id: string;
   overdue: string;
   name: string;
-  deadline: string;
+  deadline?: string;
 }
 
 export interface IOverdueProjectColumn {
@@ -744,7 +744,7 @@ export interface IUpcomingDeadlineData {
   name: string;
   due_date: string;
   status: "On Progress" | "Not Started" | "Completed" | "Pending";
-  priority: "Low" | "Normal" | "High";
+  priority?: "Low" | "Normal" | "High";
   progress: number;
 }
 
