@@ -42,7 +42,7 @@ const TaskTable = ({ task }: { task: ITaskRowData }) => {
               search={<ProjectsTableSearch handleSearch={handleSearch} />}
               dropdownMenus={dropdownMenus}
               createButtonText="Task"
-              createPagePath={`/workspace/${workspaceId}/project/${projectId}/task/${taskId}/subTask/create`}
+              createPagePath={`/project/workspace/${workspaceId}/project/${projectId}/task/${taskId}/subTask/create`}
               hasFilters={true}
               filters={<ProjectsTableFilters />}
               hasArchive={true}

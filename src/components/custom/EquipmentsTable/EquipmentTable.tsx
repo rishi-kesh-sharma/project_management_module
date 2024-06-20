@@ -40,7 +40,7 @@ const EquipmentTable = ({
               handleSearch={handleSearch}
               dropdownMenus={dropdownMenus}
               createButtonText="Equipment"
-              createPagePath={`/equipment/create`}
+              createPagePath={`/project/equipment/create`}
               hasSearch={true}
               search={<ProjectsTableSearch handleSearch={handleSearch} />}
               type="modal"

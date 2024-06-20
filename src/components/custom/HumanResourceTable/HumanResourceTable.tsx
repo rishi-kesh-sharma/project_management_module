@@ -33,7 +33,7 @@ const HumanResourceTable = ({ data }: { data: IHumanResourceRowData[] }) => {
               handleSearch={handleSearch}
               dropdownMenus={dropdownMenus}
               createButtonText="Assign"
-              createPagePath={`/humanResource/add`}
+              createPagePath={`/project/humanResource/add`}
               hasSearch={true}
               search={<ProjectsTableSearch handleSearch={handleSearch} />}
               isSideBarVisible={isSideBarVisible}

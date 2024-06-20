@@ -43,7 +43,7 @@ const ProjectTable = () => {
               handleSearch={handleSearch}
               dropdownMenus={dropdownMenus}
               createButtonText="Task"
-              createPagePath={`/workspace/${workspaceId}/project/${projectId}/task/create`}
+              createPagePath={`/project/workspace/${workspaceId}/project/${projectId}/task/create`}
               hasArchive={true}
               hasBookmark={true}
               hasNotification={true}

@@ -2,7 +2,8 @@ import AgGridTable from "@/components/custom/common/Tables/AgGridTable/AgGridTab
 import { colDefs } from "./colDefs";
 import TableToolbar from "@/components/custom/common/TableElements/TableToolbar/TableToolbar";
 import { ITaskRowData } from "@/@types";
-import { ProjectsTableFilters, ProjectsTableSearch } from "@/utils/constants";
+import { ProjectsTableSearch } from "@/utils/constants";
+import { useParams } from "react-router-dom";
 
 const dropdownMenus = {
   items: [
@@ -13,6 +14,7 @@ const dropdownMenus = {
 };
 
 const TaskTable = ({ task }: { task: ITaskRowData }) => {
+  const { workspaceId, projectId } = useParams();
   const handleSearch = (e: React.FormEvent) => {
     e.preventDefault();
   };
@@ -21,23 +23,37 @@ const TaskTable = ({ task }: { task: ITaskRowData }) => {
   return (
     <div className="mt-[2rem]">
       <AgGridTable
-        tableToolbar={
-          <TableToolbar
-            heading={task.name}
-            handleSearch={handleSearch}
-            dropdownMenus={dropdownMenus}
-            createButtonText="Task"
-            createPagePath="/workspace/:workspaceId/task/:taskId/task/create"
-            hasFilters={false}
-            filters={<ProjectsTableFilters />}
-            hasSearch={true}
-            search={<ProjectsTableSearch handleSearch={handleSearch} />}
-          />
-        }
-        rowData={task.subTasks}
-        heading={task.name}
+        TableToolbarHOC={({
+          isSideBarVisible,
+          setSideBarVisible,
+        }: {
+          isSideBarVisible: () => boolean;
+          setSideBarVisible: (value: boolean) => void;
+        }) => {
+          return (
+            <TableToolbar
+              hasFilters={true}
+              // filters={<ProjectsTableFilters />}
+              hasSearch={true}
+              search={<ProjectsTableSearch handleSearch={handleSearch} />}
+              heading={"Tasks"}
+              handleSearch={handleSearch}
+              dropdownMenus={dropdownMenus}
+              createButtonText="Task"
+              createPagePath={`/project/workspace/${workspaceId}/project/${projectId}/task/create`}
+              hasArchive={true}
+              hasBookmark={true}
+              hasNotification={true}
+              isSideBarVisible={isSideBarVisible}
+              setSideBarVisible={setSideBarVisible}
+            />
+          );
+        }}
+        // rowData={data}
+        heading={"Tasks"}
         dropdownMenus={dropdownMenus}
         colDefs={colDefs}
+        sideBar={"filters"}
       />
     </div>
   );
