@@ -12,12 +12,6 @@ import "@syncfusion/ej2-layouts/styles/material.css";
 import "@syncfusion/ej2-grids/styles/material.css";
 import "@syncfusion/ej2-react-filemanager/styles/material.css";
 
-import { registerLicense } from "@syncfusion/ej2-base";
-
-registerLicense(
-  `Ngo9BigBOggjHTQxAR8/V1NBaF1cXmhPYVFyWmFZfVpgdl9GZFZSRmY/P1ZhSXxXdkBhXH5acHBWRWVeWUM=`
-);
-
 import {
   DetailsView,
   FileManagerComponent,
@@ -30,7 +24,7 @@ function Files(
   this: import("@storybook/types").ComponentAnnotations<
     import("@storybook/react").ReactRenderer,
     unknown
-  >
+  >,
 ) {
   let hostUrl: string = "https://ej2-aspcore-service.azurewebsites.net/";
   // eslint-disable-next-line @typescript-eslint/no-explicit-any

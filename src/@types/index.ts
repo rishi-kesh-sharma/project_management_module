@@ -62,7 +62,7 @@ export interface IAvatarDropdownProps {
 
 export interface SidebarItemProps {
   label: string;
-  link: string;
+  link?: string;
   icon?: React.ReactElement;
   items?: SidebarItemProps[];
 }

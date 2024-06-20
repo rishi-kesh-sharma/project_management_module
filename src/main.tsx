@@ -9,7 +9,7 @@ import store from "./redux/store.ts";
 import { registerLicense } from "@syncfusion/ej2-base";
 
 registerLicense(
-  `Ngo9BigBOggjHTQxAR8/V1NBaF1cXmhPYVFyWmFZfVpgdl9GZFZSRmY/P1ZhSXxXdkBhXH5acHBWRWVeWUM=`
+  `Ngo9BigBOggjHTQxAR8/V1NBaF1cWmhPYVFzWmFZfVpgcl9FZlZRQWYuP1ZhSXxXdkNhWX9ZcXFQQmRfV0E=`,
 );
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
@@ -19,5 +19,5 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
         <App />
       </RootLayout>
     </ReduxProvider>
-  </React.StrictMode>
+  </React.StrictMode>,
 );

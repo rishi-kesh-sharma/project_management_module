@@ -7,7 +7,7 @@ import { Link } from "react-router-dom";
 
 const SidebarMenuItem = ({
   child,
-  parent,
+  // parent,
   level,
   padding,
 }: {
@@ -18,10 +18,9 @@ const SidebarMenuItem = ({
 }) => {
   const isSidebarExpanded: boolean = useAppSelector(selectIsSidebarExpanded);
 
-  console.log(level, "level from item");
   return (
     <Link
-      to={`${parent && parent.link ? `${parent.link}${child.link}` : child.link}`}
+      to={`${child.link}`}
       className={cn(
         buttonVariants({
           size: "sm",

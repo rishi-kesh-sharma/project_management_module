@@ -1,3 +1,4 @@
+import { IArchive, IBookmark } from "@/@types";
 import { IWorkspace, IProject } from "@/api/workspace";
 import {
   AnalysticIcon,
@@ -14,6 +15,7 @@ import {
   MoneyIconOutlined,
   FolderIconOutlined,
   PeopleIconOutlined,
+  InventoryIconOutlined,
 } from "@/components/custom/common/icons/commonIcons";
 import i18n from "@/intl/i18n";
 
@@ -23,6 +25,12 @@ const otherModules = [
     label: "CRM",
     icon: <PeopleIconOutlined />,
     items: [
+      {
+        // label: "Dashboard ",
+        label: i18n.t("component.sidebar.menu.dashboard", "Dashboard"),
+        link: `/crm`,
+        icon: <OverviewIcon />,
+      },
       {
         id: "lead",
         label: "Lead",
@@ -51,6 +59,12 @@ const otherModules = [
     label: `Purchase`,
     items: [
       {
+        // label: "Dashboard ",
+        label: i18n.t("component.sidebar.menu.dashboard", "Dashboard"),
+        link: `/project`,
+        icon: <OverviewIcon />,
+      },
+      {
         id: `orders`,
         label: `Orders`,
         icon: <DotIconFilled className="text-[0.6rem]" />,
@@ -67,17 +81,50 @@ const otherModules = [
       },
     ],
   },
+  {
+    id: "inventory-management",
+    label: "Inventory",
+    icon: <InventoryIconOutlined />,
+    items: [
+      {
+        // label: "Dashboard ",
+        label: i18n.t("component.sidebar.menu.dashboard", "Dashboard"),
+        link: `/inventory`,
+        icon: <OverviewIcon />,
+      },
+      {
+        id: "products",
+        label: "Products",
+        icon: <DotIconFilled className="text-[0.6rem]" />,
+      },
+      {
+        id: "stock",
+        label: "Stocks",
+        icon: <DotIconFilled className="text-[0.6rem]" />,
+      },
+      {
+        id: "warehouses",
+        label: "Warehouses",
+        icon: <DotIconFilled className="text-[0.6rem]" />,
+      },
+      {
+        id: "returns",
+        label: "Returns",
+        icon: <DotIconFilled className="text-[0.6rem]" />,
+      },
+    ],
+  },
 ];
 interface ISidebarItemsProps {
   workspaces: IWorkspace[];
-  bookmarks: IProject[];
-  archives: IProject[];
+  bookmarks: IBookmark[];
+  archives: IArchive[];
 }
 export const sidebarItems = (injectables: ISidebarItemsProps) => [
   {
     // label: "Dashboard ",
     label: i18n.t("component.sidebar.menu.dashboard", "Dashboard"),
-    link: `/`,
+    link: `/project`,
     icon: <OverviewIcon />,
   },
   {
@@ -95,10 +142,10 @@ export const sidebarItems = (injectables: ISidebarItemsProps) => [
       (() => {
         const workspaces = injectables.workspaces;
         const items = workspaces?.slice(0, 3).map((workspace: IWorkspace) => {
-          const link = `/workspace/${workspace?.id}`;
+          const link = `/project/workspace/${workspace?.id}`;
           const icon = <DotIconFilled className="text-[0.6rem]" />;
           const items = workspace?.projects?.map((project: IProject) => {
-            const link = `/project/${project.id}`;
+            const link = `/project/workspace/${workspace?.id}/project/${project?.id}`;
             return {
               link,
               label: project.name,
@@ -110,7 +157,7 @@ export const sidebarItems = (injectables: ISidebarItemsProps) => [
 
         return {
           label: i18n.t("component.sidebar.menu.workspaces", "Workspaces"),
-          link: `/workspaces`,
+          link: `/project/workspaces`,
           icon: <AnalysticIcon />,
           items: items && [
             ...items,
@@ -122,7 +169,7 @@ export const sidebarItems = (injectables: ISidebarItemsProps) => [
                   {/* <Ellipsis /> */}
                 </>
               ),
-              link: `/workspaces`,
+              link: `/project/workspaces`,
             },
           ],
         };
@@ -130,8 +177,8 @@ export const sidebarItems = (injectables: ISidebarItemsProps) => [
 
       (() => {
         const bookmarks = injectables?.bookmarks;
-        const items = bookmarks?.slice(0, 3)?.map((project: IProject) => {
-          const link = `/bookmark/${project.id}`;
+        const items = bookmarks?.slice(0, 3)?.map((project: IBookmark) => {
+          const link = `/project/bookmark/${project.id}`;
           return {
             link,
             label: project.name,
@@ -141,7 +188,7 @@ export const sidebarItems = (injectables: ISidebarItemsProps) => [
 
         return {
           label: i18n.t("component.sidebar.menu.bookmarks", "Bookmarks"),
-          link: `/bookmarks`,
+          link: `/project/bookmarks`,
           icon: <BookmarkIconOutlined />,
           items: items && [
             ...items,
@@ -153,15 +200,15 @@ export const sidebarItems = (injectables: ISidebarItemsProps) => [
                   {/* <Ellipsis /> */}
                 </>
               ),
-              link: `/bookmarks`,
+              link: `/project/bookmarks`,
             },
           ],
         };
       })(),
       (() => {
         const archives = injectables?.archives;
-        const items = archives?.slice(0, 3)?.map((project: IProject) => {
-          const link = `/archive/${project.id}`;
+        const items = archives?.slice(0, 3)?.map((project: IArchive) => {
+          const link = `/project/archive/${project.id}`;
           return {
             link,
             label: project.name,
@@ -171,7 +218,7 @@ export const sidebarItems = (injectables: ISidebarItemsProps) => [
 
         return {
           label: i18n.t("component.sidebar.menu.archives", "Archives"),
-          link: `/archives`,
+          link: `/project/archives`,
           icon: <ArchiveIconOutlined />,
           items: items && [
             ...items,
@@ -183,7 +230,7 @@ export const sidebarItems = (injectables: ISidebarItemsProps) => [
                   {/* <Ellipsis /> */}
                 </>
               ),
-              link: `/archives`,
+              link: `/project/archives`,
             },
           ],
         };
