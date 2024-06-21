@@ -124,9 +124,9 @@ export function EmojiPickerContent({
               {isCategoryVisible(categoryId) &&
                 section
                   .getRows()
-                  .map((row: GridRow, index) => (
+                  .map((row: GridRow) => (
                     <RowOfButtons
-                      key={index}
+                      key={row.id}
                       emojiLibrary={emojiLibrary}
                       row={row}
                       onSelectEmoji={onSelectEmoji}

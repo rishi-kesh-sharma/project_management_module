@@ -1,4 +1,3 @@
-import React from 'react';
 import { ComboboxProps } from '@udecode/plate-combobox';
 import { getPluginOptions, useEditorRef } from '@udecode/plate-common';
 import {
@@ -21,7 +20,7 @@ export function MentionCombobox({
   const { trigger } = getPluginOptions<MentionPlugin>(editor, pluginKey);
 
   return (
-    <div onMouseDown={(e) => e.preventDefault()}>
+    <div role='button' onMouseDown={(e) => e.preventDefault()}>
       <Combobox
         id={id}
         trigger={trigger!}

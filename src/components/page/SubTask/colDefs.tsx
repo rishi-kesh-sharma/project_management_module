@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { ISubTaskRowData } from "@/@types";
+import { IHumanResource, ISubTaskRowData } from "@/@types";
 import ProgressBar from "@/components/custom/common/ProgressBar/ProgressBar";
 import Tags from "@/components/custom/common/Tags/Tags";
 import {
@@ -9,7 +9,6 @@ import {
 } from "@/components/custom/common/icons/commonIcons";
 import { Avatar, AvatarImage } from "@/components/ui/Avatar/avatar";
 import { getTagVariantForValues } from "@/lib/utils";
-import { users } from "@/utils/constants";
 import { AvatarFallback } from "@radix-ui/react-avatar";
 import moment from "moment";
 import { Link, useParams } from "react-router-dom";
@@ -91,14 +90,14 @@ export const colDefs = [
       valueListMaxHeight: 220,
       values: ["Member1", "Member2", "Member3", "Member4"],
     },
-    cellRenderer: () => {
+    cellRenderer: (p: { value: IHumanResource[] }) => {
       return (
         <div className="flex -space-x-2 items-center h-full ">
-          {users.map((user: any) => {
+          {p?.value?.map((member: IHumanResource) => {
             return (
-              <Avatar className="h-6 w-6 cursor-pointer ">
-                <AvatarImage src={user.profile_pic} />
-                <AvatarFallback>{user.name.slice(0, 1)}</AvatarFallback>
+              <Avatar key={member.id} className="h-6 w-6 cursor-pointer ">
+                <AvatarImage src={member?.avatar} />
+                <AvatarFallback>{member?.name?.slice(0, 1)}</AvatarFallback>
               </Avatar>
             );
           })}

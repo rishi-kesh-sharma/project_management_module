@@ -3,11 +3,13 @@ import {
   VerticalTimelineElement,
 } from "react-vertical-timeline-component";
 import "react-vertical-timeline-component/style.min.css";
-import { WorkspaceIcon } from "../icons/commonIcons";
+import { SwapHorizontalIconOutlined, SwapVerticalIconOutlined, WorkspaceIcon } from "../icons/commonIcons";
 import { faker } from "@faker-js/faker";
 import Tags from "../Tags/Tags";
 import moment from "moment";
-import { getTagVariantForValues } from "@/lib/utils";
+import { cn, getTagVariantForValues } from "@/lib/utils";
+import { useState } from "react";
+import { Button } from "@/components/ui/Button/button";
 
 const timelineData = [
   {
@@ -73,13 +75,36 @@ const colors = {
   notAchievedColor: `red`,
 };
 const Timeline = () => {
+  const [isVertical, setIsVertical] = useState<boolean>(true)
+  const handleSetVertical = () => {
+    if (!isVertical) {
+      return setIsVertical(true)
+    }
+    return
+  }
+  const handleSetHorizontalVertical = () => {
+    if (isVertical) {
+      return setIsVertical(false)
+    }
+    return
+  }
   const descriptionLength = 200;
   return (
-    <div className="max-h-[450px] overflow-auto">
-      <VerticalTimeline animate={true} lineColor="purple">
+    <div className={cn("max-h-[450px] overflow-auto")}>
+      <div className="flex justify-end mr-[2rem] gap-2">
+        <Button variant={`${isVertical ? `default` : `secondary`}`} effect={"gooeyLeft"} size={"icon"} onClick={handleSetVertical}>
+          <SwapVerticalIconOutlined size={20} />
+        </Button>
+        <Button variant={`${!isVertical ? `default` : `secondary`}`} effect={"gooeyLeft"} size={"icon"} onClick={handleSetHorizontalVertical}>
+          <SwapHorizontalIconOutlined size={20} />
+        </Button>
+
+      </div>
+      <VerticalTimeline animate={true} lineColor="purple" className="rotate-90">
         {timelineData.map((timeline) => {
           return (
             <VerticalTimelineElement
+
               key={timeline.id}
               className="vertical-timeline-element--work "
               date={moment(timeline.expected_achievement_date).format("LL")}
@@ -91,6 +116,7 @@ const Timeline = () => {
                 color: "#fff",
               }}
               icon={<WorkspaceIcon />}
+              style={{ rotate: "-90deg" }}
             >
               <div className="flex flex-col gap-3">
                 <div className="flex justify-between">

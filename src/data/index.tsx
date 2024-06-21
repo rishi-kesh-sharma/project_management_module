@@ -277,17 +277,20 @@ export const upcomingDeadlineData = {
 
 export const cardData = [
   {
+    id: "workspaces",
     count: 10,
     label: i18n.t("component.home.analytics.workspaceNum", "Workspaces"),
     icon: <WorkspaceIcon />,
     className: "bg-green-400"
   },
   {
+    id: "projects",
     count: 40,
     label: i18n.t("component.home.analytics.projectNum", "Projects"),
     icon: <ProjectsIcon />,
   },
   {
+    id: "members",
     count: 80,
     label: i18n.t("component.home.analytics.memberNum", "Members"),
     icon: <PeopleIconOutlined />,
@@ -295,6 +298,7 @@ export const cardData = [
 
   },
   {
+    id: "members-dupliate",
     count: 80,
     label: i18n.t("component.home.analytics.memberNum", "Members"),
     icon: <PeopleIconOutlined />,

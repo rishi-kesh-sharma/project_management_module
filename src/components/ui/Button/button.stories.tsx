@@ -1,5 +1,3 @@
-// Button.stories.tsx
-
 import { StoryObj, Meta } from "@storybook/react";
 import { Button } from "./button";
 import { IoMdAdd } from "react-icons/io";
@@ -42,7 +40,6 @@ const meta: Meta<typeof Button> = {
   },
 };
 
-// console.log(buttonVariants);
 export default meta;
 type Story = StoryObj<typeof meta>;
 
@@ -75,7 +72,7 @@ export const RoundedIcon: Story = {
     className: "rounded-full flex gap-[0.4rem] ",
     // asChild: true,
     children: [
-      <IoMdAdd className=" bg-primary  text-white rounded-full w-[1.7rem] h-[1.5rem]" />,
+      <IoMdAdd key={'add-icon'} className=" bg-primary  text-white rounded-full w-[1.7rem] h-[1.5rem]" />,
       "Create",
     ],
   },
@@ -85,7 +82,7 @@ export const Loading: Story = {
   args: {
     variant: "default",
     children: [
-      <ReloadIcon className="mr-2 h-4 w-4 animate-spin" />,
+      <ReloadIcon key={"reload-icon"} className="mr-2 h-4 w-4 animate-spin" />,
       "Please wait",
     ],
   },

@@ -1,4 +1,3 @@
-import React from 'react';
 import { UseEmojiPickerType } from '@udecode/plate-emoji';
 
 export type EmojiPickerPreviewProps = Pick<
@@ -9,7 +8,6 @@ export type EmojiPickerPreviewProps = Pick<
 export type EmojiPreviewProps = Pick<UseEmojiPickerType, 'emoji'>;
 
 export type NoEmojiPreviewProps = Pick<UseEmojiPickerType, 'i18n'>;
-export type PickAnEmojiPreviewProps = NoEmojiPreviewProps;
 
 function EmojiPreview({ emoji }: EmojiPreviewProps) {
   return (
@@ -41,7 +39,7 @@ function NoEmoji({ i18n }: NoEmojiPreviewProps) {
   );
 }
 
-function PickAnEmoji({ i18n }: PickAnEmojiPreviewProps) {
+function PickAnEmoji({ i18n }: NoEmojiPreviewProps) {
   return (
     <div className="flex items-center border-t border-gray-100 p-2">
       <div className="flex items-center justify-center text-3xl">☝️</div>

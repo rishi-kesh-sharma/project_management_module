@@ -58,6 +58,8 @@ import { MdOutlineRoomPreferences } from "react-icons/md";
 import { MdOutlineTimeline } from "react-icons/md";
 import { GoMilestone } from "react-icons/go";
 import { MdOutlineInventory2 } from "react-icons/md";
+import { IoSwapHorizontalOutline } from "react-icons/io5";
+import { IoSwapVerticalOutline } from "react-icons/io5";
 export {
   FaRegCircleDot as GoalsIcon,
   HiOutlineChartBar as PlanningIcon,
@@ -121,4 +123,6 @@ export {
   MdOutlineRoomPreferences as PreferencesIcon,
   MdOutlineTimeline as TimelineIcon,
   GoMilestone as MilestoneIcon,
+  IoSwapVerticalOutline as SwapVerticalIconOutlined,
+  IoSwapHorizontalOutline as SwapHorizontalIconOutlined
 };

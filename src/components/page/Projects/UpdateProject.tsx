@@ -155,7 +155,7 @@ const UpdateProject: React.FC = () => {
                   placeholder="Eg. Project 1"
                   {...field}
                   id="name"
-                  // name="name"
+                // name="name"
                 />
               </FormControl>
 
@@ -397,9 +397,9 @@ const UpdateProject: React.FC = () => {
                   className=" py-[1.5rem]"
                   tags={field.value}
                   setTags={field.onChange} //   setTags={(newTags) => {
-                  //     setTags(newTags);
-                  //     setValue("topics", newTags as [Tag, ...Tag[]]);
-                  //   }}
+                //     setTags(newTags);
+                //     setValue("topics", newTags as [Tag, ...Tag[]]);
+                //   }}
                 />
               </FormControl>
 

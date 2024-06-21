@@ -33,6 +33,7 @@ export interface IRouterMatch {
 
 const Breadcrumb = () => {
   const matches: RouteObject[] = useMatches();
+  console.log(matches, 'matches')
   const params = useParams();
   const location = useLocation();
   const [crumbs, setCrumbs] = useState<
@@ -54,7 +55,8 @@ const Breadcrumb = () => {
   return (
     <ShadBreadCrumb>
       <BreadcrumbList>
-        {crumbs.map((crumb) => {
+        {crumbs?.map((crumb) => {
+          if(!crumb?.label) return 
           return (
             <>
               <BreadcrumbItem>

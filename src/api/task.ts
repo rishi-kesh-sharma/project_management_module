@@ -9,14 +9,14 @@ export const taskApi = createApi({
   baseQuery: fetchBaseQuery({ baseUrl: `${BASE_URL}` }),
   tagTypes: ["Task"],
   endpoints: (build) => ({
-    getTasks: build.query<TaskResponse, string>({
+    getTasks: build.query<TaskResponse, void>({
       query: () => "tasks",
       providesTags: (result) =>
         result
           ? [
-              ...result.map(({ id }) => ({ type: "Task" as const, id })),
-              { type: "Task", id: "LIST" },
-            ]
+            ...result.map(({ id }) => ({ type: "Task" as const, id })),
+            { type: "Task", id: "LIST" },
+          ]
           : [{ type: "Task", id: "LIST" }],
     }),
     addTask: build.mutation<ITask, Partial<ITask>>({

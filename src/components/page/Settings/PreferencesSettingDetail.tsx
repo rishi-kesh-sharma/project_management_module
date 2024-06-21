@@ -71,7 +71,7 @@ export default function PreferencesSettingDetail() {
         <SelectContent>
           {availableLanguages.map((language) => {
             return (
-              <SelectItem value={language.id}>{language.label}</SelectItem>
+              <SelectItem key={language.id} value={language.id}>{language.label}</SelectItem>
             );
           })}
         </SelectContent>
