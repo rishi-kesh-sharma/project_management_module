@@ -11,6 +11,7 @@ const Cards = ({ data }: { data: any }) => {
         if (!item) {
           return (
             <CreateWorkspaceModalForm
+              key={item.id}
               trigger={
                 <Button
                   variant={"outline"}

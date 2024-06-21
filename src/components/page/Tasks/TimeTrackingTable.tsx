@@ -21,12 +21,15 @@ const TimeTrackingTable = () => {
 
   const { data, isLoading, isError } = useGetTimeTrackingsQuery("");
 
-  if (isLoading)
-    <div>
+  if (isLoading) {
+    return <div>
       <Spinner />
-    </div>;
+    </div>
+  }
 
-  if (isError) return <div>Error Occurred</div>;
+  if (isError) {
+    return <div>Error Occurred</div>
+  };
   return (
     <div className="mt-[2rem]">
       {/* <Timer /> */}

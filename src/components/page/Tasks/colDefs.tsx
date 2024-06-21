@@ -9,7 +9,6 @@ import {
 } from "@/components/custom/common/icons/commonIcons";
 import { Avatar, AvatarImage } from "@/components/ui/Avatar/avatar";
 import { getTagVariantForValues } from "@/lib/utils";
-import { users } from "@/utils/constants";
 import { AvatarFallback } from "@radix-ui/react-avatar";
 import moment from "moment";
 import { Link, useParams } from "react-router-dom";
@@ -24,7 +23,7 @@ export const colDefs = [
     editable: true,
     filter: false,
     cellRenderer: (p: { value: string; data: ISubTaskRowData }) => {
-       
+
       const { workspaceId, projectId, taskId } = useParams();
       return (
         <Link
@@ -160,12 +159,12 @@ export const colDefs = [
             {[
               ...p.value.slice(0, itemsToShow),
               { count: p.value.length - itemsToShow },
-            ].map((user: any) => {
+            ].map((member: any) => {
               return (
-                <Avatar className="h-6 w-6 cursor-pointer ">
-                  <AvatarImage src={user.avatar} />
+                <Avatar key={member.id} className="h-6 w-6 cursor-pointer ">
+                  <AvatarImage src={member.avatar} />
                   <AvatarFallback>
-                    {user?.name?.slice(0, 1) || `+${user.count}`}
+                    {member?.name?.slice(0, 1) || `+${member.count}`}
                   </AvatarFallback>
                 </Avatar>
               );
@@ -177,7 +176,7 @@ export const colDefs = [
           <div className="flex -space-x-2 items-center h-full ">
             {p.value.map((user: any) => {
               return (
-                <Avatar className="h-6 w-6 cursor-pointer ">
+                <Avatar className="h-6 w-6 cursopr-pointer ">
                   <AvatarImage src={user.avatar} />
                   <AvatarFallback>{user.name.slice(0, 1)}</AvatarFallback>
                 </Avatar>

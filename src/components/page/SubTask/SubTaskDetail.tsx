@@ -55,10 +55,10 @@ import Tabs from "@/components/custom/common/Tabs/TabsWithBottomBorder/Tabs";
 import EquipmentsDetail from "@/components/custom/EquipmentsTable/EquipmentDetail";
 import HumanResourceDetail from "@/components/custom/HumanResourceTable/HumanResourceDetail";
 import InventoriesDetail from "@/components/custom/InventoriesTable/InventoriesDetail";
-import { KanbanBoard } from "@/components/custom/common/Kanban/TasksKanbanBoard";
 import TimeTrackingDetail from "./TimeTrackingDetail";
 import TabWithButtonedTrigger from "@/components/custom/common/Tabs/TabsWithButtonedTrigger/TabsWithButtonedTrigger";
 import Spinner from "@/components/custom/common/Loaders/Spinner/Spinner";
+import TasksKanbanBoard from "@/components/custom/common/Kanban/TasksKanbanBoard";
 // import { useParams } from "react-router";
 const TaskDetail = () => {
   // const { workspaceId, projectId, taskId } = useParams();
@@ -96,7 +96,7 @@ const TaskDetail = () => {
                           Kanban Board
                         </h1>
 
-                        <KanbanBoard />
+                        <TasksKanbanBoard />
                       </div>
                     ),
                   },

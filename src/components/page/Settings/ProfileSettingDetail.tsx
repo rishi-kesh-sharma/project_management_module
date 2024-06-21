@@ -13,20 +13,8 @@ import {
 } from "@/components/ui/Form/form";
 import { Button } from "@/components/ui/Button/button";
 import TextInput from "@/components/custom/common/FormElements/Input/TextInput/TextInput";
-import { useState } from "react";
-import {
-  Popover,
-  PopoverContent,
-  PopoverTrigger,
-} from "@/components/ui/Popover/popover";
-import { Calendar as CalendarIcon } from "lucide-react";
-import { cn } from "@/lib/utils";
-import { Calendar } from "@/components/ui/Calendar/calendar";
-import { format } from "date-fns";
 import DatePicker from "@/components/custom/common/FormElements/DatePicker/DatePicker";
-
 const ProfileSettingDetail: React.FC = () => {
-  const [date, setDate] = useState<Date>();
   const formSchema = z.object({
     firstName: z.string().min(2).max(100),
     lastName: z.string().min(2).max(100),
@@ -79,7 +67,7 @@ const ProfileSettingDetail: React.FC = () => {
                   placeholder="First Name"
                   {...field}
                   id="firstName"
-                  // name="name"
+                // name="name"
                 />
               </FormControl>
 
@@ -99,7 +87,7 @@ const ProfileSettingDetail: React.FC = () => {
                   placeholder="lastName"
                   {...field}
                   id="lastName"
-                  // name="name"
+                // name="name"
                 />
               </FormControl>
 
@@ -119,7 +107,7 @@ const ProfileSettingDetail: React.FC = () => {
                   placeholder="Email"
                   {...field}
                   id="email"
-                  // name="name"
+                // name="name"
                 />
               </FormControl>
 
@@ -175,7 +163,7 @@ const ProfileSettingDetail: React.FC = () => {
                   placeholder="Sex"
                   {...field}
                   id="sex"
-                  // name="name"
+                  name="sex"
                 />
               </FormControl>
 
@@ -195,7 +183,7 @@ const ProfileSettingDetail: React.FC = () => {
                   placeholder="Role"
                   {...field}
                   id="role"
-                  // name="name"
+                // name="name"
                 />
               </FormControl>
 
@@ -214,7 +202,7 @@ const ProfileSettingDetail: React.FC = () => {
                   placeholder="Subscription Tire"
                   {...field}
                   id="subscriptionTire"
-                  // name="name"
+                // name="name"
                 />
               </FormControl>
 

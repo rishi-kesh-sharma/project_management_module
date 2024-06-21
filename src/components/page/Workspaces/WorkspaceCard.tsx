@@ -84,7 +84,7 @@ const WorkspaceCard: React.FC<IWorkspaceCardProps> = ({
                 "pink",
                 "default",
               ]);
-            return <Tags variant={tagVariant} value={tag} />;
+            return <Tags key={tag} variant={tagVariant} value={tag} />;
           })}
         </div>
       </CardContent>

@@ -20,20 +20,19 @@ import { FloatingToolbarButtons } from "@/components/plate-ui/floating-toolbar-b
 import { MentionCombobox } from "@/components/plate-ui/mention-combobox";
 
 export interface IPlateEditorProps {
-  initialValue: [
+  initialValue:
+  {
+    id: string;
+    type: string;
+    children:
     {
-      id: string;
-      type: string;
-      children: [
-        {
-          text: string;
-        },
-      ];
-    },
-  ];
+      text: string;
+    }[],
+  }[],
+
   height?: number;
   size?: "sm" | "md";
-  className: string;
+  className?: string;
 }
 export default function PlateEditor({
   initialValue,

@@ -1,5 +1,3 @@
-// import { useParams } from "react-router";
-
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
@@ -13,19 +11,10 @@ import {
 } from "@/components/ui/Form/form";
 import { Button } from "@/components/ui/Button/button";
 import TextInput from "@/components/custom/common/FormElements/Input/TextInput/TextInput";
-import { useState } from "react";
-import {
-  Popover,
-  PopoverContent,
-  PopoverTrigger,
-} from "@/components/ui/Popover/popover";
-import { Calendar as CalendarIcon } from "lucide-react";
-import { cn } from "@/lib/utils";
-import { Calendar } from "@/components/ui/Calendar/calendar";
-import { format } from "date-fns";
+
+
 
 const AccountSettingDetail: React.FC = () => {
-  const [date, setDate] = useState<Date>();
   const formSchema = z.object({
     currentPassword: z.string().min(8).max(16),
     newPassword: z.string().min(8).max(16),
@@ -67,7 +56,7 @@ const AccountSettingDetail: React.FC = () => {
                   placeholder="Current Password"
                   {...field}
                   id="firstName"
-                  // name="name"
+                // name="name"
                 />
               </FormControl>
 
@@ -87,7 +76,7 @@ const AccountSettingDetail: React.FC = () => {
                   placeholder="New Password"
                   {...field}
                   id="newPassword"
-                  // name="name"
+                // name="name"
                 />
               </FormControl>
 
@@ -107,7 +96,7 @@ const AccountSettingDetail: React.FC = () => {
                   placeholder="Confirm Password"
                   {...field}
                   id="confirmPassword"
-                  // name="name"
+                // name="name"
                 />
               </FormControl>
 

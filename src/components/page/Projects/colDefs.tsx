@@ -29,7 +29,7 @@ export const colDefs = [
     pinned: "left",
     filter: false,
     cellRenderer: (p: { value: string; data: IProjectRowData }) => {
-       
+
       const { workspaceId, projectId } = useParams();
       return (
         <Link
@@ -187,13 +187,13 @@ export const colDefs = [
       const itemsToShow = 3;
       if (p.value.length > itemsToShow) {
         return (
-          <div className="flex -space-x-2 items-center h-full ">
+          <div className="flex -space-x-2 items-center h-full" >
             {[
               ...p.value.slice(0, itemsToShow),
               { count: p.value.length - itemsToShow },
             ].map((user: any) => {
               return (
-                <Avatar className="h-6 w-6 cursor-pointer ">
+                <Avatar key={user.name} className="h-6 w-6 cursor-pointer ">
                   <AvatarImage src={user.avatar} />
                   <AvatarFallback>
                     {user?.name?.slice(0, 1) || `+${user.count}`}
@@ -229,7 +229,7 @@ export const colDefs = [
     headerCheckboxSelection: false,
 
     cellRenderer: (p: { value: string; data: IProjectRowData }) => {
-       
+
       const { workspaceId, projectId } = useParams();
       return (
         <div className="flex gap-4 items-center justify-start  h-full">

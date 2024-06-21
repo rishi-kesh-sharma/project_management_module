@@ -1,4 +1,4 @@
- 
+
 import WorkspaceDetailTable from "./Table";
 
 import { useGetWorkspaceQuery } from "@/api/workspace";
@@ -189,7 +189,7 @@ const WorkspaceDetail = () => {
               </div>
             )}
 
-          {quickAccessOptions &&
+          {
             quickAccessOptions?.primaryOptions?.find(
               (item) => item.id === "archive"
             ) && (
@@ -232,7 +232,7 @@ const WorkspaceDetail = () => {
             )
             .map((item) => {
               return (
-                <TooltipProvider>
+                <TooltipProvider key={item.id}>
                   <Tooltip>
                     <TooltipTrigger>{item.icon || item.element}</TooltipTrigger>
                     <TooltipContent>{item.label}</TooltipContent>

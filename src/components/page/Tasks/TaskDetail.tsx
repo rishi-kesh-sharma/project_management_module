@@ -217,24 +217,24 @@ const TaskDetail = () => {
           {quickAccessOptions?.primaryOptions?.find(
             (item) => item.id === "bookmark"
           ) && (
-            <div className="flex gap-2  ">
-              {isBookmarked ? (
-                <StarIconFilled
-                  onClick={toggleBookmark}
-                  className="text-orange-400 text-lg cursor-pointer"
-                />
-              ) : (
-                <StarIconOutlined
-                  onClick={toggleBookmark}
-                  className="text-gray-500 text-lg cursor-pointer"
-                />
-              )}
+              <div className="flex gap-2  ">
+                {isBookmarked ? (
+                  <StarIconFilled
+                    onClick={toggleBookmark}
+                    className="text-orange-400 text-lg cursor-pointer"
+                  />
+                ) : (
+                  <StarIconOutlined
+                    onClick={toggleBookmark}
+                    className="text-gray-500 text-lg cursor-pointer"
+                  />
+                )}
 
-              {/* <ThreeHorizontalInsideCircle className="text-primary text-lg cursor-pointer" /> */}
-            </div>
-          )}
+                {/* <ThreeHorizontalInsideCircle className="text-primary text-lg cursor-pointer" /> */}
+              </div>
+            )}
 
-          {quickAccessOptions &&
+          {
             quickAccessOptions?.primaryOptions?.find(
               (item) => item.id === "archive"
             ) && (
@@ -257,8 +257,8 @@ const TaskDetail = () => {
           {quickAccessOptions?.primaryOptions?.find(
             (item) => item.id === "notification"
           ) && (
-            <NotificationIconOutlined className="text-2xl  text-gray-500 cursor-pointer" />
-          )}
+              <NotificationIconOutlined className="text-2xl  text-gray-500 cursor-pointer" />
+            )}
 
           {quickAccessOptions?.primaryOptions
             ?.filter(

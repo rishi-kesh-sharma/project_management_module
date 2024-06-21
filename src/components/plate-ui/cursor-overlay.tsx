@@ -28,9 +28,9 @@ export function Cursor({
   return (
     <>
       {!disableSelection &&
-        selectionRects.map((position, i) => (
+        selectionRects.map((position) => (
           <div
-            key={i}
+            key={`${position.left} ${position.top}`}
             className={cn(
               "pointer-events-none absolute z-10 opacity-[0.3]",
               classNames?.selectionRect
