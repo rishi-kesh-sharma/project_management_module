@@ -81,8 +81,16 @@ export const projectManagementModuleRoutes = [
     path: `/project`,
     element: AnalyticsPage,
     pageTitle: pageTitles.analyticsPage,
+    crumbs: () => [
+      {
+        label: {
+          key: `component.sidebar.menu.project-management`,
+          fallback: `Dashboard`,
+        },
+        path: `/project`,
+      },
+    ],
   },
-
   // bookmark related routes
   {
     path: `/project/bookmarks`,
@@ -131,7 +139,7 @@ export const projectManagementModuleRoutes = [
     element: WorkspacesPage,
     pageTitle: pageTitles.workspacesPage,
     crumbs: () => [
-      { label: { key: ``, fallback: `Workspaces` }, path: `/workspaces` },
+      { label: { key: ``, fallback: `Workspaces` }, path: `/project/workspaces` },
     ],
   },
   {
@@ -141,7 +149,7 @@ export const projectManagementModuleRoutes = [
     crumbs: ({ workspaceId }: { workspaceId: string }) => [
       {
         label: { key: ``, fallback: `Workspace` },
-        path: `/workspace/${workspaceId}`,
+        path: `/project/workspace/${workspaceId}`,
       },
     ],
   },
@@ -328,6 +336,15 @@ export const privateRoutes = [
     path: `/`,
     element: AnalyticsPage,
     pageTitle: pageTitles.analyticsPage,
+    crumbs: () => [
+      {
+        label: {
+          key: `component.sidebar.menu.dashboard`,
+          fallback: `Dashboard`,
+        },
+        path: `/`,
+      },
+    ],
   },
   // project management modules related routes
   {
@@ -379,18 +396,9 @@ export const routes = [
 
   // private routes
   {
-    path: ``,
+    path: `/`,
     element: PrivateRoute,
     component: CommonLayout,
-    crumbs: () => [
-      {
-        label: {
-          key: `component.sidebar.menu.dashboard`,
-          fallback: `Dashboard`,
-        },
-        path: `/`,
-      },
-    ],
     children: privateRoutes,
   },
 ];

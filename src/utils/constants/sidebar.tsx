@@ -124,7 +124,7 @@ export const sidebarItems = (injectables: ISidebarItemsProps) => [
   {
     // label: "Dashboard ",
     label: i18n.t("component.sidebar.menu.dashboard", "Dashboard"),
-    link: `/project`,
+    link: `/`,
     icon: <OverviewIcon />,
   },
   {
@@ -136,7 +136,7 @@ export const sidebarItems = (injectables: ISidebarItemsProps) => [
       {
         // label: "Dashboard ",
         label: i18n.t("component.sidebar.menu.dashboard", "Dashboard"),
-        link: `/`,
+        link: `/project`,
         icon: <OverviewIcon />,
       },
       (() => {
