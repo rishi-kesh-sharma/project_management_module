@@ -3,11 +3,13 @@ import {
   VerticalTimelineElement,
 } from "react-vertical-timeline-component";
 import "react-vertical-timeline-component/style.min.css";
-import { WorkspaceIcon } from "../icons/commonIcons";
+import { SwapHorizontalIconOutlined, SwapVerticalIconOutlined, WorkspaceIcon } from "../icons/commonIcons";
 import { faker } from "@faker-js/faker";
 import Tags from "../Tags/Tags";
 import moment from "moment";
 import { getTagVariantForValues } from "@/lib/utils";
+import { useState } from "react";
+import { Button } from "@/components/ui/Button/button";
 
 const timelineData = [
   {
@@ -73,9 +75,19 @@ const colors = {
   notAchievedColor: `red`,
 };
 const Timeline = () => {
+  const [isVertical, setIsVertical] = useState<boolean>(true)
   const descriptionLength = 200;
   return (
     <div className="max-h-[450px] overflow-auto">
+      <div className="flex justify-end mr-[2rem] gap-2">
+        <Button variant={`${isVertical ? `default` : `secondary`}`} effect={"gooeyLeft"} size={"icon"}>
+          <SwapVerticalIconOutlined size={20} />
+        </Button>
+        <Button variant={`${!isVertical ? `default` : `secondary`}`} effect={"gooeyLeft"} size={"icon"}>
+          <SwapHorizontalIconOutlined size={20} />
+        </Button>
+
+      </div>
       <VerticalTimeline animate={true} lineColor="purple">
         {timelineData.map((timeline) => {
           return (
