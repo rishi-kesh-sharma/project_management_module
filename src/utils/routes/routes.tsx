@@ -30,7 +30,7 @@ export const settingRoutes = [
     path: `/settings`,
     // element: ProfileSettingPage,
     element: () => {
-      return <Navigate to={`/settings/account`} />
+      return <Navigate to={`/settings/profile`} />
     },
     replace: true,
     pageTitle: pageTitles.settingProfilePage,
