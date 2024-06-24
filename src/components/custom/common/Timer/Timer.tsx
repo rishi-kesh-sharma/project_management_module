@@ -1,40 +1,26 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { Button } from "@/components/ui/Button/button";
-import { useEffect } from "react";
+import { TimerContext } from "@/hooks/TimerProvider";
+import { useContext, useEffect } from "react";
 import { useLocation } from "react-router";
-import { useStopwatch } from "react-timer-hook";
 
 function MyStopwatch() {
-  const {
-    totalSeconds,
-    seconds,
-    minutes,
-    hours,
-    days,
-    isRunning,
-    start,
-    pause,
-    reset,
-    // restart,
-  } = useStopwatch({
-    autoStart: false,
-  });
+
+  const values = useContext(TimerContext)
 
   const location = useLocation();
 
-  let hasTaskStarted = localStorage.getItem("has-task-started");
-  if (hasTaskStarted) {
-    hasTaskStarted = JSON.parse(hasTaskStarted);
-  }
+
 
   const handleEndTask = () => {
+    console.log("clicked")
     localStorage.removeItem("has-task-started");
-    reset();
+    values?.reset();
   };
 
   useEffect(() => {
     addEventListener("beforeunload", () => {
-      localStorage.setItem("timer-value", JSON.stringify(totalSeconds));
+      localStorage.setItem("timer-value", JSON.stringify(values?.totalSeconds));
     });
 
     // const timerValue = localStorage.getItem("timer-value");
@@ -52,31 +38,33 @@ function MyStopwatch() {
       {/* {hasTaskStarted && (
         <h1 className="text-2xl font-semibold text-primary">Timer</h1>
       )} */}
-      {hasTaskStarted && (
+      {values?.hasTaskStarted && (
         <div className="text-3xl font-semibold">
-          <span>{days}</span>:<span>{hours}</span>:<span>{minutes}</span>:
-          <span>{seconds}</span>
+          <span>{values?.days}</span>:<span>{values?.hours}</span>:<span>{values?.minutes}</span>:
+          <span>{values?.seconds}</span>
         </div>
       )}
       {/* <p>{isRunning ? "Running" : "Not running"}</p> */}
       <div className="flex gap-[0.2rem] items-center justify-center ">
-        {!hasTaskStarted ? (
+        {!values?.hasTaskStarted ? (
           <Button
             onClick={() => {
+              console.log("clicked")
               localStorage.setItem("has-task-started", JSON.stringify(true));
-              start();
+              values?.start();
+              console.log("hello")
             }}
           >
             Start Task
           </Button>
         ) : (
           <div className="flex gap-3 items-center">
-            {isRunning ? (
-              <Button variant={"secondary"} onClick={pause}>
+            {values?.isRunning ? (
+              <Button variant={"secondary"} onClick={values?.pause}>
                 Pause
               </Button>
             ) : (
-              <Button variant={"secondary"} onClick={start}>
+              <Button variant={"secondary"} onClick={values?.start}>
                 Resume
               </Button>
             )}
