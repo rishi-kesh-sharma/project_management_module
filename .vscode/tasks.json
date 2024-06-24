@@ -1,0 +1,38 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Start Fake Server",
+      "type": "shell",
+      "command": "npm run start-fake-server",
+      "isBackground": true,
+      "presentation": {
+        "reveal": "always",
+        "panel": "new"
+      }
+    },
+    {
+      "label": "Start React Server",
+      "type": "shell",
+      "command": "npm run dev",
+      "isBackground": true,
+
+      "presentation": {
+        "reveal": "always",
+        "panel": "new"
+      },
+      "dependsOn": ["Start Fake Server"],
+      "dependsOrder": "parallel"
+    },
+    {
+      "label": "Start Backend and Frontend",
+      "type": "shell",
+      "command": "npm run start:all",
+      "isBackground": true,
+      "presentation": {
+        "reveal": "always",
+        "panel": "new"
+      }
+    }
+  ]
+}
