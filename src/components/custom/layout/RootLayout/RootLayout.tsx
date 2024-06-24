@@ -5,12 +5,15 @@ import { ThemeProvider } from "@/components/Providers/Theme/ThemeProvider";
 import { RootLayoutProps } from "@/@types";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import TimerProvider from "@/hooks/TimerProvider";
 
 export default function RootLayout({ children }: RootLayoutProps) {
+
   return (
     <>
       <ThemeProvider defaultTheme={"system"} storageKey="vite-ui-theme">
         <ToastContainer />
+
         <div
           className={cn(
             "min-h-screen bg-background font-sans antialiased",
@@ -21,7 +24,9 @@ export default function RootLayout({ children }: RootLayoutProps) {
             disableHoverableContent
             delayDuration={500}
             skipDelayDuration={0}>
-            <div className="">{children}</div>
+            <TimerProvider>
+              <div className="">{children}</div>
+            </TimerProvider>
           </TooltipProvider>
         </div>
       </ThemeProvider>
