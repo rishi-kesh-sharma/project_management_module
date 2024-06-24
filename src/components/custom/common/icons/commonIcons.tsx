@@ -60,6 +60,8 @@ import { GoMilestone } from "react-icons/go";
 import { MdOutlineInventory2 } from "react-icons/md";
 import { IoSwapHorizontalOutline } from "react-icons/io5";
 import { IoSwapVerticalOutline } from "react-icons/io5";
+import { FiPauseCircle } from "react-icons/fi";
+import { IoPlayCircleOutline } from "react-icons/io5";
 export {
   FaRegCircleDot as GoalsIcon,
   HiOutlineChartBar as PlanningIcon,
@@ -124,5 +126,7 @@ export {
   MdOutlineTimeline as TimelineIcon,
   GoMilestone as MilestoneIcon,
   IoSwapVerticalOutline as SwapVerticalIconOutlined,
-  IoSwapHorizontalOutline as SwapHorizontalIconOutlined
+  IoSwapHorizontalOutline as SwapHorizontalIconOutlined,
+  FiPauseCircle as PauseIconOutlined,
+  IoPlayCircleOutline as PlayIconOutlined
 };

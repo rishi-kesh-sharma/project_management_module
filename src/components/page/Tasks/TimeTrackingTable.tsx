@@ -4,7 +4,7 @@ import TableToolbar from "@/components/custom/common/TableElements/TableToolbar/
 import { ProjectsTableFilters, ProjectsTableSearch } from "@/utils/constants";
 import { useGetTimeTrackingsQuery } from "@/api/timeTracking";
 import Spinner from "@/components/custom/common/Loaders/Spinner/Spinner";
-// import Timer from "@/components/custom/common/Timer/Timer";
+import Timer from "@/components/custom/common/Timer/Timer";
 
 const dropdownMenus = {
   items: [
@@ -32,8 +32,9 @@ const TimeTrackingTable = () => {
   };
   return (
     <div className="mt-[2rem]">
-      {/* <Timer /> */}
-
+      <div className="mb-[2rem]">
+        <Timer />
+      </div>
       <AgGridTable
         TableToolbarHOC={({
           isSideBarVisible,

@@ -1,8 +1,8 @@
- 
+
 import { IoMdNotificationsOutline } from "react-icons/io";
 import { IHeaderProps } from "@/@types";
 import { avatarDropdownMenu, commandData } from "@/utils/constants";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import NotificationCard from "@/components/custom/common/NotificationCard/NotificationCard";
 import {
   useAppSelector,
@@ -15,8 +15,10 @@ import SearchInput from "@/components/custom/common/SearchInput/SearchInput";
 import i18n from "@/intl/i18n";
 import CommandDialog from "@/components/custom/common/Command/Command";
 import AvatarDropdown from "@/components/custom/common/Dropdowns/AvatarDropdownMenu/AvatarDropdownMenu";
+import { TimerContext } from "@/hooks/TimerProvider";
 
 const Header: React.FC<IHeaderProps> = () => {
+  const values = useContext(TimerContext)
   const [showNotifications, setShowNotifications] = useState(false);
   const notifications = useAppSelector(selectNotifications);
   const user = useAppSelector(selectUser);
@@ -29,7 +31,15 @@ const Header: React.FC<IHeaderProps> = () => {
   };
 
   return (
-    <div className="flex  gap-5 items-center justify-end px-2 w-full min-w-[400px] relative ml-auto ">
+    <div className="flex  gap-5 items-center justify-between px-2 w-full min-w-[400px] relative  ">
+      <div>
+        {values?.hasTaskStarted && (
+          <div className="text-3xl font-semibold">
+            <span>{values?.days}</span>:<span>{values?.hours}</span>:<span>{values?.minutes}</span>:
+            <span>{values?.seconds}</span>
+          </div>
+        )}
+      </div>
       <SearchInput
         id="global-search"
         name="global-search"
@@ -38,8 +48,10 @@ const Header: React.FC<IHeaderProps> = () => {
         className=""
         onSubmit={handleGlobalSearch}
       />
+
       <CommandDialog commandData={commandData} />
       <div className="flex gap-5 items-center  px-2 ">
+        {/* <Timer /> */}
         <div className="text-2xl ">
           <IoMdNotificationsOutline
             className="relative cursor-pointer"
