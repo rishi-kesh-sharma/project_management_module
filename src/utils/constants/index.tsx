@@ -1,3 +1,4 @@
+/* eslint-disable react-refresh/only-export-components */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
 import {
@@ -257,6 +258,7 @@ export const ProjectsTableSearch = ({
   );
 };
 
+// eslint-disable-next-line react-refresh/only-export-components
 export const commandData: ICommandProps = {
   shortcut: "⌘j",
   placeholder: "Press ⌘j to open command palette",

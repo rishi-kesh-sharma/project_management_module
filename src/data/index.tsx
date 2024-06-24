@@ -1,5 +1,4 @@
 import {
-  PeopleIcon,
   PeopleIconOutlined,
   ProjectsIcon,
   WorkspaceIcon,
@@ -58,7 +57,7 @@ export const barChartData = {
     {
       label: i18n.t(
         "component.home.text.budgetEstimation.expected",
-        "Esperado"
+        "Esperado",
       ),
       data: [8, 15, 10, 12, 10, 8, 12, 10, 8, 12, 10, 8],
       backgroundColor: "#99D045",
@@ -71,7 +70,7 @@ export const barChartData = {
 export const overdueProjectData = {
   tableCaption: i18n.t(
     "component.home.analytics.overdueProject",
-    "Overdue Projects"
+    "Overdue Projects",
   ),
   columns: [
     {
@@ -281,7 +280,7 @@ export const cardData = [
     count: 10,
     label: i18n.t("component.home.analytics.workspaceNum", "Workspaces"),
     icon: <WorkspaceIcon />,
-    className: "bg-green-400"
+    className: "bg-green-400",
   },
   {
     id: "projects",
@@ -294,16 +293,14 @@ export const cardData = [
     count: 80,
     label: i18n.t("component.home.analytics.memberNum", "Members"),
     icon: <PeopleIconOutlined />,
-    className: "bg-yellow-400"
-
+    className: "bg-yellow-400",
   },
   {
     id: "members-dupliate",
     count: 80,
     label: i18n.t("component.home.analytics.memberNum", "Members"),
     icon: <PeopleIconOutlined />,
-    className: "bg-purple-400"
-
+    className: "bg-purple-400",
   },
 ];
 

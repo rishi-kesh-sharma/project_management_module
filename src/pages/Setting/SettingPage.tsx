@@ -1,4 +1,3 @@
-import ProfileSettingDetail from "@/components/page/Settings/ProfileSettingDetail";
 import SettingLayout from "@/layouts/SettingLayout";
 import { useEffect } from "react";
 import { Helmet } from "react-helmet";

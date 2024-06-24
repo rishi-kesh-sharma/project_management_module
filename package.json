@@ -11,6 +11,7 @@
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "lint:fix": "eslint . --fix --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview",
+    "start:all": "concurrently  -n \"BACKEND,FRONTEND\" -c \"green,blue\"   \" npm run start-fake-server \"  \" npm run dev \" ",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
     "prepare": "husky install"
