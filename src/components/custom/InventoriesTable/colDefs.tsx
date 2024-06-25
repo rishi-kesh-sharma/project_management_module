@@ -1,5 +1,4 @@
 import { IProjectRowData } from "@/@types";
-import Badge from "@/components/custom/common/Badge/Badge";
 import {
   EditIcon,
   TrashIcon,
@@ -14,7 +13,6 @@ export const colDefs = [
     headerName: "Inventory Name",
     checkboxSelection: true,
     cellRenderer: (p: { value: string; data: IProjectRowData }) => {
-       
       // const { workspaceId, projectId } = useParams();
       return (
         // <Link
@@ -92,7 +90,22 @@ export const colDefs = [
     cellRenderer: (p: { value: string }) => {
       return (
         <div>
-          <Badge variant="outline" label={p.value} />
+          {" "}
+          <Tags
+            className="py-1"
+            value={p.value}
+            variant={faker.helpers.arrayElement([
+              "dark",
+              "indigo",
+              "purple",
+              "red",
+              "green",
+              "pink",
+              "yellow",
+              "primary",
+              "dark",
+            ])}
+          />
         </div>
       );
     },
