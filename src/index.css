@@ -3,6 +3,11 @@
 @tailwind components;
 @tailwind utilities;
 
+/* hiding syncfusion trial license alert */
+body > :nth-child(3) {
+  display: none;
+}
+
 @layer base {
   :root {
     /* black gray */

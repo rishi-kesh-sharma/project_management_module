@@ -7,10 +7,9 @@ import { Provider as ReduxProvider } from "react-redux";
 import store from "./redux/store.ts";
 
 import { registerLicense } from "@syncfusion/ej2-base";
+const licenseKey = `ORg4AjUWIQA/Gnt2UFhhQlJBfVldX2ZWfFN0QXNfdV12flVDcC0sT3RfQFljT3xWdkVnXH5WcnBcQA==`;
 
-registerLicense(
-  `Ngo9BigBOggjHTQxAR8/V1NBaF1cWmhPYVFzWmFZfVpgcl9FZlZRQWYuP1ZhSXxXdkNhWX9ZcXFQQmRfV0E=`,
-);
+registerLicense(licenseKey);
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
