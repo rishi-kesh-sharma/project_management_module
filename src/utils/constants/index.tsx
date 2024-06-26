@@ -14,7 +14,9 @@ import {
 // export const BASE_URL = `http://192.168.254.239:4000`;
 export const BASE_URL = `http://localhost:4000`;
 export const REAL_API_BASE_URL = "http://pragyo.localhost.com:8001/api/v1";
-export const PMS_API_BASE_URL = `http://lokesh.localhost.com:8000/api`;
+
+//@typescript-eslint/no-unused-vars
+export const PMS_API_BASE_URL = `http://rishi-personal.localhost.com:8000/api`;
 
 export const avatarDropdownMenu = {
   label: "",
@@ -90,13 +92,13 @@ export const userInfo = {
 };
 
 export const ROLE = {
-  ADMIN: "admin",
-  MANAGER: "manager",
-  USER: "user",
+  ADMIN: "admin" as TRole,
+  MANAGER: "manager" as TRole,
+  USER: "user" as TRole,
 };
 
 import { CalendarIcon } from "@radix-ui/react-icons";
-import { IComboboxProps, ICommandProps } from "@/@types";
+import { IComboboxProps, ICommandProps, TRole } from "@/@types";
 import Combobox from "@/components/custom/common/Combobox/Combobox";
 import SpeedDial from "@/components/custom/common/SpeedDial/SpeedDial";
 import SearchInput from "@/components/custom/common/SearchInput/SearchInput";

@@ -1,4 +1,3 @@
- 
 import {
   GanttComponent,
   DayMarkers,
@@ -64,15 +63,18 @@ const GanttChart = () => {
           taskFields={taskFields}
           labelSettings={labelSettings}
           projectStartDate={projectStartDate}
-          projectEndDate={projectEndDate}>
+          projectEndDate={projectEndDate}
+        >
           <ColumnsDirective>
             <ColumnDirective field="TaskID" visible={false}></ColumnDirective>
             <ColumnDirective
               field="TaskName"
-              headerText="Task Name"></ColumnDirective>
+              headerText="Task Name"
+            ></ColumnDirective>
             <ColumnDirective
               field="isManual"
-              headerText="Task Mode"></ColumnDirective>
+              headerText="Task Mode"
+            ></ColumnDirective>
           </ColumnsDirective>
           <Inject services={[Edit, Selection, Toolbar, DayMarkers]} />
         </GanttComponent>
