@@ -61,13 +61,13 @@ export interface IAvatarDropdownProps {
 }
 
 export interface SidebarItemProps {
-  label: string;
+  label?: string | React.JSX.Element;
   link?: string;
   icon?: React.ReactElement;
   items?: SidebarItemProps[];
 }
 export interface SidebarProps {
-  path: string;
+  path?: string;
   items: SidebarItemProps[];
 }
 
@@ -137,7 +137,7 @@ export interface IHumanResource {
   allocated_effort?: number;
   start_date?: Date;
   due_date?: Date;
-  avatar?: string
+  avatar?: string;
 }
 export interface IBookmark {
   id: string;
@@ -342,10 +342,10 @@ export type IAgGridTableProps<T> = {
     items?: IDropdownMenuProps["menu"]["items"];
   };
   theme?:
-  | "ag-theme-quartz"
-  | "ag-theme-alpine"
-  | "ag-theme-quartz-dark"
-  | "ag-theme-quartz-alpine";
+    | "ag-theme-quartz"
+    | "ag-theme-alpine"
+    | "ag-theme-quartz-dark"
+    | "ag-theme-quartz-alpine";
   height?: number;
   TableToolbarHOC: React.Component;
   // rowData?: IRowData[];
@@ -537,7 +537,7 @@ export interface ITextInputProps {
   className?: string;
 }
 
-export interface ISubmitButton extends ButtonProps { }
+export interface ISubmitButton extends ButtonProps {}
 
 export interface RootLayoutProps {
   children: React.ReactNode;
