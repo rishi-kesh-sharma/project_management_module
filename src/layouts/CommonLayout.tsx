@@ -29,6 +29,7 @@ const CommonLayout = () => {
     <div className="relative w-full min-h-screen flex ">
       <Sidebar
         items={sidebarItems({ workspaces, bookmarks, archives })}
+        
         path={currentPath}
       />
 
