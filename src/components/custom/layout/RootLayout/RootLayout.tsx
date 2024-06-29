@@ -8,7 +8,6 @@ import "react-toastify/dist/ReactToastify.css";
 import TimerProvider from "@/hooks/TimerProvider";
 
 export default function RootLayout({ children }: RootLayoutProps) {
-
   return (
     <>
       <ThemeProvider defaultTheme={"system"} storageKey="vite-ui-theme">
@@ -17,13 +16,15 @@ export default function RootLayout({ children }: RootLayoutProps) {
         <div
           className={cn(
             "min-h-screen bg-background font-sans antialiased",
-            "[&_.slate-selected]:!bg-primary/20 [&_.slate-selection-area]:border [&_.slate-selection-area]:border-primary [&_.slate-selection-area]:bg-primary/10"
+            "[&_.slate-selected]:!bg-primary/20 [&_.slate-selection-area]:border [&_.slate-selection-area]:border-primary [&_.slate-selection-area]:bg-primary/10",
           )}
-          suppressHydrationWarning>
+          suppressHydrationWarning
+        >
           <TooltipProvider
             disableHoverableContent
             delayDuration={500}
-            skipDelayDuration={0}>
+            skipDelayDuration={0}
+          >
             <TimerProvider>
               <div className="">{children}</div>
             </TimerProvider>

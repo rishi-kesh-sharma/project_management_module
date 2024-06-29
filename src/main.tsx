@@ -7,7 +7,7 @@ import { Provider as ReduxProvider } from "react-redux";
 import store from "./redux/store.ts";
 
 import { registerLicense } from "@syncfusion/ej2-base";
-const licenseKey = `ORg4AjUWIQA/Gnt2UFhhQlJBfVldX2ZWfFN0QXNfdV12flVDcC0sT3RfQFljT3xWdkVnXH5WcnBcQA==`;
+const licenseKey = `ORg4AjUWIQA/Gnt2U1hhQlJBfVhdX2ZWfFN0QXNYf1RxcV9EY0wxOX1dQl9nSXhRc0dhWHhfeHZWRmE=`;
 
 registerLicense(licenseKey);
 

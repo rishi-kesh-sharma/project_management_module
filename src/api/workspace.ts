@@ -26,12 +26,14 @@ export const workspaceApi = createApi({
   reducerPath: "workspaces",
   baseQuery: fetchBaseQuery({
     baseUrl: `${BASE_URL}`,
+    // baseUrl: `${PMS_API_BASE_URL}`,
   }),
   // baseQuery: axiosBaseQuery({ baseUrl: `${BASE_URL}` }),
   tagTypes: ["Workspace"],
   endpoints: (build) => ({
     getWorkspaces: build.query<IWorkspace[], string>({
-      query: () => "workspaces",
+      // query: () => "/workspace/",
+      query: () => "/workspaces",
       providesTags: (result) =>
         result
           ? [

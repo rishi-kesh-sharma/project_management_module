@@ -13,11 +13,15 @@ export interface IRoute {
   path?: string;
   element?: React.ElementType;
   pageTitle?: string;
-  component?: React.ReactNode;
+  component?:
+    | React.ReactNode
+    | React.Component
+    | React.JSX.Element
+    | (() => React.JSX.Element);
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  crumbs: (p: any) => ICrumb[];
-  roles: TRole[];
-  children: IRoute[];
+  crumbs?: (p: any) => ICrumb[];
+  roles?: TRole[];
+  children?: IRoute[];
 }
 
 export type TCustomRouteObject =
@@ -25,7 +29,7 @@ export type TCustomRouteObject =
   | {
       roles: TRole[];
     };
-export const createRoutes = (routes: IRoute[]): TCustomRouteObject[] => {
+export const createRoutes = (routes: IRoute[]): RouteObject[] => {
   if (routes?.length === 0) return [];
   return routes?.map((route: IRoute) => {
     return {
@@ -43,7 +47,7 @@ export const createRoutes = (routes: IRoute[]): TCustomRouteObject[] => {
           return route.crumbs ? route.crumbs(params)?.[0] : [];
         },
       },
-      children: createRoutes(route?.children),
+      children: route?.children && createRoutes(route?.children),
     };
   });
 };
